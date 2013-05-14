@@ -33,21 +33,12 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import org.sola.services.boundary.transferobjects.casemanagement.AddressTO;
-import org.sola.services.common.contracts.AbstractIdTO;
 
 /**
  * TO for CadastreObject entity
  */
-public class CadastreObjectTO extends AbstractIdTO {
+public class CadastreObjectTO extends CadastreObjectSummaryTO {
 
-    private String landUseCode;
-    private String typeCode;
-    private Date approvalDatetime;
-    private Date historicDatetime;
-    private String sourceReference;
-    private String nameFirstpart;
-    private String nameLastpart;
-    private String statusCode;
     private String transactionId;
     private byte[] geomPolygon;
     private List<SpatialValueAreaTO> spatialValueAreaList = new ArrayList<SpatialValueAreaTO>();
@@ -55,70 +46,6 @@ public class CadastreObjectTO extends AbstractIdTO {
     
     public CadastreObjectTO() {
         super();
-    }
-
-    public String getLandUseCode() {
-        return landUseCode;
-    }
-
-    public void setLandUseCode(String landUseCode) {
-        this.landUseCode = landUseCode;
-    }
-
-    public Date getApprovalDatetime() {
-        return approvalDatetime;
-    }
-
-    public void setApprovalDatetime(Date approvalDatetime) {
-        this.approvalDatetime = approvalDatetime;
-    }
-
-    public Date getHistoricDatetime() {
-        return historicDatetime;
-    }
-
-    public void setHistoricDatetime(Date historicDatetime) {
-        this.historicDatetime = historicDatetime;
-    }
-
-    public String getNameFirstpart() {
-        return nameFirstpart;
-    }
-
-    public void setNameFirstpart(String nameFirstpart) {
-        this.nameFirstpart = nameFirstpart;
-    }
-
-    public String getNameLastpart() {
-        return nameLastpart;
-    }
-
-    public void setNameLastpart(String nameLastpart) {
-        this.nameLastpart = nameLastpart;
-    }
-
-    public String getSourceReference() {
-        return sourceReference;
-    }
-
-    public void setSourceReference(String sourceReference) {
-        this.sourceReference = sourceReference;
-    }
-
-    public String getStatusCode() {
-        return statusCode;
-    }
-
-    public void setStatusCode(String statusCode) {
-        this.statusCode = statusCode;
-    }
-
-    public String getTypeCode() {
-        return typeCode;
-    }
-
-    public void setTypeCode(String typeCode) {
-        this.typeCode = typeCode;
     }
 
     public byte[] getGeomPolygon() {

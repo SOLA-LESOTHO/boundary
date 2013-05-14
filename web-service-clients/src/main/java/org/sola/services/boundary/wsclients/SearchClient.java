@@ -125,6 +125,11 @@ public interface SearchClient extends AbstractWSClient {
             SERVICE_NAME + "getExtentOfPublicDisplayMap";
 
     /**
+     * Search.searchBaUnit - Identifier for the searchBaUnit method
+     */
+    public static final String SEARCH_CADASTRE_OBJECTS = SERVICE_NAME + "searchCadastreObjects";
+    
+    /**
      * Returns applications that have a lodged or approved status and are assigned to the currently
      * logged in user.
      *
@@ -310,4 +315,6 @@ public interface SearchClient extends AbstractWSClient {
      * @return
      */
     public byte[] getExtentOfPublicDisplayMap(String nameLastPart);
+    
+    public List<CadastreObjectSearchResultTO> searchCadastreObjects(CadastreObjectSearchParamsTO searchParams);
 }

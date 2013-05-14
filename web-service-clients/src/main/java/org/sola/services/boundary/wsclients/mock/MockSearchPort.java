@@ -417,5 +417,10 @@ public class MockSearchPort implements Search {
             return null;
         }    
     }
+
+    @Override
+    public List<CadastreObjectSearchResultTO> searchCadastreObjects(CadastreObjectSearchParamsTO searchParams) throws SOLAAccessFault, SOLAFault, UnhandledFault {
+        throw new UnsupportedOperationException("Not supported yet.");
+    }
     
 }
