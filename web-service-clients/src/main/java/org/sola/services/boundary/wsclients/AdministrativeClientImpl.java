@@ -29,7 +29,6 @@
  */
 package org.sola.services.boundary.wsclients;
 
-import java.util.Date;
 import java.util.List;
 import javax.xml.namespace.QName;
 import org.sola.services.boundary.wsclients.exception.WebServiceClientException;
@@ -37,8 +36,6 @@ import org.sola.webservices.administrative.Administrative;
 import org.sola.webservices.administrative.AdministrativeService;
 import org.sola.webservices.transferobjects.ValidationResult;
 import org.sola.webservices.transferobjects.administrative.*;
-import org.sola.webservices.transferobjects.search.RightsExportParamsTO;
-import org.sola.webservices.transferobjects.search.RightsExportResultTO;
 
 /**
  * Implementation class for the {@linkplain AdministrativeClient} interface.
@@ -238,12 +235,12 @@ public class AdministrativeClientImpl extends AbstractWSClientImpl
         final String methodName = AdministrativeClient.GET_SYS_REG_REGIST_LISTING;
         String languageCode = getLanguageCode();
         try {
-            beforeWebMethod(methodName, searchString,languageCode);
-            result = getPort().getSysRegPubDisParcelNameByLocation(searchString,languageCode);
+            beforeWebMethod(methodName, searchString, languageCode);
+            result = getPort().getSysRegPubDisParcelNameByLocation(searchString, languageCode);
         } catch (Exception e) {
             processException(methodName, e);
         } finally {
-            afterWebMethod(methodName, result, searchString,languageCode);
+            afterWebMethod(methodName, result, searchString, languageCode);
         }
         return result;
     }
@@ -256,11 +253,11 @@ public class AdministrativeClientImpl extends AbstractWSClientImpl
         String languageCode = getLanguageCode();
         try {
             beforeWebMethod(methodName, searchString, languageCode);
-            result = getPort().getSysRegPubDisOwnerNameByLocation(searchString,languageCode);
+            result = getPort().getSysRegPubDisOwnerNameByLocation(searchString, languageCode);
         } catch (Exception e) {
             processException(methodName, e);
         } finally {
-            afterWebMethod(methodName, result, searchString,languageCode);
+            afterWebMethod(methodName, result, searchString, languageCode);
         }
         return result;
     }
@@ -272,16 +269,16 @@ public class AdministrativeClientImpl extends AbstractWSClientImpl
         final String methodName = AdministrativeClient.GET_SYS_REG_STATELAND_LISTING;
         String languageCode = getLanguageCode();
         try {
-            beforeWebMethod(methodName, searchString,languageCode);
-            result = getPort().getSysRegPubDisStateLandByLocation(searchString,languageCode);
+            beforeWebMethod(methodName, searchString, languageCode);
+            result = getPort().getSysRegPubDisStateLandByLocation(searchString, languageCode);
         } catch (Exception e) {
             processException(methodName, e);
         } finally {
-            afterWebMethod(methodName, result, searchString,languageCode);
+            afterWebMethod(methodName, result, searchString, languageCode);
         }
         return result;
     }
-    
+
     @Override
     public List<ValidationResult> publicDisplay(String params)
             throws WebServiceClientException {
@@ -298,7 +295,7 @@ public class AdministrativeClientImpl extends AbstractWSClientImpl
         }
         return result;
     }
-    
+
     @Override
     public List<SysRegManagementTO> getSysRegManagement(SysRegManagementParamsTO sysRegManagementParamsTO)
             throws WebServiceClientException {
@@ -306,47 +303,158 @@ public class AdministrativeClientImpl extends AbstractWSClientImpl
         final String methodName = AdministrativeClient.GET_SYS_REG_MANAGEMENT;
         String languageCode = getLanguageCode();
         try {
-            beforeWebMethod(methodName, sysRegManagementParamsTO,languageCode);
-            result = getPort().getSysRegManagement(sysRegManagementParamsTO,languageCode);
+            beforeWebMethod(methodName, sysRegManagementParamsTO, languageCode);
+            result = getPort().getSysRegManagement(sysRegManagementParamsTO, languageCode);
         } catch (Exception e) {
             processException(methodName, e);
         } finally {
-            afterWebMethod(methodName, result, sysRegManagementParamsTO,languageCode);
+            afterWebMethod(methodName, result, sysRegManagementParamsTO, languageCode);
         }
         return result;
     }
 
-     @Override
+    @Override
     public List<SysRegStatusTO> getSysRegStatus(SysRegManagementParamsTO sysRegManagementParamsTO)
             throws WebServiceClientException {
         List<SysRegStatusTO> result = null;
         final String methodName = AdministrativeClient.GET_SYS_REG_STATUS;
         String languageCode = getLanguageCode();
         try {
-            beforeWebMethod(methodName, sysRegManagementParamsTO,languageCode);
-            result = getPort().getSysRegStatus(sysRegManagementParamsTO,languageCode);
+            beforeWebMethod(methodName, sysRegManagementParamsTO, languageCode);
+            result = getPort().getSysRegStatus(sysRegManagementParamsTO, languageCode);
         } catch (Exception e) {
             processException(methodName, e);
         } finally {
-            afterWebMethod(methodName, result, sysRegManagementParamsTO,languageCode);
+            afterWebMethod(methodName, result, sysRegManagementParamsTO, languageCode);
         }
         return result;
     }
-     
-     @Override
+
+    @Override
     public List<SysRegProgressTO> getSysRegProgress(SysRegManagementParamsTO sysRegManagementParamsTO)
             throws WebServiceClientException {
         List<SysRegProgressTO> result = null;
         final String methodName = AdministrativeClient.GET_SYS_REG_PROGRESS;
         String languageCode = getLanguageCode();
         try {
-            beforeWebMethod(methodName, sysRegManagementParamsTO,languageCode);
-            result = getPort().getSysRegProgress(sysRegManagementParamsTO,languageCode);
+            beforeWebMethod(methodName, sysRegManagementParamsTO, languageCode);
+            result = getPort().getSysRegProgress(sysRegManagementParamsTO, languageCode);
         } catch (Exception e) {
             processException(methodName, e);
         } finally {
-            afterWebMethod(methodName, result, sysRegManagementParamsTO,languageCode);
+            afterWebMethod(methodName, result, sysRegManagementParamsTO, languageCode);
         }
         return result;
-    } 
+    }
+
+    /*
+     * LAA Additions thoriso
+     */
+    @Override
+    public DisputeTO getDisputeById(String id) throws WebServiceClientException {
+        DisputeTO result = null;
+        final String methodName = AdministrativeClient.GET_DISPUTE_BY_ID;
+        try {
+            beforeWebMethod(methodName, id);
+            result = getPort().getDisputeById(id);
+        } catch (Exception e) {
+            processException(methodName, e);
+        } finally {
+            afterWebMethod(methodName, result, id);
+        }
+        return result;
+    }
+
+    @Override
+    public DisputeTO getDisputeByNr(String nr) throws WebServiceClientException {
+        DisputeTO result = null;
+        final String methodName = AdministrativeClient.GET_DISPUTE_BY_NR;
+        try {
+            beforeWebMethod(methodName, nr);
+            result = getPort().getDisputeByNr(nr);
+        } catch (Exception e) {
+            processException(methodName, e);
+        } finally {
+            afterWebMethod(methodName, result, nr);
+        }
+        return result;
+    }
+
+    @Override
+    public DisputeTO getDispute() throws WebServiceClientException {
+        DisputeTO result = null;
+        final String methodName = AdministrativeClient.GET_DISPUTE;
+        try {
+            beforeWebMethod(methodName);
+            result = getPort().getDispute();
+        } catch (Exception e) {
+            processException(methodName, e);
+        } finally {
+            afterWebMethod(methodName, result);
+        }
+        return result;
+    }
+
+    @Override
+    public DisputeTO getDisputeByUser(String user) throws WebServiceClientException {
+        DisputeTO result = null;
+        final String methodName = AdministrativeClient.GET_DISPUTE_BY_USER;
+        try {
+            beforeWebMethod(methodName, user);
+            result = getPort().getDisputeByUser(user);
+        } catch (Exception e) {
+            processException(methodName, e);
+        } finally {
+            afterWebMethod(methodName, result, user);
+        }
+        return result;
+    }
+
+    @Override
+    public DisputeTO createDispute(
+            DisputeTO disputeTO) throws WebServiceClientException {
+        DisputeTO result = null;
+        final String methodName = AdministrativeClient.CREATE_DISPUTE;
+        try {
+            beforeWebMethod(methodName, disputeTO);
+            result = getPort().createDispute(disputeTO);
+        } catch (Exception e) {
+            processException(methodName, e);
+        } finally {
+            afterWebMethod(methodName, result, disputeTO);
+        }
+        return result;
+    }
+
+    @Override
+    public DisputeTO saveDispute(
+            DisputeTO disputeTO) throws WebServiceClientException {
+        DisputeTO result = null;
+        final String methodName = AdministrativeClient.SAVE_DISPUTE;
+        try {
+            beforeWebMethod(methodName, disputeTO);
+            result = getPort().saveDispute(disputeTO);
+        } catch (Exception e) {
+            processException(methodName, e);
+        } finally {
+            afterWebMethod(methodName, result, disputeTO);
+        }
+        return result;
+    }
+
+    @Override
+    public DisputeCommentsTO saveDisputeComments(
+            DisputeCommentsTO disputeCommentsTO) throws WebServiceClientException {
+        DisputeCommentsTO result = null;
+        final String methodName = AdministrativeClient.SAVE_DISPUTE_COMMENTS;
+        try {
+            beforeWebMethod(methodName, disputeCommentsTO);
+            result = getPort().saveDisputeComments(disputeCommentsTO);
+        } catch (Exception e) {
+            processException(methodName, e);
+        } finally {
+            afterWebMethod(methodName, result, disputeCommentsTO);
+        }
+        return result;
+    }
 }

@@ -346,4 +346,23 @@ public class SearchClientImpl extends AbstractWSClientImpl implements SearchClie
         }
         return result;
     }
+    
+    /*
+     * LAA Addition thoriso
+     */
+    
+    @Override
+    public List<DisputeSearchResultTO> searchDispute(DisputeSearchParamsTO searchParams) throws WebServiceClientException {
+        List<DisputeSearchResultTO> result = null;
+        final String methodName = SearchClient.SEARCH_DISPUTE;
+        try {
+            beforeWebMethod(methodName, searchParams);
+            result = getPort().searchDispute(searchParams);
+        } catch (Exception e) {
+            processException(methodName, e);
+        } finally {
+            afterWebMethod(methodName, result, searchParams);
+        }
+        return result;
+    }
 }

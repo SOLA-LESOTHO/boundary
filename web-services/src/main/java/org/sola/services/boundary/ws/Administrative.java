@@ -50,6 +50,8 @@ import org.sola.services.ejb.administrative.businesslogic.AdministrativeEJBLocal
 import org.sola.services.ejb.administrative.repository.entities.*;
 import org.sola.services.ejb.transaction.businesslogic.TransactionEJBLocal;
 import org.sola.services.ejb.transaction.repository.entities.TransactionBasic;
+import org.sola.services.ejbs.admin.businesslogic.repository.entities.User;
+import org.sola.services.ejbs.admin.businesslogic.AdminEJBLocal;
 
 /**
  * Web Service Boundary class to expose {@linkplain AdministrativeEJB} methods.
@@ -63,6 +65,8 @@ public class Administrative extends AbstractWebService {
     private TransactionEJBLocal transactionEJB;
     @Resource
     private WebServiceContext wsContext;
+    @EJB
+    AdminEJBLocal adminEJB;
 
     /**
      * Web method that can be used to validate if the web service is available.
@@ -563,8 +567,8 @@ public class Administrative extends AbstractWebService {
 
         return (List<SysRegManagementTO>) result[0];
     }
-    
-     /**
+
+    /**
      * See {@linkplain org.sola.services.ejb.administrative.businesslogic.AdministrativeEJB#getSysRegStatus(java.lang.String)
      * AdministrativeEJB.getSysRegStatus}
      *
@@ -596,8 +600,8 @@ public class Administrative extends AbstractWebService {
 
         return (List<SysRegStatusTO>) result[0];
     }
-    
-     /**
+
+    /**
      * See {@linkplain org.sola.services.ejb.administrative.businesslogic.AdministrativeEJB#getSysRegProgress(java.lang.String)
      * AdministrativeEJB.getSysRegProgress}
      *
@@ -628,5 +632,230 @@ public class Administrative extends AbstractWebService {
         });
 
         return (List<SysRegProgressTO>) result[0];
+    }
+
+    /*
+     * LAA - Additions thoriso
+     */
+    /**
+     * See {@linkplain AdministrativeEJB#createDispute(java.lang.String,
+     * org.sola.services.ejb.administrative.repository.entities.Dispute)
+     * AdministrativeEJB.createDispute}
+     *
+     * @throws SOLAFault
+     * @throws UnhandledFault
+     * @throws SOLAAccessFault
+     * @throws OptimisticLockingFault
+     */
+    @WebMethod(operationName = "CreateDispute")
+    public DisputeTO CreateDispute(
+            @WebParam(name = "disputeTO") DisputeTO disputeTO)
+            throws SOLAFault, UnhandledFault, SOLAAccessFault, OptimisticLockingFault {
+
+        final DisputeTO disputeTOTmp = disputeTO;
+        final Object[] result = {null};
+
+        runUpdate(wsContext, new Runnable() {
+
+            @Override
+            public void run() {
+                Dispute newDispute = administrativeEJB.createDispute(
+                        GenericTranslator.fromTO(disputeTOTmp, Dispute.class,
+                        administrativeEJB.getDisputeById(disputeTOTmp.getId())));
+                result[0] = GenericTranslator.toTO(newDispute, DisputeTO.class);
+            }
+        });
+
+        return (DisputeTO) result[0];
+    }
+
+    /**
+     * See {@linkplain AdministrativeEJB#saveDispute(java.lang.String,
+     * org.sola.services.ejb.administrative.repository.entities.Dispute)
+     * AdministrativeEJB.saveDispute}
+     *
+     * @throws SOLAFault
+     * @throws UnhandledFault
+     * @throws SOLAAccessFault
+     * @throws OptimisticLockingFault
+     */
+    @WebMethod(operationName = "SaveDispute")
+    public DisputeTO SaveDispute(
+            @WebParam(name = "disputeTO") DisputeTO disputeTO)
+            throws SOLAFault, UnhandledFault, SOLAAccessFault, OptimisticLockingFault {
+
+        final DisputeTO disputeTOTmp = disputeTO;
+        final Object[] result = {null};
+
+        runUpdate(wsContext, new Runnable() {
+
+            @Override
+            public void run() {
+                if (disputeTOTmp != null) {
+                    Dispute newDispute = administrativeEJB.saveDispute(
+                            GenericTranslator.fromTO(disputeTOTmp, Dispute.class,
+                            administrativeEJB.getDisputeById(disputeTOTmp.getId())));
+                    result[0] = GenericTranslator.toTO(newDispute, DisputeTO.class);
+                }
+            }
+        });
+
+        return (DisputeTO) result[0];
+    }
+
+    /**
+     * See {@linkplain AdministrativeEJB#saveDisputeComments(java.lang.String,
+     * org.sola.services.ejb.administrative.repository.entities.Dispute)
+     * AdministrativeEJB.saveDisputeComments}
+     *
+     * @throws SOLAFault
+     * @throws UnhandledFault
+     * @throws SOLAAccessFault
+     * @throws OptimisticLockingFault
+     */
+    @WebMethod(operationName = "SaveDisputeComments")
+    public DisputeCommentsTO SaveDisputeComments(
+            @WebParam(name = "disputeCommentsTO") DisputeCommentsTO disputeCommentsTO)
+            throws SOLAFault, UnhandledFault, SOLAAccessFault, OptimisticLockingFault {
+
+        final DisputeCommentsTO disputeCommentsTOTmp = disputeCommentsTO;
+        final Object[] result = {null};
+
+        runUpdate(wsContext, new Runnable() {
+
+            @Override
+            public void run() {
+                if (disputeCommentsTOTmp != null) {
+                    DisputeComments newDisputeComments = administrativeEJB.saveDisputeComments(
+                            GenericTranslator.fromTO(disputeCommentsTOTmp, DisputeComments.class,
+                            administrativeEJB.getDisputeCommentsById(disputeCommentsTOTmp.getId())));
+                    result[0] = GenericTranslator.toTO(newDisputeComments, DisputeCommentsTO.class);
+                }
+            }
+        });
+
+        return (DisputeCommentsTO) result[0];
+    }
+
+    /**
+     * See {{@linkplain AdministrativeEJB#getDisputeById(java.lang.String)
+     * AdministrativeEJB.getDisputeById}
+     *
+     * @throws SOLAFault
+     * @throws UnhandledFault
+     */
+    @WebMethod(operationName = "getDisputeById")
+    public DisputeTO GetDisputeById(@WebParam(name = "id") String id)
+            throws SOLAFault, UnhandledFault {
+
+        final String idTmp = id;
+        final Object[] result = {null};
+
+        runOpenQuery(wsContext, new Runnable() {
+
+            @Override
+            public void run() {
+                result[0] = GenericTranslator.toTO(
+                        administrativeEJB.getDisputeById(idTmp), DisputeTO.class);
+            }
+        });
+
+        return (DisputeTO) result[0];
+    }
+
+    /**
+     * See {{@linkplain AdministrativeEJB#getDisputeByNr(java.lang.String)
+     * AdministrativeEJB.getDisputeByNr}
+     *
+     * @throws SOLAFault
+     * @throws UnhandledFault
+     */
+    @WebMethod(operationName = "getDisputeByNr")
+    public DisputeTO GetDisputeByNr(@WebParam(name = "Nr") String Nr)
+            throws SOLAFault, UnhandledFault {
+
+        final String nrTmp = Nr;
+        final Object[] result = {null};
+
+        runOpenQuery(wsContext, new Runnable() {
+
+            @Override
+            public void run() {
+                result[0] = GenericTranslator.toTO(
+                        administrativeEJB.getDisputeByNr(nrTmp), DisputeTO.class);
+            }
+        });
+
+        return (DisputeTO) result[0];
+    }
+
+    /**
+     * See {{@linkplain AdministrativeEJB#getDisputeByUser(java.lang.String)
+     * AdministrativeEJB.getDisputeByUser}
+     *
+     * @throws SOLAFault
+     * @throws UnhandledFault
+     */
+    @WebMethod(operationName = "getDisputeByUser")
+    public DisputeTO GetDisputeByUser(@WebParam(name = "userId") String userId)
+            throws SOLAFault, UnhandledFault {
+
+        final String userIdTmp = userId;
+        final Object[] result = {null};
+
+        runOpenQuery(wsContext, new Runnable() {
+
+            @Override
+            public void run() {
+                result[0] = GenericTranslator.toTO(
+                        administrativeEJB.getDisputeByUser(userIdTmp), DisputeTO.class);
+            }
+        });
+
+        return (DisputeTO) result[0];
+    }
+
+    /*
+     * See {{@linkplain AdministrativeEJB#getDisputeByNr(java.lang.String)
+     * AdministrativeEJB.getDisputeByNr}
+     *
+     * @throws SOLAFault @throws Unha*ndledFault
+     */
+    @WebMethod(operationName = "getDispute")
+    public DisputeTO GetDispute()
+            throws SOLAAccessFault, SOLAFault, UnhandledFault {
+
+        final Object[] result = {null};
+
+        runOpenQuery(wsContext, new Runnable() {
+
+            @Override
+            public void run() {
+
+                result[0] = GenericTranslator.toTO(
+                        administrativeEJB.getDispute(), DisputeTO.class);
+            }
+        });
+        return (DisputeTO) result[0];
+    }
+
+    /*
+     * @WebMethod(operationName = "getDispute") public DisputeTO GetDispute()
+     * throws SOLAAccessFault, SOLAFault, UnhandledFault {
+     *
+     * final Object[] result = {null};
+     *
+     * runOpenQuery(wsContext, new Runnable() {
+     *
+     * @Override public void run() { User user = getCurrentUser(); if (user !=
+     * null) { result[0] = GenericTranslator.toTO(
+     * administrativeEJB.getDisputeByUser(user.getId()), DisputeTO.class); } }
+     * }); return (DisputeTO) result[0]; }
+     */
+    /**
+     * Returns currently logged in user.
+     */
+    private User getCurrentUser() {
+        return adminEJB.getCurrentUser();
     }
 }

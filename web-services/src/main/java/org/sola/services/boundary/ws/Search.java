@@ -591,4 +591,41 @@ public class Search extends AbstractWebService {
 
         return (MapDefinitionTO) result[0];
     }
+    
+    
+    /*
+     * LAA additions thoriso
+     */
+    
+        /**
+     * See {@linkplain  org.sola.services.ejb.search.businesslogic.SearchEJB#searchDispute(org.sola.services.ejb.search.repository.entities.DisputeSearchParams)
+     * SearchEJB.searchDispute}
+     *
+     * @throws SOLAFault
+     * @throws UnhandledFault
+     * @throws SOLAAccessFault
+     */
+    @WebMethod(operationName = "searchDispute")
+    public List<DisputeSearchResultTO> searchDipsute(@WebParam(name = "searchParams") DisputeSearchParamsTO searchParams)
+            throws SOLAFault, UnhandledFault, SOLAAccessFault {
+
+        final Object[] params = {searchParams};
+        final Object[] result = {null};
+
+        runGeneralQuery(wsContext, new Runnable() {
+
+            @Override
+            public void run() {
+                DisputeSearchParamsTO searchParams = (DisputeSearchParamsTO) params[0];
+                if (searchParams != null) {
+                    result[0] = GenericTranslator.toTOList(
+                            searchEJB.searchDispute(GenericTranslator.fromTO(
+                            searchParams, DisputeSearchParams.class, null)),
+                            DisputeSearchResultTO.class);
+                }
+            }
+        });
+
+        return (List<DisputeSearchResultTO>) result[0];
+    }
 }
