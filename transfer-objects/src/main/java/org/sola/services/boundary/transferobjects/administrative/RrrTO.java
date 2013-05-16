@@ -58,7 +58,9 @@ public class RrrTO extends AbstractIdTO {
     private List<PartySummaryTO> rightHolderList;
     private List<LeaseConditionForRrrTO> leaseConditionList;
     private String concatenatedName;
-
+    private String registrationNumber;
+    private Date statusChangeDate;
+    
     public String getConcatenatedName() {
         return concatenatedName;
     }
@@ -246,6 +248,22 @@ public class RrrTO extends AbstractIdTO {
 
     public void setLocked(boolean locked) {
         this.locked = locked;
+    }
+
+    public String getRegistrationNumber() {
+        return registrationNumber;
+    }
+
+    public void setRegistrationNumber(String registrationNumber) {
+        this.registrationNumber = registrationNumber;
+    }
+
+    public Date getStatusChangeDate() {
+        return statusChangeDate;
+    }
+
+    public void setStatusChangeDate(Date statusChangeDate) {
+        this.statusChangeDate = statusChangeDate;
     }
 
 }

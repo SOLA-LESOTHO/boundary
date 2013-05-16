@@ -30,6 +30,7 @@
 package org.sola.services.boundary.wsclients;
 
 import java.util.List;
+import javax.jws.WebParam;
 import org.sola.services.boundary.wsclients.exception.WebServiceClientException;
 import org.sola.webservices.transferobjects.ValidationResult;
 import org.sola.webservices.transferobjects.cadastre.CadastreObjectNodeTO;
@@ -101,6 +102,11 @@ public interface CadastreClient extends AbstractWSClient {
      * method
      */
     public static final String GET_CADASTRE_OBJECTS = SERVICE_NAME + "getCadastreObjects";
+    /**
+     * Cadastre.getCadastreObjects - Identifier for the getCadastreObjects
+     * method
+     */
+    public static final String GET_CADASTRE_OBJECT = SERVICE_NAME + "getCadastreObject";
     /**
      * Cadastre.getCadastreObjectNode - Identifier for the getCadastreObjectNode
      * method
@@ -253,5 +259,5 @@ public interface CadastreClient extends AbstractWSClient {
      */
    SpatialValueAreaTO getSpatialValueArea(String colist) throws WebServiceClientException;
     
-    
+   CadastreObjectTO getCadastreObject(String id) throws WebServiceClientException;
 }
