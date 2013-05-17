@@ -44,6 +44,10 @@ public interface ReferenceDataClient extends AbstractWSClient {
      */
     public static final String SERVICE_NAME = "ReferenceData.";
     /**
+    * ReferenceData.getApplicationForms - Identifier for the getApplicationForms method
+    */
+    public static final String GET_CLIENT_TYPES = SERVICE_NAME + "getApplicationForms";
+    /**
      * ReferenceData.checkConnection - Identifier for the checkConnection method
      */
     public static final String CHECK_CONNECTION = SERVICE_NAME + "checkConnection";

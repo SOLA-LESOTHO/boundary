@@ -94,6 +94,22 @@ public class MockTOFactory {
         result.add(createCode(CommunicationTypeTO.class, "post", "Post"));
         return result;
     }
+    
+    /**
+    * Creates a default list of application forms <p> SQL query to generate list from DB: </p>
+    * <pre>
+    * select 'result.add(createCode(ApplicationFormTO.class, "' || code || '", "' || display_value || '"));'
+    * from application.application_form
+    * </pre>
+    */
+    public static List<ApplicationFormTO> createApplicationForms() {
+        List<ApplicationFormTO> result = new ArrayList<ApplicationFormTO>();
+        result.add(createCode(ApplicationFormTO.class, "lease", "Lease"));
+        result.add(createCode(ApplicationFormTO.class, "deed", "Deed"));
+        return result;
+    }
+
+
 
     /**
      * Creates a default list of gender types <p> SQL query to generate list

@@ -610,8 +610,20 @@ public class MockReferenceDataPort implements ReferenceData {
         throw new UnsupportedOperationException("Not supported yet.");
     }
 
+    /**
+     * Response Key = ReferenceDataClient.GET_CLIENT_TYPES
+     *
+     * @return default = MockTOFactory.createApplicationForms()
+     */
     @Override
     public List<ApplicationFormTO> getApplicationForms(String arg0) throws SOLAFault, UnhandledFault {
-        throw new UnsupportedOperationException("Not supported yet.");
+        List<ApplicationFormTO> defaultResponse = MockTOFactory.createApplicationForms();
+        try {
+            return getManager().getResponse(ReferenceDataClient.GET_CLIENT_TYPES,
+                    List.class, defaultResponse, arg0);
+        } catch (Exception ex) {
+            processExceptionBasic(ex);
+            return null;
+        }
     }
 }
