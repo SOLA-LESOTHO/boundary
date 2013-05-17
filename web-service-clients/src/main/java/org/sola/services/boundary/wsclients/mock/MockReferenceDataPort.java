@@ -609,4 +609,9 @@ public class MockReferenceDataPort implements ReferenceData {
     public List<LeaseConditionTO> getLeaseConditions(String arg0) throws SOLAAccessFault, SOLAFault, UnhandledFault {
         throw new UnsupportedOperationException("Not supported yet.");
     }
+
+    @Override
+    public List<ApplicationFormTO> getApplicationForms(String arg0) throws SOLAFault, UnhandledFault {
+        throw new UnsupportedOperationException("Not supported yet.");
+    }
 }

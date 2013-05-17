@@ -64,6 +64,7 @@ import org.sola.services.ejb.application.repository.entities.RequestType;
 import org.sola.services.ejb.application.repository.entities.TypeAction;
 import org.sola.services.ejb.application.repository.entities.ServiceActionType;
 import org.sola.services.ejb.application.repository.entities.ServiceStatusType;
+import org.sola.services.ejb.application.repository.entities.ApplicationForm;
 import org.sola.services.ejb.cadastre.businesslogic.CadastreEJBLocal;
 import org.sola.services.ejb.cadastre.repository.entities.CadastreObjectType;
 import org.sola.services.ejb.party.repository.entities.CommunicationType;
@@ -1056,8 +1057,11 @@ public class ReferenceData extends AbstractWebService {
                     codeEntity = administrativeEJB.getCodeEntity(BaUnitRelType.class, refDataTO.getCode());
                     codeEntity = GenericTranslator.fromTO(refDataTO, BaUnitRelType.class, codeEntity);
                     administrativeEJB.saveCodeEntity(codeEntity);
+                }else if (refDataTO instanceof ApplicationFormTO) {
+                    codeEntity = applicationEJB.getCodeEntity(ApplicationForm.class, refDataTO.getCode());
+                    codeEntity = GenericTranslator.fromTO(refDataTO, ApplicationForm.class, codeEntity);
+                    applicationEJB.saveCodeEntity(codeEntity);
                 }
-
                 result = GenericTranslator.toTO(codeEntity, refDataTO.getClass());
                 commitTransaction();
                 return result;
