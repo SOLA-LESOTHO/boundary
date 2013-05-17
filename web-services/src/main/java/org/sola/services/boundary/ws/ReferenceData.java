@@ -142,6 +142,26 @@ public class ReferenceData extends AbstractWebService {
 
         return (List<CommunicationTypeTO>) result[0];
     }
+    /**
+    * Return list of application forms.
+    */
+    @WebMethod(operationName = "getApplicationForms")
+    public List<ApplicationFormTO> getApplicationForms(final String lang) throws SOLAFault, UnhandledFault {
+	final Object[] result = {null};
+
+	runOpenQuery(wsContext, new Runnable() {
+
+		@Override
+		public void run() {
+			result[0] = GenericTranslator.toTOList(
+					applicationEJB.getApplicationForms(lang), ApplicationFormTO.class);
+		}
+	});
+
+	return (List<ApplicationFormTO>) result[0];
+    }
+
+
 
     /**
      * See {@linkplain org.sola.services.ejb.party.businesslogic.PartyEJB#getGenderTypes(java.lang.String)
