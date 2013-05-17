@@ -619,7 +619,7 @@ public class MockReferenceDataPort implements ReferenceData {
     public List<ApplicationFormTO> getApplicationForms(String arg0) throws SOLAFault, UnhandledFault {
         List<ApplicationFormTO> defaultResponse = MockTOFactory.createApplicationForms();
         try {
-            return getManager().getResponse(ReferenceDataClient.GET_CLIENT_TYPES,
+            return getManager().getResponse(ReferenceDataClient.GET_APPLICATION_FORMS,
                     List.class, defaultResponse, arg0);
         } catch (Exception ex) {
             processExceptionBasic(ex);
