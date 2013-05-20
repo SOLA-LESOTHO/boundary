@@ -14,6 +14,7 @@ public class CadastreObjectSummaryTO extends AbstractIdTO {
     private String nameLastpart;
     private String statusCode;
     private String landUseCode;
+    private String landGradeCode;
     private Date surveyDate;
     private BigDecimal surveyFee;
     private String surveyor;
@@ -47,6 +48,14 @@ public class CadastreObjectSummaryTO extends AbstractIdTO {
         this.landUseCode = landUseCode;
     }
 
+    public String getLandGradeCode() {
+        return landGradeCode;
+    }
+
+    public void setLandGradeCode(String landGradeCode) {
+        this.landGradeCode = landGradeCode;
+    }
+    
     public String getNameFirstpart() {
         return nameFirstpart;
     }

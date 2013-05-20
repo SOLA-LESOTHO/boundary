@@ -610,6 +610,7 @@ public class MockReferenceDataPort implements ReferenceData {
         throw new UnsupportedOperationException("Not supported yet.");
     }
 
+<<<<<<< HEAD
     /**
      * Response Key = ReferenceDataClient.GET_CLIENT_TYPES
      *
@@ -620,6 +621,13 @@ public class MockReferenceDataPort implements ReferenceData {
         List<ApplicationFormTO> defaultResponse = MockTOFactory.createApplicationForms();
         try {
             return getManager().getResponse(ReferenceDataClient.GET_APPLICATION_FORMS,
+=======
+    @Override
+    public List<LandGradeTypeTO> getLandGradeTypes(String arg0) throws SOLAFault, UnhandledFault, SOLAAccessFault {
+        List<LandGradeTypeTO> defaultResponse = MockTOFactory.createLandGradeTypes();
+        try {
+            return getManager().getResponse(ReferenceDataClient.GET_LAND_GRADE_TYPES,
+>>>>>>> pomomo
                     List.class, defaultResponse, arg0);
         } catch (Exception ex) {
             processExceptionBasic(ex);

@@ -183,6 +183,11 @@ public interface ReferenceDataClient extends AbstractWSClient {
      */
     public static final String GET_BA_UNIT_REL_TYPES = SERVICE_NAME + "getBaUnitRelTypes";
     public static final String GET_LEASE_CONDITION_TYPES = SERVICE_NAME + "getLeaseConditions";
+    
+        /**
+     * ReferenceData.getCadastreObjectTypes - Identifier for the getCadastreObjectTypes method
+     */
+    public static final String GET_LAND_GRADE_TYPES = SERVICE_NAME + "getLandGradeTypes";
 
     /**
      * Return list of Application forms.
@@ -650,4 +655,20 @@ public interface ReferenceDataClient extends AbstractWSClient {
     List<LeaseConditionTO> getLeaseConditions() throws WebServiceClientException;
 
     List<LeaseConditionTO> getLeaseConditions(String lang) throws WebServiceClientException;
+    
+        /**
+     * Retrieves all cadastre.land_use_type code values using the default locale of the
+     * client to localize the display values.
+     *
+     * @throws WebServiceClientException
+     */
+    List<LandGradeTypeTO> getLandGradeTypes() throws WebServiceClientException;
+
+    /**
+     * Retrieves all cadastre.land_use_type code values.
+     *
+     * @param languageCode The language code to use for localization of display values.
+     * @throws WebServiceClientException
+     */
+    List<LandGradeTypeTO> getLandGradeTypes(String lang) throws WebServiceClientException;
 }

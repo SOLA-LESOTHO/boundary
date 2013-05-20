@@ -504,6 +504,18 @@ public class MockTOFactory {
 
         return result;
     }
+    
+      /**
+     * Creates a default list of land grade types
+     */
+    public static List<LandGradeTypeTO> createLandGradeTypes() {
+        List<LandGradeTypeTO> result = new ArrayList<LandGradeTypeTO>();
+        result.add(createCode(LandGradeTypeTO.class, "grade1", "Grad1e"));
+        result.add(createCode(LandGradeTypeTO.class, "grade2", "Grade2"));
+        result.add(createCode(LandGradeTypeTO.class, "grade3", "Grade3"));
+
+        return result;
+    }
 
     //</editor-fold>
     //<editor-fold defaultstate="collapsed" desc="Security TOs">
