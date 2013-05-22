@@ -555,4 +555,56 @@ public class MockAdministrativePort implements Administrative {
             return null;
         }
     }
+    
+     /**
+     * Response Key = AdministrativeClient.SAVE_DISPUTE_PARTY
+     *
+     * @return default = DisputePartyTO param
+     */
+    @Override
+    public DisputePartyTO saveDisputeParty(DisputePartyTO disputePartyTO)
+            throws OptimisticLockingFault, SOLAAccessFault, SOLAFault, UnhandledFault {
+        DisputePartyTO defaultResponse = disputePartyTO;
+        try {
+            return getManager().getResponse(AdministrativeClient.SAVE_DISPUTE_PARTY,
+                    DisputePartyTO.class, defaultResponse, disputePartyTO);
+        } catch (Exception ex) {
+            processExceptionUpdate(ex);
+            return null;
+        }
+    }
+    
+     /**
+     * Response Key = AdministrativeClient.GET_DISPUTE_BY_ID
+     *
+     * @return default = new DisputeTO()
+     */
+    @Override
+    public DisputeCommentsTO getDisputeCommentsById(String id) throws SOLAFault, UnhandledFault {
+        DisputeCommentsTO defaultResponse = new DisputeCommentsTO();
+        try {
+            return getManager().getResponse(AdministrativeClient.GET_DISPUTE_COMMENTS_BY_ID,
+                    DisputeCommentsTO.class, defaultResponse, id);
+        } catch (Exception ex) {
+            processExceptionBasic(ex);
+            return null;
+        }
+    }
+    
+     /**
+     * Response Key = AdministrativeClient.GET_DISPUTE_BY_ID
+     *
+     * @return default = new DisputeTO()
+     */
+    @Override
+    public DisputePartyTO getDisputePartyById(String id) throws SOLAFault, UnhandledFault {
+        DisputePartyTO defaultResponse = new DisputePartyTO();
+        try {
+            return getManager().getResponse(AdministrativeClient.GET_DISPUTE_PARTY_BY_ID,
+                    DisputePartyTO.class, defaultResponse, id);
+        } catch (Exception ex) {
+            processExceptionBasic(ex);
+            return null;
+        }
+    }
 }

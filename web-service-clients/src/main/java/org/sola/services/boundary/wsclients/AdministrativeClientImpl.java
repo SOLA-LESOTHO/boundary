@@ -457,4 +457,50 @@ public class AdministrativeClientImpl extends AbstractWSClientImpl
         }
         return result;
     }
+    
+    @Override
+    public DisputePartyTO saveDisputeParty(
+            DisputePartyTO disputePartyTO) throws WebServiceClientException {
+        DisputePartyTO result = null;
+        final String methodName = AdministrativeClient.SAVE_DISPUTE_PARTY;
+        try {
+            beforeWebMethod(methodName, disputePartyTO);
+            result = getPort().saveDisputeParty(disputePartyTO);
+        } catch (Exception e) {
+            processException(methodName, e);
+        } finally {
+            afterWebMethod(methodName, result, disputePartyTO);
+        }
+        return result;
+    }
+    
+    @Override
+    public DisputePartyTO getDisputePartyById(String id) throws WebServiceClientException {
+        DisputePartyTO result = null;
+        final String methodName = AdministrativeClient.GET_DISPUTE_PARTY_BY_ID;
+        try {
+            beforeWebMethod(methodName, id);
+            result = getPort().getDisputePartyById(id);
+        } catch (Exception e) {
+            processException(methodName, e);
+        } finally {
+            afterWebMethod(methodName, result, id);
+        }
+        return result;
+    }
+    
+    @Override
+    public DisputeCommentsTO getDisputeCommentsById(String id) throws WebServiceClientException {
+        DisputeCommentsTO result = null;
+        final String methodName = AdministrativeClient.GET_DISPUTE_COMMENTS_BY_ID;
+        try {
+            beforeWebMethod(methodName, id);
+            result = getPort().getDisputeCommentsById(id);
+        } catch (Exception e) {
+            processException(methodName, e);
+        } finally {
+            afterWebMethod(methodName, result, id);
+        }
+        return result;
+    }
 }

@@ -28,30 +28,23 @@
 package org.sola.services.boundary.transferobjects.administrative;
 
 import org.sola.services.common.contracts.AbstractIdTO;
+import java.util.*;
 
 public class DisputeTO extends AbstractIdTO {
     
     private String id;
     private String nr;
-    private String lodgementDate;
-    private String completiondate;
-    private String disputeCategory;
-    private String disputeType;
+    private Date lodgementDate;
+    private Date completiondate;
+    private String disputeCategoryCode;
+    private String disputeTypeCode;
     private String statusCode;
-    private String applicationId;
     private String rrrId;
     private String plotLocation;
     private String cadastreObjectId;
-    private String pendingActionCode;
     private String userId;
 
-    public String getApplicationId() {
-        return applicationId;
-    }
-
-    public void setApplicationId(String applicationId) {
-        this.applicationId = applicationId;
-    }
+   
 
     public String getUserId() {
         return userId;
@@ -70,35 +63,35 @@ public class DisputeTO extends AbstractIdTO {
         this.cadastreObjectId = cadastreObjectId;
     }
 
-    public String getCompletiondate() {
+    public Date getCompletiondate() {
         return completiondate;
     }
 
-    public void setCompletiondate(String completiondate) {
+    public void setCompletiondate(Date completiondate) {
         this.completiondate = completiondate;
     }
 
-    public String getDisputeCategory() {
-        return disputeCategory;
+    public String getDisputeCategoryCode() {
+        return disputeCategoryCode;
     }
 
-    public void setDisputeCategory(String disputeCategory) {
-        this.disputeCategory = disputeCategory;
+    public void setDisputeCategoryCode(String disputeCategoryCode) {
+        this.disputeCategoryCode = disputeCategoryCode;
     }
 
-    public String getDisputeType() {
-        return disputeType;
+    public String getDisputeTypeCode() {
+        return disputeTypeCode;
     }
 
-    public void setDisputeType(String disputeType) {
-        this.disputeType = disputeType;
+    public void setDisputeTypeCode(String disputeTypeCode) {
+        this.disputeTypeCode = disputeTypeCode;
     }
 
-    public String getLodgementDate() {
+    public Date getLodgementDate() {
         return lodgementDate;
     }
 
-    public void setLodgementDate(String lodgementDate) {
+    public void setLodgementDate(Date lodgementDate) {
         this.lodgementDate = lodgementDate;
     }
 
@@ -132,14 +125,6 @@ public class DisputeTO extends AbstractIdTO {
 
     public void setStatusCode(String statusCode) {
         this.statusCode = statusCode;
-    }
-    
-    public String getPendingActionCode() {
-        return pendingActionCode;
-    }
-
-    public void setPendingActionCode(String pendingActionCode) {
-        this.pendingActionCode = pendingActionCode;
     }
   
 }

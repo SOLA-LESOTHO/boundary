@@ -27,66 +27,37 @@
  */
 package org.sola.services.boundary.transferobjects.administrative;
 
-import java.util.Date;
 import org.sola.services.common.contracts.AbstractIdTO;
 
-public class DisputeCommentsTO extends AbstractIdTO {
-    
-   
+public class DisputePartyTO extends AbstractIdTO{
+  
     private String id;
-    private String disputeNr;
-    private Date updateDate;
-    private String disputeActionCode;
-    private String comments;
-    private String updatedBy;
-    private String otherAuthoritiesCode;
+    private String disputeId;
+    private String partyRole;
+    private String partyId;
 
-    public String getComments() {
-        return comments;
+    public String getDisputeId() {
+        return disputeId;
     }
 
-    public void setComments(String comments) {
-        this.comments = comments;
+    public void setDisputeId(String disputeId) {
+        this.disputeId = disputeId;
     }
 
-    public String getDisputeNr() {
-        return disputeNr;
+    public String getPartyRole() {
+        return partyRole;
     }
 
-    public void setDisputeNr(String disputeNr) {
-        this.disputeNr = disputeNr;
+    public void setPartyRole(String partyRole) {
+        this.partyRole = partyRole;
     }
 
-    public String getDisputeActionCode() {
-        return disputeActionCode;
+    public String getPartyId() {
+        return partyId;
     }
 
-    public void setDisputeActionCode(String disputeActionCode) {
-        this.disputeActionCode = disputeActionCode;
-    }
-
-    public String getOtherAuthoritiesCode() {
-        return otherAuthoritiesCode;
-    }
-
-    public void setOtherAuthoritiesCode(String otherAuthoritiesCode) {
-        this.otherAuthoritiesCode = otherAuthoritiesCode;
-    }
-
-    public Date getUpdateDate() {
-        return updateDate;
-    }
-
-    public void setUpdateDate(Date updateDate) {
-        this.updateDate = updateDate;
-    }
-
-    public String getUpdatedBy() {
-        return updatedBy;
-    }
-
-    public void setUpdatedBy(String updatedBy) {
-        this.updatedBy = updatedBy;
+    public void setPartyId(String partyId) {
+        this.partyId = partyId;
     }
     
 }

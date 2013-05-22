@@ -128,9 +128,17 @@ public interface AdministrativeClient extends AbstractWSClient {
      * LAA Additions thoriso
      */
     /**
+     * Administrative.getDisputePartyById - Identifier for the getDisputePartyById method
+     */
+    public static final String GET_DISPUTE_PARTY_BY_ID = SERVICE_NAME + "getDisputePartyById";
+    /**
      * Administrative.getDisputeById - Identifier for the getDisputeById method
      */
     public static final String GET_DISPUTE_BY_ID = SERVICE_NAME + "getDisputeById";
+    /**
+     * Administrative.getDisputeCommentsById - Identifier for the getDisputeCommentsById method
+     */
+    public static final String GET_DISPUTE_COMMENTS_BY_ID = SERVICE_NAME + "getDisputeCommentsById";
     /**
      * Administrative.getDisputeByNr - Identifier for the getDisputeByNr method
      */
@@ -145,17 +153,21 @@ public interface AdministrativeClient extends AbstractWSClient {
      */
     public static final String GET_DISPUTE = SERVICE_NAME + "getDispute";
     /**
-     * Administrative.createBaUnit - Identifier for the createBaUnit method
+     * Administrative.createDispute - Identifier for the createDispute method
      */
     public static final String CREATE_DISPUTE = SERVICE_NAME + "createDispute";
     /**
-     * Administrative.createBaUnit - Identifier for the createBaUnit method
+     * Administrative.saveDispute - Identifier for the saveDispute method
      */
     public static final String SAVE_DISPUTE = SERVICE_NAME + "saveDispute";
     /**
-     * Administrative.createBaUnit - Identifier for the createBaUnit method
+     * Administrative.saveDisputeComments - Identifier for the saveDisputeComments method
      */
     public static final String SAVE_DISPUTE_COMMENTS = SERVICE_NAME + "saveDisputeComments";
+    /**
+     * Administrative.saveDisputeParty - Identifier for the createDisputeParty method
+     */
+    public static final String SAVE_DISPUTE_PARTY = SERVICE_NAME + "saveDisputeParty";
 
     /**
      * Creates a new BA Unit Area for a BaUnitId
@@ -432,4 +444,36 @@ public interface AdministrativeClient extends AbstractWSClient {
      * @throws WebServiceClientException
      */
     DisputeCommentsTO saveDisputeComments(DisputeCommentsTO disputeCommentsTO) throws WebServiceClientException;
+    /**
+     * Saves Dispute Party. Can also be used to
+     * create a new dispute party.
+     *
+     * <p>Requires the {@linkplain RolesConstants#ADMINISTRATIVE_DISPUTE_PARTY_SAVE}
+     * role.</p>
+     *
+     * @param disputePartyTO The details of the Dispute to create
+     * @return The new DisputeParty
+     * @see #saveBaUnit(java.lang.String,
+     * org.sola.webservices.transferobjects.administrative.DisputePartyTO)
+     * saveDisputeParty
+     * @throws WebServiceClientException
+     */
+    DisputePartyTO saveDisputeParty(DisputePartyTO disputePartyTO) throws WebServiceClientException;
+    /**
+     * Retrieves the DisputePartyById matching the supplied identifier.
+     *
+     * @param id The DisputePartyById identifier
+     * @return The DisputePartyById details or null if the identifier is invalid.
+     * @throws WebServiceClientException
+     */
+    DisputePartyTO getDisputePartyById(String id) throws WebServiceClientException;
+    /**
+     * Retrieves the DisputeComments matching the supplied identifier.
+     *
+     * @param id The DisputeComments identifier
+     * @return The DisputeComments details or null if the identifier is invalid.
+     * @throws WebServiceClientException
+     */
+    DisputeCommentsTO getDisputeCommentsById(String id) throws WebServiceClientException;
+    
 }
