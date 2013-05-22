@@ -19,6 +19,7 @@ public class CadastreObjectSummaryTO extends AbstractIdTO {
     private BigDecimal surveyFee;
     private String surveyor;
     private String remarks;
+    private String valuationZone;
     
     public CadastreObjectSummaryTO(){
         super();
@@ -135,4 +136,12 @@ public class CadastreObjectSummaryTO extends AbstractIdTO {
     public void setSurveyFee(BigDecimal surveyFee) {
         this.surveyFee = surveyFee;
     }
+
+    public String getValuationZone() {
+        return valuationZone;
+    }
+
+    public void setValuationZone(String valuationZone) {
+        this.valuationZone = valuationZone;
+    } 
 }
