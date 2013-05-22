@@ -659,7 +659,7 @@ public class ReferenceDataClientImpl extends AbstractWSClientImpl implements Ref
         return result;
     }
 
-<<<<<<< HEAD
+
     /*
      * LAA Addition thoriso
      */
@@ -757,7 +757,12 @@ public class ReferenceDataClientImpl extends AbstractWSClientImpl implements Ref
             result = getPort().getOtherAuthorities(lang);
         } catch (Exception e) {
             processException(methodName, e);
-=======
+            } finally {
+            afterWebMethod(methodName, result, lang);
+        }
+        return result;
+    }
+
     @Override
     public List<ApplicationFormTO> getApplicationForms() throws WebServiceClientException {
         return getApplicationForms(getLanguageCode());
@@ -772,8 +777,6 @@ public class ReferenceDataClientImpl extends AbstractWSClientImpl implements Ref
             result = getPort().getApplicationForms(lang);
         } catch (Exception e) {
             processException(methodName, e);
-
->>>>>>> 887aaecf7089a98c845daf32d7bf884006fe3bf6
         } finally {
             afterWebMethod(methodName, result, lang);
         }

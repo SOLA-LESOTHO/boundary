@@ -30,6 +30,7 @@
 package org.sola.services.boundary.wsclients;
 
 import java.util.List;
+import org.sola.services.boundary.transferobjects.search.CadastreObjectSearchParamsTO;
 import org.sola.services.boundary.wsclients.exception.WebServiceClientException;
 import org.sola.webservices.search.QueryForSelect;
 import org.sola.webservices.search.ResultForSelectionInfo;
@@ -341,7 +342,6 @@ public interface SearchClient extends AbstractWSClient {
     List<PowerOfAttorneySearchResultTO> searchPowerOfAttorney(PowerOfAttorneySearchParamsTO searchParams) throws WebServiceClientException;
 
     List<RightsExportResultTO> searchRightsForExport(RightsExportParamsTO searchParams);
-<<<<<<< HEAD
     
     /*
      * LAA Addition thoriso
@@ -358,9 +358,7 @@ public interface SearchClient extends AbstractWSClient {
      * @return All Disputes matching the search criteria.
      * @throws WebServiceClientException
      */
-    List<DisputeSearchResultTO> searchDispute(DisputeSearchParamsTO searchParams)
-            throws WebServiceClientException;
-=======
+    List<DisputeSearchResultTO> searchDispute(DisputeSearchParamsTO searchParams) throws WebServiceClientException;
 
     /**
      * It retrieves the extent of the public display map
@@ -369,8 +367,7 @@ public interface SearchClient extends AbstractWSClient {
      * display map
      * @return
      */
-    public byte[] getExtentOfPublicDisplayMap(String nameLastPart);
+    public byte[] getExtentOfPublicDisplayMap(String nameLastPart) throws WebServiceClientException;
     
     public List<CadastreObjectSearchResultTO> searchCadastreObjects(CadastreObjectSearchParamsTO searchParams);
->>>>>>> 887aaecf7089a98c845daf32d7bf884006fe3bf6
 }
