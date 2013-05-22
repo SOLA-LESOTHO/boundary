@@ -132,6 +132,18 @@ public interface SearchClient extends AbstractWSClient {
      */
     public static final String SEARCH_DISPUTE = SERVICE_NAME + "searchDispute";
 
+        /**
+     * Search.getExtentOfPublicDisplayMap - Identifier for the
+     * getExtentOfPublicDisplayMap method
+     */
+    public static final String GET_EXTENT_OF_PUBLIC_DISPLAY_MAP =
+            SERVICE_NAME + "getExtentOfPublicDisplayMap";
+
+    /**
+     * Search.searchBaUnit - Identifier for the searchBaUnit method
+     */
+    public static final String SEARCH_CADASTRE_OBJECTS = SERVICE_NAME + "searchCadastreObjects";
+    
     /**
      * Returns applications that have a lodged or approved status and are
      * assigned to the currently logged in user.
@@ -329,6 +341,7 @@ public interface SearchClient extends AbstractWSClient {
     List<PowerOfAttorneySearchResultTO> searchPowerOfAttorney(PowerOfAttorneySearchParamsTO searchParams) throws WebServiceClientException;
 
     List<RightsExportResultTO> searchRightsForExport(RightsExportParamsTO searchParams);
+<<<<<<< HEAD
     
     /*
      * LAA Addition thoriso
@@ -347,4 +360,17 @@ public interface SearchClient extends AbstractWSClient {
      */
     List<DisputeSearchResultTO> searchDispute(DisputeSearchParamsTO searchParams)
             throws WebServiceClientException;
+=======
+
+    /**
+     * It retrieves the extent of the public display map
+     *
+     * @param nameLastPart The filter of the cadastre objects in the public
+     * display map
+     * @return
+     */
+    public byte[] getExtentOfPublicDisplayMap(String nameLastPart);
+    
+    public List<CadastreObjectSearchResultTO> searchCadastreObjects(CadastreObjectSearchParamsTO searchParams);
+>>>>>>> 887aaecf7089a98c845daf32d7bf884006fe3bf6
 }

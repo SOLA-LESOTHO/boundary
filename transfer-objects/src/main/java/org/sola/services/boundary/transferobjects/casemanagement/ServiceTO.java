@@ -51,7 +51,11 @@ public class ServiceTO extends AbstractIdTO {
     private String actionNotes;
     private BigDecimal baseFee; 
     private BigDecimal areaFee;
-    private BigDecimal valueFee; 
+    private BigDecimal valueFee;
+    private BigDecimal serviceFee;
+    private BigDecimal groundRent;
+    private BigDecimal stampDuty;
+    private BigDecimal transferDuty;
     private String concatenatedName;
 
     public String getConcatenatedName() {
@@ -153,5 +157,28 @@ public class ServiceTO extends AbstractIdTO {
     public void setValueFee(BigDecimal valueFee) {
         this.valueFee = valueFee;
     }
-    
+
+    public BigDecimal getGroundRent() {
+        return groundRent;
+    }
+
+    public void setGroundRent(BigDecimal groundRent) {
+        this.groundRent = groundRent;
+    }
+
+    public BigDecimal getServiceFee() {
+        return serviceFee;
+    }
+
+    public void setServiceFee(BigDecimal serviceFee) {
+        this.serviceFee = serviceFee;
+    }
+
+    public BigDecimal getStampDuty() {
+        return stampDuty;
+    }
+
+    public void setStampDuty(BigDecimal stampDuty) {
+        this.stampDuty = stampDuty;
+    }
 }

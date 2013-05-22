@@ -6,115 +6,40 @@ import org.sola.services.common.contracts.AbstractTO;
 
 public class RightsExportResultTO extends AbstractTO {
     private String baUnitId;
-    private String nameFirstPart;
-    private String nameLastPart;
-    private BigDecimal area;
+    private String rightStatus;
+    private Date rightStatusDate;
+    private BigDecimal parcelArea;
     private String rightId;
     private String rightType;
-    private Date registrationDate;
-    private Date expirationDate;
-    private BigDecimal amount;
-    private String owners;
-    private String applicantId;
-    private String applicantName;
-    private String applicantLastName;
-    private String applicantAddress;
-    private String applicantPhone;
-    private String applicantMobile;
-    private String applicantEmail;
-    private String applicantIdNumber;
-    private String applicantIdTypeCode;
+    private Date rightRegistrationDate;
+    private Date rightExpirationDate;
+    private BigDecimal paymentAmount;
+    private String rightRegistrationNumber;
+    private String rightTrackingNumber;
+    private String rightHolders;
+    private String payeeId;
+    private String payeeName;
+    private String payeeLastName;
+    private String payeeGender;
+    private String payeeAddress;
+    private String payeePhone;
+    private String payeeMobile;
+    private String payeeEmail;
+    private String payeeIdNumber;
+    private String payeeIdTypeCode;
+    private Date payeeBirthDate;
+    private String parcelNumber;
     
     public RightsExportResultTO(){
         super();
     }
 
-    public BigDecimal getAmount() {
-        return amount;
+    public BigDecimal getPaymentAmount() {
+        return paymentAmount;
     }
 
-    public void setAmount(BigDecimal amount) {
-        this.amount = amount;
-    }
-
-    public String getApplicantAddress() {
-        return applicantAddress;
-    }
-
-    public void setApplicantAddress(String applicantAddress) {
-        this.applicantAddress = applicantAddress;
-    }
-
-    public String getApplicantEmail() {
-        return applicantEmail;
-    }
-
-    public void setApplicantEmail(String applicantEmail) {
-        this.applicantEmail = applicantEmail;
-    }
-
-    public String getApplicantId() {
-        return applicantId;
-    }
-
-    public void setApplicantId(String applicantId) {
-        this.applicantId = applicantId;
-    }
-
-    public String getApplicantIdNumber() {
-        return applicantIdNumber;
-    }
-
-    public void setApplicantIdNumber(String applicantIdNumber) {
-        this.applicantIdNumber = applicantIdNumber;
-    }
-
-    public String getApplicantIdTypeCode() {
-        return applicantIdTypeCode;
-    }
-
-    public void setApplicantIdTypeCode(String applicantIdTypeCode) {
-        this.applicantIdTypeCode = applicantIdTypeCode;
-    }
-
-    public String getApplicantLastName() {
-        return applicantLastName;
-    }
-
-    public void setApplicantLastName(String applicantLastName) {
-        this.applicantLastName = applicantLastName;
-    }
-
-    public String getApplicantMobile() {
-        return applicantMobile;
-    }
-
-    public void setApplicantMobile(String applicantMobile) {
-        this.applicantMobile = applicantMobile;
-    }
-
-    public String getApplicantName() {
-        return applicantName;
-    }
-
-    public void setApplicantName(String applicantName) {
-        this.applicantName = applicantName;
-    }
-
-    public String getApplicantPhone() {
-        return applicantPhone;
-    }
-
-    public void setApplicantPhone(String applicantPhone) {
-        this.applicantPhone = applicantPhone;
-    }
-
-    public BigDecimal getArea() {
-        return area;
-    }
-
-    public void setArea(BigDecimal area) {
-        this.area = area;
+    public void setPaymentAmount(BigDecimal paymentAmount) {
+        this.paymentAmount = paymentAmount;
     }
 
     public String getBaUnitId() {
@@ -125,52 +50,124 @@ public class RightsExportResultTO extends AbstractTO {
         this.baUnitId = baUnitId;
     }
 
-    public Date getExpirationDate() {
-        return expirationDate;
+    public BigDecimal getParcelArea() {
+        return parcelArea;
     }
 
-    public void setExpirationDate(Date expirationDate) {
-        this.expirationDate = expirationDate;
+    public void setParcelArea(BigDecimal parcelArea) {
+        this.parcelArea = parcelArea;
     }
 
-    public String getNameFirstPart() {
-        return nameFirstPart;
+    public String getParcelNumber() {
+        return parcelNumber;
     }
 
-    public void setNameFirstPart(String nameFirstPart) {
-        this.nameFirstPart = nameFirstPart;
+    public void setParcelNumber(String parcelNumber) {
+        this.parcelNumber = parcelNumber;
     }
 
-    public String getNameLastPart() {
-        return nameLastPart;
+    public String getPayeeAddress() {
+        return payeeAddress;
     }
 
-    public void setNameLastPart(String nameLastPart) {
-        this.nameLastPart = nameLastPart;
+    public void setPayeeAddress(String payeeAddress) {
+        this.payeeAddress = payeeAddress;
     }
 
-    public String getOwners() {
-        return owners;
+    public Date getPayeeBirthDate() {
+        return payeeBirthDate;
     }
 
-    public void setOwners(String owners) {
-        this.owners = owners;
+    public void setPayeeBirthDate(Date payeeBirthDate) {
+        this.payeeBirthDate = payeeBirthDate;
     }
 
-    public Date getRegistrationDate() {
-        return registrationDate;
+    public String getPayeeEmail() {
+        return payeeEmail;
     }
 
-    public void setRegistrationDate(Date registrationDate) {
-        this.registrationDate = registrationDate;
+    public void setPayeeEmail(String payeeEmail) {
+        this.payeeEmail = payeeEmail;
     }
 
-    public String getRightType() {
-        return rightType;
+    public String getPayeeGender() {
+        return payeeGender;
     }
 
-    public void setRightType(String rightType) {
-        this.rightType = rightType;
+    public void setPayeeGender(String payeeGender) {
+        this.payeeGender = payeeGender;
+    }
+
+    public String getPayeeId() {
+        return payeeId;
+    }
+
+    public void setPayeeId(String payeeId) {
+        this.payeeId = payeeId;
+    }
+
+    public String getPayeeIdNumber() {
+        return payeeIdNumber;
+    }
+
+    public void setPayeeIdNumber(String payeeIdNumber) {
+        this.payeeIdNumber = payeeIdNumber;
+    }
+
+    public String getPayeeIdTypeCode() {
+        return payeeIdTypeCode;
+    }
+
+    public void setPayeeIdTypeCode(String payeeIdTypeCode) {
+        this.payeeIdTypeCode = payeeIdTypeCode;
+    }
+
+    public String getPayeeLastName() {
+        return payeeLastName;
+    }
+
+    public void setPayeeLastName(String payeeLastName) {
+        this.payeeLastName = payeeLastName;
+    }
+
+    public String getPayeeMobile() {
+        return payeeMobile;
+    }
+
+    public void setPayeeMobile(String payeeMobile) {
+        this.payeeMobile = payeeMobile;
+    }
+
+    public String getPayeeName() {
+        return payeeName;
+    }
+
+    public void setPayeeName(String payeeName) {
+        this.payeeName = payeeName;
+    }
+
+    public String getPayeePhone() {
+        return payeePhone;
+    }
+
+    public void setPayeePhone(String payeePhone) {
+        this.payeePhone = payeePhone;
+    }
+
+    public Date getRightExpirationDate() {
+        return rightExpirationDate;
+    }
+
+    public void setRightExpirationDate(Date rightExpirationDate) {
+        this.rightExpirationDate = rightExpirationDate;
+    }
+
+    public String getRightHolders() {
+        return rightHolders;
+    }
+
+    public void setRightHolders(String rightHolders) {
+        this.rightHolders = rightHolders;
     }
 
     public String getRightId() {
@@ -179,5 +176,53 @@ public class RightsExportResultTO extends AbstractTO {
 
     public void setRightId(String rightId) {
         this.rightId = rightId;
+    }
+
+    public Date getRightRegistrationDate() {
+        return rightRegistrationDate;
+    }
+
+    public void setRightRegistrationDate(Date rightRegistrationDate) {
+        this.rightRegistrationDate = rightRegistrationDate;
+    }
+
+    public String getRightRegistrationNumber() {
+        return rightRegistrationNumber;
+    }
+
+    public void setRightRegistrationNumber(String rightRegistrationNumber) {
+        this.rightRegistrationNumber = rightRegistrationNumber;
+    }
+
+    public String getRightStatus() {
+        return rightStatus;
+    }
+
+    public void setRightStatus(String rightStatus) {
+        this.rightStatus = rightStatus;
+    }
+
+    public Date getRightStatusDate() {
+        return rightStatusDate;
+    }
+
+    public void setRightStatusDate(Date rightStatusDate) {
+        this.rightStatusDate = rightStatusDate;
+    }
+
+    public String getRightTrackingNumber() {
+        return rightTrackingNumber;
+    }
+
+    public void setRightTrackingNumber(String rightTrackingNumber) {
+        this.rightTrackingNumber = rightTrackingNumber;
+    }
+
+    public String getRightType() {
+        return rightType;
+    }
+
+    public void setRightType(String rightType) {
+        this.rightType = rightType;
     }
 }

@@ -32,6 +32,8 @@ package org.sola.services.boundary.transferobjects.casemanagement;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
+import org.sola.services.boundary.transferobjects.cadastre.CadastreObjectSummaryTO;
+import org.sola.services.boundary.transferobjects.cadastre.CadastreObjectTO;
 
 public class ApplicationTO extends ApplicationSummaryTO {
 
@@ -42,6 +44,10 @@ public class ApplicationTO extends ApplicationSummaryTO {
     private BigDecimal tax;
     private BigDecimal totalFee;
     private BigDecimal totalAmountPaid;
+    private BigDecimal groundRent;
+    private BigDecimal registrationFee;
+    private BigDecimal stampDuty;
+    private BigDecimal transferDuty;
     private String receiptRef;
     private String actionCode;
     private String actionNotes;
@@ -50,7 +56,8 @@ public class ApplicationTO extends ApplicationSummaryTO {
     private List<ServiceTO> serviceList;
     private List<ApplicationPropertyTO> propertyList;
     private List<SourceTO> sourceList;
-
+    private List<CadastreObjectSummaryTO> cadastreObjectList;
+    
     public ApplicationTO() {
         super();
     }
@@ -195,4 +202,44 @@ public class ApplicationTO extends ApplicationSummaryTO {
     public void setSourceList(List<SourceTO> sourceList) {
         this.sourceList = sourceList;
     }
+
+    public List<CadastreObjectSummaryTO> getCadastreObjectList() {
+        return cadastreObjectList;
+    }
+
+    public void setCadastreObjectList(List<CadastreObjectSummaryTO> cadastreObjectList) {
+        this.cadastreObjectList = cadastreObjectList;
+    }
+
+    public BigDecimal getGroundRent() {
+        return groundRent;
+    }
+
+    public void setGroundRent(BigDecimal groundRent) {
+        this.groundRent = groundRent;
+    }
+
+    public BigDecimal getRegistrationFee() {
+        return registrationFee;
+    }
+
+    public void setRegistrationFee(BigDecimal registrationFee) {
+        this.registrationFee = registrationFee;
+    }
+
+    public BigDecimal getStampDuty() {
+        return stampDuty;
+    }
+
+    public void setStampDuty(BigDecimal stampDuty) {
+        this.stampDuty = stampDuty;
+    }
+
+    public BigDecimal getTransferDuty() {
+        return transferDuty;
+    }
+
+    public void setTransferDuty(BigDecimal transferDuty) {
+        this.transferDuty = transferDuty;
+    }    
 }

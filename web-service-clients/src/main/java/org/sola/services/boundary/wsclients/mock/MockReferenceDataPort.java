@@ -628,10 +628,32 @@ public class MockReferenceDataPort implements ReferenceData {
                     List.class, defaultResponse, arg0);
         } catch (Exception ex) {
             processExceptionAccess(ex);
+          
+            return null;
+            
+        }
+    }
+
+    /**
+     * Response Key = ReferenceDataClient.GET_CLIENT_TYPES
+     *
+     * @return default = MockTOFactory.createApplicationForms()
+     */
+    @Override
+    public List<ApplicationFormTO> getApplicationForms(String arg0) throws SOLAFault, UnhandledFault {
+        List<ApplicationFormTO> defaultResponse = MockTOFactory.createApplicationForms();
+        try {
+            return getManager().getResponse(ReferenceDataClient.GET_APPLICATION_FORMS,
+                    List.class, defaultResponse, arg0);
+                    }
+        catch(Exception ex){
+            processExceptionBasic(ex);
+
             return null;
         }
     }
     
+
        /**
      * Response Key = ReferenceDataClient.GET_DISPUTE_CATEGORY
      *
@@ -696,6 +718,20 @@ public class MockReferenceDataPort implements ReferenceData {
                     List.class, defaultResponse, arg0);
         } catch (Exception ex) {
             processExceptionAccess(ex);
+            
+             return null;
+        }
+    }
+
+    @Override
+    public List<LandGradeTypeTO> getLandGradeTypes(String arg0) throws SOLAFault, UnhandledFault, SOLAAccessFault {
+        List<LandGradeTypeTO> defaultResponse = MockTOFactory.createLandGradeTypes();
+        try {
+            return getManager().getResponse(ReferenceDataClient.GET_LAND_GRADE_TYPES,
+                    List.class, defaultResponse, arg0);
+        } catch (Exception ex) {
+            processExceptionBasic(ex);
+
             return null;
         }
     }

@@ -49,6 +49,11 @@ public interface ReferenceDataClient extends AbstractWSClient {
      */
     public static final String SERVICE_NAME = "ReferenceData.";
     /**
+     * ReferenceData.getApplicationForms - Identifier for the
+     * getApplicationForms method
+     */
+    public static final String GET_APPLICATION_FORMS = SERVICE_NAME + "getApplicationForms";
+    /**
      * ReferenceData.checkConnection - Identifier for the checkConnection method
      */
     public static final String CHECK_CONNECTION = SERVICE_NAME + "checkConnection";
@@ -202,6 +207,22 @@ public interface ReferenceDataClient extends AbstractWSClient {
      * ReferenceData.getOtherAuthorities - Identifier for the getOtherAuthorities method
      */
     public static final String GET_OTHER_AUTHORITIES = SERVICE_NAME + "getOtherAuthorities";
+    
+        /**
+     * ReferenceData.getCadastreObjectTypes - Identifier for the getCadastreObjectTypes method
+     */
+    public static final String GET_LAND_GRADE_TYPES = SERVICE_NAME + "getLandGradeTypes";
+
+    /**
+     * Return list of Application forms.
+     */
+    List<ApplicationFormTO> getApplicationForms() throws WebServiceClientException;
+
+    /**
+     * Return list of Application forms using provided language.
+     */
+    List<ApplicationFormTO> getApplicationForms(String lang) throws WebServiceClientException;
+
 
     /**
      * Retrieves all source.source_type code values using the default locale of
@@ -737,4 +758,22 @@ public interface ReferenceDataClient extends AbstractWSClient {
      * @throws WebServiceClientException
      */
     List<OtherAuthoritiesTO> getOtherAuthorities(String lang) throws WebServiceClientException;
+
+    
+        /**
+     * Retrieves all cadastre.land_use_type code values using the default locale of the
+     * client to localize the display values.
+     *
+     * @throws WebServiceClientException
+     */
+    List<LandGradeTypeTO> getLandGradeTypes() throws WebServiceClientException;
+
+    /**
+     * Retrieves all cadastre.land_use_type code values.
+     *
+     * @param languageCode The language code to use for localization of display values.
+     * @throws WebServiceClientException
+     */
+    List<LandGradeTypeTO> getLandGradeTypes(String lang) throws WebServiceClientException;
+
 }

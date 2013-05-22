@@ -94,6 +94,22 @@ public class MockTOFactory {
         result.add(createCode(CommunicationTypeTO.class, "post", "Post"));
         return result;
     }
+    
+    /**
+    * Creates a default list of application forms <p> SQL query to generate list from DB: </p>
+    * <pre>
+    * select 'result.add(createCode(ApplicationFormTO.class, "' || code || '", "' || display_value || '"));'
+    * from application.application_form
+    * </pre>
+    */
+    public static List<ApplicationFormTO> createApplicationForms() {
+        List<ApplicationFormTO> result = new ArrayList<ApplicationFormTO>();
+        result.add(createCode(ApplicationFormTO.class, "lease", "Lease"));
+        result.add(createCode(ApplicationFormTO.class, "deed", "Deed"));
+        return result;
+    }
+
+
 
     /**
      * Creates a default list of gender types <p> SQL query to generate list
@@ -485,6 +501,18 @@ public class MockTOFactory {
         result.add(createCode(RequestCategoryTypeTO.class, "informationServices", "Information Services"));
         result.add(createCode(RequestCategoryTypeTO.class, "nonRegServices", "Non Registration Services"));
         result.add(createCode(RequestCategoryTypeTO.class, "registrationServices", "Registration Services"));
+
+        return result;
+    }
+    
+      /**
+     * Creates a default list of land grade types
+     */
+    public static List<LandGradeTypeTO> createLandGradeTypes() {
+        List<LandGradeTypeTO> result = new ArrayList<LandGradeTypeTO>();
+        result.add(createCode(LandGradeTypeTO.class, "grade1", "Grad1e"));
+        result.add(createCode(LandGradeTypeTO.class, "grade2", "Grade2"));
+        result.add(createCode(LandGradeTypeTO.class, "grade3", "Grade3"));
 
         return result;
     }

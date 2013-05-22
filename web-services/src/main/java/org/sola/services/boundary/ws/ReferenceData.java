@@ -64,6 +64,7 @@ import org.sola.services.ejb.application.repository.entities.RequestType;
 import org.sola.services.ejb.application.repository.entities.TypeAction;
 import org.sola.services.ejb.application.repository.entities.ServiceActionType;
 import org.sola.services.ejb.application.repository.entities.ServiceStatusType;
+import org.sola.services.ejb.application.repository.entities.ApplicationForm;
 import org.sola.services.ejb.cadastre.businesslogic.CadastreEJBLocal;
 import org.sola.services.ejb.cadastre.repository.entities.CadastreObjectType;
 import org.sola.services.ejb.party.repository.entities.CommunicationType;
@@ -142,6 +143,26 @@ public class ReferenceData extends AbstractWebService {
 
         return (List<CommunicationTypeTO>) result[0];
     }
+    /**
+    * Return list of application forms.
+    */
+    @WebMethod(operationName = "getApplicationForms")
+    public List<ApplicationFormTO> getApplicationForms(final String lang) throws SOLAFault, UnhandledFault {
+	final Object[] result = {null};
+
+	runOpenQuery(wsContext, new Runnable() {
+
+		@Override
+		public void run() {
+			result[0] = GenericTranslator.toTOList(
+					applicationEJB.getApplicationForms(lang), ApplicationFormTO.class);
+		}
+	});
+
+	return (List<ApplicationFormTO>) result[0];
+    }
+
+
 
     /**
      * See {@linkplain org.sola.services.ejb.party.businesslogic.PartyEJB#getGenderTypes(java.lang.String)
@@ -746,6 +767,34 @@ public class ReferenceData extends AbstractWebService {
 
         return (List<LandUseTypeTO>) result[0];
     }
+    
+        /**
+     * See {@linkplain org.sola.services.ejb.cadastre.businesslogic.CadastreEJB#GetLandGradeTypes(java.lang.String)
+     * CadastreEJB.getCadastreObjectTypes}
+     *
+     * @throws SOLAFault
+     * @throws UnhandledFault
+     * @throws SOLAAccessFault
+     */
+    @WebMethod(operationName = "GetLandGradeTypes")
+    public List<LandGradeTypeTO> GetLandGradeTypes(String languageCode)
+            throws SOLAFault, UnhandledFault, SOLAAccessFault {
+
+        final String languageCodeTmp = languageCode;
+        final Object[] result = {null};
+
+        runGeneralQuery(wsContext, new Runnable() {
+
+            @Override
+            public void run() {
+                result[0] = GenericTranslator.toTOList(
+                        cadastreEJB.getLandGradeTypes(languageCodeTmp),
+                        LandGradeTypeTO.class);
+            }
+        });
+
+        return (List<LandGradeTypeTO>) result[0];
+    }
 
     /**
      * See {@linkplain org.sola.services.ejb.cadastre.businesslogic.CadastreEJB#getCadastreObjectTypes(java.lang.String)
@@ -1036,8 +1085,11 @@ public class ReferenceData extends AbstractWebService {
                     codeEntity = administrativeEJB.getCodeEntity(BaUnitRelType.class, refDataTO.getCode());
                     codeEntity = GenericTranslator.fromTO(refDataTO, BaUnitRelType.class, codeEntity);
                     administrativeEJB.saveCodeEntity(codeEntity);
+                }else if (refDataTO instanceof ApplicationFormTO) {
+                    codeEntity = applicationEJB.getCodeEntity(ApplicationForm.class, refDataTO.getCode());
+                    codeEntity = GenericTranslator.fromTO(refDataTO, ApplicationForm.class, codeEntity);
+                    applicationEJB.saveCodeEntity(codeEntity);
                 }
-
                 result = GenericTranslator.toTO(codeEntity, refDataTO.getClass());
                 commitTransaction();
                 return result;

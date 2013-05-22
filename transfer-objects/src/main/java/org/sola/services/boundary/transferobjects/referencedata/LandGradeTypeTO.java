@@ -27,56 +27,13 @@
  * POSSIBILITY OF SUCH DAMAGE.
  * *********************************************************************************************
  */
-package org.sola.services.boundary.transferobjects.cadastre;
+package org.sola.services.boundary.transferobjects.referencedata;
 
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
-import org.sola.services.boundary.transferobjects.casemanagement.AddressTO;
+import org.sola.services.common.contracts.AbstractCodeTO;
 
-/**
- * TO for CadastreObject entity
- */
-public class CadastreObjectTO extends CadastreObjectSummaryTO {
+public class LandGradeTypeTO extends AbstractCodeTO {
 
-    private String transactionId;
-    private byte[] geomPolygon;
-    private List<SpatialValueAreaTO> spatialValueAreaList = new ArrayList<SpatialValueAreaTO>();
-    private List<AddressTO> addressList;
-    
-    public CadastreObjectTO() {
+    public LandGradeTypeTO() {
         super();
-    }
-
-    public byte[] getGeomPolygon() {
-        return geomPolygon;
-    }
-
-    public void setGeomPolygon(byte[] geomPolygon) { //NOSONAR
-        this.geomPolygon = geomPolygon; //NOSONAR
-    }
-
-    public String getTransactionId() {
-        return transactionId;
-    }
-
-    public void setTransactionId(String transactionId) {
-        this.transactionId = transactionId;
-    }
-
-    public List<SpatialValueAreaTO> getSpatialValueAreaList() {
-        return spatialValueAreaList;
-    }
-
-    public void setSpatialValueAreaList(List<SpatialValueAreaTO> spatialValueAreaList) {
-        this.spatialValueAreaList = spatialValueAreaList;
-    }
-
-    public List<AddressTO> getAddressList() {
-        return addressList;
-    }
-
-    public void setAddressList(List<AddressTO> addressList) {
-        this.addressList = addressList;
     }
 }

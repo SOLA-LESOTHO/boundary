@@ -346,6 +346,7 @@ public class SearchClientImpl extends AbstractWSClientImpl implements SearchClie
         }
         return result;
     }
+<<<<<<< HEAD
     
     /*
      * LAA Addition thoriso
@@ -358,6 +359,31 @@ public class SearchClientImpl extends AbstractWSClientImpl implements SearchClie
         try {
             beforeWebMethod(methodName, searchParams);
             result = getPort().searchDispute(searchParams);
+=======
+
+    @Override
+    public byte[] getExtentOfPublicDisplayMap(String nameLastPart) throws WebServiceClientException {
+        byte[] result = null;
+        final String methodName = SearchClient.GET_EXTENT_OF_PUBLIC_DISPLAY_MAP;
+        try {
+            beforeWebMethod(methodName, nameLastPart);
+            result = getPort().getExtentOfPublicDisplayMap(nameLastPart);
+        } catch (Exception e) {
+            processException(methodName, e);
+        } finally {
+            afterWebMethod(methodName, result, nameLastPart);
+        }
+        return result;
+    }
+
+    @Override
+    public List<CadastreObjectSearchResultTO> searchCadastreObjects(CadastreObjectSearchParamsTO searchParams) {
+        List<CadastreObjectSearchResultTO> result = null;
+        final String methodName = SearchClient.SEARCH_CADASTRE_OBJECTS;
+        try {
+            beforeWebMethod(methodName, searchParams);
+            result = getPort().searchCadastreObjects(searchParams);
+>>>>>>> 887aaecf7089a98c845daf32d7bf884006fe3bf6
         } catch (Exception e) {
             processException(methodName, e);
         } finally {
