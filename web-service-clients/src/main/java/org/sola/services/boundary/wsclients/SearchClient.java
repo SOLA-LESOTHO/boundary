@@ -369,5 +369,5 @@ public interface SearchClient extends AbstractWSClient {
      */
     public byte[] getExtentOfPublicDisplayMap(String nameLastPart) throws WebServiceClientException;
     
-    public List<CadastreObjectSearchResultTO> searchCadastreObjects(CadastreObjectSearchParamsTO searchParams);
+    public List<CadastreObjectSearchResultTO> searchCadastreObjects(CadastreObjectSearchParamsTO searchParams) throws WebServiceClientException;
 }

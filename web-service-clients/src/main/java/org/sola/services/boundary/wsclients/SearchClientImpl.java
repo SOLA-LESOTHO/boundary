@@ -386,7 +386,7 @@ public class SearchClientImpl extends AbstractWSClientImpl implements SearchClie
     }
 
     @Override
-    public List<CadastreObjectSearchResultTO> searchCadastreObjects(CadastreObjectSearchParamsTO searchParams) {
+    public List<CadastreObjectSearchResultTO> searchCadastreObjects(CadastreObjectSearchParamsTO searchParams) throws WebServiceClientException {
         List<CadastreObjectSearchResultTO> result = null;
         final String methodName = SearchClient.SEARCH_CADASTRE_OBJECTS;
         try {

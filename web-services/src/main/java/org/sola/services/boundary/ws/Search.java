@@ -604,7 +604,8 @@ public class Search extends AbstractWebService {
      * @throws SOLAAccessFault
      */
     @WebMethod(operationName = "searchDispute")
-    public List<DisputeSearchResultTO> searchDipsute(@WebParam(name = "searchParams") DisputeSearchParamsTO searchParams)
+    public List<DisputeSearchResultTO> searchDipsute(
+            @WebParam(name = "searchParams") DisputeSearchParamsTO searchParams)
             throws SOLAFault, UnhandledFault, SOLAAccessFault {
 
         final Object[] params = {searchParams};
@@ -644,5 +645,35 @@ public class Search extends AbstractWebService {
             }
         });
         return (List<CadastreObjectSearchResultTO>) result[0];
+    }
+    
+    /**
+     * See {@linkplain org.sola.services.ejb.source.businesslogic.SourceEJB#
+     * saveTransactionBulkOperation(
+     * org.sola.services.ejb.source.repository.entities.TransactionBulkOperationSource,
+     * java.lang.String) Source.saveTransactionBulkOperation}
+     *
+     * @throws SOLAValidationFault
+     * @throws OptimisticLockingFault
+     * @throws SOLAFault
+     * @throws UnhandledFault
+     * @throws SOLAAccessFault
+     */
+    @WebMethod(operationName = "GetExtentOfPublicDisplayMap")
+    public byte[] GetExtentOfPublicDisplayMap(
+            @WebParam(name = "nameLastPart") final String nameLastPart)
+            throws SOLAFault, UnhandledFault, SOLAAccessFault {
+
+        final Object[] result = {null};
+
+        runGeneralQuery(wsContext, new Runnable() {
+
+            @Override
+            public void run() {
+                result[0] = searchEJB.getExtentOfPublicDisplayMap(nameLastPart);
+            }
+        });
+
+        return (byte[]) result[0];
     }
 }
