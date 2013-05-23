@@ -31,7 +31,6 @@ package org.sola.services.boundary.wsclients;
 
 import java.util.List;
 
-
 import org.sola.services.boundary.wsclients.exception.WebServiceClientException;
 import org.sola.webservices.search.QueryForSelect;
 import org.sola.webservices.search.ResultForSelectionInfo;
