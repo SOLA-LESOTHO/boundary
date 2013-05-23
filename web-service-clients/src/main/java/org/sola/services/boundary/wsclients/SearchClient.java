@@ -30,12 +30,14 @@
 package org.sola.services.boundary.wsclients;
 
 import java.util.List;
-import org.sola.services.boundary.transferobjects.search.CadastreObjectSearchParamsTO;
+
+
 import org.sola.services.boundary.wsclients.exception.WebServiceClientException;
 import org.sola.webservices.search.QueryForSelect;
 import org.sola.webservices.search.ResultForSelectionInfo;
 import org.sola.webservices.search.MapDefinitionTO;
 import org.sola.webservices.transferobjects.search.*;
+//import org.sola.webservices.transferobjects.search.CadastreObjectSearchParamsTO;
 
 /**
  * Interface for the Search Service. Implemented by {@linkplain SearchClientImpl}.

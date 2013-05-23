@@ -35,6 +35,7 @@ import org.sola.services.boundary.wsclients.exception.WebServiceClientException;
 import org.sola.webservices.search.*;
 import org.sola.webservices.transferobjects.search.*;
 
+
 /**
  * Implementation class for the {@linkplain SearchClient} interface.
  */
@@ -384,6 +385,11 @@ public class SearchClientImpl extends AbstractWSClientImpl implements SearchClie
         }
         return result;
     }
+
+    //@Override
+    //public List<CadastreObjectSearchResultTO> searchCadastreObjects(CadastreObjectSearchParamsTO searchParams) throws WebServiceClientException {
+        
+    //}
 
     @Override
     public List<CadastreObjectSearchResultTO> searchCadastreObjects(CadastreObjectSearchParamsTO searchParams) throws WebServiceClientException {
