@@ -30,6 +30,7 @@
 package org.sola.services.boundary.wsclients;
 
 import java.util.List;
+
 import org.sola.services.boundary.wsclients.exception.WebServiceClientException;
 import org.sola.webservices.transferobjects.AbstractCodeTO;
 import org.sola.webservices.transferobjects.referencedata.*;
@@ -183,6 +184,29 @@ public interface ReferenceDataClient extends AbstractWSClient {
      */
     public static final String GET_BA_UNIT_REL_TYPES = SERVICE_NAME + "getBaUnitRelTypes";
     public static final String GET_LEASE_CONDITION_TYPES = SERVICE_NAME + "getLeaseConditions";
+    /*
+     * LAA Addition thoriso
+     */
+    /**
+     * ReferenceData.getDisputeAction - Identifier for the getDisputeAction method
+     */
+    public static final String GET_DISPUTE_ACTION = SERVICE_NAME + "getDisputeAction";
+    /**
+     * ReferenceData.getDisputeCategory - Identifier for the getDisputeCategory method
+     */
+    public static final String GET_DISPUTE_CATEGORY = SERVICE_NAME + "getDisputeCategory";
+    /**
+     * ReferenceData.getRequestStatus - Identifier for the getRequestStatus method
+     */
+    public static final String GET_DISPUTE_STATUS = SERVICE_NAME + "getDisputeStatus";
+    /**
+     * ReferenceData.getDisputeType - Identifier for the getDisputeType method
+     */
+    public static final String GET_DISPUTE_TYPE = SERVICE_NAME + "getDisputeType";
+    /**
+     * ReferenceData.getOtherAuthorities - Identifier for the getOtherAuthorities method
+     */
+    public static final String GET_OTHER_AUTHORITIES = SERVICE_NAME + "getOtherAuthorities";
     
         /**
      * ReferenceData.getCadastreObjectTypes - Identifier for the getCadastreObjectTypes method
@@ -198,6 +222,7 @@ public interface ReferenceDataClient extends AbstractWSClient {
      * Return list of Application forms using provided language.
      */
     List<ApplicationFormTO> getApplicationForms(String lang) throws WebServiceClientException;
+
 
     /**
      * Retrieves all source.source_type code values using the default locale of
@@ -655,6 +680,85 @@ public interface ReferenceDataClient extends AbstractWSClient {
     List<LeaseConditionTO> getLeaseConditions() throws WebServiceClientException;
 
     List<LeaseConditionTO> getLeaseConditions(String lang) throws WebServiceClientException;
+
+    /*
+     * LAA Additions thoriso
+     */
+    /**
+     * Retrieves all administrative.DisputeAction code values using the default
+     * locale of the client to localize the display values.
+     *
+     * @throws WebServiceClientException
+     */
+    List<DisputeActionTO> getDisputeAction() throws WebServiceClientException;
+      /**
+     * Retrieves all administrative.disputeAction code values using the
+     * default locale of the client to localize the display values.
+     *
+     * @throws WebServiceClientException
+     */
+    List<DisputeActionTO> getDisputeAction(String lang) throws WebServiceClientException;
+
+    /**
+     * Retrieves all administrative.disputeCategory code values using the default
+     * locale of the client to localize the display values.
+     *
+     * @throws WebServiceClientException
+     */
+    List<DisputeCategoryTO> getDisputeCategory() throws WebServiceClientException;
+     /**
+     * Retrieves all administrative.disputeCategory code values using the
+     * default locale of the client to localize the display values.
+     *
+     * @throws WebServiceClientException
+     */
+    List<DisputeCategoryTO> getDisputeCategory(String lang) throws WebServiceClientException;
+
+    /**
+     * Retrieves all administrative.disputeStatus code values using the default
+     * locale of the client to localize the display values.
+     *
+     * @throws WebServiceClientException
+     */
+    List<DisputeStatusTO> getDisputeStatus() throws WebServiceClientException;
+     /**
+     * Retrieves all administrative.disputeStatus code values using the
+     * default locale of the client to localize the display values.
+     *
+     * @throws WebServiceClientException
+     */
+    List<DisputeStatusTO> getDisputeStatus(String lang) throws WebServiceClientException;
+
+    /**
+     * Retrieves all administrative.disputeType code values using the default
+     * locale of the client to localize the display values.
+     *
+     * @throws WebServiceClientException
+     */
+    List<DisputeTypeTO> getDisputeType() throws WebServiceClientException;
+    /**
+     * Retrieves all administrative.disputeType code values using the
+     * default locale of the client to localize the display values.
+     *
+     * @throws WebServiceClientException
+     */
+    List<DisputeTypeTO> getDisputeType(String lang) throws WebServiceClientException;
+
+    /**
+     * Retrieves all administrative.otherAuthorities code values using the default
+     * locale of the client to localize the display values.
+     *
+     * @throws WebServiceClientException
+     */
+    List<OtherAuthoritiesTO> getOtherAuthorities() throws WebServiceClientException;
+     /**
+     * Retrieves all administrative.otherAuthorities code values using the
+     * default locale of the client to localize the display values.
+     *
+     * @throws WebServiceClientException
+     */
+    List<OtherAuthoritiesTO> getOtherAuthorities(String lang) throws WebServiceClientException;
+
     
         /**
      * Retrieves all cadastre.land_use_type code values using the default locale of the
@@ -671,4 +775,5 @@ public interface ReferenceDataClient extends AbstractWSClient {
      * @throws WebServiceClientException
      */
     List<LandGradeTypeTO> getLandGradeTypes(String lang) throws WebServiceClientException;
+
 }

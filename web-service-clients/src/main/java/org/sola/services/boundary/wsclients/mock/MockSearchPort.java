@@ -28,7 +28,6 @@ package org.sola.services.boundary.wsclients.mock;
 import java.util.ArrayList;
 import java.util.List;
 import org.sola.services.boundary.wsclients.SearchClient;
-import org.sola.services.boundary.wsclients.SpatialClient;
 import org.sola.webservices.search.*;
 import org.sola.webservices.search.MapDefinitionTO;
 import org.sola.webservices.transferobjects.search.*;
@@ -405,6 +404,30 @@ public class MockSearchPort implements Search {
     public List<RightsExportResultTO> searchRightsForExport(RightsExportParamsTO searchParams) throws SOLAAccessFault, SOLAFault, UnhandledFault {
         throw new UnsupportedOperationException("Not supported yet.");
     }
+    
+    /*
+     * LAA addition thoriso
+     */
+    
+        /**
+     * Response Key = SearchClient.SEARCH_DISPUTE
+     *
+     * @return default = new ArrayList<DisputeSearchResultTO>()
+     */
+    @Override
+    public List<DisputeSearchResultTO> searchDispute(DisputeSearchParamsTO searchParams)
+            throws SOLAAccessFault, SOLAFault, UnhandledFault {
+        List<DisputeSearchResultTO> defaultResponse = new ArrayList<DisputeSearchResultTO>();
+        try {
+            return getManager().getResponse(SearchClient.SEARCH_DISPUTE,
+                    List.class, defaultResponse, searchParams);
+        } catch (Exception ex) {
+            processExceptionAccess(ex);
+            return null;
+        }
+    }
+
+
 
     @Override
     public byte[] getExtentOfPublicDisplayMap(String nameLastPart) throws SOLAAccessFault, SOLAFault, UnhandledFault {
@@ -423,4 +446,5 @@ public class MockSearchPort implements Search {
         throw new UnsupportedOperationException("Not supported yet.");
     }
     
+
 }
