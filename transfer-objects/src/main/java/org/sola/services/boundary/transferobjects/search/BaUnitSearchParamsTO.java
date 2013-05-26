@@ -34,6 +34,7 @@ public class BaUnitSearchParamsTO extends AbstractTO {
     private String nameFirstPart;
     private String nameLastPart;
     private String ownerName;
+    private String leaseNumber;
     
     public BaUnitSearchParamsTO(){
         super();
@@ -61,5 +62,13 @@ public class BaUnitSearchParamsTO extends AbstractTO {
 
     public void setOwnerName(String ownerName) {
         this.ownerName = ownerName;
+    }
+
+    public String getLeaseNumber() {
+        return leaseNumber;
+    }
+
+    public void setLeaseNumber(String leaseNumber) {
+        this.leaseNumber = leaseNumber;
     }
 }

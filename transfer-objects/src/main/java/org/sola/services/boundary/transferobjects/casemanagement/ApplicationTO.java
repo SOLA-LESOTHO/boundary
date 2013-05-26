@@ -34,6 +34,7 @@ import java.util.ArrayList;
 import java.util.List;
 import org.sola.services.boundary.transferobjects.cadastre.CadastreObjectSummaryTO;
 import org.sola.services.boundary.transferobjects.cadastre.CadastreObjectTO;
+import org.sola.services.boundary.transferobjects.search.BaUnitSearchResultTO;
 
 public class ApplicationTO extends ApplicationSummaryTO {
 
@@ -54,7 +55,7 @@ public class ApplicationTO extends ApplicationSummaryTO {
     private PartyTO contactPerson;
     private PartySummaryTO agent;
     private List<ServiceTO> serviceList;
-    private List<ApplicationPropertyTO> propertyList;
+    private List<BaUnitSearchResultTO> propertyList;
     private List<SourceTO> sourceList;
     private List<CadastreObjectSummaryTO> cadastreObjectList;
     
@@ -149,9 +150,9 @@ public class ApplicationTO extends ApplicationSummaryTO {
         serviceList.add(service);
     }
 
-    public void addApplicationProperty(ApplicationPropertyTO appProperty) {
+    public void addApplicationProperty(BaUnitSearchResultTO appProperty) {
         if (propertyList == null) {
-            propertyList = new ArrayList<ApplicationPropertyTO>();
+            propertyList = new ArrayList<BaUnitSearchResultTO>();
         }
         propertyList.add(appProperty);
     }
@@ -187,11 +188,11 @@ public class ApplicationTO extends ApplicationSummaryTO {
         this.actionNotes = actionNotes;
     }
 
-    public List<ApplicationPropertyTO> getPropertyList() {
+    public List<BaUnitSearchResultTO> getPropertyList() {
         return propertyList;
     }
 
-    public void setPropertyList(List<ApplicationPropertyTO> propertyList) {
+    public void setPropertyList(List<BaUnitSearchResultTO> propertyList) {
         this.propertyList = propertyList;
     }
 

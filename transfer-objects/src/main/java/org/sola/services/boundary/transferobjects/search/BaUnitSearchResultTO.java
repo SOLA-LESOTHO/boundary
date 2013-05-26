@@ -27,15 +27,17 @@
  */
 package org.sola.services.boundary.transferobjects.search;
 
-import org.sola.services.common.contracts.AbstractTO;
+import java.util.Date;
+import org.sola.services.common.contracts.AbstractReadWriteTO;
 
-public class BaUnitSearchResultTO extends AbstractTO {
+public class BaUnitSearchResultTO extends AbstractReadWriteTO {
     private String id;
-    private String name;
     private String nameFirstPart;
     private String nameLastPart;
     private String statusCode;
     private String rightholders;
+    private String registrationNumber;
+    private Date registrationDate;
     
     public BaUnitSearchResultTO(){
         super();
@@ -47,14 +49,6 @@ public class BaUnitSearchResultTO extends AbstractTO {
 
     public void setId(String id) {
         this.id = id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
     }
 
     public String getNameFirstPart() {
@@ -87,5 +81,21 @@ public class BaUnitSearchResultTO extends AbstractTO {
 
     public void setStatusCode(String statusCode) {
         this.statusCode = statusCode;
+    }
+
+    public Date getRegistrationDate() {
+        return registrationDate;
+    }
+
+    public void setRegistrationDate(Date registrationDate) {
+        this.registrationDate = registrationDate;
+    }
+
+    public String getRegistrationNumber() {
+        return registrationNumber;
+    }
+
+    public void setRegistrationNumber(String registrationNumber) {
+        this.registrationNumber = registrationNumber;
     }
 }
