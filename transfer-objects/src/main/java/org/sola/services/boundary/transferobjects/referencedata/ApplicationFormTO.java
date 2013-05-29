@@ -11,16 +11,6 @@ import org.sola.services.common.contracts.AbstractCodeTO;
  */
 public class ApplicationFormTO extends AbstractCodeTO {
     
-    private byte[] content;
-
-    public byte[] getContent() {
-        return content;
-    }
-
-    public void setContent(byte[] content) {
-        this.content = content;
-    }
-
     public ApplicationFormTO() {
         super();
     }
