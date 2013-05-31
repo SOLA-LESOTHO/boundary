@@ -822,18 +822,19 @@ public class Administrative extends AbstractWebService {
      * @throws SOLAFault @throws Unha*ndledFault
      */
     @WebMethod(operationName = "getDispute")
-    public DisputeTO GetDispute()
+    public DisputeTO GetDispute(@WebParam(name = "id") String id)
             throws SOLAAccessFault, SOLAFault, UnhandledFault {
-
+        
+        final String idTmp = id;
         final Object[] result = {null};
 
-        runOpenQuery(wsContext, new Runnable() {
+        runGeneralQuery(wsContext, new Runnable(){
 
             @Override
             public void run() {
 
                 result[0] = GenericTranslator.toTO(
-                        administrativeEJB.getDispute(), DisputeTO.class);
+                        administrativeEJB.getDispute(idTmp), DisputeTO.class);
             }
         });
         return (DisputeTO) result[0];

@@ -41,8 +41,8 @@ public class DisputeSearchResultTO extends AbstractTO {
     private String nr;
     private Date lodgementDate;
     private Date completiondate;
-    private String leaseNr;
-    private String plotNr;
+    private String leaseNumber;
+    private String plotNumber;
     
     public DisputeSearchResultTO(){
         super();
@@ -64,12 +64,12 @@ public class DisputeSearchResultTO extends AbstractTO {
         this.id = id;
     }
 
-    public String getLeaseNr() {
-        return leaseNr;
+    public String getLeaseNumber() {
+        return leaseNumber;
     }
 
-    public void setLeaseNr(String leaseNr) {
-        this.leaseNr = leaseNr;
+    public void setLeaseNumber(String leaseNumber) {
+        this.leaseNumber = leaseNumber;
     }
 
     public Date getLodgementDate() {
@@ -88,12 +88,12 @@ public class DisputeSearchResultTO extends AbstractTO {
         this.nr = nr;
     }
 
-    public String getPlotNr() {
-        return plotNr;
+    public String getPlotNumber() {
+        return plotNumber;
     }
 
-    public void setPlotNr(String plotNr) {
-        this.plotNr = plotNr;
+    public void setPlotNumber(String plotNumber) {
+        this.plotNumber = plotNumber;
     }
     
 }

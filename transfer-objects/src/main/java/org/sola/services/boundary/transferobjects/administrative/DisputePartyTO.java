@@ -32,16 +32,16 @@ import org.sola.services.common.contracts.AbstractIdTO;
 public class DisputePartyTO extends AbstractIdTO{
   
     private String id;
-    private String disputeId;
+    private String disputeNr;
     private String partyRole;
     private String partyId;
 
-    public String getDisputeId() {
-        return disputeId;
+    public String getDisputeNr() {
+        return disputeNr;
     }
 
-    public void setDisputeId(String disputeId) {
-        this.disputeId = disputeId;
+    public void setDisputeNr(String disputeNr) {
+        this.disputeNr = disputeNr;
     }
 
     public String getPartyRole() {
