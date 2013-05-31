@@ -609,6 +609,7 @@ public class Search extends AbstractWebService {
             throws SOLAFault, UnhandledFault, SOLAAccessFault {
 
         final Object[] params = {searchParams};
+        //final DisputeSearchParamsTO searchParamsTmp = searchParams;
         final Object[] result = {null};
 
         runGeneralQuery(wsContext, new Runnable() {
@@ -622,6 +623,11 @@ public class Search extends AbstractWebService {
                             searchParams, DisputeSearchParams.class, null)),
                             DisputeSearchResultTO.class);
                 }
+                
+//                DisputeSearchParams params = GenericTranslator.fromTO(searchParamsTmp,
+//                        DisputeSearchParams.class, null);
+//                        result[0] = GenericTranslator.toTOList(
+//                                searchEJB.searchDispute(params), DisputeSearchResultTO.class);
             }
         });
 

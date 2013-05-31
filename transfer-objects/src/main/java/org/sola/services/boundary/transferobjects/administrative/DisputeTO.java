@@ -39,11 +39,10 @@ public class DisputeTO extends AbstractIdTO {
     private String disputeCategoryCode;
     private String disputeTypeCode;
     private String statusCode;
-    private String rrrId;
     private String plotLocation;
-    private String cadastreObjectId;
     private String userId;
-
+    private String rrrId;
+    private String cadastreObjectId;
    
 
     public String getUserId() {
