@@ -381,16 +381,16 @@ public class AdministrativeClientImpl extends AbstractWSClientImpl
     }
 
     @Override
-    public DisputeTO getDispute() throws WebServiceClientException {
+    public DisputeTO getDispute(String id) throws WebServiceClientException {
         DisputeTO result = null;
         final String methodName = AdministrativeClient.GET_DISPUTE;
         try {
-            beforeWebMethod(methodName);
-            result = getPort().getDispute();
+            beforeWebMethod(methodName, id);
+            result = getPort().getDispute(id);
         } catch (Exception e) {
             processException(methodName, e);
         } finally {
-            afterWebMethod(methodName, result);
+            afterWebMethod(methodName, result, id);
         }
         return result;
     }

@@ -90,7 +90,7 @@ public class MockAdministrativeClient extends AdministrativeClientImpl implement
     }
 
     @Override
-    public DisputeTO getDispute() throws WebServiceClientException {
+    public DisputeTO getDispute(String id) throws WebServiceClientException {
         throw new UnsupportedOperationException("Not supported yet.");
     }
 

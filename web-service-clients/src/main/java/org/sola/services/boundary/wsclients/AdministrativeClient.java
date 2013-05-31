@@ -393,7 +393,7 @@ public interface AdministrativeClient extends AbstractWSClient {
      * @return The Dispute details or null if the identifier is invalid.
      * @throws WebServiceClientException
      */
-    DisputeTO getDispute() throws WebServiceClientException;
+    DisputeTO getDispute(String id) throws WebServiceClientException;
 
     /**
      * Creates a new Dispute with a default status of pending .
