@@ -491,11 +491,11 @@ public class MockAdministrativePort implements Administrative {
     }
 
     @Override
-    public DisputeTO getDispute() throws SOLAFault, UnhandledFault {
+    public DisputeTO getDispute(String id) throws SOLAFault, UnhandledFault {
         DisputeTO defaultResponse = new DisputeTO();
         try {
             return getManager().getResponse(AdministrativeClient.GET_DISPUTE,
-                    DisputeTO.class, defaultResponse);
+                    DisputeTO.class, defaultResponse, id);
         } catch (Exception ex) {
             processExceptionBasic(ex);
             return null;
