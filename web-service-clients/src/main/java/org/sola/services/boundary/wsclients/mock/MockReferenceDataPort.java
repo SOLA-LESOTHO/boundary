@@ -735,4 +735,17 @@ public class MockReferenceDataPort implements ReferenceData {
             return null;
         }
     }
+    
+    @Override
+    public List<DeedTypeTO> getDeedTypes(String arg0) throws SOLAFault, UnhandledFault, SOLAAccessFault {
+        List<DeedTypeTO> defaultResponse = MockTOFactory.createDeedTypes();
+        try {
+            return getManager().getResponse(ReferenceDataClient.GET_DEED_TYPES,
+                    List.class, defaultResponse, arg0);
+        } catch (Exception ex) {
+            processExceptionBasic(ex);
+
+            return null;
+        }
+    }
 }

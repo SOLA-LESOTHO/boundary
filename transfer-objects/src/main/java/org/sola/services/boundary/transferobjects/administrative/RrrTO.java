@@ -60,6 +60,7 @@ public class RrrTO extends AbstractIdTO {
     private String concatenatedName;
     private String registrationNumber;
     private Date statusChangeDate;
+    private String deedTypeCode;
     
     public String getConcatenatedName() {
         return concatenatedName;
@@ -266,4 +267,11 @@ public class RrrTO extends AbstractIdTO {
         this.statusChangeDate = statusChangeDate;
     }
 
+    public String getDeedTypeCode() {
+        return deedTypeCode;
+    }
+
+    public void setDeedTypeCode(String deedTypeCode) {
+        this.deedTypeCode = deedTypeCode;
+    }
 }

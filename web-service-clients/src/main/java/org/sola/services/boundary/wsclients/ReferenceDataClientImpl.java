@@ -782,4 +782,26 @@ public class ReferenceDataClientImpl extends AbstractWSClientImpl implements Ref
         }
         return result;
     }
+    
+    @Override
+    public List<DeedTypeTO> getDeedTypes()
+            throws WebServiceClientException {
+        return getDeedTypes(getLanguageCode());
+    }
+
+    @Override
+    public List<DeedTypeTO> getDeedTypes(String lang)
+            throws WebServiceClientException {
+        List<DeedTypeTO> result = null;
+        final String methodName = ReferenceDataClient.GET_DEED_TYPES;
+        try {
+            beforeWebMethod(methodName, lang);
+            result = getPort().getDeedTypes(lang);
+        } catch (Exception e) {
+            processException(methodName, e);
+        } finally {
+            afterWebMethod(methodName, result, lang);
+        }
+        return result;
+    }
 }

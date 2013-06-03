@@ -51,12 +51,7 @@ import org.sola.services.common.contracts.AbstractCodeTO;
 import org.sola.services.common.faults.*;
 import org.sola.services.common.repository.entities.AbstractCodeEntity;
 import org.sola.services.ejb.administrative.businesslogic.AdministrativeEJBLocal;
-import org.sola.services.ejb.administrative.repository.entities.BaUnitRelType;
-import org.sola.services.ejb.administrative.repository.entities.BaUnitType;
-import org.sola.services.ejb.administrative.repository.entities.MortgageType;
-import org.sola.services.ejb.administrative.repository.entities.RrrGroupType;
-import org.sola.services.ejb.administrative.repository.entities.RrrType;
-import org.sola.services.ejb.administrative.repository.entities.SourceBaUnitRelationType;
+import org.sola.services.ejb.administrative.repository.entities.*;
 import org.sola.services.ejb.application.repository.entities.ApplicationActionType;
 import org.sola.services.ejb.application.repository.entities.ApplicationStatusType;
 import org.sola.services.ejb.application.repository.entities.RequestCategoryType;
@@ -683,6 +678,33 @@ public class ReferenceData extends AbstractWebService {
 
         return (List<RrrTypeTO>) result[0];
     }
+    
+     /**
+     * See {@linkplain org.sola.services.ejb.administrative.businesslogic.AdministrativeEJB#getDeedTypes(java.lang.String)
+     * AdministrativeEJB.getDeedTypes}
+     *
+     * @throws SOLAFault
+     * @throws UnhandledFault
+     * @throws SOLAAccessFault
+     */
+    @WebMethod(operationName = "GetDeedTypes")
+    public List<DeedTypeTO> GetDeedTypes(String languageCode)
+            throws SOLAFault, UnhandledFault, SOLAAccessFault {
+
+        final String languageCodeTmp = languageCode;
+        final Object[] result = {null};
+
+        runGeneralQuery(wsContext, new Runnable() {
+
+            @Override
+            public void run() {
+                result[0] = GenericTranslator.toTOList(
+                        administrativeEJB.getDeedTypes(languageCodeTmp), DeedTypeTO.class);
+            }
+        });
+
+        return (List<DeedTypeTO>) result[0];
+    }
 
     /**
      * See {@linkplain org.sola.services.ejb.administrative.businesslogic.AdministrativeEJB#getSourceBaUnitRelationTypes(java.lang.String)
@@ -1020,6 +1042,10 @@ public class ReferenceData extends AbstractWebService {
                 } else if (refDataTO instanceof SourceBaUnitRelationTypeTO) {
                     codeEntity = administrativeEJB.getCodeEntity(SourceBaUnitRelationType.class, refDataTO.getCode());
                     codeEntity = GenericTranslator.fromTO(refDataTO, SourceBaUnitRelationType.class, codeEntity);
+                    administrativeEJB.saveCodeEntity(codeEntity);
+                } else if (refDataTO instanceof DeedTypeTO) {
+                    codeEntity = administrativeEJB.getCodeEntity(DeedType.class, refDataTO.getCode());
+                    codeEntity = GenericTranslator.fromTO(refDataTO, DeedType.class, codeEntity);
                     administrativeEJB.saveCodeEntity(codeEntity);
                 } else if (refDataTO instanceof ApplicationActionTypeTO) {
                     codeEntity = applicationEJB.getCodeEntity(ApplicationActionType.class, refDataTO.getCode());

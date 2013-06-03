@@ -208,10 +208,15 @@ public interface ReferenceDataClient extends AbstractWSClient {
      */
     public static final String GET_OTHER_AUTHORITIES = SERVICE_NAME + "getOtherAuthorities";
     
-        /**
+    /**
      * ReferenceData.getCadastreObjectTypes - Identifier for the getCadastreObjectTypes method
      */
     public static final String GET_LAND_GRADE_TYPES = SERVICE_NAME + "getLandGradeTypes";
+    
+    /**
+     * ReferenceData.getDeedTypes - Identifier for the getDeedTypes method
+     */
+    public static final String GET_DEED_TYPES = SERVICE_NAME + "getDeedTypes";
 
     /**
      * Return list of Application forms.
@@ -760,7 +765,7 @@ public interface ReferenceDataClient extends AbstractWSClient {
     List<OtherAuthoritiesTO> getOtherAuthorities(String lang) throws WebServiceClientException;
 
     
-        /**
+     /**
      * Retrieves all cadastre.land_use_type code values using the default locale of the
      * client to localize the display values.
      *
@@ -776,4 +781,20 @@ public interface ReferenceDataClient extends AbstractWSClient {
      */
     List<LandGradeTypeTO> getLandGradeTypes(String lang) throws WebServiceClientException;
 
+     /**
+     * Retrieves all cadastre.land_use_type code values using the default locale of the
+     * client to localize the display values.
+     *
+     * @throws WebServiceClientException
+     */
+    List<DeedTypeTO> getDeedTypes() throws WebServiceClientException;
+
+    /**
+     * Retrieves all cadastre.land_use_type code values.
+     *
+     * @param languageCode The language code to use for localization of display values.
+     * @throws WebServiceClientException
+     */
+    List<DeedTypeTO> getDeedTypes(String lang) throws WebServiceClientException;
+    
 }

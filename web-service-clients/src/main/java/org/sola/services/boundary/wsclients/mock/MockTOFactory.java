@@ -510,10 +510,21 @@ public class MockTOFactory {
      */
     public static List<LandGradeTypeTO> createLandGradeTypes() {
         List<LandGradeTypeTO> result = new ArrayList<LandGradeTypeTO>();
-        result.add(createCode(LandGradeTypeTO.class, "grade1", "Grad1e"));
+        result.add(createCode(LandGradeTypeTO.class, "grade1", "Grade1"));
         result.add(createCode(LandGradeTypeTO.class, "grade2", "Grade2"));
         result.add(createCode(LandGradeTypeTO.class, "grade3", "Grade3"));
 
+        return result;
+    }
+    
+    /**
+     * Creates a default list of land grade types
+     */
+    public static List<DeedTypeTO> createDeedTypes() {
+        List<DeedTypeTO> result = new ArrayList<DeedTypeTO>();
+        result.add(createCode(DeedTypeTO.class, "notarialBond", "notarialBond"));
+        result.add(createCode(DeedTypeTO.class, "mortgageBond", "mortgageBond"));
+   
         return result;
     }
 
