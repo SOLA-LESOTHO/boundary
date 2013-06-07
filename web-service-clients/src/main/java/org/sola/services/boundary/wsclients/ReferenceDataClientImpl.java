@@ -804,4 +804,24 @@ public class ReferenceDataClientImpl extends AbstractWSClientImpl implements Ref
         }
         return result;
     }
+
+    @Override
+    public ApplicationFormWithBinaryTO getApplicationForm(String code, String lang) throws WebServiceClientException {
+        ApplicationFormWithBinaryTO result = null;
+        final String methodName = ReferenceDataClient.GET_APPLICATION_FORM;
+        try {
+            beforeWebMethod(methodName, lang);
+            result = getPort().getApplicationForm(code, lang);
+        } catch (Exception e) {
+            processException(methodName, e);
+        } finally {
+            afterWebMethod(methodName, result, lang);
+        }
+        return result;
+    }
+
+    @Override
+    public ApplicationFormWithBinaryTO getApplicationForm(String code) throws WebServiceClientException {
+        return getApplicationForm(code, getLanguageCode());
+    }
 }

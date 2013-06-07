@@ -748,4 +748,9 @@ public class MockReferenceDataPort implements ReferenceData {
             return null;
         }
     }
+
+    @Override
+    public ApplicationFormWithBinaryTO getApplicationForm(String arg0, String arg1) throws SOLAFault, UnhandledFault {
+        throw new UnsupportedOperationException("Not supported yet.");
+    }
 }

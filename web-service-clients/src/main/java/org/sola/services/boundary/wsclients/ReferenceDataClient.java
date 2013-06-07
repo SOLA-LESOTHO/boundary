@@ -217,6 +217,11 @@ public interface ReferenceDataClient extends AbstractWSClient {
      * ReferenceData.getDeedTypes - Identifier for the getDeedTypes method
      */
     public static final String GET_DEED_TYPES = SERVICE_NAME + "getDeedTypes";
+    
+    /**
+     * ReferenceData.getApplicationForm - Identifier for the getApplicationForm method
+     */
+    public static final String GET_APPLICATION_FORM = SERVICE_NAME + "getApplicationForm";
 
     /**
      * Return list of Application forms.
@@ -796,5 +801,18 @@ public interface ReferenceDataClient extends AbstractWSClient {
      * @throws WebServiceClientException
      */
     List<DeedTypeTO> getDeedTypes(String lang) throws WebServiceClientException;
+    
+    /** 
+     * Returns application form together with binary content. 
+     * @param code Application form code used to search record.
+     * @param lang Language code
+     */
+    ApplicationFormWithBinaryTO getApplicationForm(String code, String lang) throws WebServiceClientException;
+    
+    /** 
+     * Returns application form together with binary content. 
+     * @param code Application form code used to search record.
+     */
+    ApplicationFormWithBinaryTO getApplicationForm(String code) throws WebServiceClientException;
     
 }

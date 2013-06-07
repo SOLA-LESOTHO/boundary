@@ -52,14 +52,7 @@ import org.sola.services.common.faults.*;
 import org.sola.services.common.repository.entities.AbstractCodeEntity;
 import org.sola.services.ejb.administrative.businesslogic.AdministrativeEJBLocal;
 import org.sola.services.ejb.administrative.repository.entities.*;
-import org.sola.services.ejb.application.repository.entities.ApplicationActionType;
-import org.sola.services.ejb.application.repository.entities.ApplicationStatusType;
-import org.sola.services.ejb.application.repository.entities.RequestCategoryType;
-import org.sola.services.ejb.application.repository.entities.RequestType;
-import org.sola.services.ejb.application.repository.entities.TypeAction;
-import org.sola.services.ejb.application.repository.entities.ServiceActionType;
-import org.sola.services.ejb.application.repository.entities.ServiceStatusType;
-import org.sola.services.ejb.application.repository.entities.ApplicationForm;
+import org.sola.services.ejb.application.repository.entities.*;
 import org.sola.services.ejb.cadastre.businesslogic.CadastreEJBLocal;
 import org.sola.services.ejb.cadastre.repository.entities.CadastreObjectType;
 import org.sola.services.ejb.party.repository.entities.CommunicationType;
@@ -138,26 +131,45 @@ public class ReferenceData extends AbstractWebService {
 
         return (List<CommunicationTypeTO>) result[0];
     }
+
     /**
-    * Return list of application forms.
-    */
+     * Return list of application forms.
+     */
     @WebMethod(operationName = "getApplicationForms")
     public List<ApplicationFormTO> getApplicationForms(final String lang) throws SOLAFault, UnhandledFault {
-	final Object[] result = {null};
+        final Object[] result = {null};
 
-	runOpenQuery(wsContext, new Runnable() {
+        runOpenQuery(wsContext, new Runnable() {
 
-		@Override
-		public void run() {
-			result[0] = GenericTranslator.toTOList(
-					applicationEJB.getApplicationForms(lang), ApplicationFormTO.class);
-		}
-	});
+            @Override
+            public void run() {
+                result[0] = GenericTranslator.toTOList(
+                        applicationEJB.getApplicationForms(lang), ApplicationFormTO.class);
+            }
+        });
 
-	return (List<ApplicationFormTO>) result[0];
+        return (List<ApplicationFormTO>) result[0];
     }
+    
+    /**
+     * Returns application form with binary content.
+     */
+    @WebMethod(operationName = "getApplicationForm")
+    public ApplicationFormWithBinaryTO getApplicationForm(final String code, final String lang) throws SOLAFault, UnhandledFault {
+        final Object[] result = {null};
 
+        runOpenQuery(wsContext, new Runnable() {
 
+            @Override
+            public void run() {
+                result[0] = GenericTranslator.toTO(
+                        applicationEJB.getApplicationFormWithBinary(code, lang), 
+                        ApplicationFormWithBinaryTO.class);
+            }
+        });
+
+        return (ApplicationFormWithBinaryTO) result[0];
+    }
 
     /**
      * See {@linkplain org.sola.services.ejb.party.businesslogic.PartyEJB#getGenderTypes(java.lang.String)
@@ -597,7 +609,7 @@ public class ReferenceData extends AbstractWebService {
 
         return (List<MortgageTypeTO>) result[0];
     }
-    
+
     /**
      * See {@linkplain org.sola.services.ejb.administrative.businesslogic.AdministrativeEJB#getLeaseConditions(java.lang.String) (java.lang.String)
      * AdministrativeEJB.getLeaseConditions}
@@ -678,8 +690,8 @@ public class ReferenceData extends AbstractWebService {
 
         return (List<RrrTypeTO>) result[0];
     }
-    
-     /**
+
+    /**
      * See {@linkplain org.sola.services.ejb.administrative.businesslogic.AdministrativeEJB#getDeedTypes(java.lang.String)
      * AdministrativeEJB.getDeedTypes}
      *
@@ -789,8 +801,8 @@ public class ReferenceData extends AbstractWebService {
 
         return (List<LandUseTypeTO>) result[0];
     }
-    
-        /**
+
+    /**
      * See {@linkplain org.sola.services.ejb.cadastre.businesslogic.CadastreEJB#GetLandGradeTypes(java.lang.String)
      * CadastreEJB.getCadastreObjectTypes}
      *
@@ -1111,9 +1123,9 @@ public class ReferenceData extends AbstractWebService {
                     codeEntity = administrativeEJB.getCodeEntity(BaUnitRelType.class, refDataTO.getCode());
                     codeEntity = GenericTranslator.fromTO(refDataTO, BaUnitRelType.class, codeEntity);
                     administrativeEJB.saveCodeEntity(codeEntity);
-                }else if (refDataTO instanceof ApplicationFormTO) {
-                    codeEntity = applicationEJB.getCodeEntity(ApplicationForm.class, refDataTO.getCode());
-                    codeEntity = GenericTranslator.fromTO(refDataTO, ApplicationForm.class, codeEntity);
+                } else if (refDataTO instanceof ApplicationFormWithBinaryTO || refDataTO instanceof ApplicationFormTO) {
+                    codeEntity = applicationEJB.getCodeEntity(ApplicationFormWithBinary.class, refDataTO.getCode());
+                    codeEntity = GenericTranslator.fromTO(refDataTO, ApplicationFormWithBinary.class, codeEntity);
                     applicationEJB.saveCodeEntity(codeEntity);
                 }
                 result = GenericTranslator.toTO(codeEntity, refDataTO.getClass());
@@ -1139,12 +1151,11 @@ public class ReferenceData extends AbstractWebService {
             cleanUp();
         }
     }
-    
+
     /*
      * LAA Addition thoriso
      */
-    
-       /**
+    /**
      * See {@linkplain org.sola.services.ejb.administrative.businesslogic.AdministrativeEJB#getDisputeAction(java.lang.String)
      * AdministrativeEJB.getDisputeAction}
      *
@@ -1170,13 +1181,13 @@ public class ReferenceData extends AbstractWebService {
 
         return (List<DisputeActionTO>) result[0];
     }
-    
-     /* See {@linkplain org.sola.services.ejb.administrative.businesslogic.AdministrativeEJB#getDisputeCategory(java.lang.String)
+
+    /*
+     * See {@linkplain
+     * org.sola.services.ejb.administrative.businesslogic.AdministrativeEJB#getDisputeCategory(java.lang.String)
      * AdministrativeEJB.getDisputeCategory}
      *
-     * @throws SOLAFault
-     * @throws UnhandledFault
-     * @throws SOLAAccessFault
+     * @throws SOLAFault @throws UnhandledFault @throws SOLAAccessFault
      */
     @WebMethod(operationName = "GetDisputeCategory")
     public List<DisputeCategoryTO> GetDisputeCategory(String languageCode)
@@ -1196,13 +1207,13 @@ public class ReferenceData extends AbstractWebService {
 
         return (List<DisputeCategoryTO>) result[0];
     }
-    
-     /* See {@linkplain org.sola.services.ejb.administrative.businesslogic.AdministrativeEJB#getDisputeStatus(java.lang.String)
+
+    /*
+     * See {@linkplain
+     * org.sola.services.ejb.administrative.businesslogic.AdministrativeEJB#getDisputeStatus(java.lang.String)
      * AdministrativeEJB.getDisputeStatus}
      *
-     * @throws SOLAFault
-     * @throws UnhandledFault
-     * @throws SOLAAccessFault
+     * @throws SOLAFault @throws UnhandledFault @throws SOLAAccessFault
      */
     @WebMethod(operationName = "GetDisputeStatus")
     public List<DisputeStatusTO> GetDisputeStatus(String languageCode)
@@ -1222,13 +1233,13 @@ public class ReferenceData extends AbstractWebService {
 
         return (List<DisputeStatusTO>) result[0];
     }
-    
-    /* See {@linkplain org.sola.services.ejb.administrative.businesslogic.AdministrativeEJB#getDisputeType(java.lang.String)
+
+    /*
+     * See {@linkplain
+     * org.sola.services.ejb.administrative.businesslogic.AdministrativeEJB#getDisputeType(java.lang.String)
      * AdministrativeEJB.getDisputeType}
      *
-     * @throws SOLAFault
-     * @throws UnhandledFault
-     * @throws SOLAAccessFault
+     * @throws SOLAFault @throws UnhandledFault @throws SOLAAccessFault
      */
     @WebMethod(operationName = "GetDisputeType")
     public List<DisputeTypeTO> GetDisputeType(String languageCode)
@@ -1248,13 +1259,13 @@ public class ReferenceData extends AbstractWebService {
 
         return (List<DisputeTypeTO>) result[0];
     }
-    
-        /* See {@linkplain org.sola.services.ejb.administrative.businesslogic.AdministrativeEJB#getOtherAuthorities(java.lang.String)
+
+    /*
+     * See {@linkplain
+     * org.sola.services.ejb.administrative.businesslogic.AdministrativeEJB#getOtherAuthorities(java.lang.String)
      * AdministrativeEJB.getOtherAuthorities}
      *
-     * @throws SOLAFault
-     * @throws UnhandledFault
-     * @throws SOLAAccessFault
+     * @throws SOLAFault @throws UnhandledFault @throws SOLAAccessFault
      */
     @WebMethod(operationName = "GetOtherAuthorities")
     public List<OtherAuthoritiesTO> GetOtherAuthorities(String languageCode)
