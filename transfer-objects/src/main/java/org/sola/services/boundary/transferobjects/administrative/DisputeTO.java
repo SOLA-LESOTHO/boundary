@@ -32,42 +32,30 @@ import java.util.*;
 
 public class DisputeTO extends AbstractIdTO {
     
+  
     private String id;
     private String nr;
     private Date lodgementDate;
-    private Date completiondate;
+    private Date completionDate;
     private String disputeCategoryCode;
     private String disputeTypeCode;
     private String statusCode;
+    private String leaseNumber;
     private String plotLocation;
-    private String userId;
-    private String rrrId;
-    private String cadastreObjectId;
-   
+    private String plotNumber;
+    private List<DisputeCommentsTO> disputeCommentsList;
+    private List<DisputePartyTO> disputePartyList;
 
-    public String getUserId() {
-        return userId;
+    public DisputeTO(){
+        super();
     }
 
-    public void setUserId(String userId) {
-        this.userId = userId;
+    public Date getCompletionDate() {
+        return completionDate;
     }
 
-    
-    public String getCadastreObjectId() {
-        return cadastreObjectId;
-    }
-
-    public void setCadastreObjectId(String cadastreObjectId) {
-        this.cadastreObjectId = cadastreObjectId;
-    }
-
-    public Date getCompletiondate() {
-        return completiondate;
-    }
-
-    public void setCompletiondate(Date completiondate) {
-        this.completiondate = completiondate;
+    public void setCompletionDate(Date completionDate) {
+        this.completionDate = completionDate;
     }
 
     public String getDisputeCategoryCode() {
@@ -84,6 +72,14 @@ public class DisputeTO extends AbstractIdTO {
 
     public void setDisputeTypeCode(String disputeTypeCode) {
         this.disputeTypeCode = disputeTypeCode;
+    }
+
+    public String getLeaseNumber() {
+        return leaseNumber;
+    }
+
+    public void setLeaseNumber(String leaseNumber) {
+        this.leaseNumber = leaseNumber;
     }
 
     public Date getLodgementDate() {
@@ -110,12 +106,12 @@ public class DisputeTO extends AbstractIdTO {
         this.plotLocation = plotLocation;
     }
 
-    public String getRrrId() {
-        return rrrId;
+    public String getPlotNumber() {
+        return plotNumber;
     }
 
-    public void setRrrId(String rrrId) {
-        this.rrrId = rrrId;
+    public void setPlotNumber(String plotNumber) {
+        this.plotNumber = plotNumber;
     }
 
     public String getStatusCode() {
@@ -125,5 +121,25 @@ public class DisputeTO extends AbstractIdTO {
     public void setStatusCode(String statusCode) {
         this.statusCode = statusCode;
     }
-  
+     public List<DisputeCommentsTO> getDisputeCommentsList() {
+        return disputeCommentsList;
+    }
+
+    public void setDisputeCommentsList(List<DisputeCommentsTO> disputeCommentsList) {
+        this.disputeCommentsList = disputeCommentsList;
+    }
+    
+    public void addComments(DisputeCommentsTO Comments) {
+        if (disputeCommentsList == null) {
+            disputeCommentsList = new ArrayList<DisputeCommentsTO>();
+        }
+        disputeCommentsList.add(Comments);
+    }
+     public List<DisputePartyTO> getDisputePartyList() {
+        return disputePartyList;
+    }
+
+    public void setDisputePartyList(List<DisputePartyTO> disputePartyList) {
+        this.disputePartyList = disputePartyList;
+    }
 }
