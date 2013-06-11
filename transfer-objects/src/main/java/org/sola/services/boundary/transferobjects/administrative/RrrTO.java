@@ -31,6 +31,7 @@ import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import org.sola.services.boundary.transferobjects.cadastre.CadastreObjectTO;
 import org.sola.services.boundary.transferobjects.casemanagement.PartySummaryTO;
 import org.sola.services.boundary.transferobjects.casemanagement.SourceTO;
 import org.sola.services.common.contracts.AbstractIdTO;
@@ -61,6 +62,7 @@ public class RrrTO extends AbstractIdTO {
     private String registrationNumber;
     private Date statusChangeDate;
     private String deedTypeCode;
+    private String cadastreObjectId;
     
     public String getConcatenatedName() {
         return concatenatedName;
@@ -274,4 +276,13 @@ public class RrrTO extends AbstractIdTO {
     public void setDeedTypeCode(String deedTypeCode) {
         this.deedTypeCode = deedTypeCode;
     }
+
+    public String getCadastreObjectId() {
+        return cadastreObjectId;
+    }
+
+    public void setCadastreObjectId(String cadastreObjectId) {
+        this.cadastreObjectId = cadastreObjectId;
+    }
+      
 }
