@@ -687,10 +687,6 @@ public interface ReferenceDataClient extends AbstractWSClient {
      */
     List<BaUnitRelTypeTO> getBaUnitRelTypes() throws WebServiceClientException;
 
-    List<LeaseConditionTO> getLeaseConditions() throws WebServiceClientException;
-
-    List<LeaseConditionTO> getLeaseConditions(String lang) throws WebServiceClientException;
-
     /*
      * LAA Additions thoriso
      */

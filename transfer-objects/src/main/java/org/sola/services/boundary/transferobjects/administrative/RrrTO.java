@@ -57,7 +57,6 @@ public class RrrTO extends AbstractIdTO {
     private List<RrrShareTO> rrrShareList;
     private BaUnitNotationTO notation;
     private List<PartySummaryTO> rightHolderList;
-    private List<LeaseConditionForRrrTO> leaseConditionList;
     private String concatenatedName;
     private String registrationNumber;
     private Date statusChangeDate;
@@ -211,14 +210,6 @@ public class RrrTO extends AbstractIdTO {
             rrrShareList = new ArrayList<RrrShareTO>();
         }
         rrrShareList.add(rrrShareTO);
-    }
-
-    public List<LeaseConditionForRrrTO> getLeaseConditionList() {
-        return leaseConditionList;
-    }
-
-    public void setLeaseConditionList(List<LeaseConditionForRrrTO> leaseConditionList) {
-        this.leaseConditionList = leaseConditionList;
     }
 
     public String getStatusCode() {
