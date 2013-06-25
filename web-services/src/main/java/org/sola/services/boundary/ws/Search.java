@@ -623,11 +623,6 @@ public class Search extends AbstractWebService {
                             searchParams, DisputeSearchParams.class, null)),
                             DisputeSearchResultTO.class);
                 }
-                
-//                DisputeSearchParams params = GenericTranslator.fromTO(searchParamsTmp,
-//                        DisputeSearchParams.class, null);
-//                        result[0] = GenericTranslator.toTOList(
-//                                searchEJB.searchDispute(params), DisputeSearchResultTO.class);
             }
         });
 
