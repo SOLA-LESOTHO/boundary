@@ -681,22 +681,48 @@ public class Administrative extends AbstractWebService {
      * @throws SOLAAccessFault
      * @throws OptimisticLockingFault
      */
+//    @WebMethod(operationName = "SaveDispute")
+//    public DisputeTO SaveDispute(
+//            @WebParam(name = "disputeTO") DisputeTO disputeTO)
+//            throws SOLAFault, UnhandledFault, SOLAAccessFault, OptimisticLockingFault {
+//
+//        final DisputeTO disputeTOTmp = disputeTO;
+//        final Object[] result = {null};
+//
+//        runUpdate(wsContext, new Runnable() {
+//
+//            @Override
+//            public void run() {
+//                if (disputeTOTmp != null) {
+//                    Dispute newDispute = administrativeEJB.saveDispute(
+//                            GenericTranslator.fromTO(disputeTOTmp, Dispute.class,
+//                            administrativeEJB.getDispute(disputeTO.getId())));
+//                    result[0] = GenericTranslator.toTO(newDispute, DisputeTO.class);
+//                }
+//            }
+//        });
+//
+//        return (DisputeTO) result[0];
+//    }
+    
     @WebMethod(operationName = "SaveDispute")
-    public DisputeTO SaveDispute(
-            @WebParam(name = "disputeTO") DisputeTO disputeTO)
-            throws SOLAFault, UnhandledFault, SOLAAccessFault, OptimisticLockingFault {
+    public DisputeTO SaveDispute(@WebParam(name = "dispute") DisputeTO dispute)
+            throws SOLAFault, UnhandledFault, SOLAAccessFault,
+            OptimisticLockingFault, SOLAValidationFault {
 
-        final DisputeTO disputeTOTmp = disputeTO;
+        final Object[] params = {dispute};
         final Object[] result = {null};
 
-        runUpdate(wsContext, new Runnable() {
+        runUpdateValidation(wsContext, new Runnable() {
 
             @Override
             public void run() {
-                if (disputeTOTmp != null) {
+                DisputeTO dispute = (DisputeTO) params[0];
+                if (dispute != null) {
+
                     Dispute newDispute = administrativeEJB.saveDispute(
-                            GenericTranslator.fromTO(disputeTOTmp, Dispute.class,
-                            administrativeEJB.getDisputeById(disputeTOTmp.getId())));
+                            GenericTranslator.fromTO(dispute, Dispute.class,
+                            administrativeEJB.getDispute(dispute.getId())));
                     result[0] = GenericTranslator.toTO(newDispute, DisputeTO.class);
                 }
             }
@@ -704,6 +730,7 @@ public class Administrative extends AbstractWebService {
 
         return (DisputeTO) result[0];
     }
+    
 
     /**
      * See {@linkplain AdministrativeEJB#saveDisputeComments(java.lang.String,

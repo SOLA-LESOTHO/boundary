@@ -43,6 +43,7 @@ public class DisputeSearchResultTO extends AbstractTO {
     private Date completiondate;
     private String leaseNumber;
     private String plotNumber;
+    private String caseType;
     
     public DisputeSearchResultTO(){
         super();
@@ -94,6 +95,14 @@ public class DisputeSearchResultTO extends AbstractTO {
 
     public void setPlotNumber(String plotNumber) {
         this.plotNumber = plotNumber;
+    }
+
+    public String getCaseType() {
+        return caseType;
+    }
+
+    public void setCaseType(String caseType) {
+        this.caseType = caseType;
     }
     
 }

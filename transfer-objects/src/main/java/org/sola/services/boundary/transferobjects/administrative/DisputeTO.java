@@ -43,6 +43,9 @@ public class DisputeTO extends AbstractIdTO {
     private String leaseNumber;
     private String plotLocation;
     private String plotNumber;
+    private String caseType;
+    private boolean primaryRespondent;
+    private String actionRequired;
     private List<DisputeCommentsTO> disputeCommentsList;
     private List<DisputePartyTO> disputePartyList;
 
@@ -142,4 +145,29 @@ public class DisputeTO extends AbstractIdTO {
     public void setDisputePartyList(List<DisputePartyTO> disputePartyList) {
         this.disputePartyList = disputePartyList;
     }
+
+    public String getCaseType() {
+        return caseType;
+    }
+
+    public void setCaseType(String caseType) {
+        this.caseType = caseType;
+    }
+
+    public String getActionRequired() {
+        return actionRequired;
+    }
+
+    public void setActionRequired(String actionRequired) {
+        this.actionRequired = actionRequired;
+    }
+
+    public boolean isPrimaryRespondent() {
+        return primaryRespondent;
+    }
+
+    public void setPrimaryRespondent(boolean primaryRespondent) {
+        this.primaryRespondent = primaryRespondent;
+    }
+    
 }
