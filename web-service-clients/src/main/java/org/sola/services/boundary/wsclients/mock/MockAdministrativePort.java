@@ -29,6 +29,7 @@
  */
 package org.sola.services.boundary.wsclients.mock;
 
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -36,6 +37,7 @@ import org.sola.services.boundary.wsclients.AdministrativeClient;
 import org.sola.webservices.administrative.*;
 import org.sola.webservices.transferobjects.ValidationResult;
 import org.sola.webservices.transferobjects.administrative.*;
+import org.sola.webservices.transferobjects.cadastre.CadastreObjectTO;
 
 /**
  * Provides a mock implementation for the
@@ -606,5 +608,25 @@ public class MockAdministrativePort implements Administrative {
             processExceptionBasic(ex);
             return null;
         }
+    }
+
+    @Override
+    public LeaseTO getLease(String leaseId) throws SOLAFault, UnhandledFault {
+        throw new UnsupportedOperationException("Not supported yet.");
+    }
+
+    @Override
+    public List<LeaseTO> getLeasesByServiceId(String serviceId) throws SOLAAccessFault, SOLAFault, UnhandledFault {
+        throw new UnsupportedOperationException("Not supported yet.");
+    }
+
+    @Override
+    public LeaseTO saveLease(LeaseTO lease, String serviceId) throws SOLAFault, UnhandledFault {
+        throw new UnsupportedOperationException("Not supported yet.");
+    }
+
+    @Override
+    public BigDecimal calculateGroundRent(CadastreObjectTO cadastreObject) throws SOLAAccessFault, SOLAFault, UnhandledFault {
+        throw new UnsupportedOperationException("Not supported yet.");
     }
 }

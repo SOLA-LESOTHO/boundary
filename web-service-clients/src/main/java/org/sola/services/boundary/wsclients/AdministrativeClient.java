@@ -29,13 +29,13 @@
  */
 package org.sola.services.boundary.wsclients;
 
-import java.util.Date;
+import java.math.BigDecimal;
 import java.util.List;
+import org.sola.common.RolesConstants;
 import org.sola.services.boundary.wsclients.exception.WebServiceClientException;
 import org.sola.webservices.transferobjects.ValidationResult;
 import org.sola.webservices.transferobjects.administrative.*;
-import org.sola.webservices.transferobjects.search.RightsExportParamsTO;
-import org.sola.webservices.transferobjects.search.RightsExportResultTO;
+import org.sola.webservices.transferobjects.cadastre.CadastreObjectTO;
 
 /**
  * Interface for the Administrative Service. Implemented by {@linkplain AdministrativeClientImpl}.
@@ -168,6 +168,14 @@ public interface AdministrativeClient extends AbstractWSClient {
      * Administrative.saveDisputeParty - Identifier for the createDisputeParty method
      */
     public static final String SAVE_DISPUTE_PARTY = SERVICE_NAME + "saveDisputeParty";
+    
+    public static final String GET_LEASE = SERVICE_NAME + "getLease";
+    
+    public static final String GET_LEASES_BY_SERVICE_ID = SERVICE_NAME + "getLeasesByServiceId";
+    
+    public static final String SAVE_LEASE = SERVICE_NAME + "saveLease";
+    
+    public static final String CALCULATE_GROUND_RENT = SERVICE_NAME + "calculateGroundRent";
 
     /**
      * Creates a new BA Unit Area for a BaUnitId
@@ -476,4 +484,28 @@ public interface AdministrativeClient extends AbstractWSClient {
      */
     DisputeCommentsTO getDisputeCommentsById(String id) throws WebServiceClientException;
     
+    /** 
+     * Returns lease by ID. 
+     * @param leaseId Lease ID
+     */
+    LeaseTO getLease(String leaseId) throws WebServiceClientException;
+    
+    /** 
+     * Returns leases created with given service ID. 
+     * @param serviceId Service ID
+     */
+    List<LeaseTO> getLeasesByServiceId(String serviceId) throws WebServiceClientException;
+    
+    /** 
+     * Saves lease. 
+     * @param lease Lease to save
+     * @param serviceId Service ID, originated create or save action.
+     */
+    LeaseTO saveLease(LeaseTO lease, String serviceId) throws WebServiceClientException;
+    
+    /**
+     * Returns calculated ground rent for the given cadastre object.
+     * @param cadastreObject Cadastre object used to calculate ground rent.
+     */
+    BigDecimal calculateGroundRent(CadastreObjectTO cadastreObject) throws WebServiceClientException;
 }

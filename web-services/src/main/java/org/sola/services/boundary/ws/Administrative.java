@@ -29,8 +29,8 @@
  */
 package org.sola.services.boundary.ws;
 
+import java.math.BigDecimal;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 import javax.annotation.Resource;
 import javax.ejb.EJB;
@@ -38,8 +38,9 @@ import javax.jws.WebMethod;
 import javax.jws.WebParam;
 import javax.jws.WebService;
 import javax.xml.ws.WebServiceContext;
+import org.sola.common.Money;
 import org.sola.services.boundary.transferobjects.administrative.*;
-import org.sola.services.boundary.transferobjects.casemanagement.LodgementViewParamsTO;
+import org.sola.services.boundary.transferobjects.cadastre.CadastreObjectTO;
 import org.sola.services.common.ServiceConstants;
 import org.sola.services.common.br.ValidationResult;
 import org.sola.services.common.contracts.GenericTranslator;
@@ -48,6 +49,7 @@ import org.sola.services.common.webservices.AbstractWebService;
 import org.sola.services.ejb.administrative.businesslogic.AdministrativeEJB;
 import org.sola.services.ejb.administrative.businesslogic.AdministrativeEJBLocal;
 import org.sola.services.ejb.administrative.repository.entities.*;
+import org.sola.services.ejb.cadastre.repository.entities.CadastreObject;
 import org.sola.services.ejb.transaction.businesslogic.TransactionEJBLocal;
 import org.sola.services.ejb.transaction.repository.entities.TransactionBasic;
 import org.sola.services.ejbs.admin.businesslogic.repository.entities.User;
@@ -824,11 +826,11 @@ public class Administrative extends AbstractWebService {
     @WebMethod(operationName = "getDispute")
     public DisputeTO GetDispute(@WebParam(name = "id") String id)
             throws SOLAAccessFault, SOLAFault, UnhandledFault {
-        
+
         final String idTmp = id;
         final Object[] result = {null};
 
-        runGeneralQuery(wsContext, new Runnable(){
+        runGeneralQuery(wsContext, new Runnable() {
 
             @Override
             public void run() {
@@ -937,5 +939,104 @@ public class Administrative extends AbstractWebService {
         });
 
         return (DisputePartyTO) result[0];
+    }
+
+    /**
+     * Returns lease by provided ID.
+     *
+     * @param Lease ID.
+     */
+    @WebMethod(operationName = "getLease")
+    public LeaseTO getLease(@WebParam(name = "leaseId") final String leaseId)
+            throws SOLAFault, UnhandledFault {
+
+        final Object[] result = {null};
+        runOpenQuery(wsContext, new Runnable() {
+
+            @Override
+            public void run() {
+                result[0] = GenericTranslator.toTO(administrativeEJB.getLease(leaseId), LeaseTO.class);
+            }
+        });
+
+        return (LeaseTO) result[0];
+    }
+
+    /**
+     * Saves lease.
+     *
+     * @param lease Lease object to save.
+     * @param serviceId Service ID, used to create/save lease.
+     */
+    @WebMethod(operationName = "saveLease")
+    public LeaseTO saveLease(@WebParam(name = "lease") final LeaseTO lease,
+            @WebParam(name = "serviceId") final String serviceId)
+            throws SOLAFault, UnhandledFault {
+
+        final Object[] result = {null};
+        runOpenQuery(wsContext, new Runnable() {
+
+            @Override
+            public void run() {
+                Lease tmpLease = GenericTranslator.fromTO(lease, Lease.class, administrativeEJB.getLease(lease.getId()));
+                result[0] = GenericTranslator.toTO(administrativeEJB.saveLease(tmpLease, serviceId), LeaseTO.class);
+            }
+        });
+
+        return (LeaseTO) result[0];
+    }
+
+    /**
+     * Retrieves the list of Leases associated with the specified Service.
+     *
+     * @param serviceId The Service identifier
+     * @throws SOLAFault
+     * @throws UnhandledFault
+     * @throws SOLAAccessFault
+     */
+    @WebMethod(operationName = "getLeasesByServiceId")
+    public List<LeaseTO> getLeasesByServiceId(@WebParam(name = "serviceId") final String serviceId)
+            throws SOLAFault, UnhandledFault, SOLAAccessFault {
+
+        final Object[] result = {new ArrayList<LeaseTO>()};
+
+        runOpenQuery(wsContext, new Runnable() {
+
+            @Override
+            public void run() {
+                if (serviceId != null) {
+                    TransactionBasic transaction = transactionEJB.getTransactionByServiceId(serviceId, false, TransactionBasic.class);
+                    if (transaction != null) {
+                        List<Lease> leases = administrativeEJB.getLeasesByTransactionId(transaction.getId());
+                        result[0] = GenericTranslator.toTOList(leases, LeaseTO.class);
+                    }
+                }
+            }
+        });
+        return (List<LeaseTO>) result[0];
+    }
+
+    /**
+     * Returns calculated ground rent for the given cadastre object.
+     *
+     * @param cadastreObject Cadastre object used to calculate ground rent.
+     * @throws SOLAFault
+     * @throws UnhandledFault
+     * @throws SOLAAccessFault
+     */
+    @WebMethod(operationName = "calculateGroundRent")
+    public BigDecimal calculateGroundRent(@WebParam(name = "cadastreObject") final CadastreObjectTO cadastreObject)
+            throws SOLAFault, UnhandledFault, SOLAAccessFault {
+
+        final Object[] result = {new ArrayList<BigDecimal>()};
+
+        runOpenQuery(wsContext, new Runnable() {
+
+            @Override
+            public void run() {
+                result[0] = administrativeEJB.calculateGroundRent(GenericTranslator.fromTO(cadastreObject, CadastreObject.class, null));
+            }
+        });
+        return (BigDecimal) result[0];
     }
 }

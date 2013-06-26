@@ -29,13 +29,16 @@
  */
 package org.sola.services.boundary.wsclients;
 
+import java.math.BigDecimal;
 import java.util.List;
 import javax.xml.namespace.QName;
+import org.sola.common.Money;
 import org.sola.services.boundary.wsclients.exception.WebServiceClientException;
 import org.sola.webservices.administrative.Administrative;
 import org.sola.webservices.administrative.AdministrativeService;
 import org.sola.webservices.transferobjects.ValidationResult;
 import org.sola.webservices.transferobjects.administrative.*;
+import org.sola.webservices.transferobjects.cadastre.CadastreObjectTO;
 
 /**
  * Implementation class for the {@linkplain AdministrativeClient} interface.
@@ -500,6 +503,66 @@ public class AdministrativeClientImpl extends AbstractWSClientImpl
             processException(methodName, e);
         } finally {
             afterWebMethod(methodName, result, id);
+        }
+        return result;
+    }
+
+    @Override
+    public LeaseTO getLease(String leaseId) throws WebServiceClientException {
+        LeaseTO result = null;
+        final String methodName = AdministrativeClient.GET_LEASE;
+        try {
+            beforeWebMethod(methodName, leaseId);
+            result = getPort().getLease(leaseId);
+        } catch (Exception e) {
+            processException(methodName, e);
+        } finally {
+            afterWebMethod(methodName, result, leaseId);
+        }
+        return result;
+    }
+
+    @Override
+    public LeaseTO saveLease(LeaseTO lease, String serviceId) throws WebServiceClientException {
+        LeaseTO result = null;
+        final String methodName = AdministrativeClient.SAVE_LEASE;
+        try {
+            beforeWebMethod(methodName, lease);
+            result = getPort().saveLease(lease, serviceId);
+        } catch (Exception e) {
+            processException(methodName, e);
+        } finally {
+            afterWebMethod(methodName, result, lease);
+        }
+        return result;
+    }
+
+    @Override
+    public List<LeaseTO> getLeasesByServiceId(String serviceId) throws WebServiceClientException {
+        List<LeaseTO> result = null;
+        final String methodName = AdministrativeClient.GET_LEASES_BY_SERVICE_ID;
+        try {
+            beforeWebMethod(methodName, serviceId);
+            result = getPort().getLeasesByServiceId(serviceId);
+        } catch (Exception e) {
+            processException(methodName, e);
+        } finally {
+            afterWebMethod(methodName, result, serviceId);
+        }
+        return result;
+    }
+
+    @Override
+    public BigDecimal calculateGroundRent(CadastreObjectTO cadastreObject) throws WebServiceClientException {
+        BigDecimal result = BigDecimal.ZERO;
+        final String methodName = AdministrativeClient.CALCULATE_GROUND_RENT;
+        try {
+            beforeWebMethod(methodName, cadastreObject);
+            result = getPort().calculateGroundRent(cadastreObject);
+        } catch (Exception e) {
+            processException(methodName, e);
+        } finally {
+            afterWebMethod(methodName, result, cadastreObject);
         }
         return result;
     }
