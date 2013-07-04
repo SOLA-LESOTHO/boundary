@@ -50,6 +50,7 @@ public class PartyTO extends AbstractIdTO {
     private String genderCode;
     private List<PartyRoleTO> roleList;
     private boolean rightHolder;
+    private String legalType;
     
     private AddressTO address;
 
@@ -206,5 +207,13 @@ public class PartyTO extends AbstractIdTO {
 
     public void setRightHolder(boolean rightHolder) {
         this.rightHolder = rightHolder;
+    }
+
+    public String getLegalType() {
+        return legalType;
+    }
+
+    public void setLegalType(String legalType) {
+        this.legalType = legalType;
     }
 }

@@ -611,21 +611,6 @@ public class MockAdministrativePort implements Administrative {
     }
 
     @Override
-    public LeaseTO getLease(String leaseId) throws SOLAFault, UnhandledFault {
-        throw new UnsupportedOperationException("Not supported yet.");
-    }
-
-    @Override
-    public List<LeaseTO> getLeasesByServiceId(String serviceId) throws SOLAAccessFault, SOLAFault, UnhandledFault {
-        throw new UnsupportedOperationException("Not supported yet.");
-    }
-
-    @Override
-    public LeaseTO saveLease(LeaseTO lease, String serviceId) throws SOLAFault, UnhandledFault {
-        throw new UnsupportedOperationException("Not supported yet.");
-    }
-
-    @Override
     public BigDecimal calculateGroundRent(CadastreObjectTO cadastreObject) throws SOLAAccessFault, SOLAFault, UnhandledFault {
         throw new UnsupportedOperationException("Not supported yet.");
     }

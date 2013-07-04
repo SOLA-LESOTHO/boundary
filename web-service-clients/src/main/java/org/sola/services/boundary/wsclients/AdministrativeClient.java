@@ -484,25 +484,6 @@ public interface AdministrativeClient extends AbstractWSClient {
      */
     DisputeCommentsTO getDisputeCommentsById(String id) throws WebServiceClientException;
     
-    /** 
-     * Returns lease by ID. 
-     * @param leaseId Lease ID
-     */
-    LeaseTO getLease(String leaseId) throws WebServiceClientException;
-    
-    /** 
-     * Returns leases created with given service ID. 
-     * @param serviceId Service ID
-     */
-    List<LeaseTO> getLeasesByServiceId(String serviceId) throws WebServiceClientException;
-    
-    /** 
-     * Saves lease. 
-     * @param lease Lease to save
-     * @param serviceId Service ID, originated create or save action.
-     */
-    LeaseTO saveLease(LeaseTO lease, String serviceId) throws WebServiceClientException;
-    
     /**
      * Returns calculated ground rent for the given cadastre object.
      * @param cadastreObject Cadastre object used to calculate ground rent.

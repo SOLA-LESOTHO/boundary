@@ -32,6 +32,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import org.sola.services.boundary.transferobjects.casemanagement.PartySummaryTO;
+import org.sola.services.boundary.transferobjects.casemanagement.PartyTO;
 import org.sola.services.boundary.transferobjects.casemanagement.SourceTO;
 import org.sola.services.common.contracts.AbstractIdTO;
 
@@ -55,12 +56,20 @@ public class RrrTO extends AbstractIdTO {
     private List<SourceTO> sourceList;
     private List<RrrShareTO> rrrShareList;
     private BaUnitNotationTO notation;
-    private List<PartySummaryTO> rightHolderList;
+    private List<PartyTO> rightHolderList;
     private String concatenatedName;
     private String registrationNumber;
     private Date statusChangeDate;
     private String deedTypeCode;
     private String cadastreObjectId;
+    private BigDecimal groundRent;
+    private Date startDate;
+    private Date executionDate;
+    private String leaseNumber;
+    private BigDecimal stampDuty;
+    private BigDecimal transferDuty;
+    private BigDecimal registrationFee;
+    private List<LeaseSpecialConditionTO> leaseSpecialConditionList;
     
     public String getConcatenatedName() {
         return concatenatedName;
@@ -150,17 +159,17 @@ public class RrrTO extends AbstractIdTO {
         this.nr = nr;
     }
 
-    public List<PartySummaryTO> getRightHolderList() {
+    public List<PartyTO> getRightHolderList() {
         return rightHolderList;
     }
 
-    public void setRightHolderList(List<PartySummaryTO> rightHolderList) {
+    public void setRightHolderList(List<PartyTO> rightHolderList) {
         this.rightHolderList = rightHolderList;
     }
 
-    public void addRightHolder(PartySummaryTO partySummaryTO) {
+    public void addRightHolder(PartyTO partySummaryTO) {
         if (rightHolderList == null) {
-            rightHolderList = new ArrayList<PartySummaryTO>();
+            rightHolderList = new ArrayList<PartyTO>();
         }
         rightHolderList.add(partySummaryTO);
     }
@@ -274,5 +283,68 @@ public class RrrTO extends AbstractIdTO {
     public void setCadastreObjectId(String cadastreObjectId) {
         this.cadastreObjectId = cadastreObjectId;
     }
-      
+
+    public Date getExecutionDate() {
+        return executionDate;
+    }
+
+    public void setExecutionDate(Date executionDate) {
+        this.executionDate = executionDate;
+    }
+
+    public String getLeaseNumber() {
+        return leaseNumber;
+    }
+
+    public void setLeaseNumber(String leaseNumber) {
+        this.leaseNumber = leaseNumber;
+    }
+
+    public List<LeaseSpecialConditionTO> getLeaseSpecialConditionList() {
+        return leaseSpecialConditionList;
+    }
+
+    public void setLeaseSpecialConditionList(List<LeaseSpecialConditionTO> leaseSpecialConditionList) {
+        this.leaseSpecialConditionList = leaseSpecialConditionList;
+    }
+
+    public BigDecimal getRegistrationFee() {
+        return registrationFee;
+    }
+
+    public void setRegistrationFee(BigDecimal registrationFee) {
+        this.registrationFee = registrationFee;
+    }
+
+    public BigDecimal getStampDuty() {
+        return stampDuty;
+    }
+
+    public void setStampDuty(BigDecimal stampDuty) {
+        this.stampDuty = stampDuty;
+    }
+
+    public Date getStartDate() {
+        return startDate;
+    }
+
+    public void setStartDate(Date startDate) {
+        this.startDate = startDate;
+    }
+
+    public BigDecimal getTransferDuty() {
+        return transferDuty;
+    }
+
+    public void setTransferDuty(BigDecimal transferDuty) {
+        this.transferDuty = transferDuty;
+    }
+
+    public BigDecimal getGroundRent() {
+        return groundRent;
+    }
+
+    public void setGroundRent(BigDecimal groundRent) {
+        this.groundRent = groundRent;
+    }
 }

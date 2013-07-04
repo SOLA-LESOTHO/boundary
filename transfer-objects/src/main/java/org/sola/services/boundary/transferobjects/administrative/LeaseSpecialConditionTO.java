@@ -3,7 +3,7 @@ package org.sola.services.boundary.transferobjects.administrative;
 import org.sola.services.common.contracts.AbstractIdTO;
 
 public class LeaseSpecialConditionTO extends AbstractIdTO {
-    private String leaseId;
+    private String rrrId;
     private String conditionText;
     
     public LeaseSpecialConditionTO(){
@@ -18,11 +18,11 @@ public class LeaseSpecialConditionTO extends AbstractIdTO {
         this.conditionText = conditionText;
     }
 
-    public String getLeaseId() {
-        return leaseId;
+    public String getRrrId() {
+        return rrrId;
     }
 
-    public void setLeaseId(String leaseId) {
-        this.leaseId = leaseId;
+    public void setRrrId(String rrrId) {
+        this.rrrId = rrrId;
     }
 }
