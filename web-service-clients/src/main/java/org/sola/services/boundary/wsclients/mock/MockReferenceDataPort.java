@@ -357,22 +357,8 @@ public class MockReferenceDataPort implements ReferenceData {
         }
     }
 
-    /**
-     * Response Key = ReferenceDataClient.GET_LAND_USE_TYPES
-     *
-     * @return default = MockTOFactory.createLandUseTypes()
-     */
-    @Override
-    public List<LandUseTypeTO> getLandUseTypes(String arg0) throws SOLAAccessFault, SOLAFault, UnhandledFault {
-        List<LandUseTypeTO> defaultResponse = MockTOFactory.createLandUseTypes();
-        try {
-            return getManager().getResponse(ReferenceDataClient.GET_LAND_USE_TYPES,
-                    List.class, defaultResponse, arg0);
-        } catch (Exception ex) {
-            processExceptionAccess(ex);
-            return null;
-        }
-    }
+    
+    
 
     /**
      * Response Key = ReferenceDataClient.GET_TYPE_ACTIONS
@@ -746,5 +732,16 @@ public class MockReferenceDataPort implements ReferenceData {
     @Override
     public ApplicationFormWithBinaryTO getApplicationForm(String arg0, String arg1) throws SOLAFault, UnhandledFault {
         throw new UnsupportedOperationException("Not supported yet.");
+    }
+    
+    @Override
+    public List<RoadClassTypeTO> getRoadClassType(String arg0) throws SOLAFault, UnhandledFault, SOLAAccessFault{
+        List<RoadClassTypeTO> defaultResponse = MockTOFactory.createRoadClassTypes();
+        try{
+            return getManager().getResponse(arg0, List.class, defaultResponse, arg0);
+        }catch (Exception ex){
+            processExceptionBasic(ex);
+            return null;
+        }
     }
 }

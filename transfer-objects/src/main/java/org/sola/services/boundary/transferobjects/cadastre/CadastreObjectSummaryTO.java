@@ -13,13 +13,13 @@ public class CadastreObjectSummaryTO extends AbstractIdTO {
     private String nameFirstpart;
     private String nameLastpart;
     private String statusCode;
-    private String landUseCode;
     private String landGradeCode;
     private Date surveyDate;
     private BigDecimal surveyFee;
     private String surveyor;
     private String remarks;
     private String valuationZone;
+    private String roadClassCode;
     
     public CadastreObjectSummaryTO(){
         super();
@@ -39,14 +39,6 @@ public class CadastreObjectSummaryTO extends AbstractIdTO {
 
     public void setHistoricDatetime(Date historicDatetime) {
         this.historicDatetime = historicDatetime;
-    }
-
-    public String getLandUseCode() {
-        return landUseCode;
-    }
-
-    public void setLandUseCode(String landUseCode) {
-        this.landUseCode = landUseCode;
     }
 
     public String getLandGradeCode() {
@@ -143,5 +135,13 @@ public class CadastreObjectSummaryTO extends AbstractIdTO {
 
     public void setValuationZone(String valuationZone) {
         this.valuationZone = valuationZone;
-    } 
+    }
+
+    public String getRoadClassCode() {
+        return roadClassCode;
+    }
+
+    public void setRoadClassCode(String roadClassCode) {
+        this.roadClassCode = roadClassCode;
+    }
 }

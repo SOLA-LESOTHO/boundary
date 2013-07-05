@@ -222,6 +222,8 @@ public interface ReferenceDataClient extends AbstractWSClient {
      * ReferenceData.getApplicationForm - Identifier for the getApplicationForm method
      */
     public static final String GET_APPLICATION_FORM = SERVICE_NAME + "getApplicationForm";
+    
+    public static final String GET_ROAD_CLASS_TYPE = SERVICE_NAME + "getRoadClassType";
 
     /**
      * Return list of Application forms.
@@ -576,22 +578,8 @@ public interface ReferenceDataClient extends AbstractWSClient {
      */
     List<RegistrationStatusTypeTO> getRegistrationStatusTypes(String lang) throws WebServiceClientException;
 
-    /**
-     * Retrieves all cadastre.land_use_type code values using the default locale
-     * of the client to localize the display values.
-     *
-     * @throws WebServiceClientException
-     */
-    List<LandUseTypeTO> getLandUseTypes() throws WebServiceClientException;
 
-    /**
-     * Retrieves all cadastre.land_use_type code values.
-     *
-     * @param languageCode The language code to use for localization of display
-     * values.
-     * @throws WebServiceClientException
-     */
-    List<LandUseTypeTO> getLandUseTypes(String lang) throws WebServiceClientException;
+   
 
     /**
      * Retrieves all cadastre.cadastre_object_type code values using the default
@@ -782,22 +770,8 @@ public interface ReferenceDataClient extends AbstractWSClient {
      */
     List<LandGradeTypeTO> getLandGradeTypes(String lang) throws WebServiceClientException;
 
-     /**
-     * Retrieves all cadastre.land_use_type code values using the default locale of the
-     * client to localize the display values.
-     *
-     * @throws WebServiceClientException
-     */
-    List<DeedTypeTO> getDeedTypes() throws WebServiceClientException;
-
-    /**
-     * Retrieves all cadastre.land_use_type code values.
-     *
-     * @param languageCode The language code to use for localization of display values.
-     * @throws WebServiceClientException
-     */
-    List<DeedTypeTO> getDeedTypes(String lang) throws WebServiceClientException;
     
+
     /** 
      * Returns application form together with binary content. 
      * @param code Application form code used to search record.
@@ -810,5 +784,9 @@ public interface ReferenceDataClient extends AbstractWSClient {
      * @param code Application form code used to search record.
      */
     ApplicationFormWithBinaryTO getApplicationForm(String code) throws WebServiceClientException;
+    
+    List<RoadClassTypeTO> getRoadClassType() throws WebServiceClientException;
+    
+    List<RoadClassTypeTO> getRoadClassType(String code) throws WebServiceClientException;
     
 }
