@@ -57,10 +57,9 @@ public class RrrTO extends AbstractIdTO {
     private List<RrrShareTO> rrrShareList;
     private BaUnitNotationTO notation;
     private List<PartyTO> rightHolderList;
-    private String concatenatedName;
     private String registrationNumber;
     private Date statusChangeDate;
-    private String deedTypeCode;
+    private String landUseCode;
     private String cadastreObjectId;
     private BigDecimal groundRent;
     private Date startDate;
@@ -70,15 +69,7 @@ public class RrrTO extends AbstractIdTO {
     private BigDecimal transferDuty;
     private BigDecimal registrationFee;
     private List<LeaseSpecialConditionTO> leaseSpecialConditionList;
-    
-    public String getConcatenatedName() {
-        return concatenatedName;
-    }
-
-    public void setConcatenatedName(String concatenatedName) {
-        this.concatenatedName = concatenatedName;
-    }
-    
+      
     public RrrTO(){
         super();
     }
@@ -268,13 +259,14 @@ public class RrrTO extends AbstractIdTO {
         this.statusChangeDate = statusChangeDate;
     }
 
-    public String getDeedTypeCode() {
-        return deedTypeCode;
+    public String getLandUseCode() {
+        return landUseCode;
     }
 
-    public void setDeedTypeCode(String deedTypeCode) {
-        this.deedTypeCode = deedTypeCode;
+    public void setLandUseCode(String landUseCode) {
+        this.landUseCode = landUseCode;
     }
+
 
     public String getCadastreObjectId() {
         return cadastreObjectId;

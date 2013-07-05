@@ -5,7 +5,6 @@ import org.sola.services.common.contracts.AbstractTO;
 public class CadastreObjectSearchParamsTO extends AbstractTO {
     private String nameFirstPart;
     private String nameLastPart;
-    private String landUseCode;
     private String address;
     
     public CadastreObjectSearchParamsTO(){
@@ -18,14 +17,6 @@ public class CadastreObjectSearchParamsTO extends AbstractTO {
 
     public void setAddress(String address) {
         this.address = address;
-    }
-
-    public String getLandUseCode() {
-        return landUseCode;
-    }
-
-    public void setLandUseCode(String landUseCode) {
-        this.landUseCode = landUseCode;
     }
 
     public String getNameFirstPart() {
