@@ -19,6 +19,7 @@ public class CadastreObjectSummaryTO extends AbstractIdTO {
     private String surveyor;
     private String remarks;
     private String valuationZone;
+    private String roadClassCode;
     
     public CadastreObjectSummaryTO(){
         super();
@@ -134,5 +135,13 @@ public class CadastreObjectSummaryTO extends AbstractIdTO {
 
     public void setValuationZone(String valuationZone) {
         this.valuationZone = valuationZone;
-    } 
+    }
+
+    public String getRoadClassCode() {
+        return roadClassCode;
+    }
+
+    public void setRoadClassCode(String roadClassCode) {
+        this.roadClassCode = roadClassCode;
+    }
 }

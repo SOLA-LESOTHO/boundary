@@ -438,27 +438,7 @@ public class ReferenceDataClientImpl extends AbstractWSClientImpl implements Ref
         return result;
     }
 
-    @Override
-    public List<LandUseTypeTO> getLandUseTypes()
-            throws WebServiceClientException {
-        return getLandUseTypes(getLanguageCode());
-    }
 
-    @Override
-    public List<LandUseTypeTO> getLandUseTypes(String lang)
-            throws WebServiceClientException {
-        List<LandUseTypeTO> result = null;
-        final String methodName = ReferenceDataClient.GET_LAND_USE_TYPES;
-        try {
-            beforeWebMethod(methodName, lang);
-            result = getPort().getLandUseTypes(lang);
-        } catch (Exception e) {
-            processException(methodName, e);
-        } finally {
-            afterWebMethod(methodName, result, lang);
-        }
-        return result;
-    }
     
    @Override
     public List<LandGradeTypeTO> getLandGradeTypes()
@@ -721,6 +701,26 @@ public class ReferenceDataClientImpl extends AbstractWSClientImpl implements Ref
         }
         return result;
     }
+    
+    @Override
+    public List<RoadClassTypeTO> getRoadClassType() throws WebServiceClientException{
+        return getRoadClassType(getLanguageCode());
+    }
+    
+    @Override
+    public List<RoadClassTypeTO> getRoadClassType(String lang) throws WebServiceClientException{
+        List<RoadClassTypeTO> result = null;
+        final String methodName = ReferenceDataClient.GET_ROAD_CLASS_TYPE;
+        try {
+            beforeWebMethod(methodName, lang);
+            result = getPort().getRoadClassType(lang);
+        } catch (Exception e) {
+            processException(methodName, e);
+        } finally {
+            afterWebMethod(methodName, result, lang);
+        }
+        return result;
+    }
 
     @Override
     public List<OtherAuthoritiesTO> getOtherAuthorities() throws WebServiceClientException {
@@ -762,27 +762,7 @@ public class ReferenceDataClientImpl extends AbstractWSClientImpl implements Ref
         return result;
     }
     
-    @Override
-    public List<DeedTypeTO> getDeedTypes()
-            throws WebServiceClientException {
-        return getDeedTypes(getLanguageCode());
-    }
 
-    @Override
-    public List<DeedTypeTO> getDeedTypes(String lang)
-            throws WebServiceClientException {
-        List<DeedTypeTO> result = null;
-        final String methodName = ReferenceDataClient.GET_DEED_TYPES;
-        try {
-            beforeWebMethod(methodName, lang);
-            result = getPort().getDeedTypes(lang);
-        } catch (Exception e) {
-            processException(methodName, e);
-        } finally {
-            afterWebMethod(methodName, result, lang);
-        }
-        return result;
-    }
 
     @Override
     public ApplicationFormWithBinaryTO getApplicationForm(String code, String lang) throws WebServiceClientException {

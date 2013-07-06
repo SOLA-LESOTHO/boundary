@@ -378,14 +378,7 @@ public class MockTOFactory {
     /**
      * Creates a default list of land use types
      */
-    public static List<LandUseTypeTO> createLandUseTypes() {
-        List<LandUseTypeTO> result = new ArrayList<LandUseTypeTO>();
-        result.add(createCode(LandUseTypeTO.class, "type1", "Type1"));
-        result.add(createCode(LandUseTypeTO.class, "type2", "Type2"));
-        result.add(createCode(LandUseTypeTO.class, "type3", "Type3"));
 
-        return result;
-    }
 
     /**
      * Creates a default list of request types using generics so that it is
@@ -524,6 +517,21 @@ public class MockTOFactory {
         List<DeedTypeTO> result = new ArrayList<DeedTypeTO>();
         result.add(createCode(DeedTypeTO.class, "notarialBond", "notarialBond"));
         result.add(createCode(DeedTypeTO.class, "mortgageBond", "mortgageBond"));
+   
+        return result;
+    }
+    
+        /**
+     * Creates a default list of land grade types
+     */
+    public static List<RoadClassTypeTO> createRoadClassTypes() {
+        List<RoadClassTypeTO> result = new ArrayList<RoadClassTypeTO>();
+        result.add(createCode(RoadClassTypeTO.class, "main_surfaced", "Main Tarred Road"));
+        result.add(createCode(RoadClassTypeTO.class, "main_unsurfaced", "Main Untarred Road"));
+        result.add(createCode(RoadClassTypeTO.class, "minor_surfaced", "Minor Tarred Road"));
+        result.add(createCode(RoadClassTypeTO.class, "minor_unsurfaced", "Minor Untarred Road"));
+        result.add(createCode(RoadClassTypeTO.class, "secondary_surfaced", "Secondary Tarred Road"));
+        result.add(createCode(RoadClassTypeTO.class, "secondary_unsurfaced", "Secondary Untarred Road"));
    
         return result;
     }
