@@ -55,6 +55,7 @@ import org.sola.services.ejb.administrative.repository.entities.*;
 import org.sola.services.ejb.application.repository.entities.*;
 import org.sola.services.ejb.cadastre.businesslogic.CadastreEJBLocal;
 import org.sola.services.ejb.cadastre.repository.entities.CadastreObjectType;
+import org.sola.services.ejb.cadastre.repository.entities.LandUseType;
 import org.sola.services.ejb.party.repository.entities.CommunicationType;
 import org.sola.services.ejb.party.repository.entities.GenderType;
 import org.sola.services.ejb.party.repository.entities.IdType;
@@ -1073,6 +1074,10 @@ public class ReferenceData extends AbstractWebService {
                     codeEntity = applicationEJB.getCodeEntity(ApplicationFormWithBinary.class, refDataTO.getCode());
                     codeEntity = GenericTranslator.fromTO(refDataTO, ApplicationFormWithBinary.class, codeEntity);
                     applicationEJB.saveCodeEntity(codeEntity);
+                } else if (refDataTO instanceof LandUseTypeTO) {
+                    codeEntity = cadastreEJB.getCodeEntity(LandUseType.class, refDataTO.getCode());
+                    codeEntity = GenericTranslator.fromTO(refDataTO, LandUseType.class, codeEntity);
+                    applicationEJB.saveCodeEntity(codeEntity);
                 }
                 result = GenericTranslator.toTO(codeEntity, refDataTO.getClass());
                 commitTransaction();
@@ -1250,5 +1255,33 @@ public class ReferenceData extends AbstractWebService {
         });
 
         return (List<RoadClassTypeTO>) result[0];
+    }
+    
+    /**
+* See {@linkplain org.sola.services.ejb.cadastre.businesslogic.CadastreEJB#getLandUseTypes(java.lang.String)
+* CadastreEJB.getCadastreObjectTypes}
+*
+* @throws SOLAFault
+* @throws UnhandledFault
+* @throws SOLAAccessFault
+*/
+    @WebMethod(operationName = "GetLandUseTypes")
+    public List<LandUseTypeTO> GetLandUseTypes(String languageCode)
+            throws SOLAFault, UnhandledFault, SOLAAccessFault {
+
+        final String languageCodeTmp = languageCode;
+        final Object[] result = {null};
+
+        runGeneralQuery(wsContext, new Runnable() {
+
+            @Override
+            public void run() {
+                result[0] = GenericTranslator.toTOList(
+                        cadastreEJB.getLandUseTypes(languageCodeTmp),
+                        LandUseTypeTO.class);
+            }
+        });
+
+        return (List<LandUseTypeTO>) result[0];
     }
 }

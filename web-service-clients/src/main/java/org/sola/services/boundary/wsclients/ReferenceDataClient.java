@@ -30,6 +30,7 @@
 package org.sola.services.boundary.wsclients;
 
 import java.util.List;
+import org.sola.common.RolesConstants;
 
 import org.sola.services.boundary.wsclients.exception.WebServiceClientException;
 import org.sola.webservices.transferobjects.AbstractCodeTO;
@@ -188,15 +189,18 @@ public interface ReferenceDataClient extends AbstractWSClient {
      * LAA Addition thoriso
      */
     /**
-     * ReferenceData.getDisputeAction - Identifier for the getDisputeAction method
+     * ReferenceData.getDisputeAction - Identifier for the getDisputeAction
+     * method
      */
     public static final String GET_DISPUTE_ACTION = SERVICE_NAME + "getDisputeAction";
     /**
-     * ReferenceData.getDisputeCategory - Identifier for the getDisputeCategory method
+     * ReferenceData.getDisputeCategory - Identifier for the getDisputeCategory
+     * method
      */
     public static final String GET_DISPUTE_CATEGORY = SERVICE_NAME + "getDisputeCategory";
     /**
-     * ReferenceData.getRequestStatus - Identifier for the getRequestStatus method
+     * ReferenceData.getRequestStatus - Identifier for the getRequestStatus
+     * method
      */
     public static final String GET_DISPUTE_STATUS = SERVICE_NAME + "getDisputeStatus";
     /**
@@ -204,25 +208,24 @@ public interface ReferenceDataClient extends AbstractWSClient {
      */
     public static final String GET_DISPUTE_TYPE = SERVICE_NAME + "getDisputeType";
     /**
-     * ReferenceData.getOtherAuthorities - Identifier for the getOtherAuthorities method
+     * ReferenceData.getOtherAuthorities - Identifier for the
+     * getOtherAuthorities method
      */
     public static final String GET_OTHER_AUTHORITIES = SERVICE_NAME + "getOtherAuthorities";
-    
     /**
-     * ReferenceData.getCadastreObjectTypes - Identifier for the getCadastreObjectTypes method
+     * ReferenceData.getCadastreObjectTypes - Identifier for the
+     * getCadastreObjectTypes method
      */
     public static final String GET_LAND_GRADE_TYPES = SERVICE_NAME + "getLandGradeTypes";
-    
     /**
      * ReferenceData.getDeedTypes - Identifier for the getDeedTypes method
      */
     public static final String GET_DEED_TYPES = SERVICE_NAME + "getDeedTypes";
-    
     /**
-     * ReferenceData.getApplicationForm - Identifier for the getApplicationForm method
+     * ReferenceData.getApplicationForm - Identifier for the getApplicationForm
+     * method
      */
     public static final String GET_APPLICATION_FORM = SERVICE_NAME + "getApplicationForm";
-    
     public static final String GET_ROAD_CLASS_TYPE = SERVICE_NAME + "getRoadClassType";
 
     /**
@@ -234,7 +237,6 @@ public interface ReferenceDataClient extends AbstractWSClient {
      * Return list of Application forms using provided language.
      */
     List<ApplicationFormTO> getApplicationForms(String lang) throws WebServiceClientException;
-
 
     /**
      * Retrieves all source.source_type code values using the default locale of
@@ -578,9 +580,6 @@ public interface ReferenceDataClient extends AbstractWSClient {
      */
     List<RegistrationStatusTypeTO> getRegistrationStatusTypes(String lang) throws WebServiceClientException;
 
-
-   
-
     /**
      * Retrieves all cadastre.cadastre_object_type code values using the default
      * locale of the client to localize the display values.
@@ -685,22 +684,24 @@ public interface ReferenceDataClient extends AbstractWSClient {
      * @throws WebServiceClientException
      */
     List<DisputeActionTO> getDisputeAction() throws WebServiceClientException;
-      /**
-     * Retrieves all administrative.disputeAction code values using the
-     * default locale of the client to localize the display values.
+
+    /**
+     * Retrieves all administrative.disputeAction code values using the default
+     * locale of the client to localize the display values.
      *
      * @throws WebServiceClientException
      */
     List<DisputeActionTO> getDisputeAction(String lang) throws WebServiceClientException;
 
     /**
-     * Retrieves all administrative.disputeCategory code values using the default
-     * locale of the client to localize the display values.
+     * Retrieves all administrative.disputeCategory code values using the
+     * default locale of the client to localize the display values.
      *
      * @throws WebServiceClientException
      */
     List<DisputeCategoryTO> getDisputeCategory() throws WebServiceClientException;
-     /**
+
+    /**
      * Retrieves all administrative.disputeCategory code values using the
      * default locale of the client to localize the display values.
      *
@@ -715,9 +716,10 @@ public interface ReferenceDataClient extends AbstractWSClient {
      * @throws WebServiceClientException
      */
     List<DisputeStatusTO> getDisputeStatus() throws WebServiceClientException;
-     /**
-     * Retrieves all administrative.disputeStatus code values using the
-     * default locale of the client to localize the display values.
+
+    /**
+     * Retrieves all administrative.disputeStatus code values using the default
+     * locale of the client to localize the display values.
      *
      * @throws WebServiceClientException
      */
@@ -730,22 +732,24 @@ public interface ReferenceDataClient extends AbstractWSClient {
      * @throws WebServiceClientException
      */
     List<DisputeTypeTO> getDisputeType() throws WebServiceClientException;
+
     /**
-     * Retrieves all administrative.disputeType code values using the
-     * default locale of the client to localize the display values.
+     * Retrieves all administrative.disputeType code values using the default
+     * locale of the client to localize the display values.
      *
      * @throws WebServiceClientException
      */
     List<DisputeTypeTO> getDisputeType(String lang) throws WebServiceClientException;
 
     /**
-     * Retrieves all administrative.otherAuthorities code values using the default
-     * locale of the client to localize the display values.
+     * Retrieves all administrative.otherAuthorities code values using the
+     * default locale of the client to localize the display values.
      *
      * @throws WebServiceClientException
      */
     List<OtherAuthoritiesTO> getOtherAuthorities() throws WebServiceClientException;
-     /**
+
+    /**
      * Retrieves all administrative.otherAuthorities code values using the
      * default locale of the client to localize the display values.
      *
@@ -753,10 +757,9 @@ public interface ReferenceDataClient extends AbstractWSClient {
      */
     List<OtherAuthoritiesTO> getOtherAuthorities(String lang) throws WebServiceClientException;
 
-    
-     /**
-     * Retrieves all cadastre.land_use_type code values using the default locale of the
-     * client to localize the display values.
+    /**
+     * Retrieves all cadastre.land_use_type code values using the default locale
+     * of the client to localize the display values.
      *
      * @throws WebServiceClientException
      */
@@ -765,28 +768,38 @@ public interface ReferenceDataClient extends AbstractWSClient {
     /**
      * Retrieves all cadastre.land_use_type code values.
      *
-     * @param languageCode The language code to use for localization of display values.
+     * @param languageCode The language code to use for localization of display
+     * values.
      * @throws WebServiceClientException
      */
     List<LandGradeTypeTO> getLandGradeTypes(String lang) throws WebServiceClientException;
 
-    
-
-    /** 
-     * Returns application form together with binary content. 
+    /**
+     * Returns application form together with binary content.
+     *
      * @param code Application form code used to search record.
      * @param lang Language code
      */
     ApplicationFormWithBinaryTO getApplicationForm(String code, String lang) throws WebServiceClientException;
-    
-    /** 
-     * Returns application form together with binary content. 
+
+    /**
+     * Returns application form together with binary content.
+     *
      * @param code Application form code used to search record.
      */
     ApplicationFormWithBinaryTO getApplicationForm(String code) throws WebServiceClientException;
-    
+
     List<RoadClassTypeTO> getRoadClassType() throws WebServiceClientException;
-    
+
     List<RoadClassTypeTO> getRoadClassType(String code) throws WebServiceClientException;
+
+    /**
+     * Retrieves all cadastre.land_use_type code values using the default locale
+     * of the client to localize the display values.
+     *     
+* @throws WebServiceClientException
+     */
+    List<LandUseTypeTO> getLandUseTypes() throws WebServiceClientException;
     
+    List<LandUseTypeTO> getLandUseTypes(String lang) throws WebServiceClientException;
 }

@@ -783,4 +783,26 @@ public class ReferenceDataClientImpl extends AbstractWSClientImpl implements Ref
     public ApplicationFormWithBinaryTO getApplicationForm(String code) throws WebServiceClientException {
         return getApplicationForm(code, getLanguageCode());
     }
+    
+    @Override
+    public List<LandUseTypeTO> getLandUseTypes()
+            throws WebServiceClientException {
+        return getLandUseTypes(getLanguageCode());
+    }
+
+    @Override
+    public List<LandUseTypeTO> getLandUseTypes(String lang)
+            throws WebServiceClientException {
+        List<LandUseTypeTO> result = null;
+        final String methodName = ReferenceDataClient.GET_LAND_USE_TYPES;
+        try {
+            beforeWebMethod(methodName, lang);
+            result = getPort().getLandUseTypes(lang);
+        } catch (Exception e) {
+            processException(methodName, e);
+        } finally {
+            afterWebMethod(methodName, result, lang);
+        }
+        return result;
+    }
 }
