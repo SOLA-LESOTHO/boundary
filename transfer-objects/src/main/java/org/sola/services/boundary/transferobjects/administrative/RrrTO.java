@@ -31,7 +31,6 @@ import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
-import org.sola.services.boundary.transferobjects.casemanagement.PartySummaryTO;
 import org.sola.services.boundary.transferobjects.casemanagement.PartyTO;
 import org.sola.services.boundary.transferobjects.casemanagement.SourceTO;
 import org.sola.services.common.contracts.AbstractIdTO;
@@ -60,6 +59,8 @@ public class RrrTO extends AbstractIdTO {
     private String registrationNumber;
     private Date statusChangeDate;
     private String landUseCode;
+    private BigDecimal landUsable;
+    private BigDecimal personalLevy;
     private String cadastreObjectId;
     private BigDecimal groundRent;
     private Date startDate;
@@ -338,5 +339,21 @@ public class RrrTO extends AbstractIdTO {
 
     public void setGroundRent(BigDecimal groundRent) {
         this.groundRent = groundRent;
+    }
+
+    public BigDecimal getLandUsable() {
+        return landUsable;
+    }
+
+    public void setLandUsable(BigDecimal landUsable) {
+        this.landUsable = landUsable;
+    }
+
+    public BigDecimal getPersonalLevy() {
+        return personalLevy;
+    }
+
+    public void setPersonalLevy(BigDecimal personalLevy) {
+        this.personalLevy = personalLevy;
     }
 }
