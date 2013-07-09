@@ -38,6 +38,7 @@ public class BaUnitSearchResultTO extends AbstractReadWriteTO {
     private String rightholders;
     private String registrationNumber;
     private Date registrationDate;
+    private String leaseNumber;
     
     public BaUnitSearchResultTO(){
         super();
@@ -97,5 +98,13 @@ public class BaUnitSearchResultTO extends AbstractReadWriteTO {
 
     public void setRegistrationNumber(String registrationNumber) {
         this.registrationNumber = registrationNumber;
+    }
+
+    public String getLeaseNumber() {
+        return leaseNumber;
+    }
+
+    public void setLeaseNumber(String leaseNumber) {
+        this.leaseNumber = leaseNumber;
     }
 }
