@@ -45,10 +45,6 @@ public class ApplicationTO extends ApplicationSummaryTO {
     private BigDecimal tax;
     private BigDecimal totalFee;
     private BigDecimal totalAmountPaid;
-    private BigDecimal groundRent;
-    private BigDecimal registrationFee;
-    private BigDecimal stampDuty;
-    private BigDecimal transferDuty;
     private String receiptRef;
     private String actionCode;
     private String actionNotes;
@@ -211,36 +207,5 @@ public class ApplicationTO extends ApplicationSummaryTO {
     public void setCadastreObjectList(List<CadastreObjectSummaryTO> cadastreObjectList) {
         this.cadastreObjectList = cadastreObjectList;
     }
-
-    public BigDecimal getGroundRent() {
-        return groundRent;
-    }
-
-    public void setGroundRent(BigDecimal groundRent) {
-        this.groundRent = groundRent;
-    }
-
-    public BigDecimal getRegistrationFee() {
-        return registrationFee;
-    }
-
-    public void setRegistrationFee(BigDecimal registrationFee) {
-        this.registrationFee = registrationFee;
-    }
-
-    public BigDecimal getStampDuty() {
-        return stampDuty;
-    }
-
-    public void setStampDuty(BigDecimal stampDuty) {
-        this.stampDuty = stampDuty;
-    }
-
-    public BigDecimal getTransferDuty() {
-        return transferDuty;
-    }
-
-    public void setTransferDuty(BigDecimal transferDuty) {
-        this.transferDuty = transferDuty;
-    }    
+    
 }
