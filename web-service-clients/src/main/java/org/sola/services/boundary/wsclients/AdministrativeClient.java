@@ -488,5 +488,5 @@ public interface AdministrativeClient extends AbstractWSClient {
      * Returns calculated ground rent for the given cadastre object.
      * @param cadastreObject Cadastre object used to calculate ground rent.
      */
-    BigDecimal calculateGroundRent(CadastreObjectTO cadastreObject) throws WebServiceClientException;
+    BigDecimal calculateGroundRent(CadastreObjectTO cadastreObject, BigDecimal  personalLevy, BigDecimal landUsable) throws WebServiceClientException;
 }
