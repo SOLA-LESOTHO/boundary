@@ -262,36 +262,6 @@ public interface AdministrativeClient extends AbstractWSClient {
     List<BaUnitTO> getBaUnitsByServiceId(String serviceId) throws WebServiceClientException;
 
     /**
-     * Reverses the cancellation / termination of a BA Unit by removing the BA
-     * Unit Target created by {@linkplain #terminateBaUnit(java.lang.String, java.lang.String) terminateBaUnit}.
-     * <p>Requires the {@linkplain RolesConstants#ADMINISTRATIVE_BA_UNIT_SAVE}
-     * role.</p>
-     *
-     * @param baUnitId The identifier of the BA Unit to reverse the cancellation
-     * for.
-     * @return The details of the BA Unit that has had its termination canceled.
-     * @throws WebServiceClientException
-     */
-    BaUnitTO cancelBaUnitTermination(String baUnitId) throws WebServiceClientException;
-
-    /**
-     * Identifies a BA Unit as subject to cancellation / termination by linking
-     * the BA Unit to a Transaction via the administrative.ba_unit_target
-     * association. The BA Unit is not canceled / terminated until the
-     * application canceling the BA Unit is approved.
-     *
-     * <p>Requires the {@linkplain RolesConstants#ADMINISTRATIVE_BA_UNIT_SAVE}
-     * role.</p>
-     *
-     * @param baUnitId The identifier of the BA Unit to be canceled / terminated
-     * @param serviceId The identifier of the service that is canceling /
-     * terminating the BA Unit
-     * @return The BA Unit that will be canceled / terminated.
-     * @throws WebServiceClientException
-     */
-    BaUnitTO terminateBaUnit(String baUnitId, String serviceId) throws WebServiceClientException;
-
-    /**
      * Retrieves the list of BA Unit Areas associated with the specified BA Unit
      * Id.
      *

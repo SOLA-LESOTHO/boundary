@@ -153,68 +153,6 @@ public class Administrative extends AbstractWebService {
     }
 
     /**
-     * See {@linkplain AdministrativeEJB#terminateBaUnit(java.lang.String, java.lang.String)
-     * AdministrativeEJB.terminateBaUnit}
-     *
-     * @throws SOLAFault
-     * @throws UnhandledFault
-     * @throws SOLAAccessFault
-     * @throws OptimisticLockingFault
-     * @throws SOLAValidationFault
-     */
-    @WebMethod(operationName = "TerminateBaUnit")
-    public BaUnitTO TerminateBaUnit(@WebParam(name = "baUnitId") String baUnitId,
-            @WebParam(name = "serviceId") String serviceId)
-            throws SOLAFault, UnhandledFault, SOLAAccessFault, OptimisticLockingFault,
-            SOLAValidationFault {
-
-        final Object[] params = {baUnitId, serviceId};
-        final Object[] result = {null};
-
-        runUpdateValidation(wsContext, new Runnable() {
-
-            @Override
-            public void run() {
-                String baUnitId = (String) params[0];
-                String serviceId = (String) params[1];
-                BaUnit baUnit = administrativeEJB.terminateBaUnit(baUnitId, serviceId);
-                result[0] = GenericTranslator.toTO(baUnit, BaUnitTO.class);
-            }
-        });
-        return (BaUnitTO) result[0];
-    }
-
-    /**
-     * See {{@linkplain AdministrativeEJB#cancelBaUnitTermination(java.lang.String)
-     * AdministrativeEJB.cancelBaUnitTermination}
-     *
-     * @throws SOLAFault
-     * @throws UnhandledFault
-     * @throws SOLAAccessFault
-     * @throws OptimisticLockingFault
-     * @throws SOLAValidationFault
-     */
-    @WebMethod(operationName = "CancelBaUnitTermination")
-    public BaUnitTO CancelBaUnitTermination(@WebParam(name = "baUnitId") String baUnitId)
-            throws SOLAFault, UnhandledFault, SOLAAccessFault, OptimisticLockingFault,
-            SOLAValidationFault {
-
-        final Object[] params = {baUnitId};
-        final Object[] result = {null};
-
-        runUpdateValidation(wsContext, new Runnable() {
-
-            @Override
-            public void run() {
-                String baUnitId = (String) params[0];
-                BaUnit baUnit = administrativeEJB.cancelBaUnitTermination(baUnitId);
-                result[0] = GenericTranslator.toTO(baUnit, BaUnitTO.class);
-            }
-        });
-        return (BaUnitTO) result[0];
-    }
-
-    /**
      * See {{@linkplain AdministrativeEJB#getBaUnitById(java.lang.String)
      * AdministrativeEJB.getBaUnitById}
      *

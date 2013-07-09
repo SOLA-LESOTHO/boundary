@@ -263,42 +263,6 @@ public class MockAdministrativePort implements Administrative {
     }
 
     /**
-     * Response Key = AdministrativeClient.CANCEL_BA_UNIT_TERMINIATION
-     *
-     * @return default = new BaUnitTO()
-     */
-    @Override
-    public BaUnitTO cancelBaUnitTermination(String baUnitId)
-            throws OptimisticLockingFault, SOLAAccessFault, SOLAFault, SOLAValidationFault, UnhandledFault {
-        BaUnitTO defaultResponse = new BaUnitTO();
-        try {
-            return getManager().getResponse(AdministrativeClient.CANCEL_BA_UNIT_TERMINIATION,
-                    BaUnitTO.class, defaultResponse, baUnitId);
-        } catch (Exception ex) {
-            processExceptionAll(ex);
-            return null;
-        }
-    }
-
-    /**
-     * Response Key = AdministrativeClient.TERMINATE_BA_UNIT
-     *
-     * @return default = new BaUnitTO()
-     */
-    @Override
-    public BaUnitTO terminateBaUnit(String baUnitId, String serviceId)
-            throws OptimisticLockingFault, SOLAAccessFault, SOLAFault, SOLAValidationFault, UnhandledFault {
-        BaUnitTO defaultResponse = new BaUnitTO();
-        try {
-            return getManager().getResponse(AdministrativeClient.TERMINATE_BA_UNIT,
-                    BaUnitTO.class, defaultResponse, baUnitId, serviceId);
-        } catch (Exception ex) {
-            processExceptionAll(ex);
-            return null;
-        }
-    }
-
-    /**
      * Response Key = AdministrativeClient.GET_BA_UNIT_AREAS
      *
      * @return default = new BaUnitAreaTO()

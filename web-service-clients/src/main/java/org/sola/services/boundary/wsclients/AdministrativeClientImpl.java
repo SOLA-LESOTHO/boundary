@@ -172,36 +172,6 @@ public class AdministrativeClientImpl extends AbstractWSClientImpl
     }
 
     @Override
-    public BaUnitTO cancelBaUnitTermination(String baUnitId) throws WebServiceClientException {
-        BaUnitTO result = null;
-        final String methodName = AdministrativeClient.CANCEL_BA_UNIT_TERMINIATION;
-        try {
-            beforeWebMethod(methodName, baUnitId);
-            result = getPort().cancelBaUnitTermination(baUnitId);
-        } catch (Exception e) {
-            processException(methodName, e);
-        } finally {
-            afterWebMethod(methodName, result, baUnitId);
-        }
-        return result;
-    }
-
-    @Override
-    public BaUnitTO terminateBaUnit(String baUnitId, String serviceId) throws WebServiceClientException {
-        BaUnitTO result = null;
-        final String methodName = AdministrativeClient.TERMINATE_BA_UNIT;
-        try {
-            beforeWebMethod(methodName, baUnitId, serviceId);
-            result = getPort().terminateBaUnit(baUnitId, serviceId);
-        } catch (Exception e) {
-            processException(methodName, e);
-        } finally {
-            afterWebMethod(methodName, result, baUnitId, serviceId);
-        }
-        return result;
-    }
-
-    @Override
     public BaUnitAreaTO getBaUnitAreas(String baUnitId) throws WebServiceClientException {
         BaUnitAreaTO result = null;
         final String methodName = AdministrativeClient.GET_BA_UNIT_AREAS;
