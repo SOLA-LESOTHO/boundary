@@ -721,6 +721,24 @@ public class MockCaseManagementPort implements CaseManagement {
     }
 
     /**
+     * Response Key = CaseManagementClient.GET_CERTIFIED_SURVEYORS
+     *
+     * @return default = new ArrayList<PartySummaryTO>()
+     */
+    @Override
+    public List<PartySummaryTO> getCertifiedSurveyors() throws SOLAAccessFault, SOLAFault, UnhandledFault {
+        List<PartySummaryTO> defaultResponse = new ArrayList<PartySummaryTO>();
+        try {
+            return getManager().getResponse(CaseManagementClient.GET_SURVEYORS,
+                    List.class, defaultResponse);
+        } catch (Exception ex) {
+            processExceptionAccess(ex);
+            return null;
+        }
+    }
+    
+    
+    /**
      * Response Key = CaseManagementClient.GET_PARTY
      *
      * @return default = new PartyTO()

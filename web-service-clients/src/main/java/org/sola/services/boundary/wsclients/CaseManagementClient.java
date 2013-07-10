@@ -218,7 +218,10 @@ public interface CaseManagementClient extends AbstractWSClient {
      * method
      */
     public static final String GET_SYS_REG_CERTIFICATES_APP = SERVICE_NAME + "getSysRegCerificatesByApplication";
-    
+    /**
+     * CaseManagement.getSurveyors - Identifier for the getSurveyors method
+     */
+    public static final String GET_SURVEYORS = SERVICE_NAME + "getSurveyors";    
 
     /**
      * Calculates the lodgement fees as well as the expected completions dates for each service as
@@ -291,6 +294,15 @@ public interface CaseManagementClient extends AbstractWSClient {
      */
     List<PartySummaryTO> getAgents() throws WebServiceClientException;
 
+    /**
+     * Returns all parties that have the certifiedSurveyor party role. Note that the address and party
+     * role details for each agent are not loaded. <p>No role is required to execute this
+     * method.</p>
+     *
+     * @throws WebServiceClientException
+     */
+    List<PartySummaryTO> getCertifiedSurveyors() throws WebServiceClientException;    
+    
     /**
      * Returns an application based on the id value. <p>Requires the {@linkplain RolesConstants#APPLICATION_VIEW_APPS}
      * role.</p>
