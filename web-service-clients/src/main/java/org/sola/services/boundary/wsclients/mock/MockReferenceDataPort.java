@@ -749,4 +749,17 @@ public class MockReferenceDataPort implements ReferenceData {
     public List<LandUseTypeTO> getLandUseTypes(String arg0) throws SOLAAccessFault, SOLAFault, UnhandledFault {
         throw new UnsupportedOperationException("Not supported yet.");
     }
+
+    @Override
+    public List<LegalTypeTO> getLegalTypes(String arg0) throws SOLAFault, UnhandledFault {
+        List<LegalTypeTO> defaultResponse = MockTOFactory.createLegalTypes();
+	try {
+		return getManager().getResponse(ReferenceDataClient.GET_LEGAL_TYPES,
+				List.class, defaultResponse, arg0);
+	} catch (Exception ex) {
+		processExceptionBasic(ex);
+		return null;
+	}
+
+    }
 }

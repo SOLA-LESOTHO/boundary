@@ -50,6 +50,10 @@ public interface ReferenceDataClient extends AbstractWSClient {
      */
     public static final String SERVICE_NAME = "ReferenceData.";
     /**
+     * ReferenceData.getLegalTypes - Identifier for the getLegalTypes method
+     */
+    public static final String GET_LEGAL_TYPES = SERVICE_NAME + "getLegalTypes";
+    /**
      * ReferenceData.getApplicationForms - Identifier for the
      * getApplicationForms method
      */
@@ -322,6 +326,16 @@ public interface ReferenceDataClient extends AbstractWSClient {
      * @throws WebServiceClientException
      */
     List<GenderTypeTO> getGenderTypes(String lang) throws WebServiceClientException;
+
+    /**
+     * Return list of legal types.
+     */
+    List<LegalTypeTO> getLegalTypes() throws WebServiceClientException;
+
+    /**
+     * Return list of legal types using provided language.
+     */
+    List<LegalTypeTO> getLegalTypes(String lang) throws WebServiceClientException;
 
     /**
      * Retrieves all application.application_status_type code values using the
@@ -800,6 +814,6 @@ public interface ReferenceDataClient extends AbstractWSClient {
 * @throws WebServiceClientException
      */
     List<LandUseTypeTO> getLandUseTypes() throws WebServiceClientException;
-    
+
     List<LandUseTypeTO> getLandUseTypes(String lang) throws WebServiceClientException;
 }
