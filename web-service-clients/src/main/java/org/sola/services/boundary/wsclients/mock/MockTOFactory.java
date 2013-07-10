@@ -94,14 +94,15 @@ public class MockTOFactory {
         result.add(createCode(CommunicationTypeTO.class, "post", "Post"));
         return result;
     }
-    
+
     /**
-    * Creates a default list of application forms <p> SQL query to generate list from DB: </p>
-    * <pre>
-    * select 'result.add(createCode(ApplicationFormTO.class, "' || code || '", "' || display_value || '"));'
-    * from application.application_form
-    * </pre>
-    */
+     * Creates a default list of application forms <p> SQL query to generate
+     * list from DB: </p>
+     * <pre>
+     * select 'result.add(createCode(ApplicationFormTO.class, "' || code || '", "' || display_value || '"));'
+     * from application.application_form
+     * </pre>
+     */
     public static List<ApplicationFormTO> createApplicationForms() {
         List<ApplicationFormTO> result = new ArrayList<ApplicationFormTO>();
         result.add(createCode(ApplicationFormTO.class, "lease", "Lease"));
@@ -109,7 +110,21 @@ public class MockTOFactory {
         return result;
     }
 
-
+    /**
+     * Creates a default list of client types <p> SQL query to generate list
+     * from DB: </p>
+     * <pre>
+     * select 'result.add(createCode(ClientTypeTO.class, "' || code || '", "' || display_value || '"));'
+     * from external.client_type
+     * </pre>
+     */
+    public static List<LegalTypeTO> createLegalTypes() {
+        List<LegalTypeTO> result = new ArrayList<LegalTypeTO>();
+        result.add(createCode(LegalTypeTO.class, "married", "Married"));
+        result.add(createCode(LegalTypeTO.class, "divorced", "Divorced"));
+        result.add(createCode(LegalTypeTO.class, "widowed", "Widowed"));
+        return result;
+    }
 
     /**
      * Creates a default list of gender types <p> SQL query to generate list
@@ -378,8 +393,6 @@ public class MockTOFactory {
     /**
      * Creates a default list of land use types
      */
-
-
     /**
      * Creates a default list of request types using generics so that it is
      * possible to also generate RequestTypeSourceType using the same code. <p>
@@ -497,8 +510,8 @@ public class MockTOFactory {
 
         return result;
     }
-    
-      /**
+
+    /**
      * Creates a default list of land grade types
      */
     public static List<LandGradeTypeTO> createLandGradeTypes() {
@@ -509,7 +522,7 @@ public class MockTOFactory {
 
         return result;
     }
-    
+
     /**
      * Creates a default list of land grade types
      */
@@ -517,11 +530,11 @@ public class MockTOFactory {
         List<DeedTypeTO> result = new ArrayList<DeedTypeTO>();
         result.add(createCode(DeedTypeTO.class, "notarialBond", "notarialBond"));
         result.add(createCode(DeedTypeTO.class, "mortgageBond", "mortgageBond"));
-   
+
         return result;
     }
-    
-        /**
+
+    /**
      * Creates a default list of land grade types
      */
     public static List<RoadClassTypeTO> createRoadClassTypes() {
@@ -532,7 +545,7 @@ public class MockTOFactory {
         result.add(createCode(RoadClassTypeTO.class, "minor_unsurfaced", "Minor Untarred Road"));
         result.add(createCode(RoadClassTypeTO.class, "secondary_surfaced", "Secondary Tarred Road"));
         result.add(createCode(RoadClassTypeTO.class, "secondary_unsurfaced", "Secondary Untarred Road"));
-   
+
         return result;
     }
 

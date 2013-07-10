@@ -805,4 +805,27 @@ public class ReferenceDataClientImpl extends AbstractWSClientImpl implements Ref
         }
         return result;
     }
+
+    @Override
+    public List<LegalTypeTO> getLegalTypes() throws WebServiceClientException {
+        return getLegalTypes(getLanguageCode());
+    }
+
+    @Override
+    public List<LegalTypeTO> getLegalTypes(String lang) throws WebServiceClientException {
+        
+        List<LegalTypeTO> result = null;
+	final String methodName = ReferenceDataClient.GET_LEGAL_TYPES;
+	try {
+		beforeWebMethod(methodName, lang);
+		result = getPort().getLegalTypes(lang);
+	} catch (Exception e) {
+		processException(methodName, e);
+
+	} finally {
+		afterWebMethod(methodName, result, lang);
+	}
+	return result;
+
+    }
 }

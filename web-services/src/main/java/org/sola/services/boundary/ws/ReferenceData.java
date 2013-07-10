@@ -56,11 +56,7 @@ import org.sola.services.ejb.application.repository.entities.*;
 import org.sola.services.ejb.cadastre.businesslogic.CadastreEJBLocal;
 import org.sola.services.ejb.cadastre.repository.entities.CadastreObjectType;
 import org.sola.services.ejb.cadastre.repository.entities.LandUseType;
-import org.sola.services.ejb.party.repository.entities.CommunicationType;
-import org.sola.services.ejb.party.repository.entities.GenderType;
-import org.sola.services.ejb.party.repository.entities.IdType;
-import org.sola.services.ejb.party.repository.entities.PartyRoleType;
-import org.sola.services.ejb.party.repository.entities.PartyType;
+import org.sola.services.ejb.party.repository.entities.*;
 import org.sola.services.ejb.source.businesslogic.SourceEJBLocal;
 import org.sola.services.ejb.source.repository.entities.AvailabilityStatus;
 import org.sola.services.ejb.source.repository.entities.PresentationFormType;
@@ -151,7 +147,7 @@ public class ReferenceData extends AbstractWebService {
 
         return (List<ApplicationFormTO>) result[0];
     }
-    
+
     /**
      * Returns application form with binary content.
      */
@@ -164,7 +160,7 @@ public class ReferenceData extends AbstractWebService {
             @Override
             public void run() {
                 result[0] = GenericTranslator.toTO(
-                        applicationEJB.getApplicationFormWithBinary(code, lang), 
+                        applicationEJB.getApplicationFormWithBinary(code, lang),
                         ApplicationFormWithBinaryTO.class);
             }
         });
@@ -198,6 +194,23 @@ public class ReferenceData extends AbstractWebService {
         });
 
         return (List<GenderTypeTO>) result[0];
+    }
+    /** Return list of party legal types.
+    */
+    @WebMethod(operationName = "getLegalTypes")
+    public List<LegalTypeTO> getLegalTypes(final String lang) throws SOLAFault, UnhandledFault {
+        final Object[] result = {null};
+
+        runOpenQuery(wsContext, new Runnable() {
+
+            @Override
+            public void run() {
+                result[0] = GenericTranslator.toTOList(
+                        partyEJB.getLegalTypes(lang), LegalTypeTO.class);
+            }
+        });
+
+        return (List<LegalTypeTO>) result[0];
     }
 
     /**
@@ -748,7 +761,6 @@ public class ReferenceData extends AbstractWebService {
         return (List<RegistrationStatusTypeTO>) result[0];
     }
 
-
     /**
      * See {@linkplain org.sola.services.ejb.cadastre.businesslogic.CadastreEJB#GetLandGradeTypes(java.lang.String)
      * CadastreEJB.getCadastreObjectTypes}
@@ -969,6 +981,10 @@ public class ReferenceData extends AbstractWebService {
                 } else if (refDataTO instanceof GenderTypeTO) {
                     codeEntity = partyEJB.getCodeEntity(GenderType.class, refDataTO.getCode());
                     codeEntity = GenericTranslator.fromTO(refDataTO, GenderType.class, codeEntity);
+                    partyEJB.saveCodeEntity(codeEntity);
+                } else if (refDataTO instanceof LegalTypeTO) {
+                    codeEntity = partyEJB.getCodeEntity(LegalType.class, refDataTO.getCode());
+                    codeEntity = GenericTranslator.fromTO(refDataTO, LegalType.class, codeEntity);
                     partyEJB.saveCodeEntity(codeEntity);
                 } else if (refDataTO instanceof IdTypeTO) {
                     codeEntity = partyEJB.getCodeEntity(IdType.class, refDataTO.getCode());
@@ -1236,12 +1252,11 @@ public class ReferenceData extends AbstractWebService {
 
         return (List<OtherAuthoritiesTO>) result[0];
     }
-    
-    
-    @WebMethod(operationName="GetRoadClassType")
+
+    @WebMethod(operationName = "GetRoadClassType")
     public List<RoadClassTypeTO> GetRoadClassType(String languageCode)
             throws SOLAFault, UnhandledFault, SOLAAccessFault {
-                final String languageCodeTmp = languageCode;
+        final String languageCodeTmp = languageCode;
         final Object[] result = {null};
 
         runGeneralQuery(wsContext, new Runnable() {
@@ -1256,15 +1271,15 @@ public class ReferenceData extends AbstractWebService {
 
         return (List<RoadClassTypeTO>) result[0];
     }
-    
+
     /**
-* See {@linkplain org.sola.services.ejb.cadastre.businesslogic.CadastreEJB#getLandUseTypes(java.lang.String)
-* CadastreEJB.getCadastreObjectTypes}
-*
+     * See {@linkplain org.sola.services.ejb.cadastre.businesslogic.CadastreEJB#getLandUseTypes(java.lang.String)
+     * CadastreEJB.getCadastreObjectTypes}
+     *     
 * @throws SOLAFault
-* @throws UnhandledFault
-* @throws SOLAAccessFault
-*/
+     * @throws UnhandledFault
+     * @throws SOLAAccessFault
+     */
     @WebMethod(operationName = "GetLandUseTypes")
     public List<LandUseTypeTO> GetLandUseTypes(String languageCode)
             throws SOLAFault, UnhandledFault, SOLAAccessFault {
@@ -1284,4 +1299,5 @@ public class ReferenceData extends AbstractWebService {
 
         return (List<LandUseTypeTO>) result[0];
     }
+    
 }
