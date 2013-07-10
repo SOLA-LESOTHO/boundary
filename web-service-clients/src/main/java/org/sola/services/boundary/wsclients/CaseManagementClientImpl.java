@@ -207,6 +207,21 @@ public class CaseManagementClientImpl extends AbstractWSClientImpl implements Ca
         }
         return result;
     }
+    
+    @Override
+    public List<PartySummaryTO> getCertifiedSurveyors() throws WebServiceClientException {
+        List<PartySummaryTO> result = null;
+        final String methodName = CaseManagementClient.GET_SURVEYORS;
+        try {
+            beforeWebMethod(methodName);
+            result = getPort().getCertifiedSurveyors();
+        } catch (Exception e) {
+            processException(methodName, e);
+        } finally {
+            afterWebMethod(methodName, result);
+        }
+        return result;
+    }    
 
     @Override
     public ApplicationTO calculateFee(ApplicationTO application) throws WebServiceClientException {
