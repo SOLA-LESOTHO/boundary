@@ -12,9 +12,18 @@ public class RightsExportResultTO extends AbstractTO {
     private String rightId;
     private String rightType;
     private Date rightRegistrationDate;
-    private Date rightExpirationDate;
-    private BigDecimal paymentAmount;
+    private Date startDate;
+    private Date executionDate;
     private String rightRegistrationNumber;
+    private Date rightExpirationDate;
+    private BigDecimal groundRent;
+    private BigDecimal stampDuty;
+    private BigDecimal transferDuty;
+    private BigDecimal registrationFee;
+    private BigDecimal personalLevy;
+    private BigDecimal landUsable;
+    private String landUseCode;
+    private String leaseNumber;
     private String rightTrackingNumber;
     private String rightHolders;
     private String payeeId;
@@ -34,12 +43,84 @@ public class RightsExportResultTO extends AbstractTO {
         super();
     }
 
-    public BigDecimal getPaymentAmount() {
-        return paymentAmount;
+    public Date getExecutionDate() {
+        return executionDate;
     }
 
-    public void setPaymentAmount(BigDecimal paymentAmount) {
-        this.paymentAmount = paymentAmount;
+    public void setExecutionDate(Date executionDate) {
+        this.executionDate = executionDate;
+    }
+
+    public BigDecimal getGroundRent() {
+        return groundRent;
+    }
+
+    public void setGroundRent(BigDecimal groundRent) {
+        this.groundRent = groundRent;
+    }
+
+    public BigDecimal getLandUsable() {
+        return landUsable;
+    }
+
+    public void setLandUsable(BigDecimal landUsable) {
+        this.landUsable = landUsable;
+    }
+
+    public String getLandUseCode() {
+        return landUseCode;
+    }
+
+    public void setLandUseCode(String landUseCode) {
+        this.landUseCode = landUseCode;
+    }
+
+    public String getLeaseNumber() {
+        return leaseNumber;
+    }
+
+    public void setLeaseNumber(String leaseNumber) {
+        this.leaseNumber = leaseNumber;
+    }
+
+    public BigDecimal getPersonalLevy() {
+        return personalLevy;
+    }
+
+    public void setPersonalLevy(BigDecimal personalLevy) {
+        this.personalLevy = personalLevy;
+    }
+
+    public BigDecimal getRegistrationFee() {
+        return registrationFee;
+    }
+
+    public void setRegistrationFee(BigDecimal registrationFee) {
+        this.registrationFee = registrationFee;
+    }
+
+    public BigDecimal getStampDuty() {
+        return stampDuty;
+    }
+
+    public void setStampDuty(BigDecimal stampDuty) {
+        this.stampDuty = stampDuty;
+    }
+
+    public Date getStartDate() {
+        return startDate;
+    }
+
+    public void setStartDate(Date startDate) {
+        this.startDate = startDate;
+    }
+
+    public BigDecimal getTransferDuty() {
+        return transferDuty;
+    }
+
+    public void setTransferDuty(BigDecimal transferDuty) {
+        this.transferDuty = transferDuty;
     }
 
     public String getBaUnitId() {
