@@ -480,12 +480,13 @@ public class AdministrativeClientImpl extends AbstractWSClientImpl
     @Override
     public BigDecimal calculateGroundRent(CadastreObjectTO cadastreObject, 
                                             BigDecimal  personalLevy, 
-                                            BigDecimal landUsable) throws WebServiceClientException {
+                                            BigDecimal landUsable,
+                                            String landUseCode) throws WebServiceClientException {
         BigDecimal result = BigDecimal.ZERO;
         final String methodName = AdministrativeClient.CALCULATE_GROUND_RENT;
         try {
             beforeWebMethod(methodName, cadastreObject);
-            result = getPort().calculateGroundRent(cadastreObject, personalLevy, landUsable);
+            result = getPort().calculateGroundRent(cadastreObject, personalLevy, landUsable, landUseCode);
         } catch (Exception e) {
             processException(methodName, e);
         } finally {
