@@ -611,7 +611,7 @@ public class MockAdministrativePort implements Administrative {
     }
 
     @Override
-    public BigDecimal calculateGroundRent(CadastreObjectTO cadastreObject, BigDecimal  personalLevy, BigDecimal landUsable) throws SOLAAccessFault, SOLAFault, UnhandledFault {
+    public BigDecimal calculateGroundRent(CadastreObjectTO cadastreObject, BigDecimal  personalLevy, BigDecimal landUsable, String landUseCode) throws SOLAAccessFault, SOLAFault, UnhandledFault {
         throw new UnsupportedOperationException("Not supported yet.");
     }
 }

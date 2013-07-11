@@ -980,19 +980,22 @@ public class Administrative extends AbstractWebService {
     public BigDecimal calculateGroundRent(
                 @WebParam(name = "cadastreObject") final CadastreObjectTO cadastreObject,
                 @WebParam(name = "personalLevy") BigDecimal personalLevy,
-                @WebParam(name ="landUsable") BigDecimal landUsable)
+                @WebParam(name ="landUsable") BigDecimal landUsable,
+                @WebParam(name ="landUseCode") String landUseCode)
             throws SOLAFault, UnhandledFault, SOLAAccessFault {
 
         final Object[] result = {new ArrayList<BigDecimal>()};
         
         final BigDecimal personalLevyTmp = personalLevy;
         final BigDecimal landUsableTmp = landUsable;
+        final String landUseCodeTmp = landUseCode;
 
         runOpenQuery(wsContext, new Runnable() {
 
             @Override
             public void run() {
-                result[0] = administrativeEJB.calculateGroundRent(GenericTranslator.fromTO(cadastreObject, CadastreObject.class, null), personalLevyTmp,landUsableTmp);
+                result[0] = administrativeEJB.calculateGroundRent(GenericTranslator.fromTO(cadastreObject, CadastreObject.class, null), 
+                                                                  personalLevyTmp,landUsableTmp, landUseCodeTmp);
             }
         });
         return (BigDecimal) result[0];
