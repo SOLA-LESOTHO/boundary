@@ -176,6 +176,8 @@ public interface AdministrativeClient extends AbstractWSClient {
     public static final String SAVE_LEASE = SERVICE_NAME + "saveLease";
     
     public static final String CALCULATE_GROUND_RENT = SERVICE_NAME + "calculateGroundRent";
+    
+    public static final String CALCULATE_DUTY_ON_GROUND_RENT = SERVICE_NAME + "calculateDutyOnGroundRent";
 
     /**
      * Creates a new BA Unit Area for a BaUnitId
@@ -459,4 +461,6 @@ public interface AdministrativeClient extends AbstractWSClient {
      * @param cadastreObject Cadastre object used to calculate ground rent.
      */
     BigDecimal calculateGroundRent(CadastreObjectTO cadastreObject, BigDecimal  personalLevy, BigDecimal landUsable, String landUseCode) throws WebServiceClientException;
+    
+    BigDecimal calculateDutyOnGroundRent(CadastreObjectTO cadastreObject, RrrTO leaseRight) throws WebServiceClientException;
 }

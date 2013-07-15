@@ -494,4 +494,22 @@ public class AdministrativeClientImpl extends AbstractWSClientImpl
         }
         return result;
     }
+    
+    @Override
+    public BigDecimal calculateDutyOnGroundRent(CadastreObjectTO cadastreObject, RrrTO leaseRight) 
+                                                throws WebServiceClientException{
+        
+        BigDecimal result = BigDecimal.ZERO;
+        final String methodName = AdministrativeClient.CALCULATE_DUTY_ON_GROUND_RENT;
+        try {
+            beforeWebMethod(methodName, cadastreObject);
+            result = getPort().calculateDutyOnGroundRent(cadastreObject, leaseRight);
+        } catch (Exception e) {
+            processException(methodName, e);
+        } finally {
+            afterWebMethod(methodName, result, cadastreObject);
+        }
+        return result;
+        
+    }
 }

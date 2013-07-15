@@ -938,4 +938,24 @@ public class Administrative extends AbstractWebService {
         });
         return (BigDecimal) result[0];
     }
+    
+    @WebMethod(operationName = "calculateDutyOnGroundRent")
+    public BigDecimal calculateDutyOnGroundRent(
+            @WebParam(name = "cadastreObject") final CadastreObjectTO cadastreObject,
+            @WebParam(name = "leaseRight") final RrrTO leaseRight)
+        throws SOLAFault, UnhandledFault, SOLAAccessFault{
+        
+        final Object[] result = {new ArrayList<BigDecimal>()};
+        
+                runOpenQuery(wsContext, new Runnable() {
+
+            @Override
+            public void run() {
+                result[0] = administrativeEJB.calculateDutyOnGroundRent(GenericTranslator.fromTO(cadastreObject, CadastreObject.class, null), 
+                                                                        GenericTranslator.fromTO(leaseRight, Rrr.class, null));
+            }
+        });
+        return (BigDecimal) result[0];
+        
+    }
 }
