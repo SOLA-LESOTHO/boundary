@@ -3,6 +3,7 @@ package org.sola.services.boundary.transferobjects.cadastre;
 import java.math.BigDecimal;
 import java.util.Date;
 import org.sola.services.common.contracts.AbstractIdTO;
+import org.sola.services.boundary.transferobjects.casemanagement.PartySummaryTO;
 
 public class CadastreObjectSummaryTO extends AbstractIdTO {
     private String typeCode;
@@ -16,7 +17,7 @@ public class CadastreObjectSummaryTO extends AbstractIdTO {
     private String landGradeCode;
     private Date surveyDate;
     private BigDecimal surveyFee;
-    private String surveyor;
+    private PartySummaryTO surveyor;
     private String remarks;
     private String valuationZone;
     private String roadClassCode;
@@ -113,11 +114,11 @@ public class CadastreObjectSummaryTO extends AbstractIdTO {
         this.surveyDate = surveyDate;
     }
 
-    public String getSurveyor() {
+    public PartySummaryTO getSurveyor() {
         return surveyor;
     }
 
-    public void setSurveyor(String surveyor) {
+    public void setSurveyor(PartySummaryTO surveyor) {
         this.surveyor = surveyor;
     }
 
