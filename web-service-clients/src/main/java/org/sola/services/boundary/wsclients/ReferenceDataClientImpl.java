@@ -135,6 +135,26 @@ public class ReferenceDataClientImpl extends AbstractWSClientImpl implements Ref
     }
 
     @Override
+    public List<DisputeReportsTO> getDisputeReports() throws WebServiceClientException {
+        return getDisputeReports(this.getLanguageCode());
+    }
+
+    @Override
+    public List<DisputeReportsTO> getDisputeReports(String lang) throws WebServiceClientException {
+        List<DisputeReportsTO> result = null;
+        final String methodName = ReferenceDataClient.GET_DISPUTE_REPORTS;
+        try {
+            beforeWebMethod(methodName, lang);
+            result = getPort().getDisputeReports(lang);
+        } catch (Exception e) {
+            processException(methodName, e);
+        } finally {
+            afterWebMethod(methodName, result, lang);
+        }
+        return result;
+    }
+    
+    @Override
     public List<SourceTypeTO> getSourceTypes() throws WebServiceClientException {
         return getSourceTypes(this.getLanguageCode());
     }

@@ -44,6 +44,7 @@ public class DisputeTO extends AbstractIdTO {
     private String plotLocation;
     private String plotNumber;
     private String caseType;
+    private String disputeDescription;
     private boolean primaryRespondent;
     private String actionRequired;
     private List<DisputeCommentsTO> disputeCommentsList;
@@ -51,6 +52,14 @@ public class DisputeTO extends AbstractIdTO {
 
     public DisputeTO(){
         super();
+    }
+
+    public String getDisputeDescription() {
+        return disputeDescription;
+    }
+
+    public void setDisputeDescription(String disputeDescription) {
+        this.disputeDescription = disputeDescription;
     }
 
     public Date getCompletionDate() {
