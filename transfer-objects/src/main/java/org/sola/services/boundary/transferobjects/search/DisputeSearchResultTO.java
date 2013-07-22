@@ -44,6 +44,14 @@ public class DisputeSearchResultTO extends AbstractTO {
     private String leaseNumber;
     private String plotNumber;
     private String caseType;
+    private String disputeCategoryCode;
+    private String disputeDescription;
+    private String disputeTypeCode;
+    private String statusCode;
+    private String plotLocation;
+    private boolean primaryRespondent;
+
+
     
     public DisputeSearchResultTO(){
         super();
@@ -103,6 +111,54 @@ public class DisputeSearchResultTO extends AbstractTO {
 
     public void setCaseType(String caseType) {
         this.caseType = caseType;
+    }
+
+    public String getDisputeCategoryCode() {
+        return disputeCategoryCode;
+    }
+
+    public void setDisputeCategoryCode(String disputeCategoryCode) {
+        this.disputeCategoryCode = disputeCategoryCode;
+    }
+
+    public String getDisputeDescription() {
+        return disputeDescription;
+    }
+
+    public void setDisputeDescription(String disputeDescription) {
+        this.disputeDescription = disputeDescription;
+    }
+
+    public String getDisputeTypeCode() {
+        return disputeTypeCode;
+    }
+
+    public void setDisputeTypeCode(String disputeTypeCode) {
+        this.disputeTypeCode = disputeTypeCode;
+    }
+
+    public String getPlotLocation() {
+        return plotLocation;
+    }
+
+    public void setPlotLocation(String plotLocation) {
+        this.plotLocation = plotLocation;
+    }
+
+    public String getStatusCode() {
+        return statusCode;
+    }
+
+    public void setStatusCode(String statusCode) {
+        this.statusCode = statusCode;
+    }
+
+    public boolean isPrimaryRespondent() {
+        return primaryRespondent;
+    }
+
+    public void setPrimaryRespondent(boolean primaryRespondent) {
+        this.primaryRespondent = primaryRespondent;
     }
     
 }

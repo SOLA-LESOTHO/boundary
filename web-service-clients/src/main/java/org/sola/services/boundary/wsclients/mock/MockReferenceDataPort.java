@@ -716,6 +716,22 @@ public class MockReferenceDataPort implements ReferenceData {
              return null;
         }
     }
+    
+       /**
+     * Response Key = ReferenceDataClient.GET_DISPUTE_REPORTS
+     *
+     */
+    @Override
+    public List<DisputeReportsTO> getDisputeReports(String arg0) throws SOLAAccessFault, SOLAFault, UnhandledFault {
+        List<DisputeReportsTO> defaultResponse = MockTOFactory.createDisputeReports();
+        try {
+            return getManager().getResponse(ReferenceDataClient.GET_DISPUTE_REPORTS,
+                    List.class, defaultResponse, arg0);
+        } catch (Exception ex) {
+            processExceptionAccess(ex);
+            return null;
+        }
+    }
 
     @Override
     public List<LandGradeTypeTO> getLandGradeTypes(String arg0) throws SOLAFault, UnhandledFault, SOLAAccessFault {

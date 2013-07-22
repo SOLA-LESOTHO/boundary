@@ -609,9 +609,25 @@ public class MockTOFactory {
         List<OtherAuthoritiesTO> result = new ArrayList<OtherAuthoritiesTO>();
         result.add(createCode(OtherAuthoritiesTO.class, "courtoflaw", "Courts of Law"));
         result.add(createCode(OtherAuthoritiesTO.class, "localauthority", "Local Authorities"));
+        result.add(createCode(OtherAuthoritiesTO.class, "laa", "LAA"));
         result.add(createCode(OtherAuthoritiesTO.class, "areachief", "Area Chief"));
         result.add(createCode(OtherAuthoritiesTO.class, "police", "Police"));
         result.add(createCode(OtherAuthoritiesTO.class, "other", "Other Authorities"));
+        return result;
+    }
+    
+    /**
+     * Creates a default list of other authorities <p> SQL query to generate
+     * list from DB: </p>
+     * <pre>
+     * select 'result.add(createCode(OtherAuthoritiesTO.class, "' || code || '", "' || display_value || '"));'
+     * from administrative.other_authorities
+     * </pre>
+     */
+    public static List<DisputeReportsTO> createDisputeReports() {
+        List<DisputeReportsTO> result = new ArrayList<DisputeReportsTO>();
+        result.add(createCode(DisputeReportsTO.class, "status", "Status Report"));
+        result.add(createCode(DisputeReportsTO.class, "statistics", "Statistics"));
         return result;
     }
 

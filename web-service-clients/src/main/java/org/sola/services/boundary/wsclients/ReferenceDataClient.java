@@ -207,6 +207,10 @@ public interface ReferenceDataClient extends AbstractWSClient {
      * ReferenceData.getOtherAuthorities - Identifier for the getOtherAuthorities method
      */
     public static final String GET_OTHER_AUTHORITIES = SERVICE_NAME + "getOtherAuthorities";
+    /**
+     * ReferenceData.getDisputeReports - Identifier for the getDisputeReports method
+     */
+    public static final String GET_DISPUTE_REPORTS = SERVICE_NAME + "getDisputeReports";
     
     /**
      * ReferenceData.getCadastreObjectTypes - Identifier for the getCadastreObjectTypes method
@@ -765,6 +769,20 @@ public interface ReferenceDataClient extends AbstractWSClient {
      */
     List<OtherAuthoritiesTO> getOtherAuthorities(String lang) throws WebServiceClientException;
 
+    /**
+     * Retrieves all administrative.disputeReports code values using the default
+     * locale of the client to localize the display values.
+     *
+     * @throws WebServiceClientException
+     */
+    List<DisputeReportsTO> getDisputeReports() throws WebServiceClientException;
+    /**
+     * Retrieves all administrative.disputeReports code values using the
+     * default locale of the client to localize the display values.
+     *
+     * @throws WebServiceClientException
+     */
+    List<DisputeReportsTO> getDisputeReports(String lang) throws WebServiceClientException;
     
      /**
      * Retrieves all cadastre.land_use_type code values using the default locale of the

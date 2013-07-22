@@ -671,39 +671,6 @@ public class Administrative extends AbstractWebService {
         return (DisputeTO) result[0];
     }
 
-    /**
-     * See {@linkplain AdministrativeEJB#saveDispute(java.lang.String,
-     * org.sola.services.ejb.administrative.repository.entities.Dispute)
-     * AdministrativeEJB.saveDispute}
-     *
-     * @throws SOLAFault
-     * @throws UnhandledFault
-     * @throws SOLAAccessFault
-     * @throws OptimisticLockingFault
-     */
-//    @WebMethod(operationName = "SaveDispute")
-//    public DisputeTO SaveDispute(
-//            @WebParam(name = "disputeTO") DisputeTO disputeTO)
-//            throws SOLAFault, UnhandledFault, SOLAAccessFault, OptimisticLockingFault {
-//
-//        final DisputeTO disputeTOTmp = disputeTO;
-//        final Object[] result = {null};
-//
-//        runUpdate(wsContext, new Runnable() {
-//
-//            @Override
-//            public void run() {
-//                if (disputeTOTmp != null) {
-//                    Dispute newDispute = administrativeEJB.saveDispute(
-//                            GenericTranslator.fromTO(disputeTOTmp, Dispute.class,
-//                            administrativeEJB.getDispute(disputeTO.getId())));
-//                    result[0] = GenericTranslator.toTO(newDispute, DisputeTO.class);
-//                }
-//            }
-//        });
-//
-//        return (DisputeTO) result[0];
-//    }
     
     @WebMethod(operationName = "SaveDispute")
     public DisputeTO SaveDispute(@WebParam(name = "dispute") DisputeTO dispute)
