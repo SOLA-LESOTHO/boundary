@@ -17,6 +17,7 @@ public class RightsExportResultTO extends AbstractTO {
     private String rightRegistrationNumber;
     private Date rightExpirationDate;
     private BigDecimal groundRent;
+    private BigDecimal serviceFee;
     private BigDecimal stampDuty;
     private BigDecimal transferDuty;
     private BigDecimal registrationFee;
@@ -57,6 +58,14 @@ public class RightsExportResultTO extends AbstractTO {
 
     public void setGroundRent(BigDecimal groundRent) {
         this.groundRent = groundRent;
+    }
+
+    public BigDecimal getServiceFee() {
+        return serviceFee;
+    }
+
+    public void setServiceFee(BigDecimal serviceFee) {
+        this.serviceFee = serviceFee;
     }
 
     public BigDecimal getLandUsable() {
