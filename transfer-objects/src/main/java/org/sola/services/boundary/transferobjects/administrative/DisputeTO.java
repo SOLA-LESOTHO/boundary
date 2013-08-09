@@ -29,6 +29,7 @@ package org.sola.services.boundary.transferobjects.administrative;
 
 import org.sola.services.common.contracts.AbstractIdTO;
 import java.util.*;
+import org.sola.services.boundary.transferobjects.casemanagement.SourceTO;
 
 public class DisputeTO extends AbstractIdTO {
     
@@ -49,6 +50,7 @@ public class DisputeTO extends AbstractIdTO {
     private String actionRequired;
     private List<DisputeCommentsTO> disputeCommentsList;
     private List<DisputePartyTO> disputePartyList;
+    private List<SourceTO> sourceList;
 
     public DisputeTO(){
         super();
@@ -155,6 +157,14 @@ public class DisputeTO extends AbstractIdTO {
         this.disputePartyList = disputePartyList;
     }
 
+    public List<SourceTO> getSourceList() {
+        return sourceList;
+    }
+
+    public void setSourceList(List<SourceTO> sourceList) {
+        this.sourceList = sourceList;
+    }
+ 
     public String getCaseType() {
         return caseType;
     }
