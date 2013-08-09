@@ -32,20 +32,30 @@
     <message name="GetPartyResponse"/>
     <message name="GetAgents"/>
     <message name="GetAgentsResponse"/>
+    <message name="GetCertifiedSurveyors"/>
+    <message name="GetCertifiedSurveyorsResponse"/>
     <message name="GetUserActions"/>
     <message name="GetUserActionsResponse"/>
     <message name="CalculateFee"/>
     <message name="CalculateFeeResponse"/>
     <message name="AttachSourceToTransaction"/>
     <message name="AttachSourceToTransactionResponse"/>
+    <message name="attachPowerOfAttorneyToTransaction"/>
+    <message name="attachPowerOfAttorneyToTransactionResponse"/>
     <message name="DettachSourceFromTransaction"/>
     <message name="DettachSourceFromTransactionResponse"/>
     <message name="GetSourcesByServiceId"/>
     <message name="GetSourcesByServiceIdResponse"/>
+    <message name="getPowerOfAttorneyByServiceId"/>
+    <message name="getPowerOfAttorneyByServiceIdResponse"/>
     <message name="GetSourcesByIds"/>
     <message name="GetSourcesByIdsResponse"/>
     <message name="getSourceById"/>
     <message name="getSourceByIdResponse"/>
+    <message name="getPowerOfAttorneyById"/>
+    <message name="getPowerOfAttorneyByIdResponse"/>
+    <message name="getApplicationByTransactionId"/>
+    <message name="getApplicationByTransactionIdResponse"/>
     <message name="ServiceActionComplete"/>
     <message name="ServiceActionCompleteResponse"/>
     <message name="ServiceActionCancel"/>
@@ -80,6 +90,10 @@
     <message name="GetAllBrsResponse"/>
     <message name="SaveInformationService"/>
     <message name="SaveInformationServiceResponse"/>
+    <message name="GetSysRegCertificatesByLocation"/>
+    <message name="GetSysRegCertificatesByLocationResponse"/>
+    <message name="GetSysRegCertificatesByApplication"/>
+    <message name="GetSysRegCertificatesByApplicationResponse"/>
     <portType name="CaseManagement">
         <operation name="CheckConnection">
             <input message="tns:CheckConnection"/>
@@ -124,16 +138,10 @@
         <operation name="GetLodgementView">
             <input message="tns:GetLodgementView"/>
             <output message="tns:GetLodgementViewResponse"/>
-            <fault name="SOLAFault" message="tns:SOLAFault"/>
-            <fault name="UnhandledFault" message="tns:UnhandledFault"/>
-            <fault name="SOLAAccessFault" message="tns:SOLAAccessFault"/>
         </operation>
         <operation name="GetLodgementTiming">
             <input message="tns:GetLodgementTiming"/>
             <output message="tns:GetLodgementTimingResponse"/>
-            <fault name="SOLAFault" message="tns:SOLAFault"/>
-            <fault name="UnhandledFault" message="tns:UnhandledFault"/>
-            <fault name="SOLAAccessFault" message="tns:SOLAAccessFault"/>
         </operation>
         <operation name="GetAddress">
             <input message="tns:GetAddress"/>
@@ -163,12 +171,16 @@
             <fault name="UnhandledFault" message="tns:UnhandledFault"/>
             <fault name="SOLAAccessFault" message="tns:SOLAAccessFault"/>
         </operation>
-        <operation name="GetUserActions">
-            <input message="tns:GetUserActions"/>
-            <output message="tns:GetUserActionsResponse"/>
+        <operation name="GetCertifiedSurveyors">
+            <input message="tns:GetCertifiedSurveyors"/>
+            <output message="tns:GetCertifiedSurveyorsResponse"/>
             <fault name="SOLAFault" message="tns:SOLAFault"/>
             <fault name="UnhandledFault" message="tns:UnhandledFault"/>
             <fault name="SOLAAccessFault" message="tns:SOLAAccessFault"/>
+        </operation>
+        <operation name="GetUserActions">
+            <input message="tns:GetUserActions"/>
+            <output message="tns:GetUserActionsResponse"/>
         </operation>
         <operation name="CalculateFee">
             <input message="tns:CalculateFee"/>
@@ -180,6 +192,15 @@
         <operation name="AttachSourceToTransaction">
             <input message="tns:AttachSourceToTransaction"/>
             <output message="tns:AttachSourceToTransactionResponse"/>
+            <fault name="SOLAValidationFault" message="tns:SOLAValidationFault"/>
+            <fault name="OptimisticLockingFault" message="tns:OptimisticLockingFault"/>
+            <fault name="SOLAFault" message="tns:SOLAFault"/>
+            <fault name="UnhandledFault" message="tns:UnhandledFault"/>
+            <fault name="SOLAAccessFault" message="tns:SOLAAccessFault"/>
+        </operation>
+        <operation name="attachPowerOfAttorneyToTransaction">
+            <input message="tns:attachPowerOfAttorneyToTransaction"/>
+            <output message="tns:attachPowerOfAttorneyToTransactionResponse"/>
             <fault name="SOLAValidationFault" message="tns:SOLAValidationFault"/>
             <fault name="OptimisticLockingFault" message="tns:OptimisticLockingFault"/>
             <fault name="SOLAFault" message="tns:SOLAFault"/>
@@ -202,6 +223,13 @@
             <fault name="UnhandledFault" message="tns:UnhandledFault"/>
             <fault name="SOLAAccessFault" message="tns:SOLAAccessFault"/>
         </operation>
+        <operation name="getPowerOfAttorneyByServiceId">
+            <input message="tns:getPowerOfAttorneyByServiceId"/>
+            <output message="tns:getPowerOfAttorneyByServiceIdResponse"/>
+            <fault name="SOLAFault" message="tns:SOLAFault"/>
+            <fault name="UnhandledFault" message="tns:UnhandledFault"/>
+            <fault name="SOLAAccessFault" message="tns:SOLAAccessFault"/>
+        </operation>
         <operation name="GetSourcesByIds">
             <input message="tns:GetSourcesByIds"/>
             <output message="tns:GetSourcesByIdsResponse"/>
@@ -212,6 +240,20 @@
         <operation name="getSourceById">
             <input message="tns:getSourceById"/>
             <output message="tns:getSourceByIdResponse"/>
+            <fault name="SOLAFault" message="tns:SOLAFault"/>
+            <fault name="UnhandledFault" message="tns:UnhandledFault"/>
+            <fault name="SOLAAccessFault" message="tns:SOLAAccessFault"/>
+        </operation>
+        <operation name="getPowerOfAttorneyById">
+            <input message="tns:getPowerOfAttorneyById"/>
+            <output message="tns:getPowerOfAttorneyByIdResponse"/>
+            <fault name="SOLAFault" message="tns:SOLAFault"/>
+            <fault name="UnhandledFault" message="tns:UnhandledFault"/>
+            <fault name="SOLAAccessFault" message="tns:SOLAAccessFault"/>
+        </operation>
+        <operation name="getApplicationByTransactionId">
+            <input message="tns:getApplicationByTransactionId"/>
+            <output message="tns:getApplicationByTransactionIdResponse"/>
             <fault name="SOLAFault" message="tns:SOLAFault"/>
             <fault name="UnhandledFault" message="tns:UnhandledFault"/>
             <fault name="SOLAAccessFault" message="tns:SOLAAccessFault"/>
@@ -367,6 +409,20 @@
             <fault name="OptimisticLockingFault" message="tns:OptimisticLockingFault"/>
             <fault name="SOLAValidationFault" message="tns:SOLAValidationFault"/>
         </operation>
+        <operation name="GetSysRegCertificatesByLocation">
+            <input message="tns:GetSysRegCertificatesByLocation"/>
+            <output message="tns:GetSysRegCertificatesByLocationResponse"/>
+            <fault name="SOLAFault" message="tns:SOLAFault"/>
+            <fault name="UnhandledFault" message="tns:UnhandledFault"/>
+            <fault name="SOLAAccessFault" message="tns:SOLAAccessFault"/>
+        </operation>
+        <operation name="GetSysRegCertificatesByApplication">
+            <input message="tns:GetSysRegCertificatesByApplication"/>
+            <output message="tns:GetSysRegCertificatesByApplicationResponse"/>
+            <fault name="SOLAFault" message="tns:SOLAFault"/>
+            <fault name="UnhandledFault" message="tns:UnhandledFault"/>
+            <fault name="SOLAAccessFault" message="tns:SOLAAccessFault"/>
+        </operation>
     </portType>
     <binding name="CaseManagementPortBinding" type="tns:CaseManagement">
         <wsp:PolicyReference URI="#CaseManagementPortBindingPolicy"/>
@@ -437,9 +493,6 @@
             <output>
                 <wsp:PolicyReference URI="#CaseManagementPortBinding_CheckConnection_Output_Policy"/>
             </output>
-            <fault name="SOLAFault"/>
-            <fault name="UnhandledFault"/>
-            <fault name="SOLAAccessFault"/>
         </operation>
         <operation name="GetLodgementTiming">
             <input>
@@ -448,9 +501,6 @@
             <output>
                 <wsp:PolicyReference URI="#CaseManagementPortBinding_CheckConnection_Output_Policy"/>
             </output>
-            <fault name="SOLAFault"/>
-            <fault name="UnhandledFault"/>
-            <fault name="SOLAAccessFault"/>
         </operation>
         <operation name="GetAddress">
             <input>
@@ -496,7 +546,7 @@
             <fault name="UnhandledFault"/>
             <fault name="SOLAAccessFault"/>
         </operation>
-        <operation name="GetUserActions">
+        <operation name="GetCertifiedSurveyors">
             <input>
                 <wsp:PolicyReference URI="#CaseManagementPortBinding_CheckConnection_Input_Policy"/>
             </input>
@@ -506,6 +556,14 @@
             <fault name="SOLAFault"/>
             <fault name="UnhandledFault"/>
             <fault name="SOLAAccessFault"/>
+        </operation>
+        <operation name="GetUserActions">
+            <input>
+                <wsp:PolicyReference URI="#CaseManagementPortBinding_CheckConnection_Input_Policy"/>
+            </input>
+            <output>
+                <wsp:PolicyReference URI="#CaseManagementPortBinding_CheckConnection_Output_Policy"/>
+            </output>
         </operation>
         <operation name="CalculateFee">
             <input>
@@ -519,6 +577,19 @@
             <fault name="SOLAAccessFault"/>
         </operation>
         <operation name="AttachSourceToTransaction">
+            <input>
+                <wsp:PolicyReference URI="#CaseManagementPortBinding_CheckConnection_Input_Policy"/>
+            </input>
+            <output>
+                <wsp:PolicyReference URI="#CaseManagementPortBinding_CheckConnection_Output_Policy"/>
+            </output>
+            <fault name="SOLAValidationFault"/>
+            <fault name="OptimisticLockingFault"/>
+            <fault name="SOLAFault"/>
+            <fault name="UnhandledFault"/>
+            <fault name="SOLAAccessFault"/>
+        </operation>
+        <operation name="attachPowerOfAttorneyToTransaction">
             <input>
                 <wsp:PolicyReference URI="#CaseManagementPortBinding_CheckConnection_Input_Policy"/>
             </input>
@@ -555,6 +626,17 @@
             <fault name="UnhandledFault"/>
             <fault name="SOLAAccessFault"/>
         </operation>
+        <operation name="getPowerOfAttorneyByServiceId">
+            <input>
+                <wsp:PolicyReference URI="#CaseManagementPortBinding_CheckConnection_Input_Policy"/>
+            </input>
+            <output>
+                <wsp:PolicyReference URI="#CaseManagementPortBinding_CheckConnection_Output_Policy"/>
+            </output>
+            <fault name="SOLAFault"/>
+            <fault name="UnhandledFault"/>
+            <fault name="SOLAAccessFault"/>
+        </operation>
         <operation name="GetSourcesByIds">
             <input>
                 <wsp:PolicyReference URI="#CaseManagementPortBinding_CheckConnection_Input_Policy"/>
@@ -567,6 +649,28 @@
             <fault name="SOLAAccessFault"/>
         </operation>
         <operation name="getSourceById">
+            <input>
+                <wsp:PolicyReference URI="#CaseManagementPortBinding_CheckConnection_Input_Policy"/>
+            </input>
+            <output>
+                <wsp:PolicyReference URI="#CaseManagementPortBinding_CheckConnection_Output_Policy"/>
+            </output>
+            <fault name="SOLAFault"/>
+            <fault name="UnhandledFault"/>
+            <fault name="SOLAAccessFault"/>
+        </operation>
+        <operation name="getPowerOfAttorneyById">
+            <input>
+                <wsp:PolicyReference URI="#CaseManagementPortBinding_CheckConnection_Input_Policy"/>
+            </input>
+            <output>
+                <wsp:PolicyReference URI="#CaseManagementPortBinding_CheckConnection_Output_Policy"/>
+            </output>
+            <fault name="SOLAFault"/>
+            <fault name="UnhandledFault"/>
+            <fault name="SOLAAccessFault"/>
+        </operation>
+        <operation name="getApplicationByTransactionId">
             <input>
                 <wsp:PolicyReference URI="#CaseManagementPortBinding_CheckConnection_Input_Policy"/>
             </input>
@@ -795,6 +899,28 @@
             <fault name="SOLAAccessFault"/>
             <fault name="OptimisticLockingFault"/>
             <fault name="SOLAValidationFault"/>
+        </operation>
+        <operation name="GetSysRegCertificatesByLocation">
+            <input>
+                <wsp:PolicyReference URI="#CaseManagementPortBinding_CheckConnection_Input_Policy"/>
+            </input>
+            <output>
+                <wsp:PolicyReference URI="#CaseManagementPortBinding_CheckConnection_Output_Policy"/>
+            </output>
+            <fault name="SOLAFault"/>
+            <fault name="UnhandledFault"/>
+            <fault name="SOLAAccessFault"/>
+        </operation>
+        <operation name="GetSysRegCertificatesByApplication">
+            <input>
+                <wsp:PolicyReference URI="#CaseManagementPortBinding_CheckConnection_Input_Policy"/>
+            </input>
+            <output>
+                <wsp:PolicyReference URI="#CaseManagementPortBinding_CheckConnection_Output_Policy"/>
+            </output>
+            <fault name="SOLAFault"/>
+            <fault name="UnhandledFault"/>
+            <fault name="SOLAAccessFault"/>
         </operation>
     </binding>
     <service name="casemanagement-service">

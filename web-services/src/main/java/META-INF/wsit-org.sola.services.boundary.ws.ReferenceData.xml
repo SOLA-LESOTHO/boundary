@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?> 
-<definitions 
-    xmlns="http://schemas.xmlsoap.org/wsdl/" 
-    xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" 
-    xmlns:xsd="http://www.w3.org/2001/XMLSchema" 
-    xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" name="referencedata-service" targetNamespace="http%3A%2F%2Fwebservices.sola.org%2Freferencedata" xmlns:tns="http%3A%2F%2Fwebservices.sola.org%2Freferencedata" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:wsp1="http://www.w3.org/ns/ws-policy" xmlns:fi="http://java.sun.com/xml/ns/wsit/2006/09/policy/fastinfoset/service" xmlns:tcp="http://java.sun.com/xml/ns/wsit/2006/09/policy/soaptcp/service" xmlns:wsaw="http://www.w3.org/2005/08/addressing" xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy" xmlns:sc="http://schemas.sun.com/2006/03/wss/server" xmlns:wspp="http://java.sun.com/xml/ns/wsit/policy" 
->
+ <definitions 
+ xmlns="http://schemas.xmlsoap.org/wsdl/" 
+ xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" 
+ xmlns:xsd="http://www.w3.org/2001/XMLSchema" 
+ xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" name="referencedata-service" targetNamespace="http%3A%2F%2Fwebservices.sola.org%2Freferencedata" xmlns:tns="http%3A%2F%2Fwebservices.sola.org%2Freferencedata" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:wsp1="http://www.w3.org/ns/ws-policy" xmlns:fi="http://java.sun.com/xml/ns/wsit/2006/09/policy/fastinfoset/service" xmlns:tcp="http://java.sun.com/xml/ns/wsit/2006/09/policy/soaptcp/service" xmlns:wsaw="http://www.w3.org/2005/08/addressing" xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy" xmlns:sc="http://schemas.sun.com/2006/03/wss/server" xmlns:wspp="http://java.sun.com/xml/ns/wsit/policy" 
+ >
     <message name="CheckConnection"/>
     <message name="CheckConnectionResponse"/>
     <message name="GetCommunicationTypes"/>
@@ -12,8 +12,14 @@
     <message name="SOLAFault"/>
     <message name="UnhandledFault"/>
     <message name="SOLAAccessFault"/>
+    <message name="getApplicationForms"/>
+    <message name="getApplicationFormsResponse"/>
+    <message name="getApplicationForm"/>
+    <message name="getApplicationFormResponse"/>
     <message name="GetGenderTypes"/>
     <message name="GetGenderTypesResponse"/>
+    <message name="getLegalTypes"/>
+    <message name="getLegalTypesResponse"/>
     <message name="GetAvailabilityStatusList"/>
     <message name="GetAvailabilityStatusListResponse"/>
     <message name="GetPresentationFormTypes"/>
@@ -48,10 +54,14 @@
     <message name="GetRRRGroupTypesResponse"/>
     <message name="GetRRRTypes"/>
     <message name="GetRRRTypesResponse"/>
+    <message name="GetDeedTypes"/>
+    <message name="GetDeedTypesResponse"/>
     <message name="GetSourceBaUnitRelationTypes"/>
     <message name="GetSourceBaUnitRelationTypesResponse"/>
     <message name="GetRegistrationStatusTypes"/>
     <message name="GetRegistrationStatusTypesResponse"/>
+    <message name="GetLandGradeTypes"/>
+    <message name="GetLandGradeTypesResponse"/>
     <message name="GetCadastreObjectTypes"/>
     <message name="GetCadastreObjectTypesResponse"/>
     <message name="GetTypeActions"/>
@@ -67,6 +77,22 @@
     <message name="saveReferenceData"/>
     <message name="saveReferenceDataResponse"/>
     <message name="OptimisticLockingFault"/>
+    <message name="GetDisputeAction"/>
+    <message name="GetDisputeActionResponse"/>
+    <message name="GetDisputeCategory"/>
+    <message name="GetDisputeCategoryResponse"/>
+    <message name="GetDisputeStatus"/>
+    <message name="GetDisputeStatusResponse"/>
+    <message name="GetDisputeType"/>
+    <message name="GetDisputeTypeResponse"/>
+    <message name="GetOtherAuthorities"/>
+    <message name="GetOtherAuthoritiesResponse"/>
+    <message name="GetRoadClassType"/>
+    <message name="GetRoadClassTypeResponse"/>
+    <message name="GetLandUseTypes"/>
+    <message name="GetLandUseTypesResponse"/>
+    <message name="GetDisputeReports"/>
+    <message name="GetDisputeReportsResponse"/>
     <portType name="ReferenceData">
         <operation name="CheckConnection">
             <input message="tns:CheckConnection"/>
@@ -79,12 +105,30 @@
             <fault name="UnhandledFault" message="tns:UnhandledFault"/>
             <fault name="SOLAAccessFault" message="tns:SOLAAccessFault"/>
         </operation>
+        <operation name="getApplicationForms">
+            <input message="tns:getApplicationForms"/>
+            <output message="tns:getApplicationFormsResponse"/>
+            <fault name="SOLAFault" message="tns:SOLAFault"/>
+            <fault name="UnhandledFault" message="tns:UnhandledFault"/>
+        </operation>
+        <operation name="getApplicationForm">
+            <input message="tns:getApplicationForm"/>
+            <output message="tns:getApplicationFormResponse"/>
+            <fault name="SOLAFault" message="tns:SOLAFault"/>
+            <fault name="UnhandledFault" message="tns:UnhandledFault"/>
+        </operation>
         <operation name="GetGenderTypes">
             <input message="tns:GetGenderTypes"/>
             <output message="tns:GetGenderTypesResponse"/>
             <fault name="SOLAFault" message="tns:SOLAFault"/>
             <fault name="UnhandledFault" message="tns:UnhandledFault"/>
             <fault name="SOLAAccessFault" message="tns:SOLAAccessFault"/>
+        </operation>
+        <operation name="getLegalTypes">
+            <input message="tns:getLegalTypes"/>
+            <output message="tns:getLegalTypesResponse"/>
+            <fault name="SOLAFault" message="tns:SOLAFault"/>
+            <fault name="UnhandledFault" message="tns:UnhandledFault"/>
         </operation>
         <operation name="GetAvailabilityStatusList">
             <input message="tns:GetAvailabilityStatusList"/>
@@ -205,6 +249,13 @@
             <fault name="UnhandledFault" message="tns:UnhandledFault"/>
             <fault name="SOLAAccessFault" message="tns:SOLAAccessFault"/>
         </operation>
+        <operation name="GetDeedTypes">
+            <input message="tns:GetDeedTypes"/>
+            <output message="tns:GetDeedTypesResponse"/>
+            <fault name="SOLAFault" message="tns:SOLAFault"/>
+            <fault name="UnhandledFault" message="tns:UnhandledFault"/>
+            <fault name="SOLAAccessFault" message="tns:SOLAAccessFault"/>
+        </operation>
         <operation name="GetSourceBaUnitRelationTypes">
             <input message="tns:GetSourceBaUnitRelationTypes"/>
             <output message="tns:GetSourceBaUnitRelationTypesResponse"/>
@@ -215,6 +266,13 @@
         <operation name="GetRegistrationStatusTypes">
             <input message="tns:GetRegistrationStatusTypes"/>
             <output message="tns:GetRegistrationStatusTypesResponse"/>
+            <fault name="SOLAFault" message="tns:SOLAFault"/>
+            <fault name="UnhandledFault" message="tns:UnhandledFault"/>
+            <fault name="SOLAAccessFault" message="tns:SOLAAccessFault"/>
+        </operation>
+        <operation name="GetLandGradeTypes">
+            <input message="tns:GetLandGradeTypes"/>
+            <output message="tns:GetLandGradeTypesResponse"/>
             <fault name="SOLAFault" message="tns:SOLAFault"/>
             <fault name="UnhandledFault" message="tns:UnhandledFault"/>
             <fault name="SOLAAccessFault" message="tns:SOLAAccessFault"/>
@@ -269,6 +327,62 @@
             <fault name="SOLAAccessFault" message="tns:SOLAAccessFault"/>
             <fault name="OptimisticLockingFault" message="tns:OptimisticLockingFault"/>
         </operation>
+        <operation name="GetDisputeAction">
+            <input message="tns:GetDisputeAction"/>
+            <output message="tns:GetDisputeActionResponse"/>
+            <fault name="SOLAFault" message="tns:SOLAFault"/>
+            <fault name="UnhandledFault" message="tns:UnhandledFault"/>
+            <fault name="SOLAAccessFault" message="tns:SOLAAccessFault"/>
+        </operation>
+        <operation name="GetDisputeCategory">
+            <input message="tns:GetDisputeCategory"/>
+            <output message="tns:GetDisputeCategoryResponse"/>
+            <fault name="SOLAFault" message="tns:SOLAFault"/>
+            <fault name="UnhandledFault" message="tns:UnhandledFault"/>
+            <fault name="SOLAAccessFault" message="tns:SOLAAccessFault"/>
+        </operation>
+        <operation name="GetDisputeStatus">
+            <input message="tns:GetDisputeStatus"/>
+            <output message="tns:GetDisputeStatusResponse"/>
+            <fault name="SOLAFault" message="tns:SOLAFault"/>
+            <fault name="UnhandledFault" message="tns:UnhandledFault"/>
+            <fault name="SOLAAccessFault" message="tns:SOLAAccessFault"/>
+        </operation>
+        <operation name="GetDisputeType">
+            <input message="tns:GetDisputeType"/>
+            <output message="tns:GetDisputeTypeResponse"/>
+            <fault name="SOLAFault" message="tns:SOLAFault"/>
+            <fault name="UnhandledFault" message="tns:UnhandledFault"/>
+            <fault name="SOLAAccessFault" message="tns:SOLAAccessFault"/>
+        </operation>
+        <operation name="GetOtherAuthorities">
+            <input message="tns:GetOtherAuthorities"/>
+            <output message="tns:GetOtherAuthoritiesResponse"/>
+            <fault name="SOLAFault" message="tns:SOLAFault"/>
+            <fault name="UnhandledFault" message="tns:UnhandledFault"/>
+            <fault name="SOLAAccessFault" message="tns:SOLAAccessFault"/>
+        </operation>
+        <operation name="GetRoadClassType">
+            <input message="tns:GetRoadClassType"/>
+            <output message="tns:GetRoadClassTypeResponse"/>
+            <fault name="SOLAFault" message="tns:SOLAFault"/>
+            <fault name="UnhandledFault" message="tns:UnhandledFault"/>
+            <fault name="SOLAAccessFault" message="tns:SOLAAccessFault"/>
+        </operation>
+        <operation name="GetLandUseTypes">
+            <input message="tns:GetLandUseTypes"/>
+            <output message="tns:GetLandUseTypesResponse"/>
+            <fault name="SOLAFault" message="tns:SOLAFault"/>
+            <fault name="UnhandledFault" message="tns:UnhandledFault"/>
+            <fault name="SOLAAccessFault" message="tns:SOLAAccessFault"/>
+        </operation>
+        <operation name="GetDisputeReports">
+            <input message="tns:GetDisputeReports"/>
+            <output message="tns:GetDisputeReportsResponse"/>
+            <fault name="SOLAFault" message="tns:SOLAFault"/>
+            <fault name="UnhandledFault" message="tns:UnhandledFault"/>
+            <fault name="SOLAAccessFault" message="tns:SOLAAccessFault"/>
+        </operation>
     </portType>
     <binding name="ReferenceDataPortBinding" type="tns:ReferenceData">
         <wsp:PolicyReference URI="#ReferenceDataPortBindingPolicy"/>
@@ -291,6 +405,26 @@
             <fault name="UnhandledFault"/>
             <fault name="SOLAAccessFault"/>
         </operation>
+        <operation name="getApplicationForms">
+            <input>
+                <wsp:PolicyReference URI="#ReferenceDataPortBinding_CheckConnection_Input_Policy"/>
+            </input>
+            <output>
+                <wsp:PolicyReference URI="#ReferenceDataPortBinding_CheckConnection_Output_Policy"/>
+            </output>
+            <fault name="SOLAFault"/>
+            <fault name="UnhandledFault"/>
+        </operation>
+        <operation name="getApplicationForm">
+            <input>
+                <wsp:PolicyReference URI="#ReferenceDataPortBinding_CheckConnection_Input_Policy"/>
+            </input>
+            <output>
+                <wsp:PolicyReference URI="#ReferenceDataPortBinding_CheckConnection_Output_Policy"/>
+            </output>
+            <fault name="SOLAFault"/>
+            <fault name="UnhandledFault"/>
+        </operation>
         <operation name="GetGenderTypes">
             <input>
                 <wsp:PolicyReference URI="#ReferenceDataPortBinding_CheckConnection_Input_Policy"/>
@@ -301,6 +435,16 @@
             <fault name="SOLAFault"/>
             <fault name="UnhandledFault"/>
             <fault name="SOLAAccessFault"/>
+        </operation>
+        <operation name="getLegalTypes">
+            <input>
+                <wsp:PolicyReference URI="#ReferenceDataPortBinding_CheckConnection_Input_Policy"/>
+            </input>
+            <output>
+                <wsp:PolicyReference URI="#ReferenceDataPortBinding_CheckConnection_Output_Policy"/>
+            </output>
+            <fault name="SOLAFault"/>
+            <fault name="UnhandledFault"/>
         </operation>
         <operation name="GetAvailabilityStatusList">
             <input>
@@ -489,6 +633,17 @@
             <fault name="UnhandledFault"/>
             <fault name="SOLAAccessFault"/>
         </operation>
+        <operation name="GetDeedTypes">
+            <input>
+                <wsp:PolicyReference URI="#ReferenceDataPortBinding_CheckConnection_Input_Policy"/>
+            </input>
+            <output>
+                <wsp:PolicyReference URI="#ReferenceDataPortBinding_CheckConnection_Output_Policy"/>
+            </output>
+            <fault name="SOLAFault"/>
+            <fault name="UnhandledFault"/>
+            <fault name="SOLAAccessFault"/>
+        </operation>
         <operation name="GetSourceBaUnitRelationTypes">
             <input>
                 <wsp:PolicyReference URI="#ReferenceDataPortBinding_CheckConnection_Input_Policy"/>
@@ -501,6 +656,17 @@
             <fault name="SOLAAccessFault"/>
         </operation>
         <operation name="GetRegistrationStatusTypes">
+            <input>
+                <wsp:PolicyReference URI="#ReferenceDataPortBinding_CheckConnection_Input_Policy"/>
+            </input>
+            <output>
+                <wsp:PolicyReference URI="#ReferenceDataPortBinding_CheckConnection_Output_Policy"/>
+            </output>
+            <fault name="SOLAFault"/>
+            <fault name="UnhandledFault"/>
+            <fault name="SOLAAccessFault"/>
+        </operation>
+        <operation name="GetLandGradeTypes">
             <input>
                 <wsp:PolicyReference URI="#ReferenceDataPortBinding_CheckConnection_Input_Policy"/>
             </input>
@@ -588,6 +754,94 @@
             <fault name="UnhandledFault"/>
             <fault name="SOLAAccessFault"/>
             <fault name="OptimisticLockingFault"/>
+        </operation>
+        <operation name="GetDisputeAction">
+            <input>
+                <wsp:PolicyReference URI="#ReferenceDataPortBinding_CheckConnection_Input_Policy"/>
+            </input>
+            <output>
+                <wsp:PolicyReference URI="#ReferenceDataPortBinding_CheckConnection_Output_Policy"/>
+            </output>
+            <fault name="SOLAFault"/>
+            <fault name="UnhandledFault"/>
+            <fault name="SOLAAccessFault"/>
+        </operation>
+        <operation name="GetDisputeCategory">
+            <input>
+                <wsp:PolicyReference URI="#ReferenceDataPortBinding_CheckConnection_Input_Policy"/>
+            </input>
+            <output>
+                <wsp:PolicyReference URI="#ReferenceDataPortBinding_CheckConnection_Output_Policy"/>
+            </output>
+            <fault name="SOLAFault"/>
+            <fault name="UnhandledFault"/>
+            <fault name="SOLAAccessFault"/>
+        </operation>
+        <operation name="GetDisputeStatus">
+            <input>
+                <wsp:PolicyReference URI="#ReferenceDataPortBinding_CheckConnection_Input_Policy"/>
+            </input>
+            <output>
+                <wsp:PolicyReference URI="#ReferenceDataPortBinding_CheckConnection_Output_Policy"/>
+            </output>
+            <fault name="SOLAFault"/>
+            <fault name="UnhandledFault"/>
+            <fault name="SOLAAccessFault"/>
+        </operation>
+        <operation name="GetDisputeType">
+            <input>
+                <wsp:PolicyReference URI="#ReferenceDataPortBinding_CheckConnection_Input_Policy"/>
+            </input>
+            <output>
+                <wsp:PolicyReference URI="#ReferenceDataPortBinding_CheckConnection_Output_Policy"/>
+            </output>
+            <fault name="SOLAFault"/>
+            <fault name="UnhandledFault"/>
+            <fault name="SOLAAccessFault"/>
+        </operation>
+        <operation name="GetOtherAuthorities">
+            <input>
+                <wsp:PolicyReference URI="#ReferenceDataPortBinding_CheckConnection_Input_Policy"/>
+            </input>
+            <output>
+                <wsp:PolicyReference URI="#ReferenceDataPortBinding_CheckConnection_Output_Policy"/>
+            </output>
+            <fault name="SOLAFault"/>
+            <fault name="UnhandledFault"/>
+            <fault name="SOLAAccessFault"/>
+        </operation>
+        <operation name="GetRoadClassType">
+            <input>
+                <wsp:PolicyReference URI="#ReferenceDataPortBinding_CheckConnection_Input_Policy"/>
+            </input>
+            <output>
+                <wsp:PolicyReference URI="#ReferenceDataPortBinding_CheckConnection_Output_Policy"/>
+            </output>
+            <fault name="SOLAFault"/>
+            <fault name="UnhandledFault"/>
+            <fault name="SOLAAccessFault"/>
+        </operation>
+        <operation name="GetLandUseTypes">
+            <input>
+                <wsp:PolicyReference URI="#ReferenceDataPortBinding_CheckConnection_Input_Policy"/>
+            </input>
+            <output>
+                <wsp:PolicyReference URI="#ReferenceDataPortBinding_CheckConnection_Output_Policy"/>
+            </output>
+            <fault name="SOLAFault"/>
+            <fault name="UnhandledFault"/>
+            <fault name="SOLAAccessFault"/>
+        </operation>
+        <operation name="GetDisputeReports">
+            <input>
+                <wsp:PolicyReference URI="#ReferenceDataPortBinding_CheckConnection_Input_Policy"/>
+            </input>
+            <output>
+                <wsp:PolicyReference URI="#ReferenceDataPortBinding_CheckConnection_Output_Policy"/>
+            </output>
+            <fault name="SOLAFault"/>
+            <fault name="UnhandledFault"/>
+            <fault name="SOLAAccessFault"/>
         </operation>
     </binding>
     <service name="referencedata-service">

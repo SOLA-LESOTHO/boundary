@@ -12,6 +12,8 @@
     <message name="SOLAFault"/>
     <message name="UnhandledFault"/>
     <message name="SOLAAccessFault"/>
+    <message name="GetCadastreObjectByAllParts"/>
+    <message name="GetCadastreObjectByAllPartsResponse"/>
     <message name="GetCadastreObjectByPoint"/>
     <message name="GetCadastreObjectByPointResponse"/>
     <message name="GetCadastreObjectsByBaUnit"/>
@@ -20,20 +22,26 @@
     <message name="GetCadastreObjectsByServiceResponse"/>
     <message name="SaveCadastreChange"/>
     <message name="SaveCadastreChangeResponse"/>
-    <message name="SOLAValidationFault"/>
-    <message name="OptimisticLockingFault"/>
     <message name="GetCadastreChange"/>
     <message name="GetCadastreChangeResponse"/>
+    <message name="GetCadastreChangeById"/>
+    <message name="GetCadastreChangeByIdResponse"/>
     <message name="GetCadastreObjects"/>
     <message name="GetCadastreObjectsResponse"/>
+    <message name="getCadastreObject"/>
+    <message name="getCadastreObjectResponse"/>
     <message name="GetCadastreObjectNode"/>
     <message name="GetCadastreObjectNodeResponse"/>
     <message name="GetCadastreObjectNodePotential"/>
     <message name="GetCadastreObjectNodePotentialResponse"/>
     <message name="SaveCadastreRedefinition"/>
     <message name="SaveCadastreRedefinitionResponse"/>
+    <message name="SOLAValidationFault"/>
+    <message name="OptimisticLockingFault"/>
     <message name="GetCadastreRedefinition"/>
     <message name="GetCadastreRedefinitionResponse"/>
+    <message name="GetSpatialValueArea"/>
+    <message name="GetSpatialValueAreaResponse"/>
     <portType name="Cadastre">
         <operation name="CheckConnection">
             <input message="tns:CheckConnection"/>
@@ -42,6 +50,13 @@
         <operation name="GetCadastreObjectByParts">
             <input message="tns:GetCadastreObjectByParts"/>
             <output message="tns:GetCadastreObjectByPartsResponse"/>
+            <fault name="SOLAFault" message="tns:SOLAFault"/>
+            <fault name="UnhandledFault" message="tns:UnhandledFault"/>
+            <fault name="SOLAAccessFault" message="tns:SOLAAccessFault"/>
+        </operation>
+        <operation name="GetCadastreObjectByAllParts">
+            <input message="tns:GetCadastreObjectByAllParts"/>
+            <output message="tns:GetCadastreObjectByAllPartsResponse"/>
             <fault name="SOLAFault" message="tns:SOLAFault"/>
             <fault name="UnhandledFault" message="tns:UnhandledFault"/>
             <fault name="SOLAAccessFault" message="tns:SOLAAccessFault"/>
@@ -70,22 +85,25 @@
         <operation name="SaveCadastreChange">
             <input message="tns:SaveCadastreChange"/>
             <output message="tns:SaveCadastreChangeResponse"/>
-            <fault name="SOLAValidationFault" message="tns:SOLAValidationFault"/>
-            <fault name="OptimisticLockingFault" message="tns:OptimisticLockingFault"/>
-            <fault name="SOLAFault" message="tns:SOLAFault"/>
-            <fault name="UnhandledFault" message="tns:UnhandledFault"/>
-            <fault name="SOLAAccessFault" message="tns:SOLAAccessFault"/>
         </operation>
         <operation name="GetCadastreChange">
             <input message="tns:GetCadastreChange"/>
             <output message="tns:GetCadastreChangeResponse"/>
-            <fault name="SOLAFault" message="tns:SOLAFault"/>
-            <fault name="UnhandledFault" message="tns:UnhandledFault"/>
-            <fault name="SOLAAccessFault" message="tns:SOLAAccessFault"/>
+        </operation>
+        <operation name="GetCadastreChangeById">
+            <input message="tns:GetCadastreChangeById"/>
+            <output message="tns:GetCadastreChangeByIdResponse"/>
         </operation>
         <operation name="GetCadastreObjects">
             <input message="tns:GetCadastreObjects"/>
             <output message="tns:GetCadastreObjectsResponse"/>
+            <fault name="SOLAFault" message="tns:SOLAFault"/>
+            <fault name="UnhandledFault" message="tns:UnhandledFault"/>
+            <fault name="SOLAAccessFault" message="tns:SOLAAccessFault"/>
+        </operation>
+        <operation name="getCadastreObject">
+            <input message="tns:getCadastreObject"/>
+            <output message="tns:getCadastreObjectResponse"/>
             <fault name="SOLAFault" message="tns:SOLAFault"/>
             <fault name="UnhandledFault" message="tns:UnhandledFault"/>
             <fault name="SOLAAccessFault" message="tns:SOLAAccessFault"/>
@@ -116,9 +134,12 @@
         <operation name="GetCadastreRedefinition">
             <input message="tns:GetCadastreRedefinition"/>
             <output message="tns:GetCadastreRedefinitionResponse"/>
+        </operation>
+        <operation name="GetSpatialValueArea">
+            <input message="tns:GetSpatialValueArea"/>
+            <output message="tns:GetSpatialValueAreaResponse"/>
             <fault name="SOLAFault" message="tns:SOLAFault"/>
             <fault name="UnhandledFault" message="tns:UnhandledFault"/>
-            <fault name="SOLAAccessFault" message="tns:SOLAAccessFault"/>
         </operation>
     </portType>
     <binding name="CadastrePortBinding" type="tns:Cadastre">
@@ -132,6 +153,17 @@
             </output>
         </operation>
         <operation name="GetCadastreObjectByParts">
+            <input>
+                <wsp:PolicyReference URI="#CadastrePortBinding_CheckConnection_Input_Policy"/>
+            </input>
+            <output>
+                <wsp:PolicyReference URI="#CadastrePortBinding_CheckConnection_Output_Policy"/>
+            </output>
+            <fault name="SOLAFault"/>
+            <fault name="UnhandledFault"/>
+            <fault name="SOLAAccessFault"/>
+        </operation>
+        <operation name="GetCadastreObjectByAllParts">
             <input>
                 <wsp:PolicyReference URI="#CadastrePortBinding_CheckConnection_Input_Policy"/>
             </input>
@@ -182,13 +214,24 @@
             <output>
                 <wsp:PolicyReference URI="#CadastrePortBinding_CheckConnection_Output_Policy"/>
             </output>
-            <fault name="SOLAValidationFault"/>
-            <fault name="OptimisticLockingFault"/>
-            <fault name="SOLAFault"/>
-            <fault name="UnhandledFault"/>
-            <fault name="SOLAAccessFault"/>
         </operation>
         <operation name="GetCadastreChange">
+            <input>
+                <wsp:PolicyReference URI="#CadastrePortBinding_CheckConnection_Input_Policy"/>
+            </input>
+            <output>
+                <wsp:PolicyReference URI="#CadastrePortBinding_CheckConnection_Output_Policy"/>
+            </output>
+        </operation>
+        <operation name="GetCadastreChangeById">
+            <input>
+                <wsp:PolicyReference URI="#CadastrePortBinding_CheckConnection_Input_Policy"/>
+            </input>
+            <output>
+                <wsp:PolicyReference URI="#CadastrePortBinding_CheckConnection_Output_Policy"/>
+            </output>
+        </operation>
+        <operation name="GetCadastreObjects">
             <input>
                 <wsp:PolicyReference URI="#CadastrePortBinding_CheckConnection_Input_Policy"/>
             </input>
@@ -199,7 +242,7 @@
             <fault name="UnhandledFault"/>
             <fault name="SOLAAccessFault"/>
         </operation>
-        <operation name="GetCadastreObjects">
+        <operation name="getCadastreObject">
             <input>
                 <wsp:PolicyReference URI="#CadastrePortBinding_CheckConnection_Input_Policy"/>
             </input>
@@ -252,9 +295,16 @@
             <output>
                 <wsp:PolicyReference URI="#CadastrePortBinding_CheckConnection_Output_Policy"/>
             </output>
+        </operation>
+        <operation name="GetSpatialValueArea">
+            <input>
+                <wsp:PolicyReference URI="#CadastrePortBinding_CheckConnection_Input_Policy"/>
+            </input>
+            <output>
+                <wsp:PolicyReference URI="#CadastrePortBinding_CheckConnection_Output_Policy"/>
+            </output>
             <fault name="SOLAFault"/>
             <fault name="UnhandledFault"/>
-            <fault name="SOLAAccessFault"/>
         </operation>
     </binding>
     <service name="cadastre-service">

@@ -69,13 +69,13 @@
             </resource>
         </resources>
         <plugins>    
-            <plugin>
-                <!--
+            <!--plugin>
+                <!-
                 Imports the WSDL created during the build of the Boundary Web Services project and
                 generates the client side classes. This version of the pluggin is not recongnised
                 by Netbeans and the project will display without the Web Service Reference folder.
                 To access the Web Service Reference folder in Netbeans, see the commented out 
-                section below. -->
+                section below. ->
                 <groupId>org.jvnet.jax-ws-commons</groupId>
                 <artifactId>jaxws-maven-plugin</artifactId>
                 <version>2.2</version>
@@ -151,7 +151,7 @@
                             </wsdlFiles>
                             <staleFile>${project.build.directory}/jaxws/stale/digitialarchive-service.stale</staleFile>                    
                         </configuration>            
-                        <id>digitialarchive-service</id>
+                        <id>digitalarchive-service</id>
                         <phase>generate-sources</phase>
                     </execution>
                     <execution>
@@ -216,12 +216,12 @@
                             </wsdlFiles>
                             <staleFile>${project.build.directory}/jaxws/stale/bulkoperations.stale</staleFile>                    
                         </configuration>            
-                        <id>nulkoperations-service</id>
+                        <id>bulkoperations-service</id>
                         <phase>generate-sources</phase>
                     </execution>
                 </executions>
             </plugin>
-            <!-- Don't forget to use endorsed with JAX-WS 2.2 on Java 6 !! -->
+            <!- Don't forget to use endorsed with JAX-WS 2.2 on Java 6 !! ->
             <plugin>
                 <artifactId>maven-compiler-plugin</artifactId>
                 <configuration>
@@ -262,16 +262,16 @@
                         </configuration>
                     </execution>
                 </executions>
-            </plugin>
+            </plugin-->
             <!-- PLEASE LEAVE... 
             The jaxws-maven-plugin configuration below is recongized by Netbeans and will
             cause the project to display the Web Service References folder. This section 
             can be uncommented to allow configuration of the Web Service Client WSIT files using
             the Netbeans UI. Note that changes to the WSIT are seldom required. -->
-            <!--plugin>
-                <groupId>org.codehaus.mojo</groupId>
+            <plugin>
+                <groupId>org.jvnet.jax-ws-commons</groupId>
                 <artifactId>jaxws-maven-plugin</artifactId>
-                <version>1.12</version>
+                <version>2.2</version>
                 <executions>
                     <execution>
                         <goals>
@@ -399,6 +399,20 @@
                         <id>wsimport-generate-filestreaming-service</id>
                         <phase>generate-sources</phase>
                     </execution>
+                    <execution>
+                        <goals>
+                            <goal>wsimport</goal>
+                        </goals>
+                        <configuration>
+                            <wsdlFiles>
+                                <wsdlFile>localhost_8080/sola/webservices/bulkoperations-service.wsdl</wsdlFile>
+                            </wsdlFiles>
+                            <wsdlLocation>http://localhost:8080/sola/webservices/bulkoperations-service?wsdl</wsdlLocation>
+                            <staleFile>${project.build.directory}/jaxws/stale/bulkoperations-service.stale</staleFile>
+                        </configuration>
+                        <id>wsimport-generate-bulkoperations-service</id>
+                        <phase>generate-sources</phase>
+                    </execution>
                 </executions>
                 <configuration>
                     <sourceDestDir>${project.build.directory}/generated-sources/jaxws-wsimport</sourceDestDir>
@@ -407,7 +421,7 @@
                     <extension>true</extension>
                     <catalog>${basedir}/src/jax-ws-catalog.xml</catalog>
                 </configuration>
-            </plugin-->
+            </plugin>
         </plugins>
     </build>
     <pluginRepositories>
