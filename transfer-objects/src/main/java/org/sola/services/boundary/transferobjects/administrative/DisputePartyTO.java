@@ -35,6 +35,7 @@ public class DisputePartyTO extends AbstractIdTO{
     private String id;
     private String disputeNr;
     private String partyRole;
+    private String partyName;
     private String partyId;
 
     public String getDisputeNr() {
@@ -51,6 +52,14 @@ public class DisputePartyTO extends AbstractIdTO{
 
     public void setPartyRole(String partyRole) {
         this.partyRole = partyRole;
+    }
+
+    public String getPartyName() {
+        return partyName;
+    }
+
+    public void setPartyName(String partyName) {
+        this.partyName = partyName;
     }
 
     public String getPartyId() {
