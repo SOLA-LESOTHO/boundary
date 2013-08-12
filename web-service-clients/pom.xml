@@ -69,13 +69,13 @@
             </resource>
         </resources>
         <plugins>    
-            <!--plugin>
-                <!-
+            <plugin>
+                <!--
                 Imports the WSDL created during the build of the Boundary Web Services project and
                 generates the client side classes. This version of the pluggin is not recongnised
                 by Netbeans and the project will display without the Web Service Reference folder.
                 To access the Web Service Reference folder in Netbeans, see the commented out 
-                section below. ->
+                section below. -->
                 <groupId>org.jvnet.jax-ws-commons</groupId>
                 <artifactId>jaxws-maven-plugin</artifactId>
                 <version>2.2</version>
@@ -221,7 +221,7 @@
                     </execution>
                 </executions>
             </plugin>
-            <!- Don't forget to use endorsed with JAX-WS 2.2 on Java 6 !! ->
+            <!-- Don't forget to use endorsed with JAX-WS 2.2 on Java 6 !! -->
             <plugin>
                 <artifactId>maven-compiler-plugin</artifactId>
                 <configuration>
@@ -262,13 +262,13 @@
                         </configuration>
                     </execution>
                 </executions>
-            </plugin-->
+            </plugin>
             <!-- PLEASE LEAVE... 
             The jaxws-maven-plugin configuration below is recongized by Netbeans and will
             cause the project to display the Web Service References folder. This section 
             can be uncommented to allow configuration of the Web Service Client WSIT files using
             the Netbeans UI. Note that changes to the WSIT are seldom required. -->
-            <plugin>
+            <!--plugin>
                 <groupId>org.jvnet.jax-ws-commons</groupId>
                 <artifactId>jaxws-maven-plugin</artifactId>
                 <version>2.2</version>
@@ -421,7 +421,7 @@
                     <extension>true</extension>
                     <catalog>${basedir}/src/jax-ws-catalog.xml</catalog>
                 </configuration>
-            </plugin>
+            </plugin-->
         </plugins>
     </build>
     <pluginRepositories>
