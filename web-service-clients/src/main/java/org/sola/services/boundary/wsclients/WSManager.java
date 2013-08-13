@@ -1,44 +1,49 @@
 /**
  * ******************************************************************************************
- * Copyright (c) 2013 Food and Agriculture Organization of the United Nations (FAO)
- * and the Lesotho Land Administration Authority (LAA). All rights reserved.
+ * Copyright (c) 2013 Food and Agriculture Organization of the United Nations
+ * (FAO) and the Lesotho Land Administration Authority (LAA). All rights
+ * reserved.
  *
- * Redistribution and use in source and binary forms, with or without modification,
- * are permitted provided that the following conditions are met:
+ * Redistribution and use in source and binary forms, with or without
+ * modification, are permitted provided that the following conditions are met:
  *
- *    1. Redistributions of source code must retain the above copyright notice,this list
- *       of conditions and the following disclaimer.
- *    2. Redistributions in binary form must reproduce the above copyright notice,this list
- *       of conditions and the following disclaimer in the documentation and/or other
- *       materials provided with the distribution.
- *    3. Neither the names of FAO, the LAA nor the names of its contributors may be used to
- *       endorse or promote products derived from this software without specific prior
- * 	  written permission.
+ * 1. Redistributions of source code must retain the above copyright notice,this
+ * list of conditions and the following disclaimer. 2. Redistributions in binary
+ * form must reproduce the above copyright notice,this list of conditions and
+ * the following disclaimer in the documentation and/or other materials provided
+ * with the distribution. 3. Neither the names of FAO, the LAA nor the names of
+ * its contributors may be used to endorse or promote products derived from this
+ * software without specific prior written permission.
  *
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY
- * EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES
- * OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT
- * SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,
- * SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO,PROCUREMENT
- * OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION)
- * HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT,STRICT LIABILITY,OR TORT
- * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE,
- * EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+ * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
+ * AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+ * IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
+ * ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE
+ * LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR
+ * CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO,PROCUREMENT OF
+ * SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS
+ * INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN
+ * CONTRACT,STRICT LIABILITY,OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING
+ * IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
+ * POSSIBILITY OF SUCH DAMAGE.
  * *********************************************************************************************
  */
 package org.sola.services.boundary.wsclients;
 
 import java.lang.reflect.Constructor;
+import java.security.Security;
 import java.util.HashMap;
+import org.bouncycastle.jce.provider.BouncyCastleProvider;
+import org.sola.common.logging.LogUtility;
 import org.sola.common.messaging.ServiceMessage;
 import org.sola.services.boundary.wsclients.exception.WebServiceClientException;
 
 /**
- * Encapsulates Web-service clients instances, providing initialization and instances access. <br
- * />This class is singleton.
+ * Encapsulates Web-service clients instances, providing initialization and
+ * instances access. <br />This class is singleton.
  */
 public class WSManager {
-    
+
     private CaseManagementClient caseManagementWS;
     private AdminClient adminWS;
     private ReferenceDataClient referenceWS;
@@ -50,15 +55,21 @@ public class WSManager {
     private FileStreamingClient fileStreamingWS;
     private AbstractWSClient testWS;
     private BulkOperationsClient bulkOperationsWS;
-    
+
     private WSManager() {
+        // Fix for using JDK 7u25. Update 25 of the JDK excludes the RSA/ECB/OAEPPadding        
+        // crypto algo so it is necessary to manually add this dependency in.
+        if (Security.getProvider(BouncyCastleProvider.PROVIDER_NAME) == null) {
+            Security.addProvider(new BouncyCastleProvider());
+            LogUtility.log("*** WSManager: Security provider BouncyCastleProvider loaded ***");
+        }
     }
 
     /**
      * Private class to hold singleton instance.
      */
     private static class WSManagerHolder {
-        
+
         private static final WSManager INSTANCE = new WSManager();
     }
 
@@ -70,12 +81,13 @@ public class WSManager {
     }
 
     /**
-     * Creates the Web Service Client using reflection. This method does not cache the WSClient on
-     * the WSManager. To cache the client, use the appropriate set...WS method.
+     * Creates the Web Service Client using reflection. This method does not
+     * cache the WSClient on the WSManager. To cache the client, use the
+     * appropriate set...WS method.
      *
      * @param <T> Generic type for the Web Service Client class
-     * @param wsClientClass The concrete type of the Web Service Client. Must extend
-     * AbstractWSClient
+     * @param wsClientClass The concrete type of the Web Service Client. Must
+     * extend AbstractWSClient
      * @param wsdlURL The URL of the WSDL for the web service
      * @param userName
      * @param userPassword
@@ -102,7 +114,8 @@ public class WSManager {
     }
 
     /**
-     * Indicates if the last web service client instantiated has a valid connection or not.
+     * Indicates if the last web service client instantiated has a valid
+     * connection or not.
      *
      * @return true if the connection is valid, false otherwise.
      */
@@ -115,10 +128,11 @@ public class WSManager {
     }
 
     /**
-     * Initializes Web-service clients instances. All Web-services clients are supposed to be
-     * secured and accessed with username and password. While initialization
-     * <code>checkConnection()</code> method is called on the Web-services clients to authenticate
-     * user.
+     * Initializes Web-service clients instances. All Web-services clients are
+     * supposed to be secured and accessed with username and password. While
+     * initialization
+     * <code>checkConnection()</code> method is called on the Web-services
+     * clients to authenticate user.
      *
      * @param userName The login name of the user.
      * @param userPassword The password of the user.
@@ -126,7 +140,7 @@ public class WSManager {
      */
     public boolean initWebServices(String userName, char[] userPassword, HashMap<String, String> config)
             throws WebServiceClientException {
-                
+
         boolean result = false;
         if (getSearchService() == null) {
             setSearchWS(getWSClient(SearchClientImpl.class,
@@ -158,51 +172,51 @@ public class WSManager {
                     config.get(WSConfig.SOLA_WS_FILE_STREAMING_SERVICE_URL.toString()),
                     null, null));
         }
-        
+
         if (getCaseManagementService() == null) {
             setCaseManagementWS(getWSClient(CaseManagementClientImpl.class,
                     config.get(WSConfig.SOLA_WS_CASE_MANAGEMENT_SERVICE_URL.toString()),
                     userName, userPassword));
         }
-        
+
         if (getAdminService() == null) {
             setAdminWS(getWSClient(AdminClientImpl.class,
                     config.get(WSConfig.SOLA_WS_ADMIN_SERVICE_URL.toString()),
                     userName, userPassword));
         }
-        
+
         if (getReferenceDataService() == null) {
             setReferenceWS(getWSClient(ReferenceDataClientImpl.class,
                     config.get(WSConfig.SOLA_WS_REFERENCE_DATA_SERVICE_URL.toString()),
                     userName, userPassword));
         }
-        
+
         if (getDigitalArchive() == null) {
             setDigitalArchiveWS(getWSClient(DigitalArchiveClientImpl.class,
                     config.get(WSConfig.SOLA_WS_DIGITAL_ARCHIVE_URL.toString()),
                     userName, userPassword));
             getDigitalArchive().setFileStreamingService(getFileStreamingService());
         }
-        
+
         if (getAdministrative() == null) {
             setAdministrativeWS(getWSClient(AdministrativeClientImpl.class,
                     config.get(WSConfig.SOLA_WS_ADMINISTRATIVE_SERVICE_URL.toString()),
                     userName, userPassword));
         }
-        
+
         if (getCadastreService() == null) {
             setCadastreWS(getWSClient(CadastreClientImpl.class,
                     config.get(WSConfig.SOLA_WS_CADASTRE_SERVICE_URL.toString()),
                     userName, userPassword));
         }
-        
+
         if (getBulkOperationsService() == null) {
             setBulkOperationsWS(getWSClient(BulkOperationsClientImpl.class,
                     config.get(WSConfig.SOLA_WS_BULK_OPERATIONS_SERVICE_URL.toString()),
                     userName, userPassword));
         }
 
-        return result; 
+        return result;
     }
 
     /**
@@ -271,39 +285,39 @@ public class WSManager {
     public BulkOperationsClient getBulkOperationsService() {
         return bulkOperationsWS;
     }
-    
+
     public void setAdminWS(AdminClient adminWS) {
         this.adminWS = adminWS;
     }
-    
+
     public void setAdministrativeWS(AdministrativeClient administrativeWS) {
         this.administrativeWS = administrativeWS;
     }
-    
+
     public void setCadastreWS(CadastreClient cadastreWS) {
         this.cadastreWS = cadastreWS;
     }
-    
+
     public void setCaseManagementWS(CaseManagementClient caseManagementWS) {
         this.caseManagementWS = caseManagementWS;
     }
-    
+
     public void setDigitalArchiveWS(DigitalArchiveClient digitalArchiveWS) {
         this.digitalArchiveWS = digitalArchiveWS;
     }
-    
+
     public void setReferenceWS(ReferenceDataClient referenceWS) {
         this.referenceWS = referenceWS;
     }
-    
+
     public void setSearchWS(SearchClient searchWS) {
         this.searchWS = searchWS;
     }
-    
+
     public void setSpatialWS(SpatialClient spatialWS) {
         this.spatialWS = spatialWS;
     }
-    
+
     public void setFileStreamingWS(FileStreamingClient fileStreamingWS) {
         this.fileStreamingWS = fileStreamingWS;
     }
@@ -311,5 +325,4 @@ public class WSManager {
     public void setBulkOperationsWS(BulkOperationsClient bulkOperationsWS) {
         this.bulkOperationsWS = bulkOperationsWS;
     }
-    
 }
