@@ -70,6 +70,7 @@ public class RrrTO extends AbstractIdTO {
     private BigDecimal stampDuty;
     private BigDecimal transferDuty;
     private BigDecimal registrationFee;
+    private BigDecimal serviceFee;
     private List<LeaseSpecialConditionTO> leaseSpecialConditionList;
       
     public RrrTO(){
@@ -357,4 +358,12 @@ public class RrrTO extends AbstractIdTO {
     public void setPersonalLevy(BigDecimal personalLevy) {
         this.personalLevy = personalLevy;
     }
+
+    public BigDecimal getServiceFee() {
+        return serviceFee;
+    }
+
+    public void setServiceFee(BigDecimal serviceFee) {
+        this.serviceFee = serviceFee;
+    }  
 }
