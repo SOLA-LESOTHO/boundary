@@ -924,4 +924,26 @@ public class Administrative extends AbstractWebService {
         return (BigDecimal) result[0];
         
     }
+    
+    @WebMethod(operationName="calculateLeaseFees")
+    public LeaseFeeTO calculateLeaseFees(
+              @WebParam(name="cadastreObject") final CadastreObjectTO cadastreObject, 
+              @WebParam(name="leaseRight") final RrrTO leaseRight)
+           throws SOLAFault, UnhandledFault, SOLAAccessFault{
+        
+        final Object[] result = {new ArrayList<LeaseFeeTO>()};
+        
+         runOpenQuery(wsContext, new Runnable() {
+             
+             @Override
+             public void run(){
+                 result[0] = administrativeEJB.calculateLeaseFees(
+                    GenericTranslator.fromTO(cadastreObject, CadastreObject.class, null), 
+                        GenericTranslator.fromTO(leaseRight, Rrr.class, null));
+             }
+         });
+         
+         return (LeaseFeeTO) result[0];
+        
+    }
 }

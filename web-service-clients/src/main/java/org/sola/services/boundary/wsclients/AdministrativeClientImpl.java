@@ -511,4 +511,22 @@ public class AdministrativeClientImpl extends AbstractWSClientImpl
         return result;
         
     }
+    
+    @Override
+    public LeaseFeeTO calculateLeaseFees(CadastreObjectTO cadastreObject, RrrTO leaseRight) 
+            throws WebServiceClientException{
+        
+        LeaseFeeTO result = null;
+        final String methodName = AdministrativeClient.CALCULATE_LEASE_FEES;
+        try {
+            beforeWebMethod(methodName, cadastreObject);
+            result = getPort().calculateLeaseFees(cadastreObject, leaseRight);
+        } catch (Exception e) {
+            processException(methodName, e);
+        } finally {
+            afterWebMethod(methodName, result, cadastreObject);
+        }
+        return result;
+        
+    }
 }
