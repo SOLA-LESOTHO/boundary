@@ -582,4 +582,8 @@ public class MockAdministrativePort implements Administrative {
     public BigDecimal calculateDutyOnGroundRent(CadastreObjectTO cadastreObject, RrrTO leaseRight) throws SOLAAccessFault, SOLAFault, UnhandledFault {
         throw new UnsupportedOperationException("Not supported yet.");
     }
+    @Override
+    public LeaseFeeTO calculateLeaseFees(CadastreObjectTO cadastreObject, RrrTO leaseRight)throws SOLAAccessFault, SOLAFault, UnhandledFault {
+        throw new UnsupportedOperationException("Not supported yet.");
+    }
 }
