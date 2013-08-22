@@ -5,12 +5,13 @@
 package org.sola.services.boundary.transferobjects.administrative;
 
 import java.math.BigDecimal;
+import org.sola.services.common.contracts.AbstractTO;
 
 /**
  *
  * @author ntsane
  */
-public class LeaseFeeTO {
+public class LeaseFeeTO extends AbstractTO {
     
     public LeaseFeeTO(){
         super();

@@ -937,11 +937,15 @@ public class Administrative extends AbstractWebService {
              
              @Override
              public void run(){
-                 result[0] = administrativeEJB.calculateLeaseFees(
-                    GenericTranslator.fromTO(cadastreObject, CadastreObject.class, null), 
+                 LeaseFee leaseFee =    
+                    administrativeEJB.calculateLeaseFees(
+                     GenericTranslator.fromTO(cadastreObject, CadastreObject.class, null), 
                         GenericTranslator.fromTO(leaseRight, Rrr.class, null));
+                 result[0] =  GenericTranslator.toTO(leaseFee, LeaseFeeTO.class);
+                 
              }
          });
+         
          
          return (LeaseFeeTO) result[0];
         
