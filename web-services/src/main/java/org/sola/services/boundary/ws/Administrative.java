@@ -898,8 +898,8 @@ public class Administrative extends AbstractWebService {
 
             @Override
             public void run() {
-                result[0] = administrativeEJB.calculateGroundRent(GenericTranslator.fromTO(cadastreObject, CadastreObject.class, null), 
-                                                                  personalLevyTmp,landUsableTmp, landUseCodeTmp);
+                result[0] = BigDecimal.ZERO; //administrativeEJB.calculateGroundRent(GenericTranslator.fromTO(cadastreObject, CadastreObject.class, null), 
+                                   //                               personalLevyTmp,landUsableTmp, landUseCodeTmp);
             }
         });
         return (BigDecimal) result[0];
@@ -917,8 +917,8 @@ public class Administrative extends AbstractWebService {
 
             @Override
             public void run() {
-                result[0] = administrativeEJB.calculateDutyOnGroundRent(GenericTranslator.fromTO(cadastreObject, CadastreObject.class, null), 
-                                                                        GenericTranslator.fromTO(leaseRight, Rrr.class, null));
+                result[0] = BigDecimal.ZERO;//administrativeEJB.calculateDutyOnGroundRent(GenericTranslator.fromTO(cadastreObject, CadastreObject.class, null), 
+                            //                                            GenericTranslator.fromTO(leaseRight, Rrr.class, null));
             }
         });
         return (BigDecimal) result[0];
