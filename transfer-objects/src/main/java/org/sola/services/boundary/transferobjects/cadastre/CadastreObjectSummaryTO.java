@@ -50,6 +50,7 @@ public class CadastreObjectSummaryTO extends AbstractIdTO {
     private String valuationZone;
     private String roadClassCode;
     private boolean hasLease;
+    private boolean hasDispute;
     
     public CadastreObjectSummaryTO(){
         super();
@@ -182,4 +183,13 @@ public class CadastreObjectSummaryTO extends AbstractIdTO {
     public void setHasLease(boolean hasLease) {
         this.hasLease = hasLease;
     }
+
+    public boolean isHasDispute() {
+        return hasDispute;
+    }
+
+    public void setHasDispute(boolean hasDispute) {
+        this.hasDispute = hasDispute;
+    }
+    
 }
