@@ -775,11 +775,7 @@ public interface ReferenceDataClient extends AbstractWSClient {
      */
     List<OtherAuthoritiesTO> getOtherAuthorities(String lang) throws WebServiceClientException;
 
-    /**
-<<<<<<< HEAD
-     * Retrieves all cadastre.land_use_type code values using the default locale
-     * of the client to localize the display values.
-=======
+    /*
      * Retrieves all administrative.disputeReports code values using the default
      * locale of the client to localize the display values.
      *
@@ -797,7 +793,6 @@ public interface ReferenceDataClient extends AbstractWSClient {
      /**
      * Retrieves all cadastre.land_use_type code values using the default locale of the
      * client to localize the display values.
->>>>>>> working
      *
      * @throws WebServiceClientException
      */
