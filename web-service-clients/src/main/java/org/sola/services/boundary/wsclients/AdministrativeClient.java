@@ -457,13 +457,5 @@ public interface AdministrativeClient extends AbstractWSClient {
      */
     DisputeCommentsTO getDisputeCommentsById(String id) throws WebServiceClientException;
     
-    /**
-     * Returns calculated ground rent for the given cadastre object.
-     * @param cadastreObject Cadastre object used to calculate ground rent.
-     */
-    BigDecimal calculateGroundRent(CadastreObjectTO cadastreObject, BigDecimal  personalLevy, BigDecimal landUsable, String landUseCode) throws WebServiceClientException;
-    
-    BigDecimal calculateDutyOnGroundRent(CadastreObjectTO cadastreObject, RrrTO leaseRight) throws WebServiceClientException;
-    
     LeaseFeeTO calculateLeaseFees(CadastreObjectTO cadastreObject, RrrTO leaseRight) throws WebServiceClientException;
 }
