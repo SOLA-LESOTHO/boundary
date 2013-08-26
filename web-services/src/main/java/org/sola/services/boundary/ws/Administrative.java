@@ -872,7 +872,7 @@ public class Administrative extends AbstractWebService {
         return (DisputePartyTO) result[0];
     }
 
-    
+   
     @WebMethod(operationName="calculateLeaseFees")
     public LeaseFeeTO calculateLeaseFees(
               @WebParam(name="cadastreObject") final CadastreObjectTO cadastreObject, 

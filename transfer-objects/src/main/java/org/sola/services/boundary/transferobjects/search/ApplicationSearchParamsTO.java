@@ -41,7 +41,8 @@ public class ApplicationSearchParamsTO extends AbstractTO {
     private String locale;
     private String documentNumber;
     private String documentReference;
-
+    private String leaseNumber;
+    
     public ApplicationSearchParamsTO() {
     }
 
@@ -108,5 +109,12 @@ public class ApplicationSearchParamsTO extends AbstractTO {
     public void setDocumentReference(String documentReference) {
         this.documentReference = documentReference;
     }
-       
+
+    public String getLeaseNumber() {
+        return leaseNumber;
+    }
+
+    public void setLeaseNumber(String leaseNumber) {
+        this.leaseNumber = leaseNumber;
+    }       
 }

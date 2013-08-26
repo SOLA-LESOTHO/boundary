@@ -38,6 +38,7 @@ public class ApplicationSearchResultTO extends ApplicationSummaryTO {
     private String contactPerson;
     private String agent;
     private String serviceList; 
+    private String affectedLeaseNumbers;
     
     public ApplicationSearchResultTO(){
         super();
@@ -89,5 +90,13 @@ public class ApplicationSearchResultTO extends ApplicationSummaryTO {
 
     public void setServiceList(String serviceList) {
         this.serviceList = serviceList;
-    }   
+    }
+
+    public String getAffectedLeaseNumbers() {
+        return affectedLeaseNumbers;
+    }
+
+    public void setAffectedLeaseNumbers(String affectedLeaseNumbers) {
+        this.affectedLeaseNumbers = affectedLeaseNumbers;
+    }
 }
