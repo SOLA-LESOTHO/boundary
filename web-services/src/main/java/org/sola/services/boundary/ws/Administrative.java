@@ -872,59 +872,7 @@ public class Administrative extends AbstractWebService {
         return (DisputePartyTO) result[0];
     }
 
-    /**
-     * Returns calculated ground rent for the given cadastre object.
-     *
-     * @param cadastreObject Cadastre object used to calculate ground rent.
-     * @throws SOLAFault
-     * @throws UnhandledFault
-     * @throws SOLAAccessFault
-     */
-    @WebMethod(operationName = "calculateGroundRent")
-    public BigDecimal calculateGroundRent(
-                @WebParam(name = "cadastreObject") final CadastreObjectTO cadastreObject,
-                @WebParam(name = "personalLevy") BigDecimal personalLevy,
-                @WebParam(name ="landUsable") BigDecimal landUsable,
-                @WebParam(name ="landUseCode") String landUseCode)
-            throws SOLAFault, UnhandledFault, SOLAAccessFault {
-
-        final Object[] result = {new ArrayList<BigDecimal>()};
-        
-        final BigDecimal personalLevyTmp = personalLevy;
-        final BigDecimal landUsableTmp = landUsable;
-        final String landUseCodeTmp = landUseCode;
-
-        runOpenQuery(wsContext, new Runnable() {
-
-            @Override
-            public void run() {
-                result[0] = BigDecimal.ZERO; //administrativeEJB.calculateGroundRent(GenericTranslator.fromTO(cadastreObject, CadastreObject.class, null), 
-                                   //                               personalLevyTmp,landUsableTmp, landUseCodeTmp);
-            }
-        });
-        return (BigDecimal) result[0];
-    }
-    
-    @WebMethod(operationName = "calculateDutyOnGroundRent")
-    public BigDecimal calculateDutyOnGroundRent(
-            @WebParam(name = "cadastreObject") final CadastreObjectTO cadastreObject,
-            @WebParam(name = "leaseRight") final RrrTO leaseRight)
-        throws SOLAFault, UnhandledFault, SOLAAccessFault{
-        
-        final Object[] result = {new ArrayList<BigDecimal>()};
-        
-                runOpenQuery(wsContext, new Runnable() {
-
-            @Override
-            public void run() {
-                result[0] = BigDecimal.ZERO;//administrativeEJB.calculateDutyOnGroundRent(GenericTranslator.fromTO(cadastreObject, CadastreObject.class, null), 
-                            //                                            GenericTranslator.fromTO(leaseRight, Rrr.class, null));
-            }
-        });
-        return (BigDecimal) result[0];
-        
-    }
-    
+   
     @WebMethod(operationName="calculateLeaseFees")
     public LeaseFeeTO calculateLeaseFees(
               @WebParam(name="cadastreObject") final CadastreObjectTO cadastreObject, 

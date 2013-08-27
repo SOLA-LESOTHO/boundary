@@ -31,7 +31,6 @@ package org.sola.services.boundary.wsclients;
 import java.math.BigDecimal;
 import java.util.List;
 import javax.xml.namespace.QName;
-import org.sola.common.Money;
 import org.sola.services.boundary.wsclients.exception.WebServiceClientException;
 import org.sola.webservices.administrative.Administrative;
 import org.sola.webservices.administrative.AdministrativeService;
@@ -474,42 +473,6 @@ public class AdministrativeClientImpl extends AbstractWSClientImpl
             afterWebMethod(methodName, result, id);
         }
         return result;
-    }
-
-    @Override
-    public BigDecimal calculateGroundRent(CadastreObjectTO cadastreObject, 
-                                            BigDecimal  personalLevy, 
-                                            BigDecimal landUsable,
-                                            String landUseCode) throws WebServiceClientException {
-        BigDecimal result = BigDecimal.ZERO;
-        final String methodName = AdministrativeClient.CALCULATE_GROUND_RENT;
-        try {
-            beforeWebMethod(methodName, cadastreObject);
-            result = getPort().calculateGroundRent(cadastreObject, personalLevy, landUsable, landUseCode);
-        } catch (Exception e) {
-            processException(methodName, e);
-        } finally {
-            afterWebMethod(methodName, result, cadastreObject);
-        }
-        return result;
-    }
-    
-    @Override
-    public BigDecimal calculateDutyOnGroundRent(CadastreObjectTO cadastreObject, RrrTO leaseRight) 
-                                                throws WebServiceClientException{
-        
-        BigDecimal result = BigDecimal.ZERO;
-        final String methodName = AdministrativeClient.CALCULATE_DUTY_ON_GROUND_RENT;
-        try {
-            beforeWebMethod(methodName, cadastreObject);
-            result = getPort().calculateDutyOnGroundRent(cadastreObject, leaseRight);
-        } catch (Exception e) {
-            processException(methodName, e);
-        } finally {
-            afterWebMethod(methodName, result, cadastreObject);
-        }
-        return result;
-        
     }
     
     @Override
