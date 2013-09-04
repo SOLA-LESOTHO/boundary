@@ -34,6 +34,7 @@ public class CadastreObjectSearchParamsTO extends AbstractTO {
     private String nameFirstPart;
     private String nameLastPart;
     private String address;
+    private String plotNumber;
     
     public CadastreObjectSearchParamsTO(){
         super();
@@ -61,5 +62,13 @@ public class CadastreObjectSearchParamsTO extends AbstractTO {
 
     public void setNameLastPart(String nameLastPart) {
         this.nameLastPart = nameLastPart;
+    }
+
+    public String getPlotNumber() {
+        return plotNumber;
+    }
+
+    public void setPlotNumber(String plotNumber) {
+        this.plotNumber = plotNumber;
     }
 }
