@@ -40,6 +40,7 @@ public class BaUnitSearchResultTO extends AbstractReadWriteTO {
     private String registrationNumber;
     private Date registrationDate;
     private String leaseNumber;
+    private Date originalRegistrationDate;
     
     public BaUnitSearchResultTO(){
         super();
@@ -91,6 +92,14 @@ public class BaUnitSearchResultTO extends AbstractReadWriteTO {
 
     public void setRegistrationDate(Date registrationDate) {
         this.registrationDate = registrationDate;
+    }
+
+    public Date getOriginalRegistrationDate() {
+        return originalRegistrationDate;
+    }
+
+    public void setOriginalRegistrationDate(Date originalRegistrationDate) {
+        this.originalRegistrationDate = originalRegistrationDate;
     }
 
     public String getRegistrationNumber() {
