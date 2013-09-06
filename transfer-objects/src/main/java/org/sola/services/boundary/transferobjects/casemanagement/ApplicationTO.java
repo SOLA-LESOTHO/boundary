@@ -36,6 +36,7 @@ package org.sola.services.boundary.transferobjects.casemanagement;
 
 import java.math.BigDecimal;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import org.sola.services.boundary.transferobjects.cadastre.CadastreObjectSummaryTO;
 import org.sola.services.boundary.transferobjects.cadastre.CadastreObjectTO;
@@ -51,7 +52,7 @@ public class ApplicationTO extends ApplicationSummaryTO {
     private BigDecimal totalFee;
     private BigDecimal totalAmountPaid;
     private String receiptRef;
-    private String receiptDate;
+    private Date receiptDate;
     private String actionCode;
     private String actionNotes;
     private PartyTO contactPerson;
@@ -97,11 +98,11 @@ public class ApplicationTO extends ApplicationSummaryTO {
         this.receiptRef = receiptRef;
     }
 
-    public String getReceiptDate() {
+    public Date getReceiptDate() {
         return receiptDate;
     }
 
-    public void setReceiptDate(String receiptDate) {
+    public void setReceiptDate(Date receiptDate) {
         this.receiptDate = receiptDate;
     }
 
