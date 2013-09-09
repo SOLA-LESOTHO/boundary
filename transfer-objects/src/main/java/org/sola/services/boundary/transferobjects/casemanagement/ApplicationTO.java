@@ -53,10 +53,11 @@ public class ApplicationTO extends ApplicationSummaryTO {
     private BigDecimal totalAmountPaid;
     private String receiptRef;
     private Date receiptDate;
+    private Date collectionDate;
     private String actionCode;
     private String actionNotes;
     private PartyTO contactPerson;
-    private PartySummaryTO agent;
+    private PartyTO agent;
     private List<ServiceTO> serviceList;
     private List<BaUnitSearchResultTO> propertyList;
     private List<SourceTO> sourceList;
@@ -104,6 +105,14 @@ public class ApplicationTO extends ApplicationSummaryTO {
 
     public void setReceiptDate(Date receiptDate) {
         this.receiptDate = receiptDate;
+    }
+
+    public Date getCollectionDate() {
+        return collectionDate;
+    }
+
+    public void setCollectionDate(Date collectionDate) {
+        this.collectionDate = collectionDate;
     }
 
     public byte[] getLocation() {
@@ -175,11 +184,11 @@ public class ApplicationTO extends ApplicationSummaryTO {
         sourceList.add(source);
     }
 
-    public PartySummaryTO getAgent() {
+    public PartyTO getAgent() {
         return agent;
     }
 
-    public void setAgent(PartySummaryTO agent) {
+    public void setAgent(PartyTO agent) {
         this.agent = agent;
     }
 
