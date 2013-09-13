@@ -36,11 +36,20 @@ public class BaUnitSearchParamsTO extends AbstractTO {
     private String nameLastPart;
     private String ownerName;
     private String leaseNumber;
+    private String landUseCode;
     
     public BaUnitSearchParamsTO(){
         super();
     }
 
+    public String getLandUseCode() {
+        return landUseCode;
+    }
+
+    public void setLandUseCode(String landUseCode) {
+        this.landUseCode = landUseCode;
+    }
+    
     public String getNameFirstPart() {
         return nameFirstPart;
     }

@@ -40,11 +40,21 @@ public class BaUnitSearchResultTO extends AbstractReadWriteTO {
     private String registrationNumber;
     private Date registrationDate;
     private String leaseNumber;
+    private String landUseCode;
     private Date originalRegistrationDate;
     
     public BaUnitSearchResultTO(){
         super();
     }
+
+    public String getLandUseCode() {
+        return landUseCode;
+    }
+
+    public void setLandUseCode(String landUseCode) {
+        this.landUseCode = landUseCode;
+    }
+    
 
     public String getId() {
         return id;
