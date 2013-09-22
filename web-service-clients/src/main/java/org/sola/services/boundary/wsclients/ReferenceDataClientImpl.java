@@ -847,4 +847,25 @@ public class ReferenceDataClientImpl extends AbstractWSClientImpl implements Ref
 	return result;
 
     }
+
+    @Override
+    public List<TransactionTypeTO> getTransactionTypes() throws WebServiceClientException {
+        return getTransactionTypes(getLanguageCode());
+    }
+
+    @Override
+    public List<TransactionTypeTO> getTransactionTypes(String languageCode) throws WebServiceClientException {
+        List<TransactionTypeTO> result = null;
+	final String methodName = ReferenceDataClient.GET_TRANSACTION_TYPES;
+	try {
+		beforeWebMethod(methodName, languageCode);
+		result = getPort().getTransactionTypes(languageCode);
+	} catch (Exception e) {
+		processException(methodName, e);
+
+	} finally {
+		afterWebMethod(methodName, result, languageCode);
+	}
+	return result;
+    }
 }

@@ -237,6 +237,11 @@ public interface ReferenceDataClient extends AbstractWSClient {
     public static final String GET_ROAD_CLASS_TYPE = SERVICE_NAME + "getRoadClassType";
 
     /**
+     * ReferenceData.getTransactionTypes - Identifier for the getTransactionTypes method
+     */
+    public static final String GET_TRANSACTION_TYPES = SERVICE_NAME + "getTransactionTypes";
+    
+    /**
      * Return list of Application forms.
      */
     List<ApplicationFormTO> getApplicationForms() throws WebServiceClientException;
@@ -835,4 +840,8 @@ public interface ReferenceDataClient extends AbstractWSClient {
     List<LandUseTypeTO> getLandUseTypes() throws WebServiceClientException;
 
     List<LandUseTypeTO> getLandUseTypes(String lang) throws WebServiceClientException;
+    
+    List<TransactionTypeTO> getTransactionTypes() throws WebServiceClientException;
+    
+    List<TransactionTypeTO> getTransactionTypes(String languageCode) throws WebServiceClientException;
 }

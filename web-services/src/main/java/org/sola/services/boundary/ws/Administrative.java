@@ -1,29 +1,31 @@
 /**
  * ******************************************************************************************
- * Copyright (c) 2013 Food and Agriculture Organization of the United Nations (FAO)
- * and the Lesotho Land Administration Authority (LAA). All rights reserved.
+ * Copyright (c) 2013 Food and Agriculture Organization of the United Nations
+ * (FAO) and the Lesotho Land Administration Authority (LAA). All rights
+ * reserved.
  *
- * Redistribution and use in source and binary forms, with or without modification,
- * are permitted provided that the following conditions are met:
+ * Redistribution and use in source and binary forms, with or without
+ * modification, are permitted provided that the following conditions are met:
  *
- *    1. Redistributions of source code must retain the above copyright notice,this list
- *       of conditions and the following disclaimer.
- *    2. Redistributions in binary form must reproduce the above copyright notice,this list
- *       of conditions and the following disclaimer in the documentation and/or other
- *       materials provided with the distribution.
- *    3. Neither the names of FAO, the LAA nor the names of its contributors may be used to
- *       endorse or promote products derived from this software without specific prior
- * 	  written permission.
+ * 1. Redistributions of source code must retain the above copyright notice,this
+ * list of conditions and the following disclaimer. 2. Redistributions in binary
+ * form must reproduce the above copyright notice,this list of conditions and
+ * the following disclaimer in the documentation and/or other materials provided
+ * with the distribution. 3. Neither the names of FAO, the LAA nor the names of
+ * its contributors may be used to endorse or promote products derived from this
+ * software without specific prior written permission.
  *
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY
- * EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES
- * OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT
- * SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,
- * SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO,PROCUREMENT
- * OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION)
- * HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT,STRICT LIABILITY,OR TORT
- * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE,
- * EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+ * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
+ * AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+ * IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
+ * ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE
+ * LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR
+ * CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO,PROCUREMENT OF
+ * SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS
+ * INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN
+ * CONTRACT,STRICT LIABILITY,OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING
+ * IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
+ * POSSIBILITY OF SUCH DAMAGE.
  * *********************************************************************************************
  */
 package org.sola.services.boundary.ws;
@@ -608,7 +610,6 @@ public class Administrative extends AbstractWebService {
         return (DisputeTO) result[0];
     }
 
-    
     @WebMethod(operationName = "SaveDispute")
     public DisputeTO SaveDispute(@WebParam(name = "dispute") DisputeTO dispute)
             throws SOLAFault, UnhandledFault, SOLAAccessFault,
@@ -634,7 +635,6 @@ public class Administrative extends AbstractWebService {
 
         return (DisputeTO) result[0];
     }
-    
 
     /**
      * See {@linkplain AdministrativeEJB#saveDisputeComments(java.lang.String,
@@ -872,30 +872,97 @@ public class Administrative extends AbstractWebService {
         return (DisputePartyTO) result[0];
     }
 
-   
-    @WebMethod(operationName="calculateLeaseFees")
+    @WebMethod(operationName = "calculateLeaseFees")
     public LeaseFeeTO calculateLeaseFees(
-              @WebParam(name="cadastreObject") final CadastreObjectTO cadastreObject, 
-              @WebParam(name="leaseRight") final RrrTO leaseRight)
-           throws SOLAFault, UnhandledFault, SOLAAccessFault{
-        
+            @WebParam(name = "cadastreObject") final CadastreObjectTO cadastreObject,
+            @WebParam(name = "leaseRight") final RrrTO leaseRight)
+            throws SOLAFault, UnhandledFault, SOLAAccessFault {
+
         final Object[] result = {new ArrayList<LeaseFeeTO>()};
-        
-         runOpenQuery(wsContext, new Runnable() {
-             
-             @Override
-             public void run(){
-                 LeaseFee leaseFee =    
-                    administrativeEJB.calculateLeaseFees(
-                     GenericTranslator.fromTO(cadastreObject, CadastreObject.class, null), 
+
+        runOpenQuery(wsContext, new Runnable() {
+
+            @Override
+            public void run() {
+                LeaseFee leaseFee =
+                        administrativeEJB.calculateLeaseFees(
+                        GenericTranslator.fromTO(cadastreObject, CadastreObject.class, null),
                         GenericTranslator.fromTO(leaseRight, Rrr.class, null));
-                 result[0] =  GenericTranslator.toTO(leaseFee, LeaseFeeTO.class);
-                 
-             }
-         });
-         
-         
-         return (LeaseFeeTO) result[0];
-        
+                result[0] = GenericTranslator.toTO(leaseFee, LeaseFeeTO.class);
+
+            }
+        });
+
+
+        return (LeaseFeeTO) result[0];
+    }
+
+    /**
+     * Retrieves consent letter associated with the specified Service.
+     *
+     * @param serviceId The Service identifier
+     * @throws SOLAFault
+     * @throws UnhandledFault
+     * @throws SOLAAccessFault
+     * @see
+     * org.sola.services.ejb.transaction.businesslogic.TransactionEJB#getTransactionByServiceId(java.lang.String,
+     * boolean, java.lang.Class) TransactionEJB.getTransactionByServiceId
+     * @see AdministrativeEJB#getConsentByTransaction(java.lang.String)
+     * AdministrativeEJB.getConsentByTransaction
+     */
+    @WebMethod(operationName = "getConsentByServiceId")
+    public ConsentTO getConsentByServiceId(@WebParam(name = "serviceId") String serviceId)
+            throws SOLAFault, UnhandledFault, SOLAAccessFault {
+
+        final Object[] params = {serviceId};
+        final Object[] result = {new ConsentTO()};
+
+        runOpenQuery(wsContext, new Runnable() {
+
+            @Override
+            public void run() {
+                String serviceId = (String) params[0];
+                if (serviceId != null) {
+                    TransactionBasic transaction = transactionEJB.getTransactionByServiceId(serviceId, false, TransactionBasic.class);
+                    if (transaction != null) {
+                        Consent consent = administrativeEJB.getConsentByTransaction(transaction.getId());
+                        result[0] = GenericTranslator.toTO(consent, ConsentTO.class);
+                    }
+                }
+            }
+        });
+        return (ConsentTO) result[0];
+    }
+
+    /**
+     * Saves consent letter.
+     *
+     * @param serviceId The Service identifier triggered save action.
+     * @throws SOLAFault
+     * @throws UnhandledFault
+     * @throws SOLAAccessFault
+     * @see
+     * AdministrativeEJB#saveConsent(org.sola.services.ejb.administrative.repository.entities.Consent,
+     * java.lang.String) AdministrativeEJB.saveConsent
+     */
+    @WebMethod(operationName = "saveConsent")
+    public ConsentTO saveConsent(@WebParam(name = "serviceId") final String serviceId,
+            @WebParam(name = "consent") final ConsentTO consentTO)
+            throws SOLAFault, UnhandledFault, SOLAAccessFault {
+
+        final Object[] result = {null};
+
+        runOpenQuery(wsContext, new Runnable() {
+
+            @Override
+            public void run() {
+                Consent consent = administrativeEJB.saveConsent(
+                        GenericTranslator.fromTO(consentTO, Consent.class,
+                        administrativeEJB.getConsentById(consentTO.getId())),
+                        serviceId);
+                result[0] = GenericTranslator.toTO(consent, ConsentTO.class);
+            }
+        });
+        return (ConsentTO) result[0];
     }
 }

@@ -28,7 +28,6 @@
  */
 package org.sola.services.boundary.wsclients.mock;
 
-import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -575,6 +574,16 @@ public class MockAdministrativePort implements Administrative {
 
     @Override
     public LeaseFeeTO calculateLeaseFees(CadastreObjectTO cadastreObject, RrrTO leaseRight)throws SOLAAccessFault, SOLAFault, UnhandledFault {
+        throw new UnsupportedOperationException("Not supported yet.");
+    }
+
+    @Override
+    public ConsentTO getConsentByServiceId(String serviceId) throws SOLAAccessFault, SOLAFault, UnhandledFault {
+        throw new UnsupportedOperationException("Not supported yet.");
+    }
+
+    @Override
+    public ConsentTO saveConsent(String serviceId, ConsentTO consent) throws SOLAAccessFault, SOLAFault, UnhandledFault {
         throw new UnsupportedOperationException("Not supported yet.");
     }
 }

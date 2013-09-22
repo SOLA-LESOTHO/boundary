@@ -1095,6 +1095,10 @@ public class ReferenceData extends AbstractWebService {
                     codeEntity = cadastreEJB.getCodeEntity(LandUseType.class, refDataTO.getCode());
                     codeEntity = GenericTranslator.fromTO(refDataTO, LandUseType.class, codeEntity);
                     applicationEJB.saveCodeEntity(codeEntity);
+                } else if (refDataTO instanceof TransactionTypeTO) {
+                    codeEntity = administrativeEJB.getCodeEntity(TransactionType.class, refDataTO.getCode());
+                    codeEntity = GenericTranslator.fromTO(refDataTO, TransactionType.class, codeEntity);
+                    administrativeEJB.saveCodeEntity(codeEntity);
                 }
                 result = GenericTranslator.toTO(codeEntity, refDataTO.getClass());
                 commitTransaction();
@@ -1325,5 +1329,32 @@ public class ReferenceData extends AbstractWebService {
         });
 
         return (List<DisputeReportsTO>) result[0];
+    }
+    
+    /**
+     * See {@linkplain org.sola.services.ejb.administrative.businesslogic.AdministrativeEJB#getTransactionTypes(java.lang.String)}
+     *
+     * @throws SOLAFault
+     * @throws UnhandledFault
+     * @throws SOLAAccessFault
+     */
+    @WebMethod(operationName = "getTransactionTypes")
+    public List<TransactionTypeTO> getTransactionTypes(String languageCode)
+            throws SOLAFault, UnhandledFault, SOLAAccessFault {
+
+        final String languageCodeTmp = languageCode;
+        final Object[] result = {null};
+
+        runGeneralQuery(wsContext, new Runnable() {
+
+            @Override
+            public void run() {
+                result[0] = GenericTranslator.toTOList(
+                        administrativeEJB.getTransactionTypes(languageCodeTmp), 
+                        TransactionTypeTO.class);
+            }
+        });
+
+        return (List<TransactionTypeTO>) result[0];
     }
 }

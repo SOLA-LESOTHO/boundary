@@ -179,6 +179,10 @@ public interface AdministrativeClient extends AbstractWSClient {
     public static final String CALCULATE_DUTY_ON_GROUND_RENT = SERVICE_NAME + "calculateDutyOnGroundRent";
     
     public static final String CALCULATE_LEASE_FEES = SERVICE_NAME + "calculateLeaseFees";
+    
+    public static final String GET_CONSENT_BY_SERVICE_ID = SERVICE_NAME + "getConsentByServiceId";
+    
+    public static final String SAVE_CONSENT = SERVICE_NAME + "saveConsent";
 
     /**
      * Creates a new BA Unit Area for a BaUnitId
@@ -458,4 +462,8 @@ public interface AdministrativeClient extends AbstractWSClient {
     DisputeCommentsTO getDisputeCommentsById(String id) throws WebServiceClientException;
     
     LeaseFeeTO calculateLeaseFees(CadastreObjectTO cadastreObject, RrrTO leaseRight) throws WebServiceClientException;
+    
+    ConsentTO getConsentByServiceId(String serviceId) throws WebServiceClientException; 
+    
+    ConsentTO saveConsent(String serviceId, ConsentTO consent) throws WebServiceClientException; 
 }

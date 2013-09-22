@@ -777,4 +777,9 @@ public class MockReferenceDataPort implements ReferenceData {
 	}
 
     }
+
+    @Override
+    public List<TransactionTypeTO> getTransactionTypes(String arg0) throws SOLAAccessFault, SOLAFault, UnhandledFault {
+        throw new UnsupportedOperationException("Not supported yet.");
+    }
 }

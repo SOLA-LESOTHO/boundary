@@ -492,4 +492,35 @@ public class AdministrativeClientImpl extends AbstractWSClientImpl
         return result;
         
     }
+
+    @Override
+    public ConsentTO getConsentByServiceId(String serviceId) throws WebServiceClientException {
+        ConsentTO result = null;
+        final String methodName = AdministrativeClient.GET_CONSENT_BY_SERVICE_ID;
+        try {
+            beforeWebMethod(methodName, serviceId);
+            result = getPort().getConsentByServiceId(serviceId);
+        } catch (Exception e) {
+            processException(methodName, e);
+        } finally {
+            afterWebMethod(methodName, result, serviceId);
+        }
+        return result;
+    }
+
+    @Override
+    public ConsentTO saveConsent(String serviceId, ConsentTO consent) throws WebServiceClientException {
+        ConsentTO result = null;
+        final String methodName = AdministrativeClient.SAVE_CONSENT;
+        try {
+            beforeWebMethod(methodName, serviceId, consent);
+            result = getPort().saveConsent(serviceId, consent);
+        } catch (Exception e) {
+            processException(methodName, e);
+        } finally {
+            afterWebMethod(methodName, result, serviceId, consent);
+        }
+        return result;
+    }
 }
+ 
