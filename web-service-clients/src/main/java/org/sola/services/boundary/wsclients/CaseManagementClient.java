@@ -224,7 +224,12 @@ public interface CaseManagementClient extends AbstractWSClient {
     /**
      * CaseManagement.getSurveyors - Identifier for the getSurveyors method
      */
-    public static final String GET_SURVEYORS = SERVICE_NAME + "getSurveyors";    
+    public static final String GET_SURVEYORS = SERVICE_NAME + "getSurveyors";  
+    
+    /**
+     * CaseManagement.getSurveyors - Identifier for the getSurveyors method
+     */
+    public static final String GET_RESPONSE_VIEW = SERVICE_NAME + "getResponseView";  
 
     /**
      * Calculates the lodgement fees as well as the expected completions dates for each service as
@@ -727,5 +732,8 @@ public interface CaseManagementClient extends AbstractWSClient {
      * @throws WebServiceClientException
      */
     List<SysRegCertificatesTO> getSysRegCertificatesByApplication(String searchString, String nr)
+            throws WebServiceClientException;
+    
+    List<ResponseViewTO> getResponseView(LodgementViewParamsTO paramsTO) 
             throws WebServiceClientException;
 }

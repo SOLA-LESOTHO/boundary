@@ -727,5 +727,21 @@ public class CaseManagementClientImpl extends AbstractWSClientImpl implements Ca
         }
         return result;
     }
+    
+    @Override
+    public List<ResponseViewTO> getResponseView(LodgementViewParamsTO paramsTO) 
+            throws WebServiceClientException{
+        List<ResponseViewTO> result = null;
+        final String methodName = CaseManagementClient.GET_RESPONSE_VIEW;
+        try {
+            beforeWebMethod(methodName,paramsTO);
+            result = getPort().getResponseView(paramsTO);
+        } catch (Exception e) {
+            processException(methodName, e);
+        } finally {
+            afterWebMethod(methodName, result, paramsTO);
+        }
+        return result;
+    }
 
 }

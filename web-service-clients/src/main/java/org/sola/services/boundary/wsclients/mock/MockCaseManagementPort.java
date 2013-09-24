@@ -866,5 +866,19 @@ public class MockCaseManagementPort implements CaseManagement {
             return null;
         }
     }
+    
+    @Override
+    public List<ResponseViewTO> getResponseView(LodgementViewParamsTO paramsTO)
+            throws SOLAFault, UnhandledFault, SOLAAccessFault {
+
+		List<ResponseViewTO> defaultResponse = new ArrayList<ResponseViewTO>();
+        try {
+            return getManager().getResponse(CaseManagementClient.GET_RESPONSE_VIEW,
+                    List.class, defaultResponse, paramsTO);
+        } catch (Exception ex) {
+            processExceptionAccess(ex);
+            return null;
+        }
+    }
 
 }
