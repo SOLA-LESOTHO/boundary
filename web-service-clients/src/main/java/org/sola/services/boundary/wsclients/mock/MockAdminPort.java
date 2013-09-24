@@ -30,13 +30,10 @@ package org.sola.services.boundary.wsclients.mock;
 
 import java.util.ArrayList;
 import java.util.List;
-import org.sola.services.boundary.transferobjects.security.DepartmentTO;
+import org.sola.webservices.transferobjects.security.DepartmentTO;
 import org.sola.services.boundary.wsclients.AdminClient;
 import org.sola.webservices.admin.*;
-import org.sola.webservices.transferobjects.security.GroupSummaryTO;
-import org.sola.webservices.transferobjects.security.GroupTO;
-import org.sola.webservices.transferobjects.security.RoleTO;
-import org.sola.webservices.transferobjects.security.UserTO;
+import org.sola.webservices.transferobjects.security.*;
 
 /**
  * Provides a mock implementation for the
@@ -215,15 +212,15 @@ public class MockAdminPort implements Admin {
     }
     
     /**
-     * Response Key = AdminClient.GET_GROUP
+     * Response Key = AdminClient.GET_DEPARTMENT
      *
-     * @return default = MockTOFactory.createGroup()
+     * @return default = MockTOFactory.createDepartment()
      */
     @Override
     public DepartmentTO getDepartment(String departmentId) throws SOLAFault, UnhandledFault, SOLAAccessFault {
         DepartmentTO defaultResponse = MockTOFactory.createDepartment();
         try {
-            return getManager().getResponse(AdminClient.GET_GROUP, DepartmentTO.class, defaultResponse, departmentId);
+            return getManager().getResponse(AdminClient.GET_DEPARTMENT, DepartmentTO.class, defaultResponse, departmentId);
         } catch (Exception ex) {
             processExceptionAccess(ex);
             return null;
@@ -245,7 +242,23 @@ public class MockAdminPort implements Admin {
             return null;
         }
     }
-
+    
+    /**
+     * Response Key = AdminClient.GET_DEPARTMENTS
+     *
+     * @return default = MockTOFactory.createDepartment()
+     */
+    @Override
+    public List<DepartmentTO> getDepartments() throws SOLAFault, UnhandledFault, SOLAAccessFault {
+        List<DepartmentTO> defaultResponse = MockTOFactory.createDepartmentList();
+        try {
+            return getManager().getResponse(AdminClient.GET_DEPARTMENTS, List.class, defaultResponse);
+        } catch (Exception ex) {
+            processExceptionAccess(ex);
+            return null;
+        }
+    }
+    
     /**
      * Response Key = AdminClient.GET_GROUPS
      *
@@ -262,6 +275,22 @@ public class MockAdminPort implements Admin {
         }
     }
 
+    /**
+     * Response Key = AdminClient.GET_DEPARTMENT_SUMMARY
+     *
+     * @return default = new ArrayList<DepartmentSummaryTO>()
+     */
+    @Override
+    public List<DepartmentSummaryTO> getDepartmentsSummary() throws SOLAAccessFault, SOLAFault, UnhandledFault {
+        List<DepartmentSummaryTO> defaultResponse = new ArrayList<DepartmentSummaryTO>();
+        try {
+            return getManager().getResponse(AdminClient.GET_DEPARTMENT_SUMMARY, List.class, defaultResponse);
+        } catch (Exception ex) {
+            processExceptionAccess(ex);
+            return null;
+        }
+    }
+    
     /**
      * Response Key = AdminClient.GET_GROUPS_SUMMARY
      *
@@ -353,6 +382,22 @@ public class MockAdminPort implements Admin {
             return getManager().getResponse(AdminClient.SAVE_BR, BrTO.class, defaultResponse, br);
         } catch (Exception ex) {
             processExceptionAll(ex);
+            return null;
+        }
+    }
+    
+    /**
+     * Response Key = AdminClient.SAVE_DEPARTMENT
+     *
+     * @return default = groupTO parameter
+     */
+    @Override
+    public DepartmentTO saveDepartment(DepartmentTO departmentTO) throws SOLAFault, UnhandledFault, SOLAAccessFault, OptimisticLockingFault {
+        DepartmentTO defaultResponse = departmentTO;
+        try {
+            return getManager().getResponse(AdminClient.SAVE_DEPARTMENT, DepartmentTO.class, defaultResponse, departmentTO);
+        } catch (Exception ex) {
+            processExceptionUpdate(ex);
             return null;
         }
     }

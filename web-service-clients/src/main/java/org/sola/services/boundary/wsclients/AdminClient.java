@@ -68,13 +68,25 @@ public interface AdminClient extends AbstractWSClient {
      */
     public static final String GET_GROUPS = SERVICE_NAME + "getGroups";
     /**
+     * Admin.getDepartments - Identifier for the getDepartments method
+     */
+    public static final String GET_DEPARTMENTS = SERVICE_NAME + "getDepartments";
+    /**
      * Admin.getGroupsSummary - Identifier for the getGroupsSummary method
      */
     public static final String GET_GROUPS_SUMMARY = SERVICE_NAME + "getGroupsSummary";
     /**
+     * Admin.getDepartmentsSummary - Identifier for the getDepartmentsSummary method
+     */
+    public static final String GET_DEPARTMENT_SUMMARY = SERVICE_NAME + "getDepartmentsSummary";
+    /**
      * Admin.getGroup - Identifier for the getGroup method
      */
     public static final String GET_GROUP = SERVICE_NAME + "getGroup";
+     /**
+     * Admin.getDepartment - Identifier for the getDepartment method
+     */
+    public static final String GET_DEPARTMENT = SERVICE_NAME + "getDepartment";    
     /**
      * Admin.getUser - Identifier for the getUser method
      */
@@ -83,6 +95,10 @@ public interface AdminClient extends AbstractWSClient {
      * Admin.saveUser - Identifier for the saveUser method
      */
     public static final String SAVE_USER = SERVICE_NAME + "saveUser";
+     /**
+     * Admin.saveGroup - Identifier for the saveDepartment method
+     */
+    public static final String SAVE_DEPARTMENT = SERVICE_NAME + "saveDepartment";
     /**
      * Admin.saveGroup - Identifier for the saveGroup method
      */

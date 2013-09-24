@@ -712,13 +712,13 @@ public class MockTOFactory {
     /**
      * Creates a default DepartmentTO list.
      */
-    public static List<DepartmentTO> createDepartmentList(DepartmentTO department) {
+    public static List<DepartmentTO> createDepartmentList() {
         List<DepartmentTO> result = new ArrayList<DepartmentTO>();
-        DepartmentTO group = new DepartmentTO();
-        group.setDescription("Description2");
-        group.setId("Department id1");
-        group.setName("Department name2");
-        group.setRowId("row-id-1");
+        DepartmentTO department = new DepartmentTO();
+        department.setDescription("Description2");
+        department.setId("Department id1");
+        department.setName("Department name2");
+        department.setRowId("row-id-1");
 
         result.add(createDepartment());
         result.add(department);
