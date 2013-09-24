@@ -37,10 +37,7 @@ import javax.jws.WebService;
 import javax.xml.ws.WebServiceContext;
 import org.sola.common.SOLAException;
 import org.sola.common.messaging.ServiceMessage;
-import org.sola.services.boundary.transferobjects.security.GroupSummaryTO;
-import org.sola.services.boundary.transferobjects.security.GroupTO;
-import org.sola.services.boundary.transferobjects.security.RoleTO;
-import org.sola.services.boundary.transferobjects.security.UserTO;
+import org.sola.services.boundary.transferobjects.security.*;
 import org.sola.services.boundary.transferobjects.system.BrTO;
 import org.sola.services.boundary.transferobjects.system.LanguageTO;
 import org.sola.services.boundary.transferobjects.system.SettingTO;
@@ -51,6 +48,7 @@ import org.sola.services.common.webservices.AbstractWebService;
 import org.sola.services.ejb.system.businesslogic.SystemEJBLocal;
 import org.sola.services.ejb.system.repository.entities.Br;
 import org.sola.services.ejbs.admin.businesslogic.AdminEJBLocal;
+import org.sola.services.ejbs.admin.businesslogic.repository.entities.Department;
 import org.sola.services.ejbs.admin.businesslogic.repository.entities.Group;
 import org.sola.services.ejbs.admin.businesslogic.repository.entities.Role;
 import org.sola.services.ejbs.admin.businesslogic.repository.entities.User;
@@ -103,6 +101,32 @@ public class Admin extends AbstractWebService {
 
         return (List<LanguageTO>) result[0];
     }
+    
+    /**
+     * See {@linkplain org.sola.services.ejbs.admin.businesslogic.AdminEJB#getDepartments()
+     * AdminEJB.getDepartments}
+     *
+     * @throws SOLAFault
+     * @throws UnhandledFault
+     * @throws SOLAAccessFault
+     */
+    @WebMethod(operationName = "GetDepartments")
+    public List<DepartmentTO> GetDepartments()
+            throws SOLAFault, UnhandledFault, SOLAAccessFault {
+
+        final Object[] result = {null};
+
+        runGeneralQuery(wsContext, new Runnable() {
+
+            @Override
+            public void run() {
+                result[0] = GenericTranslator.toTOList(
+                        adminEJB.getDepartments(), DepartmentTO.class);
+            }
+        });
+
+        return (List<DepartmentTO>) result[0];
+    }
 
     /**
      * See {@linkplain org.sola.services.ejbs.admin.businesslogic.AdminEJB#getGroups()
@@ -128,6 +152,32 @@ public class Admin extends AbstractWebService {
         });
 
         return (List<GroupTO>) result[0];
+    }
+    
+    /**
+     * See {@linkplain org.sola.services.ejbs.admin.businesslogic.AdminEJB#getDepartmentsSummary()
+     * AdminEJB.getDepartmentsSummary}
+     *
+     * @throws SOLAFault
+     * @throws UnhandledFault
+     * @throws SOLAAccessFault
+     */
+    @WebMethod(operationName = "GetDepartmentsSummary")
+    public List<DepartmentSummaryTO> GetDepartmentsSummary()
+            throws SOLAFault, UnhandledFault, SOLAAccessFault {
+
+        final Object[] result = {null};
+
+        runGeneralQuery(wsContext, new Runnable() {
+
+            @Override
+            public void run() {
+                result[0] = GenericTranslator.toTOList(
+                        adminEJB.getDepartmentsSummary(), DepartmentSummaryTO.class);
+            }
+        });
+
+        return (List<DepartmentSummaryTO>) result[0];
     }
 
     /**
@@ -244,6 +294,33 @@ public class Admin extends AbstractWebService {
 
         return (UserTO) result[0];
     }
+    
+    /**
+     * See {@linkplain org.sola.services.ejbs.admin.businesslogic.AdminEJB#getDepartment(java.lang.String)
+     * AdminEJB.getDepartment}
+     *
+     * @throws SOLAFault
+     * @throws UnhandledFault
+     * @throws SOLAAccessFault
+     */
+    @WebMethod(operationName = "GetDepartment")
+    public DepartmentTO GetDepartment(@WebParam(name = "departmentId") String departmentId)
+            throws SOLAFault, UnhandledFault, SOLAAccessFault {
+
+        final String departmentIdTmp = departmentId;
+        final Object[] result = {null};
+
+        runGeneralQuery(wsContext, new Runnable() {
+
+            @Override
+            public void run() {
+                result[0] = GenericTranslator.toTO(adminEJB.getDepartment(departmentIdTmp),
+                        GroupTO.class);
+            }
+        });
+
+        return (DepartmentTO) result[0];
+    }
 
     /**
      * See {@linkplain org.sola.services.ejbs.admin.businesslogic.AdminEJB#getGroup(java.lang.String)
@@ -270,6 +347,35 @@ public class Admin extends AbstractWebService {
         });
 
         return (GroupTO) result[0];
+    }
+    
+    /**
+     * See {@linkplain org.sola.services.ejbs.admin.businesslogic.AdminEJB#saveGroup(org.sola.services.ejbs.admin.businesslogic.repository.entities.Group)
+     * AdminEJB.saveGroup}
+     *
+     * @throws SOLAFault
+     * @throws UnhandledFault
+     * @throws OptimisticLockingFault
+     * @throws SOLAAccessFault
+     */
+    @WebMethod(operationName = "SaveDepartment")
+    public DepartmentTO SaveDepartment(@WebParam(name = "groupTO") DepartmentTO departmentTO) throws
+            SOLAFault, UnhandledFault, OptimisticLockingFault, SOLAAccessFault {
+        //     FLOSS - 813 6     
+        final DepartmentTO departmentTOTmp = departmentTO;
+        final Object[] result = {null};
+
+        runUpdate(wsContext, new Runnable() {
+
+            @Override
+            public void run() {
+                Department department = adminEJB.getDepartment(departmentTOTmp.getId());
+                result[0] = GenericTranslator.toTO(
+                        adminEJB.saveDepartment(GenericTranslator.fromTO(departmentTOTmp, Department.class, department)), DepartmentTO.class);
+            }
+        });
+
+        return (DepartmentTO) result[0];
     }
 
     /**
