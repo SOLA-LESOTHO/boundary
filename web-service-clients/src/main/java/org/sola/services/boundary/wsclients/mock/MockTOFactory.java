@@ -36,6 +36,7 @@ import java.util.ArrayList;
 import java.util.List;
 import org.sola.webservices.transferobjects.AbstractCodeTO;
 import org.sola.webservices.transferobjects.referencedata.*;
+import org.sola.webservices.transferobjects.security.DepartmentTO;
 import org.sola.webservices.transferobjects.security.GroupTO;
 import org.sola.webservices.transferobjects.security.RoleTO;
 import org.sola.webservices.transferobjects.security.UserTO;
@@ -682,6 +683,18 @@ public class MockTOFactory {
         result.add(createUser("test2", "anotherId", "Ed", "Jones"));
         return result;
     }
+    
+    /**
+     * Creates a default DepartmentTO list.
+     */
+    public static DepartmentTO createDepartment() {
+        DepartmentTO result = new DepartmentTO();
+        result.setDescription("Description");
+        result.setId("Department id");
+        result.setName("Department name");
+        result.setRowId("row-id-0");
+        return result;
+    }
 
     /**
      * Creates a default GroupTO list.
@@ -692,6 +705,24 @@ public class MockTOFactory {
         result.setId("Group id");
         result.setName("Group name");
         result.setRowId("row-id-0");
+        return result;
+    }
+    
+    
+    /**
+     * Creates a default DepartmentTO list.
+     */
+    public static List<DepartmentTO> createDepartmentList(DepartmentTO department) {
+        List<DepartmentTO> result = new ArrayList<DepartmentTO>();
+        DepartmentTO group = new DepartmentTO();
+        group.setDescription("Description2");
+        group.setId("Department id1");
+        group.setName("Department name2");
+        group.setRowId("row-id-1");
+
+        result.add(createDepartment());
+        result.add(department);
+
         return result;
     }
 

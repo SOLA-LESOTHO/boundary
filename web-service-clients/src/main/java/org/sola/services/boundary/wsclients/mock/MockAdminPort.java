@@ -30,6 +30,7 @@ package org.sola.services.boundary.wsclients.mock;
 
 import java.util.ArrayList;
 import java.util.List;
+import org.sola.services.boundary.transferobjects.security.DepartmentTO;
 import org.sola.services.boundary.wsclients.AdminClient;
 import org.sola.webservices.admin.*;
 import org.sola.webservices.transferobjects.security.GroupSummaryTO;
@@ -209,6 +210,22 @@ public class MockAdminPort implements Admin {
             return getManager().getResponse(AdminClient.GET_CURRENT_USER_ROLES, List.class, defaultResponse);
         } catch (Exception ex) {
             processExceptionBasic(ex);
+            return null;
+        }
+    }
+    
+    /**
+     * Response Key = AdminClient.GET_GROUP
+     *
+     * @return default = MockTOFactory.createGroup()
+     */
+    @Override
+    public DepartmentTO getDepartment(String departmentId) throws SOLAFault, UnhandledFault, SOLAAccessFault {
+        DepartmentTO defaultResponse = MockTOFactory.createDepartment();
+        try {
+            return getManager().getResponse(AdminClient.GET_GROUP, DepartmentTO.class, defaultResponse, departmentId);
+        } catch (Exception ex) {
+            processExceptionAccess(ex);
             return null;
         }
     }

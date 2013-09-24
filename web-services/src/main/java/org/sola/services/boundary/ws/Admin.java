@@ -350,8 +350,8 @@ public class Admin extends AbstractWebService {
     }
     
     /**
-     * See {@linkplain org.sola.services.ejbs.admin.businesslogic.AdminEJB#saveGroup(org.sola.services.ejbs.admin.businesslogic.repository.entities.Group)
-     * AdminEJB.saveGroup}
+     * See {@linkplain org.sola.services.ejbs.admin.businesslogic.AdminEJB#saveDepartment(org.sola.services.ejbs.admin.businesslogic.repository.entities.Department)
+     * AdminEJB.saveDepartment}
      *
      * @throws SOLAFault
      * @throws UnhandledFault
