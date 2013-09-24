@@ -37,7 +37,8 @@ import org.sola.webservices.transferobjects.security.GroupSummaryTO;
 import org.sola.webservices.transferobjects.security.GroupTO;
 import org.sola.webservices.transferobjects.security.RoleTO;
 import org.sola.webservices.transferobjects.security.UserTO;
-
+import org.sola.webservices.transferobjects.security.DepartmentTO;
+import org.sola.webservices.transferobjects.security.DepartmentSummaryTO;
 /**
  * Interface for the Admin Service. Implemented by {@linkplain AdminClientImpl}. To obtain a
  * reference to the Admin Service, use {@linkplain WSManager#getAdminService()}
@@ -78,7 +79,7 @@ public interface AdminClient extends AbstractWSClient {
     /**
      * Admin.getDepartmentsSummary - Identifier for the getDepartmentsSummary method
      */
-    public static final String GET_DEPARTMENT_SUMMARY = SERVICE_NAME + "getDepartmentsSummary";
+    public static final String GET_DEPARTMENTS_SUMMARY = SERVICE_NAME + "getDepartmentsSummary";
     /**
      * Admin.getGroup - Identifier for the getGroup method
      */
@@ -155,6 +156,14 @@ public interface AdminClient extends AbstractWSClient {
      * @throws WebServiceClientException
      */
     List<GroupTO> getGroups() throws WebServiceClientException;
+    
+    /**
+     * Returns the list of all user departments supported by SOLA. <p>Requires the {@linkplain RolesConstants.ADMIN_MANAGE_SECURITY}
+     * role.</p>
+     *
+     * @throws WebServiceClientException
+     */
+    List<DepartmentTO> getDepartments() throws WebServiceClientException;
 
     /**
      * Returns a summary list of all user groups supported by SOLA. <p>Requires the {@linkplain RolesConstants.ADMIN_MANAGE_SECURITY}
@@ -163,6 +172,14 @@ public interface AdminClient extends AbstractWSClient {
      * @throws WebServiceClientException
      */
     List<GroupSummaryTO> getGroupsSummary() throws WebServiceClientException;
+    
+    /**
+     * Returns a summary list of all user departments supported by SOLA. <p>Requires the {@linkplain RolesConstants.ADMIN_MANAGE_SECURITY}
+     * role.</p>
+     *
+     * @throws WebServiceClientException
+     */
+    List<DepartmentSummaryTO> getDepartmentsSummary() throws WebServiceClientException;
 
     /**
      * Returns the details for the specified group. <p>Requires the {@linkplain RolesConstants.ADMIN_MANAGE_SECURITY}
@@ -172,6 +189,15 @@ public interface AdminClient extends AbstractWSClient {
      * @throws WebServiceClientException
      */
     GroupTO getGroup(String groupId) throws WebServiceClientException;
+    
+    /**
+     * Returns the details for the specified department. <p>Requires the {@linkplain RolesConstants.ADMIN_MANAGE_SECURITY}
+     * role.</p>
+     *
+     * @param departmentId The identifier of the group to retrieve from the SOLA database
+     * @throws WebServiceClientException
+     */
+    DepartmentTO getDepartment(String departmentId) throws WebServiceClientException;
 
     /**
      * Returns the details of the user with the specified user name. <p>Requires the {@linkplain RolesConstants.ADMIN_MANAGE_SECURITY}
@@ -203,6 +229,16 @@ public interface AdminClient extends AbstractWSClient {
      * @throws WebServiceClientException
      */
     GroupTO saveGroup(GroupTO groupTO) throws WebServiceClientException;
+    
+    /**
+     * Can be used to create a new user department or save any updates to the details of an existing user
+     * group. <p> Requires the {@linkplain RolesConstants.ADMIN_MANAGE_SECURITY} role. </p>
+     *
+     * @param departmentTO The details of the user department to save
+     * @return The user department after the save is completed
+     * @throws WebServiceClientException
+     */
+    DepartmentTO saveDepartment(DepartmentTO departmentTO) throws WebServiceClientException;
 
     /**
      * Can be used to create a new security role or save any updates to the details of an existing

@@ -284,7 +284,7 @@ public class MockAdminPort implements Admin {
     public List<DepartmentSummaryTO> getDepartmentsSummary() throws SOLAAccessFault, SOLAFault, UnhandledFault {
         List<DepartmentSummaryTO> defaultResponse = new ArrayList<DepartmentSummaryTO>();
         try {
-            return getManager().getResponse(AdminClient.GET_DEPARTMENT_SUMMARY, List.class, defaultResponse);
+            return getManager().getResponse(AdminClient.GET_DEPARTMENTS_SUMMARY, List.class, defaultResponse);
         } catch (Exception ex) {
             processExceptionAccess(ex);
             return null;
