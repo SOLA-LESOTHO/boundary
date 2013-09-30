@@ -17,7 +17,7 @@ public class DepartmentTO extends DepartmentSummaryTO {
         super();
     }
 
-    public List<UserTO> getUsers() {
+    public List<UserTO> getDepartmentUsers() {
         return departmentUsers;
     }
 
