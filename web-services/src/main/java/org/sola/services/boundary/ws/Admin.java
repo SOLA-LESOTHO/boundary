@@ -315,7 +315,7 @@ public class Admin extends AbstractWebService {
             @Override
             public void run() {
                 result[0] = GenericTranslator.toTO(adminEJB.getDepartment(departmentIdTmp),
-                        GroupTO.class);
+                        DepartmentTO.class);
             }
         });
 
