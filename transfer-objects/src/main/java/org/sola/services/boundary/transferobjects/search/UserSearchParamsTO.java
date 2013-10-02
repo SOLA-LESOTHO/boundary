@@ -36,9 +36,18 @@ public class UserSearchParamsTO extends AbstractTO {
     private String userName;
     private String firstName;
     private String lastName;
+    private String department;
     
     public UserSearchParamsTO(){
         super();
+    }
+
+    public String getDepartment() {
+        return department;
+    }
+
+    public void setDepartment(String department) {
+        this.department = department;
     }
 
     public String getFirstName() {

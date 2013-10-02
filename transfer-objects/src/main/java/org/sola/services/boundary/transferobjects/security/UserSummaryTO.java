@@ -35,9 +35,18 @@ public class UserSummaryTO extends AbstractIdTO {
     private String firstName;
     private String lastName;
     private String description;
+    private String department;
 
     public UserSummaryTO() {
         super();
+    }
+
+    public String getDepartment() {
+        return department;
+    }
+
+    public void setDepartment(String department) {
+        this.department = department;
     }
     
     public String getDescription() {
