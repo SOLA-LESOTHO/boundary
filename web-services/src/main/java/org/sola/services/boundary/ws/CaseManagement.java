@@ -1399,4 +1399,34 @@ public class CaseManagement extends AbstractWebService {
         return (List<ResponseViewTO>) result[0];
     }
     
+    /**
+     * See {@linkplain org.sola.services.ejb.application.businesslogic.ApplicationEJB#getWorkSummary(java.util.Date, java.util.Date)
+     * ApplicationEJB.getWorkSummary}
+     *
+     * @throws SOLAFault
+     * @throws UnhandledFault
+     * @throws SOLAAccessFault
+     */
+    @WebMethod(operationName = "GetWorkSummary")
+    public List<WorkSummaryTO> getWorkSummary(
+            @WebParam(name = "paramsTO") LodgementViewParamsTO paramsTO)
+            throws SOLAFault, UnhandledFault, SOLAAccessFault {
+
+        final LodgementViewParamsTO paramsTOTmp = paramsTO;
+        final Object[] result = {null};
+
+        if (paramsTO != null) {
+            runGeneralQuery(wsContext, new Runnable() {
+
+                @Override
+                public void run() {
+                    List<WorkSummary> appList = applicationEJB.getWorkSummary(paramsTOTmp.getFromDate(),
+                            paramsTOTmp.getToDate());
+                    result[0] = GenericTranslator.toTOList(
+                            appList, WorkSummaryTO.class);
+                }
+            });
+        }
+        return (List<WorkSummaryTO>) result[0];
+    }      
 }

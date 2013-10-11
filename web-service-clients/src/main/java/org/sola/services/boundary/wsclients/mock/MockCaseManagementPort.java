@@ -881,4 +881,9 @@ public class MockCaseManagementPort implements CaseManagement {
         }
     }
 
+    @Override
+    public List<WorkSummaryTO> getWorkSummary(LodgementViewParamsTO paramsTO) throws SOLAAccessFault, SOLAFault, UnhandledFault {
+        throw new UnsupportedOperationException("Not supported yet.");
+    }
+
 }

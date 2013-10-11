@@ -230,7 +230,12 @@ public interface CaseManagementClient extends AbstractWSClient {
      * CaseManagement.getSurveyors - Identifier for the getSurveyors method
      */
     public static final String GET_RESPONSE_VIEW = SERVICE_NAME + "getResponseView";  
-
+    
+    /**
+     * CaseManagement.getWorkSummary - Identifier for the getWorkSummary method
+     */
+    public static final String GET_WORK_SUMMARY = SERVICE_NAME + "getWorkSummary";
+    
     /**
      * Calculates the lodgement fees as well as the expected completions dates for each service as
      * well as the application.
@@ -736,4 +741,15 @@ public interface CaseManagementClient extends AbstractWSClient {
     
     List<ResponseViewTO> getResponseView(LodgementViewParamsTO paramsTO) 
             throws WebServiceClientException;
+    
+    /**
+     * Retrieves a summary of the services processed during the specified
+     * reporting period. <p>Requires the
+     * {@linkplain RolesConstants#REPORTS_VIEW} role.</p>
+     *
+     * @param paramsTO The date parameters for the report.
+     * @return The data for the Lodgement Report report
+     * @throws WebServiceClientException
+     */
+    List<WorkSummaryTO> getWorkSummary(LodgementViewParamsTO paramsTO) throws WebServiceClientException;
 }
