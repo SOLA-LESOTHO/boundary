@@ -1,33 +1,36 @@
 /**
  * ******************************************************************************************
- * Copyright (c) 2013 Food and Agriculture Organization of the United Nations (FAO)
- * and the Lesotho Land Administration Authority (LAA). All rights reserved.
+ * Copyright (c) 2013 Food and Agriculture Organization of the United Nations
+ * (FAO) and the Lesotho Land Administration Authority (LAA). All rights
+ * reserved.
  *
- * Redistribution and use in source and binary forms, with or without modification,
- * are permitted provided that the following conditions are met:
+ * Redistribution and use in source and binary forms, with or without
+ * modification, are permitted provided that the following conditions are met:
  *
- *    1. Redistributions of source code must retain the above copyright notice,this list
- *       of conditions and the following disclaimer.
- *    2. Redistributions in binary form must reproduce the above copyright notice,this list
- *       of conditions and the following disclaimer in the documentation and/or other
- *       materials provided with the distribution.
- *    3. Neither the names of FAO, the LAA nor the names of its contributors may be used to
- *       endorse or promote products derived from this software without specific prior
- * 	  written permission.
+ * 1. Redistributions of source code must retain the above copyright notice,this
+ * list of conditions and the following disclaimer. 2. Redistributions in binary
+ * form must reproduce the above copyright notice,this list of conditions and
+ * the following disclaimer in the documentation and/or other materials provided
+ * with the distribution. 3. Neither the names of FAO, the LAA nor the names of
+ * its contributors may be used to endorse or promote products derived from this
+ * software without specific prior written permission.
  *
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY
- * EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES
- * OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT
- * SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,
- * SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO,PROCUREMENT
- * OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION)
- * HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT,STRICT LIABILITY,OR TORT
- * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE,
- * EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+ * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
+ * AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+ * IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
+ * ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE
+ * LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR
+ * CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO,PROCUREMENT OF
+ * SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS
+ * INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN
+ * CONTRACT,STRICT LIABILITY,OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING
+ * IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
+ * POSSIBILITY OF SUCH DAMAGE.
  * *********************************************************************************************
  */
 package org.sola.services.boundary.ws;
 
+import java.util.Date;
 import java.util.List;
 import javax.annotation.Resource;
 import javax.ejb.EJB;
@@ -45,6 +48,7 @@ import org.sola.services.common.ServiceConstants;
 import org.sola.services.common.contracts.GenericTranslator;
 import org.sola.services.common.faults.*;
 import org.sola.services.common.webservices.AbstractWebService;
+import org.sola.services.ejb.slrmigration.businesslogic.SlrMigrationEJBLocal;
 import org.sola.services.ejb.system.businesslogic.SystemEJBLocal;
 import org.sola.services.ejb.system.repository.entities.Br;
 import org.sola.services.ejbs.admin.businesslogic.AdminEJBLocal;
@@ -54,7 +58,8 @@ import org.sola.services.ejbs.admin.businesslogic.repository.entities.Role;
 import org.sola.services.ejbs.admin.businesslogic.repository.entities.User;
 
 /**
- * Provides methods for administrators to manage users, reference data and system settings.
+ * Provides methods for administrators to manage users, reference data and
+ * system settings.
  */
 @WebService(serviceName = "admin-service", targetNamespace = ServiceConstants.ADMIN_WS_NAMESPACE)
 public class Admin extends AbstractWebService {
@@ -63,6 +68,8 @@ public class Admin extends AbstractWebService {
     AdminEJBLocal adminEJB;
     @EJB
     SystemEJBLocal systemEJB;
+    @EJB
+    SlrMigrationEJBLocal slrMigrationEJB;
     @Resource
     private WebServiceContext wsContext;
 
@@ -91,7 +98,6 @@ public class Admin extends AbstractWebService {
         final Object[] result = {null};
 
         runOpenQuery(wsContext, new Runnable() {
-
             @Override
             public void run() {
                 result[0] = GenericTranslator.toTOList(
@@ -101,7 +107,7 @@ public class Admin extends AbstractWebService {
 
         return (List<LanguageTO>) result[0];
     }
-    
+
     /**
      * See {@linkplain org.sola.services.ejbs.admin.businesslogic.AdminEJB#getDepartments()
      * AdminEJB.getDepartments}
@@ -117,7 +123,6 @@ public class Admin extends AbstractWebService {
         final Object[] result = {null};
 
         runGeneralQuery(wsContext, new Runnable() {
-
             @Override
             public void run() {
                 result[0] = GenericTranslator.toTOList(
@@ -143,7 +148,6 @@ public class Admin extends AbstractWebService {
         final Object[] result = {null};
 
         runGeneralQuery(wsContext, new Runnable() {
-
             @Override
             public void run() {
                 result[0] = GenericTranslator.toTOList(
@@ -153,7 +157,7 @@ public class Admin extends AbstractWebService {
 
         return (List<GroupTO>) result[0];
     }
-    
+
     /**
      * See {@linkplain org.sola.services.ejbs.admin.businesslogic.AdminEJB#getDepartmentsSummary()
      * AdminEJB.getDepartmentsSummary}
@@ -169,7 +173,6 @@ public class Admin extends AbstractWebService {
         final Object[] result = {null};
 
         runGeneralQuery(wsContext, new Runnable() {
-
             @Override
             public void run() {
                 result[0] = GenericTranslator.toTOList(
@@ -195,7 +198,6 @@ public class Admin extends AbstractWebService {
         final Object[] result = {null};
 
         runGeneralQuery(wsContext, new Runnable() {
-
             @Override
             public void run() {
                 result[0] = GenericTranslator.toTOList(
@@ -221,7 +223,6 @@ public class Admin extends AbstractWebService {
         final Object[] result = {null};
 
         runOpenQuery(wsContext, new Runnable() {
-
             @Override
             public void run() {
                 result[0] = GenericTranslator.toTO(
@@ -248,7 +249,6 @@ public class Admin extends AbstractWebService {
         final Object[] result = {null};
 
         runOpenQuery(wsContext, new Runnable() {
-
             @Override
             public void run() {
                 result[0] = GenericTranslator.toTO(
@@ -276,7 +276,6 @@ public class Admin extends AbstractWebService {
         final Object[] result = {null};
 
         runUpdate(wsContext, new Runnable() {
-
             @Override
             public void run() {
                 User user = adminEJB.getUser(userTOTmp.getUserName());
@@ -294,7 +293,7 @@ public class Admin extends AbstractWebService {
 
         return (UserTO) result[0];
     }
-    
+
     /**
      * See {@linkplain org.sola.services.ejbs.admin.businesslogic.AdminEJB#getDepartment(java.lang.String)
      * AdminEJB.getDepartment}
@@ -311,7 +310,6 @@ public class Admin extends AbstractWebService {
         final Object[] result = {null};
 
         runGeneralQuery(wsContext, new Runnable() {
-
             @Override
             public void run() {
                 result[0] = GenericTranslator.toTO(adminEJB.getDepartment(departmentIdTmp),
@@ -338,7 +336,6 @@ public class Admin extends AbstractWebService {
         final Object[] result = {null};
 
         runGeneralQuery(wsContext, new Runnable() {
-
             @Override
             public void run() {
                 result[0] = GenericTranslator.toTO(adminEJB.getGroup(groupIdTmp),
@@ -348,7 +345,7 @@ public class Admin extends AbstractWebService {
 
         return (GroupTO) result[0];
     }
-    
+
     /**
      * See {@linkplain org.sola.services.ejbs.admin.businesslogic.AdminEJB#saveDepartment(org.sola.services.ejbs.admin.businesslogic.repository.entities.Department)
      * AdminEJB.saveDepartment}
@@ -366,7 +363,6 @@ public class Admin extends AbstractWebService {
         final Object[] result = {null};
 
         runUpdate(wsContext, new Runnable() {
-
             @Override
             public void run() {
                 Department department = adminEJB.getDepartment(departmentTOTmp.getId());
@@ -395,7 +391,6 @@ public class Admin extends AbstractWebService {
         final Object[] result = {null};
 
         runUpdate(wsContext, new Runnable() {
-
             @Override
             public void run() {
                 Group group = adminEJB.getGroup(groupTOTmp.getId());
@@ -423,7 +418,6 @@ public class Admin extends AbstractWebService {
         final Object[] result = {null};
 
         runGeneralQuery(wsContext, new Runnable() {
-
             @Override
             public void run() {
                 result[0] = GenericTranslator.toTOList(
@@ -447,7 +441,6 @@ public class Admin extends AbstractWebService {
         final Object[] result = {null};
 
         runOpenQuery(wsContext, new Runnable() {
-
             @Override
             public void run() {
                 result[0] = GenericTranslator.toTOList(
@@ -476,7 +469,6 @@ public class Admin extends AbstractWebService {
         final Object[] result = {null};
 
         runUpdate(wsContext, new Runnable() {
-
             @Override
             public void run() {
                 Role role = adminEJB.getRole(roleTOTmp.getCode());
@@ -507,7 +499,6 @@ public class Admin extends AbstractWebService {
         final boolean[] result = {false};
 
         runUpdate(wsContext, new Runnable() {
-
             @Override
             public void run() {
                 result[0] = adminEJB.changePassword(userNameTmp, passwordTmp);
@@ -530,7 +521,6 @@ public class Admin extends AbstractWebService {
         final boolean[] result = {false};
 
         runOpenQuery(wsContext, new Runnable() {
-
             @Override
             public void run() {
                 result[0] = adminEJB.isUserAdmin();
@@ -555,7 +545,6 @@ public class Admin extends AbstractWebService {
         final Object[] result = {null};
 
         runGeneralQuery(wsContext, new Runnable() {
-
             @Override
             public void run() {
                 String id = params[0] == null ? null : params[0].toString();
@@ -585,7 +574,6 @@ public class Admin extends AbstractWebService {
         final Object[] result = {null};
 
         runUpdateValidation(wsContext, new Runnable() {
-
             @Override
             public void run() {
                 BrTO brTO = (BrTO) params[0];
@@ -614,7 +602,6 @@ public class Admin extends AbstractWebService {
         final Object[] result = {null};
 
         runGeneralQuery(wsContext, new Runnable() {
-
             @Override
             public void run() {
                 result[0] = GenericTranslator.toTOList(
@@ -642,13 +629,253 @@ public class Admin extends AbstractWebService {
         final String[] result = {null};
 
         runGeneralQuery(wsContext, new Runnable() {
-
             @Override
             public void run() {
                 result[0] = systemEJB.getSetting(params[0], params[1]);
             }
         });
 
+        return result[0];
+    }
+
+    /**
+     * See
+     * {@linkplain org.sola.services.ejb.slrmigration.businesslogic.SlrMigrationEJB#getProgressMessage() SystemEJB.getProgressMessage}
+     *
+     * @throws SOLAFault
+     * @throws UnhandledFault
+     * @throws SOLAAccessFault
+     */
+    @WebMethod(operationName = "GetSlrMigrationProgressMessage")
+    public String getSlrMigrationProgressMessage()
+            throws SOLAFault, UnhandledFault, SOLAAccessFault {
+        String result = "";
+
+        try {
+            // Avoid using a transaction when executing this method. 
+            result = slrMigrationEJB.getProgressMessage();
+        } catch (Exception ex) {
+            Exception fault = FaultUtility.ProcessException(ex);
+            if (fault.getClass() == SOLAFault.class) {
+                throw (SOLAFault) fault;
+            }
+            throw (UnhandledFault) fault;
+        } finally {
+            cleanUp();
+        }
+        return result;
+    }
+
+    /**
+     * See {@linkplain org.sola.services.ejb.slrmigration.businesslogic.SlrMigrationEJB#transferSlrSource(
+     * java.lang.String, boolean, java.util.Date, java.util.Date) SystemEJB.transferSlrSource}
+     *
+     * @throws SOLAFault
+     * @throws UnhandledFault
+     * @throws SOLAAccessFault
+     */
+    @WebMethod(operationName = "TransferSlrSource")
+    public String transferSlrSource(@WebParam(name = "adjudicationArea") String adjudicationArea,
+            @WebParam(name = "registeredOnly") boolean registeredOnly,
+            @WebParam(name = "fromDate") Date fromDate,
+            @WebParam(name = "toDate") Date toDate)
+            throws SOLAFault, UnhandledFault, SOLAAccessFault {
+
+        final String tmpArea = adjudicationArea;
+        final boolean tmpReg = registeredOnly;
+        final Date tmpFrom = fromDate;
+        final Date tmpTo = toDate;
+        final String[] result = {null};
+
+        runGeneralQuery(wsContext, new Runnable() {
+            @Override
+            public void run() {
+                result[0] = slrMigrationEJB.transferSlrSource(tmpArea, tmpReg, tmpFrom, tmpTo);
+            }
+        });
+        return result[0];
+    }
+
+    /**
+     * See
+     * {@linkplain org.sola.services.ejb.slrmigration.businesslogic.SlrMigrationEJB#loadSource() SystemEJB.loadSource}
+     *
+     * @throws SOLAFault
+     * @throws UnhandledFault
+     * @throws SOLAAccessFault
+     */
+    @WebMethod(operationName = "LoadSource")
+    public String loadSource()
+            throws SOLAFault, UnhandledFault, SOLAAccessFault {
+
+        final String[] result = {null};
+
+        runGeneralQuery(wsContext, new Runnable() {
+            @Override
+            public void run() {
+                result[0] = slrMigrationEJB.loadSource();
+            }
+        });
+        return result[0];
+    }
+
+    /**
+     * See {@linkplain org.sola.services.ejb.slrmigration.businesslogic.SlrMigrationEJB#transferSlrParcel(
+     * java.lang.String, java.util.Date, java.util.Date) SystemEJB.transferSlrParcel}
+     *
+     * @throws SOLAFault
+     * @throws UnhandledFault
+     * @throws SOLAAccessFault
+     */
+    @WebMethod(operationName = "TransferSlrParcel")
+    public String transferSlrParcel(@WebParam(name = "adjudicationArea") String adjudicationArea,
+            @WebParam(name = "fromDate") Date fromDate,
+            @WebParam(name = "toDate") Date toDate)
+            throws SOLAFault, UnhandledFault, SOLAAccessFault {
+
+        final String tmpArea = adjudicationArea;
+        final Date tmpFrom = fromDate;
+        final Date tmpTo = toDate;
+        final String[] result = {null};
+
+        runGeneralQuery(wsContext, new Runnable() {
+            @Override
+            public void run() {
+                result[0] = slrMigrationEJB.transferSlrParcel(tmpArea, tmpFrom, tmpTo);
+            }
+        });
+        return result[0];
+    }
+
+    /**
+     * See
+     * {@linkplain org.sola.services.ejb.slrmigration.businesslogic.SlrMigrationEJB#loadParcel() SystemEJB.loadParcel}
+     *
+     * @throws SOLAFault
+     * @throws UnhandledFault
+     * @throws SOLAAccessFault
+     */
+    @WebMethod(operationName = "LoadParcel")
+    public String loadParcel()
+            throws SOLAFault, UnhandledFault, SOLAAccessFault {
+
+        final String[] result = {null};
+
+        runGeneralQuery(wsContext, new Runnable() {
+            @Override
+            public void run() {
+                result[0] = slrMigrationEJB.loadParcel();
+            }
+        });
+        return result[0];
+    }
+
+    /**
+     * See {@linkplain org.sola.services.ejb.slrmigration.businesslogic.SlrMigrationEJB#transferSlrLease(
+     * java.util.Date, java.lang.String, boolean, java.util.Date, java.util.Date) SystemEJB.transferSlrLease}
+     *
+     * @throws SOLAFault
+     * @throws UnhandledFault
+     * @throws SOLAAccessFault
+     */
+    @WebMethod(operationName = "TransferSlrLease")
+    public String transferSlrLease(@WebParam(name = "registrationDate") Date registrationDate,
+            @WebParam(name = "adjudicationArea") String adjudicationArea,
+            @WebParam(name = "registeredOnly") boolean registeredOnly,
+            @WebParam(name = "fromDate") Date fromDate,
+            @WebParam(name = "toDate") Date toDate)
+            throws SOLAFault, UnhandledFault, SOLAAccessFault {
+
+        final Date tmpRegDate = registrationDate;
+        final String tmpArea = adjudicationArea;
+        final boolean tmpReg = registeredOnly;
+        final Date tmpFrom = fromDate;
+        final Date tmpTo = toDate;
+        final String[] result = {null};
+
+        runGeneralQuery(wsContext, new Runnable() {
+            @Override
+            public void run() {
+                result[0] = slrMigrationEJB.transferSlrLease(tmpRegDate, tmpArea, tmpReg, tmpFrom, tmpTo);
+            }
+        });
+        return result[0];
+    }
+
+    /**
+     * See {@linkplain org.sola.services.ejb.slrmigration.businesslogic.SlrMigrationEJB#transferSlrParty(
+     * java.lang.String, boolean, java.util.Date, java.util.Date) SystemEJB.transferSlrParty}
+     *
+     * @throws SOLAFault
+     * @throws UnhandledFault
+     * @throws SOLAAccessFault
+     */
+    @WebMethod(operationName = "TransferSlrParty")
+    public String transferSlrParty(@WebParam(name = "adjudicationArea") String adjudicationArea,
+            @WebParam(name = "registeredOnly") boolean registeredOnly,
+            @WebParam(name = "fromDate") Date fromDate,
+            @WebParam(name = "toDate") Date toDate)
+            throws SOLAFault, UnhandledFault, SOLAAccessFault {
+
+        final String tmpArea = adjudicationArea;
+        final boolean tmpReg = registeredOnly;
+        final Date tmpFrom = fromDate;
+        final Date tmpTo = toDate;
+        final String[] result = {null};
+
+        runGeneralQuery(wsContext, new Runnable() {
+            @Override
+            public void run() {
+                result[0] = slrMigrationEJB.transferSlrParty(tmpArea, tmpReg, tmpFrom, tmpTo);
+            }
+        });
+        return result[0];
+    }
+
+    /**
+     * See {@linkplain org.sola.services.ejb.slrmigration.businesslogic.SlrMigrationEJB#loadLeaseAndParty(
+     * boolean) SystemEJB.loadLeaseAndParty}
+     *
+     * @throws SOLAFault
+     * @throws UnhandledFault
+     * @throws SOLAAccessFault
+     */
+    @WebMethod(operationName = "LoadLeaseAndParty")
+    public String loadLeaseAndParty(@WebParam(name = "makeCurrent") boolean makeCurrent)
+            throws SOLAFault, UnhandledFault, SOLAAccessFault {
+
+        final String[] result = {null};
+        final boolean tmpMakeCurrent = makeCurrent;
+
+        runGeneralQuery(wsContext, new Runnable() {
+            @Override
+            public void run() {
+                result[0] = slrMigrationEJB.loadLeaseAndParty(tmpMakeCurrent);
+            }
+        });
+        return result[0];
+    }
+
+    /**
+     * See {@linkplain org.sola.services.ejb.slrmigration.businesslogic.SlrMigrationEJB#loadRrrSourceLink()
+     * SystemEJB.loadRrrSourceLink}
+     *
+     * @throws SOLAFault
+     * @throws UnhandledFault
+     * @throws SOLAAccessFault
+     */
+    @WebMethod(operationName = "LoadRrrSourceLink")
+    public String loadRrrSourceLink()
+            throws SOLAFault, UnhandledFault, SOLAAccessFault {
+
+        final String[] result = {null};
+
+        runGeneralQuery(wsContext, new Runnable() {
+            @Override
+            public void run() {
+                result[0] = slrMigrationEJB.loadRrrSourceLink();
+            }
+        });
         return result[0];
     }
 }

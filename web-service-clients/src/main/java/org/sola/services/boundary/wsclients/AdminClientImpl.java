@@ -30,6 +30,7 @@
  */
 package org.sola.services.boundary.wsclients;
 
+import java.util.Date;
 import java.util.List;
 import javax.xml.namespace.QName;
 import org.sola.services.boundary.wsclients.exception.WebServiceClientException;
@@ -40,7 +41,6 @@ import org.sola.webservices.transferobjects.security.UserTO;
 import org.sola.webservices.transferobjects.security.RoleTO;
 import org.sola.webservices.transferobjects.security.DepartmentTO;
 import org.sola.webservices.transferobjects.security.DepartmentSummaryTO;
-
 
 /**
  * Implementation class for the {@linkplain AdminClient} interface.
@@ -93,7 +93,7 @@ public class AdminClientImpl extends AbstractWSClientImpl implements AdminClient
         }
         return result;
     }
-    
+
     @Override
     public List<DepartmentTO> getDepartments() throws WebServiceClientException {
         List<DepartmentTO> result = null;
@@ -185,7 +185,7 @@ public class AdminClientImpl extends AbstractWSClientImpl implements AdminClient
         }
         return result;
     }
-    
+
     @Override
     public DepartmentTO saveDepartment(DepartmentTO departmentTO) throws WebServiceClientException {
         DepartmentTO result = null;
@@ -200,7 +200,6 @@ public class AdminClientImpl extends AbstractWSClientImpl implements AdminClient
         }
         return result;
     }
-
 
     @Override
     public GroupTO saveGroup(GroupTO groupTO) throws WebServiceClientException {
@@ -261,7 +260,7 @@ public class AdminClientImpl extends AbstractWSClientImpl implements AdminClient
         }
         return result;
     }
-    
+
     @Override
     public List<DepartmentSummaryTO> getDepartmentsSummary() throws WebServiceClientException {
         List<DepartmentSummaryTO> result = null;
@@ -406,5 +405,151 @@ public class AdminClientImpl extends AbstractWSClientImpl implements AdminClient
             afterWebMethod(methodName, result, name, defaultValue);
         }
         return result;
+    }
+
+    @Override
+    public String getSlrMigrationProgressMessage() throws WebServiceClientException {
+        String result = null;
+        final String methodName = AdminClient.GET_SLR_MIGRATION_PROG_MSG;
+        try {
+            beforeWebMethod(methodName);
+            result = getPort().getSlrMigrationProgressMessage();
+        } catch (Exception e) {
+            processException(methodName, e);
+        } finally {
+            afterWebMethod(methodName, result);
+        }
+        return result;
+    }
+
+    @Override
+    public String transferSlrSource(String adjudicationArea, boolean registeredOnly,
+            Date fromDate, Date toDate) throws WebServiceClientException {
+        String result = null;
+        final String methodName = AdminClient.TRANSFER_SLR_SOURCE;
+        try {
+            beforeWebMethod(methodName, adjudicationArea, registeredOnly, fromDate, toDate);
+            result = getPort().transferSlrSource(adjudicationArea, registeredOnly,
+                    WSManager.toXMLDate(fromDate), WSManager.toXMLDate(toDate));
+        } catch (Exception e) {
+            processException(methodName, e);
+        } finally {
+            afterWebMethod(methodName, result, adjudicationArea, registeredOnly, fromDate, toDate);
+        }
+        return result;
+    }
+
+    @Override
+    public String loadSource() throws WebServiceClientException {
+        String result = null;
+        final String methodName = AdminClient.LOAD_SOURCE;
+        try {
+            beforeWebMethod(methodName);
+            result = getPort().loadSource();
+        } catch (Exception e) {
+            processException(methodName, e);
+        } finally {
+            afterWebMethod(methodName, result);
+            return result;
+        }
+    }
+
+    @Override
+    public String transferSlrParcel(String adjudicationArea, Date fromDate,
+            Date toDate) throws WebServiceClientException {
+        String result = null;
+        final String methodName = AdminClient.TRANSFER_SLR_PARCEL;
+        try {
+            beforeWebMethod(methodName, adjudicationArea, fromDate, toDate);
+            result = getPort().transferSlrParcel(adjudicationArea,
+                    WSManager.toXMLDate(fromDate), WSManager.toXMLDate(toDate));
+        } catch (Exception e) {
+            processException(methodName, e);
+        } finally {
+            afterWebMethod(methodName, result, adjudicationArea, fromDate, toDate);
+        }
+        return result;
+    }
+
+    @Override
+    public String loadParcel() throws WebServiceClientException {
+        String result = null;
+        final String methodName = AdminClient.LOAD_PARCEL;
+        try {
+            beforeWebMethod(methodName);
+            result = getPort().loadParcel();
+        } catch (Exception e) {
+            processException(methodName, e);
+        } finally {
+            afterWebMethod(methodName, result);
+            return result;
+        }
+    }
+
+    @Override
+    public String transferSlrLease(Date registrationDate, String adjudicationArea,
+            boolean registeredOnly, Date fromDate, Date toDate) throws WebServiceClientException {
+        String result = null;
+        final String methodName = AdminClient.TRANSFER_SLR_LEASE;
+        try {
+            beforeWebMethod(methodName, registrationDate, adjudicationArea,
+                    registeredOnly, fromDate, toDate);
+            result = getPort().transferSlrLease(WSManager.toXMLDate(registrationDate),
+                    adjudicationArea, registeredOnly, WSManager.toXMLDate(fromDate),
+                    WSManager.toXMLDate(toDate));
+        } catch (Exception e) {
+            processException(methodName, e);
+        } finally {
+            afterWebMethod(methodName, result, registrationDate, adjudicationArea,
+                    registeredOnly, fromDate, toDate);
+        }
+        return result;
+    }
+
+    @Override
+    public String transferSlrParty(String adjudicationArea, boolean registeredOnly,
+            Date fromDate, Date toDate) throws WebServiceClientException {
+        String result = null;
+        final String methodName = AdminClient.TRANSFER_SLR_PARTY;
+        try {
+            beforeWebMethod(methodName, adjudicationArea, registeredOnly, fromDate, toDate);
+            result = getPort().transferSlrParty(adjudicationArea, registeredOnly,
+                    WSManager.toXMLDate(fromDate), WSManager.toXMLDate(toDate));
+        } catch (Exception e) {
+            processException(methodName, e);
+        } finally {
+            afterWebMethod(methodName, result, adjudicationArea, registeredOnly, fromDate, toDate);
+        }
+        return result;
+    }
+
+    @Override
+    public String loadLeaseAndParty(boolean makeCurrent) throws WebServiceClientException {
+        String result = null;
+        final String methodName = AdminClient.LOAD_LEASE_AND_PARTY;
+        try {
+            beforeWebMethod(methodName, makeCurrent);
+            result = getPort().loadLeaseAndParty(makeCurrent);
+        } catch (Exception e) {
+            processException(methodName, e);
+        } finally {
+            afterWebMethod(methodName, result, makeCurrent);
+        }
+        return result;
+    }
+
+    @Override
+    public String loadRrrSourceLink() throws WebServiceClientException {
+        String result = null;
+        final String methodName = AdminClient.LOAD_RRR_SOURCE_LINK;
+        try {
+            beforeWebMethod(methodName);
+            result = getPort().loadRrrSourceLink();
+        } catch (Exception e) {
+            processException(methodName, e);
+        } finally {
+            afterWebMethod(methodName, result);
+            return result;
+        }
     }
 }

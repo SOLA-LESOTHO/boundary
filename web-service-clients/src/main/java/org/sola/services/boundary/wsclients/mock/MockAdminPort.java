@@ -1,35 +1,38 @@
 /**
  * ******************************************************************************************
- * Copyright (c) 2013 Food and Agriculture Organization of the United Nations (FAO)
- * and the Lesotho Land Administration Authority (LAA). All rights reserved.
+ * Copyright (c) 2013 Food and Agriculture Organization of the United Nations
+ * (FAO) and the Lesotho Land Administration Authority (LAA). All rights
+ * reserved.
  *
- * Redistribution and use in source and binary forms, with or without modification,
- * are permitted provided that the following conditions are met:
+ * Redistribution and use in source and binary forms, with or without
+ * modification, are permitted provided that the following conditions are met:
  *
- *    1. Redistributions of source code must retain the above copyright notice,this list
- *       of conditions and the following disclaimer.
- *    2. Redistributions in binary form must reproduce the above copyright notice,this list
- *       of conditions and the following disclaimer in the documentation and/or other
- *       materials provided with the distribution.
- *    3. Neither the names of FAO, the LAA nor the names of its contributors may be used to
- *       endorse or promote products derived from this software without specific prior
- * 	  written permission.
+ * 1. Redistributions of source code must retain the above copyright notice,this
+ * list of conditions and the following disclaimer. 2. Redistributions in binary
+ * form must reproduce the above copyright notice,this list of conditions and
+ * the following disclaimer in the documentation and/or other materials provided
+ * with the distribution. 3. Neither the names of FAO, the LAA nor the names of
+ * its contributors may be used to endorse or promote products derived from this
+ * software without specific prior written permission.
  *
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY
- * EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES
- * OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT
- * SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,
- * SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO,PROCUREMENT
- * OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION)
- * HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT,STRICT LIABILITY,OR TORT
- * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE,
- * EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+ * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
+ * AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+ * IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
+ * ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE
+ * LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR
+ * CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO,PROCUREMENT OF
+ * SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS
+ * INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN
+ * CONTRACT,STRICT LIABILITY,OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING
+ * IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
+ * POSSIBILITY OF SUCH DAMAGE.
  * *********************************************************************************************
  */
 package org.sola.services.boundary.wsclients.mock;
 
 import java.util.ArrayList;
 import java.util.List;
+import javax.xml.datatype.XMLGregorianCalendar;
 import org.sola.webservices.transferobjects.security.DepartmentTO;
 import org.sola.services.boundary.wsclients.AdminClient;
 import org.sola.webservices.admin.*;
@@ -38,11 +41,14 @@ import org.sola.webservices.transferobjects.security.*;
 /**
  * Provides a mock implementation for the
  * {@linkplain org.sola.webservices.admin} interface. Uses the
- * {@linkplain MockServiceManager} to obtain the appropriate mock response for each web method.
- * <p>Each method mocked by this class has a public constant defined that can be used to reference a
- * mock response object from the {@linkplain MockServiceManager}. To set a response object for a web
- * method, use the {@linkplain MockServiceManager#setResponse(String, Object)} method referencing
- * the appropriate web method constant from {@linkplain org.sola.services.boundary.wsclients.AdminClient}.</p>
+ * {@linkplain MockServiceManager} to obtain the appropriate mock response for
+ * each web method.
+ * <p>Each method mocked by this class has a public constant defined that can be
+ * used to reference a mock response object from the
+ * {@linkplain MockServiceManager}. To set a response object for a web method,
+ * use the {@linkplain MockServiceManager#setResponse(String, Object)} method
+ * referencing the appropriate web method constant from
+ * {@linkplain org.sola.services.boundary.wsclients.AdminClient}.</p>
  *
  * @see MockAdminClient
  * @see AdminClient
@@ -61,8 +67,9 @@ public class MockAdminPort implements Admin {
     }
 
     /**
-     * Processes the mock response exception and throws the appropriate service exception or a
-     * MockResponseException if the response exception is not a recognized type.
+     * Processes the mock response exception and throws the appropriate service
+     * exception or a MockResponseException if the response exception is not a
+     * recognized type.
      *
      * @param ex The Mock response exception to process
      */
@@ -82,8 +89,10 @@ public class MockAdminPort implements Admin {
     }
 
     /**
-     * Processes the mock response exception and throws the appropriate service exception or a
-     * MockResponseException if the response exception is not a recognized type. Extends {@linkplain #processExceptionBasic(java.lang.Exception) processExceptionBasic}
+     * Processes the mock response exception and throws the appropriate service
+     * exception or a MockResponseException if the response exception is not a
+     * recognized type. Extends
+     * {@linkplain #processExceptionBasic(java.lang.Exception) processExceptionBasic}
      * to include the SOLAAccessFault;
      *
      * @param ex The Mock response exception to process
@@ -98,8 +107,10 @@ public class MockAdminPort implements Admin {
     }
 
     /**
-     * Processes the mock response exception and throws the appropriate service exception or a
-     * MockResponseException if the response exception is not a recognized type. Extends {@linkplain #processExceptionBasic(java.lang.Exception) processExceptionBasic}
+     * Processes the mock response exception and throws the appropriate service
+     * exception or a MockResponseException if the response exception is not a
+     * recognized type. Extends
+     * {@linkplain #processExceptionBasic(java.lang.Exception) processExceptionBasic}
      * to include the OptimisticLockingFault;
      *
      * @param ex The Mock response exception to process
@@ -114,8 +125,10 @@ public class MockAdminPort implements Admin {
     }
 
     /**
-     * Processes the mock response exception and throws the appropriate service exception or a
-     * MockResponseException if the response exception is not a recognized type. Extends {@linkplain #processExceptionUpdate(java.lang.Exception) processExceptionUpdate}
+     * Processes the mock response exception and throws the appropriate service
+     * exception or a MockResponseException if the response exception is not a
+     * recognized type. Extends
+     * {@linkplain #processExceptionUpdate(java.lang.Exception) processExceptionUpdate}
      * to include the OptimisticLockingFault and SOLAValidationFault;
      *
      * @param ex The Mock response exception to process
@@ -182,7 +195,8 @@ public class MockAdminPort implements Admin {
     /**
      * Response Key = AdminClient.GET_CURRENT_USER
      *
-     * @return default = MockTOFactory.createUser("test", "test", "Bob", "Smith")
+     * @return default = MockTOFactory.createUser("test", "test", "Bob",
+     * "Smith")
      */
     @Override
     public UserTO getCurrentUser() throws SOLAFault, UnhandledFault {
@@ -210,7 +224,7 @@ public class MockAdminPort implements Admin {
             return null;
         }
     }
-    
+
     /**
      * Response Key = AdminClient.GET_DEPARTMENT
      *
@@ -242,7 +256,7 @@ public class MockAdminPort implements Admin {
             return null;
         }
     }
-    
+
     /**
      * Response Key = AdminClient.GET_DEPARTMENTS
      *
@@ -258,7 +272,7 @@ public class MockAdminPort implements Admin {
             return null;
         }
     }
-    
+
     /**
      * Response Key = AdminClient.GET_GROUPS
      *
@@ -290,7 +304,7 @@ public class MockAdminPort implements Admin {
             return null;
         }
     }
-    
+
     /**
      * Response Key = AdminClient.GET_GROUPS_SUMMARY
      *
@@ -342,7 +356,8 @@ public class MockAdminPort implements Admin {
     /**
      * Response Key = AdminClient.GET_USER
      *
-     * @return default = MockTOFactory.createUser("test2", "test2", "Matthew", "Smith1")
+     * @return default = MockTOFactory.createUser("test2", "test2", "Matthew",
+     * "Smith1")
      */
     @Override
     public UserTO getUser(String userName) throws SOLAFault, UnhandledFault, SOLAAccessFault {
@@ -385,7 +400,7 @@ public class MockAdminPort implements Admin {
             return null;
         }
     }
-    
+
     /**
      * Response Key = AdminClient.SAVE_DEPARTMENT
      *
@@ -476,7 +491,166 @@ public class MockAdminPort implements Admin {
     public String getSetting(String name, String defaultValue) throws SOLAFault, UnhandledFault {
         String defaultResponse = defaultValue;
         try {
-            return getManager().getResponse(AdminClient.GET_SETTING, String.class, defaultResponse);
+            return getManager().getResponse(AdminClient.GET_SETTING, String.class, defaultResponse, name, defaultValue);
+        } catch (Exception ex) {
+            processExceptionBasic(ex);
+            return null;
+        }
+    }
+
+    /**
+     * Response Key = AdminClient.LOAD_SOURCE
+     *
+     * @return default = ""
+     */
+    @Override
+    public String loadSource() throws SOLAAccessFault, SOLAFault, UnhandledFault {
+        String defaultResponse = "";
+        try {
+            return getManager().getResponse(AdminClient.LOAD_SOURCE, String.class, defaultResponse);
+        } catch (Exception ex) {
+            processExceptionBasic(ex);
+            return null;
+        }
+    }
+
+    /**
+     * Response Key = AdminClient.LOAD_PARCEL
+     *
+     * @return default = ""
+     */
+    @Override
+    public String loadParcel() throws SOLAAccessFault, SOLAFault, UnhandledFault {
+        String defaultResponse = "";
+        try {
+            return getManager().getResponse(AdminClient.LOAD_PARCEL, String.class, defaultResponse);
+        } catch (Exception ex) {
+            processExceptionBasic(ex);
+            return null;
+        }
+    }
+
+    /**
+     * Response Key = AdminClient.GET_SLR_MIGRATION_PROG_MSG
+     *
+     * @return default = ""
+     */
+    @Override
+    public String getSlrMigrationProgressMessage()
+            throws SOLAAccessFault, SOLAFault, UnhandledFault {
+        String defaultResponse = "";
+        try {
+            return getManager().getResponse(AdminClient.GET_SLR_MIGRATION_PROG_MSG,
+                    String.class, defaultResponse);
+        } catch (Exception ex) {
+            processExceptionBasic(ex);
+            return null;
+        }
+    }
+
+    /**
+     * Response Key = AdminClient.TRANSFER_SLR_SOURCE
+     *
+     * @return default = ""
+     */
+    @Override
+    public String transferSlrSource(String adjudicationArea, boolean registeredOnly,
+            XMLGregorianCalendar fromDate, XMLGregorianCalendar toDate)
+            throws SOLAAccessFault, SOLAFault, UnhandledFault {
+        String defaultResponse = "";
+        try {
+            return getManager().getResponse(AdminClient.TRANSFER_SLR_SOURCE, String.class, defaultResponse,
+                    adjudicationArea, registeredOnly, fromDate, toDate);
+        } catch (Exception ex) {
+            processExceptionBasic(ex);
+            return null;
+        }
+    }
+
+    /**
+     * Response Key = AdminClient.TRANSFER_SLR_PARCEL
+     *
+     * @return default = ""
+     */
+    @Override
+    public String transferSlrParcel(String adjudicationArea,
+            XMLGregorianCalendar fromDate, XMLGregorianCalendar toDate)
+            throws SOLAAccessFault, SOLAFault, UnhandledFault {
+        String defaultResponse = "";
+        try {
+            return getManager().getResponse(AdminClient.TRANSFER_SLR_PARCEL, String.class, defaultResponse,
+                    adjudicationArea, fromDate, toDate);
+        } catch (Exception ex) {
+            processExceptionBasic(ex);
+            return null;
+        }
+    }
+
+    /**
+     * Response Key = AdminClient.TRANSFER_SLR_LEASE
+     *
+     * @return default = ""
+     */
+    @Override
+    public String transferSlrLease(XMLGregorianCalendar registrationDate,
+            String adjudicationArea, boolean registeredOnly, XMLGregorianCalendar fromDate, XMLGregorianCalendar toDate)
+            throws SOLAAccessFault, SOLAFault, UnhandledFault {
+        String defaultResponse = "";
+        try {
+            return getManager().getResponse(AdminClient.TRANSFER_SLR_LEASE, String.class, defaultResponse,
+                    registrationDate, adjudicationArea, registeredOnly, fromDate, toDate);
+        } catch (Exception ex) {
+            processExceptionBasic(ex);
+            return null;
+        }
+    }
+
+    /**
+     * Response Key = AdminClient.TRANSFER_SLR_PARTY
+     *
+     * @return default = ""
+     */
+    @Override
+    public String transferSlrParty(String adjudicationArea, boolean registeredOnly,
+            XMLGregorianCalendar fromDate, XMLGregorianCalendar toDate)
+            throws SOLAAccessFault, SOLAFault, UnhandledFault {
+        String defaultResponse = "";
+        try {
+            return getManager().getResponse(AdminClient.TRANSFER_SLR_PARTY, String.class, defaultResponse,
+                    adjudicationArea, registeredOnly, fromDate, toDate);
+        } catch (Exception ex) {
+            processExceptionBasic(ex);
+            return null;
+        }
+    }
+
+    /**
+     * Response Key = AdminClient.LOAD_LEASE_AND_PARTY
+     *
+     * @return default = ""
+     */
+    @Override
+    public String loadLeaseAndParty(boolean makeCurrent)
+            throws SOLAAccessFault, SOLAFault, UnhandledFault {
+        String defaultResponse = "";
+        try {
+            return getManager().getResponse(AdminClient.LOAD_LEASE_AND_PARTY, String.class, defaultResponse, makeCurrent);
+        } catch (Exception ex) {
+            processExceptionBasic(ex);
+            return null;
+        }
+    }
+
+    /**
+     * Response Key = AdminClient.LOAD_RRR_SOURCE_LINK
+     *
+     * @return default = ""
+     */
+    @Override
+    public String loadRrrSourceLink() throws SOLAAccessFault, SOLAFault, UnhandledFault {
+        String defaultResponse = "";
+        try {
+            return getManager().getResponse(AdminClient.LOAD_RRR_SOURCE_LINK, String.class, defaultResponse);
         } catch (Exception ex) {
             processExceptionBasic(ex);
             return null;

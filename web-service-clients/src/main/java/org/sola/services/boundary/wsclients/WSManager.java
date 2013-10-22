@@ -32,7 +32,12 @@ package org.sola.services.boundary.wsclients;
 
 import java.lang.reflect.Constructor;
 import java.security.Security;
+import java.util.Date;
+import java.util.GregorianCalendar;
 import java.util.HashMap;
+import javax.xml.datatype.DatatypeConfigurationException;
+import javax.xml.datatype.DatatypeFactory;
+import javax.xml.datatype.XMLGregorianCalendar;
 import org.bouncycastle.jce.provider.BouncyCastleProvider;
 import org.sola.common.logging.LogUtility;
 import org.sola.common.messaging.ServiceMessage;
@@ -78,6 +83,26 @@ public class WSManager {
      */
     public static WSManager getInstance() {
         return WSManagerHolder.INSTANCE;
+    }
+
+    /**
+     * Serializes the Java date type to the Gregorian Calendar XML equivalent.
+     * If date is null, then null is returned.
+     *
+     * @param date the date to convert.
+     */
+    public static XMLGregorianCalendar toXMLDate(Date date) {
+        XMLGregorianCalendar result = null;
+        if (date != null) {
+            GregorianCalendar gcal = new GregorianCalendar();
+            gcal.setTime(date);
+            try {
+                result = DatatypeFactory.newInstance().newXMLGregorianCalendar(gcal);
+            } catch (DatatypeConfigurationException ex) {
+                LogUtility.log("Unable to convert date to XMLDate: " + date.toString(), ex);
+            }
+        }
+        return result;
     }
 
     /**
