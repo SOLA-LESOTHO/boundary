@@ -28,9 +28,13 @@
  */
 package org.sola.services.boundary.wsclients.mock;
 
+import java.util.List;
+import org.sola.services.boundary.transferobjects.casemanagement.MortgageStatsViewTO;
 import org.sola.services.boundary.wsclients.CaseManagementClient;
 import org.sola.services.boundary.wsclients.CaseManagementClientImpl;
+import org.sola.services.boundary.wsclients.exception.WebServiceClientException;
 import org.sola.webservices.casemanagement.CaseManagement;
+import org.sola.webservices.transferobjects.casemanagement.LodgementViewParamsTO;
 
 /**
  * Mock implementation of the {@linkplain CaseManagementClient} interface that extends the
