@@ -70,6 +70,10 @@ public interface CaseManagementClient extends AbstractWSClient {
      */
     public static final String GET_LODGEMENT_VIEW = SERVICE_NAME + "getLodgementView";
     /**
+     * CaseManagement.getMortgageStatsView - Identifier for the getMortgageStatsView method
+     */
+    public static final String GET_MORTGAGE_STATS_VIEW = SERVICE_NAME + "getMortgageStatsView";
+    /**
      * CaseManagement.getLodgementTiming - Identifier for the getLodgementTiming method
      */
     public static final String GET_LODGEMENT_TIMING = SERVICE_NAME + "getLodgementTiming";
@@ -279,6 +283,15 @@ public interface CaseManagementClient extends AbstractWSClient {
      */
     List<LodgementViewTO> getLodgementView(LodgementViewParamsTO lodgementViewParamsTO) throws WebServiceClientException;
 
+    /**
+     * Retrieves the data required for the mortgage statistics view report. <p>Requires the {@linkplain RolesConstants#REPORTS_VIEW}
+     * role.</p>
+     *
+     * @param lodgementViewParamsTO The date parameters for the report.
+     * @return THe data for the Mortgage Statistics View report
+     * @throws WebServiceClientException
+     */
+    List<MortgageStatsViewTO> getMortgageStatsView(LodgementViewParamsTO lodgementViewParamsTO) throws WebServiceClientException;
     /**
      * Retrieves the data required for the lodgement timing report. <p>Requires the {@linkplain RolesConstants#REPORTS_VIEW}
      * role.</p>

@@ -886,4 +886,17 @@ public class MockCaseManagementPort implements CaseManagement {
         throw new UnsupportedOperationException("Not supported yet.");
     }
 
+    @Override
+    public List<MortgageStatsViewTO> getMortgageStatsView(LodgementViewParamsTO paramsTO) throws SOLAAccessFault, SOLAFault, UnhandledFault {
+        
+        List<MortgageStatsViewTO> defaultMortgage = new ArrayList<MortgageStatsViewTO>();
+        try {
+            return getManager().getResponse(CaseManagementClient.GET_MORTGAGE_STATS_VIEW,
+                    List.class, defaultMortgage, paramsTO);
+        } catch (Exception ex) {
+            processExceptionAccess(ex);
+            return null;
+        }
+    }
+
 }
