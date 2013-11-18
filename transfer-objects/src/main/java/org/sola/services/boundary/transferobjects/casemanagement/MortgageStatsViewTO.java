@@ -13,18 +13,18 @@ import org.sola.services.common.contracts.AbstractBasicIdTO;
 public class MortgageStatsViewTO extends AbstractBasicIdTO{
     
     private Integer mortgages;
-    private Integer amount;
+    private double amount;
     private double averageAmount;
 
     public MortgageStatsViewTO() {
         super();
     }
 
-    public Integer getAmount() {
+    public double getAmount() {
         return amount;
     }
 
-    public void setAmount(Integer amount) {
+    public void setAmount(double amount) {
         this.amount = amount;
     }
 
