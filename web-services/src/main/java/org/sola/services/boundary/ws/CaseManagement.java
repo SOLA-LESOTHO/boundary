@@ -193,7 +193,7 @@ public class CaseManagement extends AbstractWebService {
 
         return (SourceTO) result[0];
     }
-
+    
     /**
      * See {@linkplain org.sola.services.ejb.party.businesslogic.PartyEJB#saveParty(org.sola.services.ejb.party.repository.entities.Party)
      * PartyEJB#saveParty}
@@ -1449,5 +1449,37 @@ public class CaseManagement extends AbstractWebService {
             });
         }
         return (List<WorkSummaryTO>) result[0];
-    }      
+    }
+    
+     /**
+     * See {@linkplain org.sola.services.ejb.application.businesslogic.ApplicationEJB#getStatisticsSummary(java.util.Date, java.util.Date)
+     * ApplicationEJB.getStatisticsSummary}
+     *
+     * @throws SOLAFault
+     * @throws UnhandledFault
+     * @throws SOLAAccessFault
+     */
+    @WebMethod(operationName = "GetStatisticsSummary")
+    public List<StatisticsSummaryTO> getStatisticsSummary(
+            @WebParam(name = "paramsTO") LodgementViewParamsTO paramsTO)
+            throws SOLAFault, UnhandledFault, SOLAAccessFault {
+
+        final LodgementViewParamsTO paramsTOTmp = paramsTO;
+        final Object[] result = {null};
+
+        if (paramsTO != null) {
+            runGeneralQuery(wsContext, new Runnable() {
+
+                @Override
+                public void run() {
+                    List<StatisticalView> appList = applicationEJB.getStatisticsSummary(paramsTOTmp.getFromDate(),
+                            paramsTOTmp.getToDate());
+                    result[0] = GenericTranslator.toTOList(
+                            appList, StatisticsSummaryTO.class);
+                }
+            });
+        }
+        return (List<StatisticsSummaryTO>) result[0];
+    }
+    
 }
