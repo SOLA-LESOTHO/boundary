@@ -760,12 +760,12 @@ public class CaseManagementClientImpl extends AbstractWSClientImpl implements Ca
     }
     
     @Override
-    public List<StatisticsSummaryTO> getStatisticsSummary(LodgementViewParamsTO paramsTO) throws WebServiceClientException {
-        List<StatisticsSummaryTO> result = null;
-        final String methodName = CaseManagementClient.GET_STATISTICS_SUMMARY;
+    public List<StatisticalSummaryTO> getStatisticalSummary(LodgementViewParamsTO paramsTO) throws WebServiceClientException {
+        List<StatisticalSummaryTO> result = null;
+        final String methodName = CaseManagementClient.GET_STATISTICAL_SUMMARY;
         try {
             beforeWebMethod(methodName, paramsTO);
-            result = getPort().getStatisticsSummary(paramsTO);
+            result = getPort().getStatisticalSummary(paramsTO);
         } catch (Exception e) {
             processException(methodName, e);
         } finally {

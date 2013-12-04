@@ -243,7 +243,7 @@ public interface CaseManagementClient extends AbstractWSClient {
     /**
      * CaseManagement.getStatisticsSummary - Identifier for the getStatisticsSummary method
      */
-    public static final String GET_STATISTICS_SUMMARY = SERVICE_NAME + "getStatisticsSummary";
+    public static final String GET_STATISTICAL_SUMMARY = SERVICE_NAME + "getStatisticalSummary";
     
     /**
      * Calculates the lodgement fees as well as the expected completions dates for each service as
@@ -780,5 +780,5 @@ public interface CaseManagementClient extends AbstractWSClient {
      * @return The data for the Lodgement Report report
      * @throws WebServiceClientException
      */
-    List<StatisticsSummaryTO> getStatisticsSummary(LodgementViewParamsTO paramsTO) throws WebServiceClientException;
+    List<StatisticalSummaryTO> getStatisticalSummary(LodgementViewParamsTO paramsTO) throws WebServiceClientException;
 }

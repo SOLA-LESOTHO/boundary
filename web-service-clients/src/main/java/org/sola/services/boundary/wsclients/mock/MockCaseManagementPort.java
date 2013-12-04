@@ -887,12 +887,12 @@ public class MockCaseManagementPort implements CaseManagement {
     }
     
     @Override
-    public List<StatisticsSummaryTO> getStatisticsSummary(LodgementViewParamsTO paramsTO)
+    public List<StatisticalSummaryTO> getStatisticalSummary(LodgementViewParamsTO paramsTO)
             throws SOLAFault, UnhandledFault, SOLAAccessFault {
 
-        List<StatisticsSummaryTO> defaultResponse = new ArrayList<StatisticsSummaryTO>();
+        List<StatisticalSummaryTO> defaultResponse = new ArrayList<StatisticalSummaryTO>();
         try {
-            return getManager().getResponse(CaseManagementClient.GET_STATISTICS_SUMMARY,
+            return getManager().getResponse(CaseManagementClient.GET_STATISTICAL_SUMMARY,
                     List.class, defaultResponse, paramsTO);
         } catch (Exception ex) {
             processExceptionAccess(ex);

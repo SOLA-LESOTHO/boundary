@@ -10,9 +10,9 @@ import org.sola.services.common.contracts.AbstractTO;
  *
  * @author ntsane
  */
-public class StatisticsSummaryTO extends AbstractTO {
+public class StatisticalSummaryTO extends AbstractTO {
     
-    public StatisticsSummaryTO(){
+    public StatisticalSummaryTO(){
         super();
     }
     
