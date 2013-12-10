@@ -40,19 +40,27 @@ public class LodgementViewParamsTO extends AbstractTO {
     
     private Date fromDate;
     private Date toDate;
+    String requestCategoryCode;
     
     public LodgementViewParamsTO(){
     }
+
+    public String getRequestCategoryCode() {
+        return requestCategoryCode;
+    }
+
+    public void setRequestCategoryCode(String requestCategoryCode) {
+        this.requestCategoryCode = requestCategoryCode;
+    }
     
-     public Date getFromDate() {
+    public Date getFromDate() {
         return fromDate;
     }
 
     public void setFromDate(Date fromDate) {
         this.fromDate = fromDate;
     }
-
-    
+   
     public Date getToDate() {
         return toDate;
     }
