@@ -1472,8 +1472,8 @@ public class CaseManagement extends AbstractWebService {
 
                 @Override
                 public void run() {
-                    List<StatisticalView> appList = applicationEJB.getStatisticalView(paramsTOTmp.getFromDate(),
-                            paramsTOTmp.getToDate());
+                    LodgementViewParams params = GenericTranslator.fromTO(paramsTOTmp, LodgementViewParams.class, null);
+                    List<StatisticalView> appList = applicationEJB.getStatisticalView(params);
                     result[0] = GenericTranslator.toTOList(
                             appList, StatisticalSummaryTO.class);
                 }
