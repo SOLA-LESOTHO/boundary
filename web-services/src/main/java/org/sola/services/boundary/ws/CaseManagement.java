@@ -1441,8 +1441,8 @@ public class CaseManagement extends AbstractWebService {
 
                 @Override
                 public void run() {
-                    List<WorkSummary> appList = applicationEJB.getWorkSummary(paramsTOTmp.getFromDate(),
-                            paramsTOTmp.getToDate());
+                    LodgementViewParams params = GenericTranslator.fromTO(paramsTOTmp, LodgementViewParams.class, null);
+                    List<WorkSummary> appList = applicationEJB.getWorkSummary(params);
                     result[0] = GenericTranslator.toTOList(
                             appList, WorkSummaryTO.class);
                 }
