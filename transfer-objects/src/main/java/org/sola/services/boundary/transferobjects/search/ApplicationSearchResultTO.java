@@ -33,6 +33,7 @@ import org.sola.services.boundary.transferobjects.casemanagement.ApplicationSumm
 public class ApplicationSearchResultTO extends ApplicationSummaryTO {
     
     private String status;
+    private String stage;
     private String assigneeId;
     private String assigneeName;
     private String contactPerson;
@@ -59,6 +60,14 @@ public class ApplicationSearchResultTO extends ApplicationSummaryTO {
 
     public void setStatus(String status) {
         this.status = status;
+    }
+
+    public String getStage() {
+        return stage;
+    }
+
+    public void setStage(String stage) {
+        this.stage = stage;
     }
     
     public String getAssigneeName() {

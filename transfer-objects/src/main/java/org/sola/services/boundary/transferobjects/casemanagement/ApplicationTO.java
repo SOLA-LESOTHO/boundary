@@ -56,6 +56,7 @@ public class ApplicationTO extends ApplicationSummaryTO {
     private Date collectionDate;
     private String actionCode;
     private String actionNotes;
+    private String stageCode;
     private PartyTO contactPerson;
     private PartyTO agent;
     private List<ServiceTO> serviceList;
@@ -206,6 +207,14 @@ public class ApplicationTO extends ApplicationSummaryTO {
 
     public void setActionNotes(String actionNotes) {
         this.actionNotes = actionNotes;
+    }
+
+    public String getStageCode() {
+        return stageCode;
+    }
+
+    public void setStageCode(String stageCode) {
+        this.stageCode = stageCode;
     }
 
     public List<BaUnitSearchResultTO> getPropertyList() {
