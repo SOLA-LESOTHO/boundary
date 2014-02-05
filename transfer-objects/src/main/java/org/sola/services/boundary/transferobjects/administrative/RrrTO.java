@@ -70,6 +70,15 @@ public class RrrTO extends AbstractIdTO {
     private BigDecimal stampDuty;
     private BigDecimal transferDuty;
     private BigDecimal registrationFee;
+    private BigDecimal propertyValue;
+
+    public BigDecimal getPropertyValue() {
+        return propertyValue;
+    }
+
+    public void setPropertyValue(BigDecimal propertyValue) {
+        this.propertyValue = propertyValue;
+    }
     private BigDecimal serviceFee;
     private List<LeaseSpecialConditionTO> leaseSpecialConditionList;
       
