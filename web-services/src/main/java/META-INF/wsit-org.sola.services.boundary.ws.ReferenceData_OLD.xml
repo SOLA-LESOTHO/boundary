@@ -32,8 +32,6 @@
     <message name="GetSourceTypesResponse"/>
     <message name="GetApplicationStatusTypes"/>
     <message name="GetApplicationStatusTypesResponse"/>
-    <message name="GetApplicationStageTypes"/>
-    <message name="GetApplicationStageTypesResponse"/>
     <message name="GetApplicationActionTypes"/>
     <message name="GetApplicationActionTypesResponse"/>
     <message name="GetServiceStatusTypes"/>
@@ -95,8 +93,6 @@
     <message name="GetLandUseTypesResponse"/>
     <message name="GetDisputeReports"/>
     <message name="GetDisputeReportsResponse"/>
-    <message name="getTransactionTypes"/>
-    <message name="getTransactionTypesResponse"/>
     <portType name="ReferenceData">
         <operation name="CheckConnection">
             <input message="tns:CheckConnection"/>
@@ -172,13 +168,6 @@
         <operation name="GetApplicationStatusTypes">
             <input message="tns:GetApplicationStatusTypes"/>
             <output message="tns:GetApplicationStatusTypesResponse"/>
-            <fault name="SOLAFault" message="tns:SOLAFault"/>
-            <fault name="UnhandledFault" message="tns:UnhandledFault"/>
-            <fault name="SOLAAccessFault" message="tns:SOLAAccessFault"/>
-        </operation>
-        <operation name="GetApplicationStageTypes">
-            <input message="tns:GetApplicationStageTypes"/>
-            <output message="tns:GetApplicationStageTypesResponse"/>
             <fault name="SOLAFault" message="tns:SOLAFault"/>
             <fault name="UnhandledFault" message="tns:UnhandledFault"/>
             <fault name="SOLAAccessFault" message="tns:SOLAAccessFault"/>
@@ -394,13 +383,6 @@
             <fault name="UnhandledFault" message="tns:UnhandledFault"/>
             <fault name="SOLAAccessFault" message="tns:SOLAAccessFault"/>
         </operation>
-        <operation name="getTransactionTypes">
-            <input message="tns:getTransactionTypes"/>
-            <output message="tns:getTransactionTypesResponse"/>
-            <fault name="SOLAFault" message="tns:SOLAFault"/>
-            <fault name="UnhandledFault" message="tns:UnhandledFault"/>
-            <fault name="SOLAAccessFault" message="tns:SOLAAccessFault"/>
-        </operation>
     </portType>
     <binding name="ReferenceDataPortBinding" type="tns:ReferenceData">
         <wsp:PolicyReference URI="#ReferenceDataPortBindingPolicy"/>
@@ -520,17 +502,6 @@
             <fault name="SOLAAccessFault"/>
         </operation>
         <operation name="GetApplicationStatusTypes">
-            <input>
-                <wsp:PolicyReference URI="#ReferenceDataPortBinding_CheckConnection_Input_Policy"/>
-            </input>
-            <output>
-                <wsp:PolicyReference URI="#ReferenceDataPortBinding_CheckConnection_Output_Policy"/>
-            </output>
-            <fault name="SOLAFault"/>
-            <fault name="UnhandledFault"/>
-            <fault name="SOLAAccessFault"/>
-        </operation>
-        <operation name="GetApplicationStageTypes">
             <input>
                 <wsp:PolicyReference URI="#ReferenceDataPortBinding_CheckConnection_Input_Policy"/>
             </input>
@@ -872,17 +843,6 @@
             <fault name="UnhandledFault"/>
             <fault name="SOLAAccessFault"/>
         </operation>
-        <operation name="getTransactionTypes">
-            <input>
-                <wsp:PolicyReference URI="#ReferenceDataPortBinding_CheckConnection_Input_Policy"/>
-            </input>
-            <output>
-                <wsp:PolicyReference URI="#ReferenceDataPortBinding_CheckConnection_Output_Policy"/>
-            </output>
-            <fault name="SOLAFault"/>
-            <fault name="UnhandledFault"/>
-            <fault name="SOLAAccessFault"/>
-        </operation>
     </binding>
     <service name="referencedata-service">
         <port name="ReferenceDataPort" binding="tns:ReferenceDataPortBinding"/>
@@ -933,7 +893,7 @@
                         </sp:UsernameToken>
                     </wsp:Policy>
                 </sp:SignedSupportingTokens>
-                <sc:KeyStore wspp:visibility="private" location="keystore.jks" type="JKS" storepass="changeit" alias="xws-security-server"/>
+                <sc:KeyStore wspp:visibility="private" location="${wsit.keystore.location}" type="JKS" storepass="${wsit.keystore.storepass}" alias="${wsit.keystore.peeralias}"/>
             </wsp:All>
         </wsp:ExactlyOne>
     </wsp:Policy>

@@ -496,6 +496,23 @@ public class MockReferenceDataPort implements ReferenceData {
     }
 
     /**
+     * Response Key = ReferenceDataClient.GET_APPLICATION_STAGE_TYPES
+     *
+     * @return default = MockTOFactory.createApplicationStageTypes()
+     */
+    @Override
+    public List<ApplicationStageTypeTO> getApplicationStageTypes(String arg0) throws SOLAAccessFault, SOLAFault, UnhandledFault {
+        List<ApplicationStageTypeTO> defaultResponse = MockTOFactory.createApplicationStageTypes();
+        try {
+            return getManager().getResponse(ReferenceDataClient.GET_APPLICATION_STAGE_TYPES,
+                    List.class, defaultResponse, arg0);
+        } catch (Exception ex) {
+            processExceptionAccess(ex);
+            return null;
+        }
+    }    
+    
+    /**
      * Response Key = ReferenceDataClient.GET_SOURCE_TYPES
      *
      * @return default = MockTOFactory.createSourceTypes()

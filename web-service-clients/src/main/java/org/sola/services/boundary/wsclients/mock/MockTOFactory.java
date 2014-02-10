@@ -174,6 +174,19 @@ public class MockTOFactory {
 
         return result;
     }
+    
+    /**
+     * Creates a default list of application stage codes
+     * 
+     */
+    public static List<ApplicationStageTypeTO> createApplicationStageTypes() {
+        List<ApplicationStageTypeTO> result = new ArrayList<ApplicationStageTypeTO>();
+        result.add(createCode(ApplicationStageTypeTO.class, "customerCollection", "Customer Services to enter collection details"));
+        result.add(createCode(ApplicationStageTypeTO.class, "leaseBindDraft", "Leasing Services to bundle relevant files"));
+        result.add(createCode(ApplicationStageTypeTO.class, "registrationProcess", "Registration Services to process application"));
+        
+        return result;
+    }
 
     /**
      * Creates a default list of application action codes

@@ -30,6 +30,7 @@ package org.sola.services.boundary.wsclients;
 
 import java.util.List;
 import javax.xml.namespace.QName;
+//import org.sola.services.boundary.transferobjects.referencedata.ApplicationStageTypeTO;
 import org.sola.services.boundary.wsclients.exception.WebServiceClientException;
 import org.sola.webservices.referencedata.ReferenceData;
 import org.sola.webservices.referencedata.ReferencedataService;
@@ -185,6 +186,26 @@ public class ReferenceDataClientImpl extends AbstractWSClientImpl implements Ref
         try {
             beforeWebMethod(methodName, lang);
             result = getPort().getApplicationStatusTypes(lang);
+        } catch (Exception e) {
+            processException(methodName, e);
+        } finally {
+            afterWebMethod(methodName, result, lang);
+        }
+        return result;
+    }
+       
+    @Override
+    public List<ApplicationStageTypeTO> getApplicationStageTypes() throws WebServiceClientException {
+        return getApplicationStageTypes(getLanguageCode());
+    }
+    
+    @Override
+    public List<ApplicationStageTypeTO> getApplicationStageTypes(String lang) throws WebServiceClientException {
+        List<ApplicationStageTypeTO> result = null;
+        final String methodName = ReferenceDataClient.GET_APPLICATION_STAGE_TYPES;
+        try {
+            beforeWebMethod(methodName, lang);
+            result = getPort().getApplicationStageTypes(lang);
         } catch (Exception e) {
             processException(methodName, e);
         } finally {
