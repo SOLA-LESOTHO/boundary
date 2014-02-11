@@ -89,6 +89,11 @@ public interface ReferenceDataClient extends AbstractWSClient {
      */
     public static final String GET_APPLICATION_STATUS_TYPES = SERVICE_NAME + "getApplicationStatusTypes";
     /**
+     * ReferenceData.getApplicationStageTypes - Identifier for the
+     * getApplicationStageTypes method
+     */
+    public static final String GET_APPLICATION_STAGE_TYPES = SERVICE_NAME + "getApplicationStageType";
+    /**
      * ReferenceData.getApplicationActionTypes - Identifier for the
      * getApplicationActionTypes method
      */
@@ -363,6 +368,25 @@ public interface ReferenceDataClient extends AbstractWSClient {
      */
     List<ApplicationStatusTypeTO> getApplicationStatusTypes(String lang) throws WebServiceClientException;
 
+    /**
+     * Retrieve all application.application_stage_type code values using the
+     * default locale of the client to localize the display values.
+     * 
+     * @throws WebServiceClientException
+     */
+    List<ApplicationStageTypeTO> getApplicationStageTypes() throws WebServiceClientException;
+    
+    /**
+     * Retrieve all application.application_stage_type code values.
+     * 
+     * @param languageCode The language code to use for localization of display
+     * values.
+     * 
+     * @throws WebServiceClientException
+     */
+    List<ApplicationStageTypeTO> getApplicationStageTypes(String lang) throws WebServiceClientException;
+        
+    
     /**
      * Retrieves all application.application_action_type code values using the
      * default locale of the client to localize the display values.

@@ -378,7 +378,35 @@ public class ReferenceData extends AbstractWebService {
 
         return (List<ApplicationStatusTypeTO>) result[0];
     }
+    
+    /**
+     * See {@linkplain org.sola.services.ejb.application.businesslogic.ApplicationEJB#getApplicationStageTypes(java.lang.String)
+     * ApplicationEJB.getApplicationStageTypes}
+     *
+     * @throws SOLAFault
+     * @throws UnhandledFault
+     * @throws SOLAAccessFault
+     */
+    @WebMethod(operationName = "GetApplicationStageTypes")
+    public List<ApplicationStageTypeTO> GetApplicationStageTypes(String languageCode)
+            throws SOLAFault, UnhandledFault, SOLAAccessFault {
 
+        final String languageCodeTmp = languageCode;
+        final Object[] result = {null};
+
+        runGeneralQuery(wsContext, new Runnable() {
+
+            @Override
+            public void run() {
+                result[0] = GenericTranslator.toTOList(
+                        applicationEJB.getApplicationStageTypes(languageCodeTmp),
+                        ApplicationStageTypeTO.class);
+            }
+        });
+
+        return (List<ApplicationStageTypeTO>) result[0];
+    }    
+    
     /**
      * See {@linkplain org.sola.services.ejb.application.businesslogic.ApplicationEJB#getApplicationActionTypes(java.lang.String)
      * ApplicationEJB.getApplicationActionTypes}
@@ -1098,8 +1126,13 @@ public class ReferenceData extends AbstractWebService {
                 } else if (refDataTO instanceof TransactionTypeTO) {
                     codeEntity = administrativeEJB.getCodeEntity(TransactionType.class, refDataTO.getCode());
                     codeEntity = GenericTranslator.fromTO(refDataTO, TransactionType.class, codeEntity);
-                    administrativeEJB.saveCodeEntity(codeEntity);
+                    administrativeEJB.saveCodeEntity(codeEntity);                
+                } else if (refDataTO instanceof ApplicationStatusTypeTO) {
+                    codeEntity = applicationEJB.getCodeEntity(ApplicationStatusType.class, refDataTO.getCode());
+                    codeEntity = GenericTranslator.fromTO(refDataTO, ApplicationStatusType.class, codeEntity);
+                    applicationEJB.saveCodeEntity(codeEntity);
                 }
+                
                 result = GenericTranslator.toTO(codeEntity, refDataTO.getClass());
                 commitTransaction();
                 return result;
