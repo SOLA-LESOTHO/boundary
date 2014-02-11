@@ -35,6 +35,7 @@ import org.sola.services.boundary.wsclients.CaseManagementClientImpl;
 import org.sola.services.boundary.wsclients.exception.WebServiceClientException;
 import org.sola.webservices.casemanagement.CaseManagement;
 import org.sola.webservices.transferobjects.casemanagement.LodgementViewParamsTO;
+import org.sola.webservices.transferobjects.casemanagement.*;
 
 /**
  * Mock implementation of the {@linkplain CaseManagementClient} interface that extends the

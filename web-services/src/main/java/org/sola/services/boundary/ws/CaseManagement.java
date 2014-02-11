@@ -1420,6 +1420,27 @@ public class CaseManagement extends AbstractWebService {
         return (List<MortgageStatsViewTO>) result[0];
     }
     
+    @WebMethod(operationName = "GetLeaseTransfers")
+    public List<LeaseTransfersTO> getLeaseTransfers(
+            @WebParam(name = "LodgementViewParamsTO") LodgementViewParamsTO paramsTO)
+            throws SOLAFault, UnhandledFault, SOLAAccessFault {
+
+        final LodgementViewParamsTO paramsTOTmp = paramsTO;
+        final Object[] result = {null};
+
+        runGeneralQuery(wsContext, new Runnable() {
+
+            @Override
+            public void run() {
+                LodgementViewParams params = GenericTranslator.fromTO(paramsTOTmp, LodgementViewParams.class, null);
+                List<LeaseTransfers> appList = applicationEJB.getLeaseTransfers(params);
+                result[0] = GenericTranslator.toTOList(
+                        appList, LeaseTransfersTO.class);
+            }
+        });
+        return (List<LeaseTransfersTO>) result[0];
+    }
+    
     /**
      * See {@linkplain org.sola.services.ejb.application.businesslogic.ApplicationEJB#getWorkSummary(java.util.Date, java.util.Date)
      * ApplicationEJB.getWorkSummary}

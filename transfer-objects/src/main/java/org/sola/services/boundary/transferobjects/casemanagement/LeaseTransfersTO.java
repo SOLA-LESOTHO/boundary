@@ -11,7 +11,7 @@ package org.sola.services.boundary.transferobjects.casemanagement;
 
 import org.sola.services.common.contracts.AbstractBasicIdTO;
 
-public class TransferLeaseTO extends AbstractBasicIdTO{
+public class LeaseTransfersTO extends AbstractBasicIdTO{
     
     private String serviceName;
     
@@ -23,6 +23,8 @@ public class TransferLeaseTO extends AbstractBasicIdTO{
     
     private Integer entityCount;
     
+    private Integer jointCount;
+    
     private double totalAmount;
     
     private double stampDuty;
@@ -31,9 +33,17 @@ public class TransferLeaseTO extends AbstractBasicIdTO{
     
     private double registrationFee;
 
-    public TransferLeaseTO() {
+    public LeaseTransfersTO() {
         
         super();
+    }
+    
+    public Integer getJointCount() {
+        return jointCount;
+    }
+
+    public void setJointCount(Integer jointCount) {
+        this.jointCount = jointCount;
     }
 
     public Integer getEntityCount() {
