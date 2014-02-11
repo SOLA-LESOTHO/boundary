@@ -36,7 +36,6 @@ import org.sola.webservices.casemanagement.CaseManagement;
 import org.sola.webservices.casemanagement.CasemanagementService;
 import org.sola.webservices.transferobjects.ValidationResult;
 import org.sola.webservices.transferobjects.casemanagement.*;
-
 /**
  * Implementation class for the {@linkplain CaseManagementClient} interface.
  *
@@ -781,6 +780,21 @@ public class CaseManagementClientImpl extends AbstractWSClientImpl implements Ca
         try {
             beforeWebMethod(methodName,paramsTO);
             result = getPort().getMortgageStatsView(paramsTO);
+        } catch (Exception e) {
+            processException(methodName, e);
+        } finally {
+            afterWebMethod(methodName, result, paramsTO);
+        }
+        return result;
+    }
+
+    @Override
+    public List<LeaseTransfersTO> getLeaseTransfers(LodgementViewParamsTO paramsTO) throws WebServiceClientException {
+        List<LeaseTransfersTO> result = null;
+        final String methodName = CaseManagementClient.GET_LEASE_TRANSFERS;
+        try {
+            beforeWebMethod(methodName,paramsTO);
+            result = getPort().getLeaseTransfers(paramsTO);
         } catch (Exception e) {
             processException(methodName, e);
         } finally {

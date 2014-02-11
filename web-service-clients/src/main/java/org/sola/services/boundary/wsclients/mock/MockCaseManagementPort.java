@@ -912,5 +912,18 @@ public class MockCaseManagementPort implements CaseManagement {
             return null;
         }
     }
+    
+    @Override
+    public List<LeaseTransfersTO> getLeaseTransfers(LodgementViewParamsTO paramsTO) throws SOLAAccessFault, SOLAFault, UnhandledFault {
+        
+        List<LeaseTransfersTO> defaultTransfer = new ArrayList<LeaseTransfersTO>();
+        try {
+            return getManager().getResponse(CaseManagementClient.GET_LEASE_TRANSFERS,
+                    List.class, defaultTransfer, paramsTO);
+        } catch (Exception ex) {
+            processExceptionAccess(ex);
+            return null;
+        }
+    }
 
 }
