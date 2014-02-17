@@ -656,7 +656,7 @@ public interface CaseManagementClient extends AbstractWSClient {
      * @throws WebServiceClientException
      */
     List<ValidationResult> applicationActionAssign(
-            String applicationId, String userId, int rowVersion) throws WebServiceClientException;
+            String applicationId, String userId, int rowVersion, String stageCode) throws WebServiceClientException;
 
     /**
      * Updates the status of the application to the value indicated by the
