@@ -422,18 +422,18 @@ public class CaseManagementClientImpl extends AbstractWSClientImpl implements Ca
 
     @Override
     public List<ValidationResult> applicationActionAssign(
-            String applicationId, String userId, int rowVersion)
+            String applicationId, String userId, int rowVersion, String stageCode)
             throws WebServiceClientException {
         List<ValidationResult> result = null;
         final String methodName = CaseManagementClient.APPLICATION_ACTION_ASSIGN;
         String languageCode = getLanguageCode();
         try {
             beforeWebMethod(methodName, applicationId, userId, languageCode, rowVersion);
-            result = getPort().applicationActionAssign(applicationId, userId, languageCode, rowVersion);
+            result = getPort().applicationActionAssign(applicationId, userId, languageCode, rowVersion, stageCode);
         } catch (Exception e) {
             processException(methodName, e);
         } finally {
-            afterWebMethod(methodName, result, applicationId, userId, languageCode, rowVersion);
+            afterWebMethod(methodName, result, applicationId, userId, languageCode, rowVersion, stageCode);
         }
         return result;
     }

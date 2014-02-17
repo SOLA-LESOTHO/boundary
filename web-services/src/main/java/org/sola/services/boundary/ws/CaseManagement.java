@@ -1183,7 +1183,7 @@ public class CaseManagement extends AbstractWebService {
     }
 
     /**
-     * See {@linkplain org.sola.services.ejb.application.businesslogic.ApplicationEJB#applicationActionAssign(java.lang.String, java.lang.String, java.lang.String, int)
+     * See {@linkplain org.sola.services.ejb.application.businesslogic.ApplicationEJB#applicationActionAssign(java.lang.String, java.lang.String, java.lang.String, int, java.lang.String)
      * ApplicationEJB.applicationActionAssign}
      *
      * @throws SOLAFault
@@ -1197,7 +1197,8 @@ public class CaseManagement extends AbstractWebService {
             @WebParam(name = "applicationId") String applicationId,
             @WebParam(name = "userId") String userId,
             @WebParam(name = "languageCode") String languageCode,
-            @WebParam(name = "rowVersion") int rowVersion)
+            @WebParam(name = "rowVersion") int rowVersion,
+            @WebParam(name = "stageCode") String stageCode)
             throws SOLAFault, UnhandledFault, SOLAAccessFault,
             OptimisticLockingFault, SOLAValidationFault {
 
@@ -1205,6 +1206,7 @@ public class CaseManagement extends AbstractWebService {
         final String userIdTmp = userId;
         final String languageCodeTmp = languageCode;
         final int rowVersionTmp = rowVersion;
+        final String stageCodeTmp = stageCode;
         final Object[] result = {null};
 
         runUpdateValidation(wsContext, new Runnable() {
@@ -1212,7 +1214,7 @@ public class CaseManagement extends AbstractWebService {
             @Override
             public void run() {
                 result[0] = applicationEJB.applicationActionAssign(
-                        applicationIdTmp, userIdTmp, languageCodeTmp, rowVersionTmp);
+                        applicationIdTmp, userIdTmp, languageCodeTmp, rowVersionTmp, stageCodeTmp);
             }
         });
 

@@ -94,14 +94,6 @@
     <message name="GetSysRegCertificatesByLocationResponse"/>
     <message name="GetSysRegCertificatesByApplication"/>
     <message name="GetSysRegCertificatesByApplicationResponse"/>
-    <message name="GetResponseView"/>
-    <message name="GetResponseViewResponse"/>
-    <message name="GetMortgageStatsView"/>
-    <message name="GetMortgageStatsViewResponse"/>
-    <message name="GetWorkSummary"/>
-    <message name="GetWorkSummaryResponse"/>
-    <message name="GetStatisticalSummary"/>
-    <message name="GetStatisticalSummaryResponse"/>
     <portType name="CaseManagement">
         <operation name="CheckConnection">
             <input message="tns:CheckConnection"/>
@@ -146,16 +138,10 @@
         <operation name="GetLodgementView">
             <input message="tns:GetLodgementView"/>
             <output message="tns:GetLodgementViewResponse"/>
-            <fault name="SOLAFault" message="tns:SOLAFault"/>
-            <fault name="UnhandledFault" message="tns:UnhandledFault"/>
-            <fault name="SOLAAccessFault" message="tns:SOLAAccessFault"/>
         </operation>
         <operation name="GetLodgementTiming">
             <input message="tns:GetLodgementTiming"/>
             <output message="tns:GetLodgementTimingResponse"/>
-            <fault name="SOLAFault" message="tns:SOLAFault"/>
-            <fault name="UnhandledFault" message="tns:UnhandledFault"/>
-            <fault name="SOLAAccessFault" message="tns:SOLAAccessFault"/>
         </operation>
         <operation name="GetAddress">
             <input message="tns:GetAddress"/>
@@ -195,9 +181,6 @@
         <operation name="GetUserActions">
             <input message="tns:GetUserActions"/>
             <output message="tns:GetUserActionsResponse"/>
-            <fault name="SOLAFault" message="tns:SOLAFault"/>
-            <fault name="UnhandledFault" message="tns:UnhandledFault"/>
-            <fault name="SOLAAccessFault" message="tns:SOLAAccessFault"/>
         </operation>
         <operation name="CalculateFee">
             <input message="tns:CalculateFee"/>
@@ -440,34 +423,6 @@
             <fault name="UnhandledFault" message="tns:UnhandledFault"/>
             <fault name="SOLAAccessFault" message="tns:SOLAAccessFault"/>
         </operation>
-        <operation name="GetResponseView">
-            <input message="tns:GetResponseView"/>
-            <output message="tns:GetResponseViewResponse"/>
-            <fault name="SOLAFault" message="tns:SOLAFault"/>
-            <fault name="UnhandledFault" message="tns:UnhandledFault"/>
-            <fault name="SOLAAccessFault" message="tns:SOLAAccessFault"/>
-        </operation>
-        <operation name="GetMortgageStatsView">
-            <input message="tns:GetMortgageStatsView"/>
-            <output message="tns:GetMortgageStatsViewResponse"/>
-            <fault name="SOLAFault" message="tns:SOLAFault"/>
-            <fault name="UnhandledFault" message="tns:UnhandledFault"/>
-            <fault name="SOLAAccessFault" message="tns:SOLAAccessFault"/>
-        </operation>
-        <operation name="GetWorkSummary">
-            <input message="tns:GetWorkSummary"/>
-            <output message="tns:GetWorkSummaryResponse"/>
-            <fault name="SOLAFault" message="tns:SOLAFault"/>
-            <fault name="UnhandledFault" message="tns:UnhandledFault"/>
-            <fault name="SOLAAccessFault" message="tns:SOLAAccessFault"/>
-        </operation>
-        <operation name="GetStatisticalSummary">
-            <input message="tns:GetStatisticalSummary"/>
-            <output message="tns:GetStatisticalSummaryResponse"/>
-            <fault name="SOLAFault" message="tns:SOLAFault"/>
-            <fault name="UnhandledFault" message="tns:UnhandledFault"/>
-            <fault name="SOLAAccessFault" message="tns:SOLAAccessFault"/>
-        </operation>
     </portType>
     <binding name="CaseManagementPortBinding" type="tns:CaseManagement">
         <wsp:PolicyReference URI="#CaseManagementPortBindingPolicy"/>
@@ -538,9 +493,6 @@
             <output>
                 <wsp:PolicyReference URI="#CaseManagementPortBinding_CheckConnection_Output_Policy"/>
             </output>
-            <fault name="SOLAFault"/>
-            <fault name="UnhandledFault"/>
-            <fault name="SOLAAccessFault"/>
         </operation>
         <operation name="GetLodgementTiming">
             <input>
@@ -549,9 +501,6 @@
             <output>
                 <wsp:PolicyReference URI="#CaseManagementPortBinding_CheckConnection_Output_Policy"/>
             </output>
-            <fault name="SOLAFault"/>
-            <fault name="UnhandledFault"/>
-            <fault name="SOLAAccessFault"/>
         </operation>
         <operation name="GetAddress">
             <input>
@@ -615,9 +564,6 @@
             <output>
                 <wsp:PolicyReference URI="#CaseManagementPortBinding_CheckConnection_Output_Policy"/>
             </output>
-            <fault name="SOLAFault"/>
-            <fault name="UnhandledFault"/>
-            <fault name="SOLAAccessFault"/>
         </operation>
         <operation name="CalculateFee">
             <input>
@@ -976,50 +922,6 @@
             <fault name="UnhandledFault"/>
             <fault name="SOLAAccessFault"/>
         </operation>
-        <operation name="GetResponseView">
-            <input>
-                <wsp:PolicyReference URI="#CaseManagementPortBinding_CheckConnection_Input_Policy"/>
-            </input>
-            <output>
-                <wsp:PolicyReference URI="#CaseManagementPortBinding_CheckConnection_Output_Policy"/>
-            </output>
-            <fault name="SOLAFault"/>
-            <fault name="UnhandledFault"/>
-            <fault name="SOLAAccessFault"/>
-        </operation>
-        <operation name="GetMortgageStatsView">
-            <input>
-                <wsp:PolicyReference URI="#CaseManagementPortBinding_CheckConnection_Input_Policy"/>
-            </input>
-            <output>
-                <wsp:PolicyReference URI="#CaseManagementPortBinding_CheckConnection_Output_Policy"/>
-            </output>
-            <fault name="SOLAFault"/>
-            <fault name="UnhandledFault"/>
-            <fault name="SOLAAccessFault"/>
-        </operation>
-        <operation name="GetWorkSummary">
-            <input>
-                <wsp:PolicyReference URI="#CaseManagementPortBinding_CheckConnection_Input_Policy"/>
-            </input>
-            <output>
-                <wsp:PolicyReference URI="#CaseManagementPortBinding_CheckConnection_Output_Policy"/>
-            </output>
-            <fault name="SOLAFault"/>
-            <fault name="UnhandledFault"/>
-            <fault name="SOLAAccessFault"/>
-        </operation>
-        <operation name="GetStatisticalSummary">
-            <input>
-                <wsp:PolicyReference URI="#CaseManagementPortBinding_CheckConnection_Input_Policy"/>
-            </input>
-            <output>
-                <wsp:PolicyReference URI="#CaseManagementPortBinding_CheckConnection_Output_Policy"/>
-            </output>
-            <fault name="SOLAFault"/>
-            <fault name="UnhandledFault"/>
-            <fault name="SOLAAccessFault"/>
-        </operation>
     </binding>
     <service name="casemanagement-service">
         <port name="CaseManagementPort" binding="tns:CaseManagementPortBinding"/>
@@ -1070,7 +972,7 @@
                         </sp:UsernameToken>
                     </wsp:Policy>
                 </sp:SignedSupportingTokens>
-                <sc:KeyStore wspp:visibility="private" location="keystore.jks" type="JKS" storepass="changeit" alias="xws-security-server"/>
+                <sc:KeyStore wspp:visibility="private" location="${wsit.keystore.location}" type="JKS" storepass="${wsit.keystore.storepass}" alias="${wsit.keystore.peeralias}"/>
             </wsp:All>
         </wsp:ExactlyOne>
     </wsp:Policy>
