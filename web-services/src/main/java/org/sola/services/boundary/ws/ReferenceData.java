@@ -1127,9 +1127,9 @@ public class ReferenceData extends AbstractWebService {
                     codeEntity = administrativeEJB.getCodeEntity(TransactionType.class, refDataTO.getCode());
                     codeEntity = GenericTranslator.fromTO(refDataTO, TransactionType.class, codeEntity);
                     administrativeEJB.saveCodeEntity(codeEntity);                
-                } else if (refDataTO instanceof ApplicationStatusTypeTO) {
-                    codeEntity = applicationEJB.getCodeEntity(ApplicationStatusType.class, refDataTO.getCode());
-                    codeEntity = GenericTranslator.fromTO(refDataTO, ApplicationStatusType.class, codeEntity);
+                } else if (refDataTO instanceof ApplicationStageTypeTO) {
+                    codeEntity = applicationEJB.getCodeEntity(ApplicationStageType.class, refDataTO.getCode());
+                    codeEntity = GenericTranslator.fromTO(refDataTO, ApplicationStageType.class, codeEntity);
                     applicationEJB.saveCodeEntity(codeEntity);
                 }
                 
