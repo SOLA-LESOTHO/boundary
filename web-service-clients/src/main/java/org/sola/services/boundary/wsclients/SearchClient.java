@@ -29,6 +29,7 @@
 package org.sola.services.boundary.wsclients;
 
 import java.util.List;
+import org.sola.common.RolesConstants;
 
 import org.sola.services.boundary.wsclients.exception.WebServiceClientException;
 import org.sola.webservices.search.QueryForSelect;
@@ -144,6 +145,12 @@ public interface SearchClient extends AbstractWSClient {
      * Search.searchBaUnit - Identifier for the searchBaUnit method
      */
     public static final String SEARCH_CADASTRE_OBJECTS = SERVICE_NAME + "searchCadastreObjects";
+    
+    /**
+     * Search.getApplicationStages - Identifier for the getApplicationStages method
+     * 
+     */
+    public static final String GET_APPLICATION_STAGES = SERVICE_NAME + "getApplicationStages";
     
     /**
      * Returns applications that have a lodged or approved status and are
@@ -370,4 +377,19 @@ public interface SearchClient extends AbstractWSClient {
     public byte[] getExtentOfPublicDisplayMap(String nameLastPart) throws WebServiceClientException;
     
     public List<CadastreObjectSearchResultTO> searchCadastreObjects(CadastreObjectSearchParamsTO searchParams) throws WebServiceClientException;
+    
+    /**
+     * Executes a search across all users using the search criteria provided.
+     * Partial matches are supported for the username, first name and last name
+     * criteria.
+     *
+     * <p>Requires the {@linkplain RolesConstants#ADMIN_MANAGE_SECURITY}
+     * role.</p>
+     *
+     * @param searchParams The criteria to use for the search.
+     * @return The users that match the search criteria.
+     * @throws WebServiceClientException
+     */
+    List<ApplicationStageSearchResultTO> getApplicationStages(ApplicationStageSearchParamsTO searchParams)
+            throws WebServiceClientException;    
 }

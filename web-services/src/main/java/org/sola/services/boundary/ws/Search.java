@@ -679,4 +679,34 @@ public class Search extends AbstractWebService {
 
         return (byte[]) result[0];
     }
+    
+    /**
+     * See {@linkplain  org.sola.services.ejb.search.businesslogic.SearchEJB#getApplicationStages(org.sola.services.ejb.search.repository.entities.ApplicationStageSearchParams)
+     * SearchEJB.getApplicationStages}
+     *
+     * @throws SOLAFault
+     * @throws UnhandledFault
+     * @throws SOLAAccessFault
+     */
+    @WebMethod(operationName = "GetApplicationStages")
+    public List<ApplicationStageSearchResultTO> getApplicationStages(@WebParam(name = "searchParams") ApplicationStageSearchParamsTO searchParams)
+            throws SOLAFault, UnhandledFault, SOLAAccessFault {
+
+        final ApplicationStageSearchParamsTO searchParamsTmp = searchParams;
+        final Object[] result = {null};
+
+        runGeneralQuery(wsContext, new Runnable() {
+
+            @Override
+            public void run() {
+                ApplicationStageSearchParams params = GenericTranslator.fromTO(searchParamsTmp,
+                        ApplicationStageSearchParams.class, null);
+                List<ApplicationStageSearchResult> applicationStages = searchEJB.getApplicationStages(params);
+                result[0] = GenericTranslator.toTOList(applicationStages, ApplicationStageSearchResultTO.class);
+
+            }
+        });
+
+        return (List<ApplicationStageSearchResultTO>) result[0];
+    }   
 }
