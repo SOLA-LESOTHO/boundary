@@ -404,4 +404,20 @@ public class SearchClientImpl extends AbstractWSClientImpl implements SearchClie
         }
         return result;
     }
+    
+    @Override
+    public List<ApplicationStageSearchResultTO> getApplicationStages(ApplicationStageSearchParamsTO searchParams)
+            throws WebServiceClientException {
+        List<ApplicationStageSearchResultTO> result = null;
+        final String methodName = SearchClient.GET_APPLICATION_STAGES;
+        try {
+            beforeWebMethod(methodName, searchParams);
+            result = getPort().getApplicationStages(searchParams);
+        } catch (Exception e) {
+            processException(methodName, e);
+        } finally {
+            afterWebMethod(methodName, result, searchParams);
+        }
+        return result;
+    }    
 }

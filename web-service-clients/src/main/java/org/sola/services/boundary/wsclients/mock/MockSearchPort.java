@@ -449,5 +449,22 @@ public class MockSearchPort implements Search {
         throw new UnsupportedOperationException("Not supported yet.");
     }
     
-
+    /**
+     * Response Key = SearchClient.GET_APPLICATION_STAGES
+     *
+     * @return default = new ArrayList<ApplicationStageSearchResultTO>()
+     */
+    @Override
+    public List<ApplicationStageSearchResultTO> getApplicationStages(ApplicationStageSearchParamsTO searchParams)
+            throws SOLAAccessFault, SOLAFault, UnhandledFault {
+        List<ApplicationStageSearchResultTO> defaultResponse = new ArrayList<ApplicationStageSearchResultTO>();
+        try {
+            return getManager().getResponse(SearchClient.GET_APPLICATION_STAGES,
+                    List.class, defaultResponse, searchParams);
+        } catch (Exception ex) {
+            processExceptionAccess(ex);
+            return null;
+        }
+    }
+    
 }
