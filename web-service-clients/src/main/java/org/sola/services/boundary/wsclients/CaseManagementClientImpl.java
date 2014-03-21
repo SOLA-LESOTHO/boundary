@@ -803,4 +803,34 @@ public class CaseManagementClientImpl extends AbstractWSClientImpl implements Ca
         return result;
     }
 
+    @Override
+    public List<LeaseServicesViewTO> getLeaseServicesView(LodgementViewParamsTO paramsTO) throws WebServiceClientException {
+        List<LeaseServicesViewTO> result = null;
+        final String methodName = CaseManagementClient.GET_LEASE_SERVICES_VIEW;
+        try {
+            beforeWebMethod(methodName,paramsTO);
+            result = getPort().getLeaseServicesView(paramsTO);
+        } catch (Exception e) {
+            processException(methodName, e);
+        } finally {
+            afterWebMethod(methodName, result, paramsTO);
+        }
+        return result;
+    }
+
+    @Override
+    public List<CustomerServicesViewTO> getCustomerServicesView(LodgementViewParamsTO paramsTO) throws WebServiceClientException {
+        List<CustomerServicesViewTO> result = null;
+        final String methodName = CaseManagementClient.GET_CUSTOMER_SERVICES_VIEW;
+        try {
+            beforeWebMethod(methodName,paramsTO);
+            result = getPort().getCustomerServicesView(paramsTO);
+        } catch (Exception e) {
+            processException(methodName, e);
+        } finally {
+            afterWebMethod(methodName, result, paramsTO);
+        }
+        return result;
+    }
+
 }
