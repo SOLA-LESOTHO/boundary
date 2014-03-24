@@ -36,6 +36,7 @@ public class ApplicationStageSummaryTO extends AbstractCodeTO {
     private String displayValue;
     private String description;
     private String department;
+    private String groupList;
 
     public ApplicationStageSummaryTO() {
         super();
@@ -47,6 +48,15 @@ public class ApplicationStageSummaryTO extends AbstractCodeTO {
 
     public void setDepartment(String department) {
         this.department = department;
-    }    
+    }
+
+    public String getGroupList() {
+        return groupList;
+    }
+
+    public void setGroupList(String groupList) {
+        this.groupList = groupList;
+    }
+    
     
 }
