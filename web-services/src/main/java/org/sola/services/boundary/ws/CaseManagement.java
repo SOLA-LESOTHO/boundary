@@ -1505,4 +1505,63 @@ public class CaseManagement extends AbstractWebService {
         return (List<StatisticalSummaryTO>) result[0];
     }
     
+    /**
+     * See {@linkplain org.sola.services.ejb.application.businesslogic.ApplicationEJB#getLeaseServicesView(java.util.Date, java.util.Date)
+     * ApplicationEJB.getLeaseServicesView}
+     *
+     * @throws SOLAFault
+     * @throws UnhandledFault
+     * @throws SOLAAccessFault
+     */
+    
+    @WebMethod(operationName = "GetLeaseServicesView")
+    public List<LeaseServicesViewTO> getLeaseServicesView(
+            @WebParam(name = "LodgementViewParamsTO") LodgementViewParamsTO paramsTO)
+            throws SOLAFault, UnhandledFault, SOLAAccessFault {
+
+        final LodgementViewParamsTO paramsTOTmp = paramsTO;
+        final Object[] result = {null};
+
+        runGeneralQuery(wsContext, new Runnable() {
+
+            @Override
+            public void run() {
+                LodgementViewParams params = GenericTranslator.fromTO(paramsTOTmp, LodgementViewParams.class, null);
+                List<LeaseServicesView> appList = applicationEJB.getLeaseServicesView(params);
+                result[0] = GenericTranslator.toTOList(
+                        appList, LeaseServicesViewTO.class);
+            }
+        });
+        return (List<LeaseServicesViewTO>) result[0];
+    }
+    
+    /**
+     * See {@linkplain org.sola.services.ejb.application.businesslogic.ApplicationEJB#getLeaseServicesView(java.util.Date, java.util.Date)
+     * ApplicationEJB.getLeaseServicesView}
+     *
+     * @throws SOLAFault
+     * @throws UnhandledFault
+     * @throws SOLAAccessFault
+     */
+    
+    @WebMethod(operationName = "GetCustomerServicesView")
+    public List<CustomerServicesViewTO> getCustomerServicesView(
+            @WebParam(name = "LodgementViewParamsTO") LodgementViewParamsTO paramsTO)
+            throws SOLAFault, UnhandledFault, SOLAAccessFault {
+
+        final LodgementViewParamsTO paramsTOTmp = paramsTO;
+        final Object[] result = {null};
+
+        runGeneralQuery(wsContext, new Runnable() {
+
+            @Override
+            public void run() {
+                LodgementViewParams params = GenericTranslator.fromTO(paramsTOTmp, LodgementViewParams.class, null);
+                List<CustomerServicesView> appList = applicationEJB.getCustomerServicesView(params);
+                result[0] = GenericTranslator.toTOList(
+                        appList, CustomerServicesViewTO.class);
+            }
+        });
+        return (List<CustomerServicesViewTO>) result[0];
+    }
 }

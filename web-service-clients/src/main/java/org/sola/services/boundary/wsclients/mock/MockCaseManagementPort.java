@@ -925,5 +925,31 @@ public class MockCaseManagementPort implements CaseManagement {
             return null;
         }
     }
+    
+    @Override
+    public List<LeaseServicesViewTO> getLeaseServicesView(LodgementViewParamsTO paramsTO) throws SOLAAccessFault, SOLAFault, UnhandledFault {
+        
+        List<LeaseServicesViewTO> defaultLeaseView = new ArrayList<LeaseServicesViewTO>();
+        try {
+            return getManager().getResponse(CaseManagementClient.GET_LEASE_SERVICES_VIEW,
+                    List.class, defaultLeaseView, paramsTO);
+        } catch (Exception ex) {
+            processExceptionAccess(ex);
+            return null;
+        }
+    }
+    
+    @Override
+    public List<CustomerServicesViewTO> getCustomerServicesView(LodgementViewParamsTO paramsTO) throws SOLAAccessFault, SOLAFault, UnhandledFault {
+        
+        List<CustomerServicesViewTO> defaultCustomerView = new ArrayList<CustomerServicesViewTO>();
+        try {
+            return getManager().getResponse(CaseManagementClient.GET_CUSTOMER_SERVICES_VIEW,
+                    List.class, defaultCustomerView, paramsTO);
+        } catch (Exception ex) {
+            processExceptionAccess(ex);
+            return null;
+        }
+    }
 
 }
