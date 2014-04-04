@@ -1564,4 +1564,34 @@ public class CaseManagement extends AbstractWebService {
         });
         return (List<CustomerServicesViewTO>) result[0];
     }
+    
+    /**
+     * See {@linkplain org.sola.services.ejb.application.businesslogic.ApplicationEJB#getApplicationStagesView(java.util.Date, java.util.Date)
+     * ApplicationEJB.getLeaseServicesView}
+     *
+     * @throws SOLAFault
+     * @throws UnhandledFault
+     * @throws SOLAAccessFault
+     */
+    
+    @WebMethod(operationName = "GetApplicationStagesView")
+    public List<ApplicationStagesViewTO> getApplicationStagesView(
+            @WebParam(name = "LodgementViewParamsTO") LodgementViewParamsTO paramsTO)
+            throws SOLAFault, UnhandledFault, SOLAAccessFault {
+
+        final LodgementViewParamsTO paramsTOTmp = paramsTO;
+        final Object[] result = {null};
+
+        runGeneralQuery(wsContext, new Runnable() {
+
+            @Override
+            public void run() {
+                LodgementViewParams params = GenericTranslator.fromTO(paramsTOTmp, LodgementViewParams.class, null);
+                List<ApplicationStagesView> appList = applicationEJB.getApplicationStagesView(params);
+                result[0] = GenericTranslator.toTOList(
+                        appList, ApplicationStagesViewTO.class);
+            }
+        });
+        return (List<ApplicationStagesViewTO>) result[0];
+    }
 }

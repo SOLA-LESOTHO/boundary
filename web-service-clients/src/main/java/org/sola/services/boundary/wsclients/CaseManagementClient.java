@@ -85,6 +85,11 @@ public interface CaseManagementClient extends AbstractWSClient {
      * CaseManagement.getLeaseServicesView - Identifier for the getCustomerServicesView method
      */
     public static final String GET_CUSTOMER_SERVICES_VIEW = SERVICE_NAME + "getCustomerServicesView";
+    
+    /**
+     * CaseManagement.getApplicationStagesView - Identifier for the getApplicationStagesView method
+     */
+    public static final String GET_APPLICATION_STAGES_VIEW = SERVICE_NAME + "getApplicationStagesView";
     /**
      * CaseManagement.getLodgementTiming - Identifier for the getLodgementTiming method
      */
@@ -827,4 +832,16 @@ public interface CaseManagementClient extends AbstractWSClient {
      * @throws WebServiceClientException
      */
     List<CustomerServicesViewTO> getCustomerServicesView(LodgementViewParamsTO paramsTO) throws WebServiceClientException;
+    
+    
+    /**
+     * Retrieves statistics of the services processed during the specified
+     * reporting period. <p>Requires the
+     * {@linkplain RolesConstants#REPORTS_VIEW} role.</p>
+     *
+     * @param paramsTO The date parameters for the report.
+     * @return The data for the Lodgement Report report
+     * @throws WebServiceClientException
+     */
+    List<ApplicationStagesViewTO> getApplicationStagesView(LodgementViewParamsTO paramsTO) throws WebServiceClientException;
 }

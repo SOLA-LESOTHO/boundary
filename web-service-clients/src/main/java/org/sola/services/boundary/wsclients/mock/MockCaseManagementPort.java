@@ -951,5 +951,18 @@ public class MockCaseManagementPort implements CaseManagement {
             return null;
         }
     }
+    
+    @Override
+    public List<ApplicationStagesViewTO> getApplicationStagesView(LodgementViewParamsTO paramsTO) throws SOLAAccessFault, SOLAFault, UnhandledFault {
+        
+        List<ApplicationStagesViewTO> defaultCustomerView = new ArrayList<ApplicationStagesViewTO>();
+        try {
+            return getManager().getResponse(CaseManagementClient.GET_APPLICATION_STAGES_VIEW,
+                    List.class, defaultCustomerView, paramsTO);
+        } catch (Exception ex) {
+            processExceptionAccess(ex);
+            return null;
+        }
+    }
 
 }

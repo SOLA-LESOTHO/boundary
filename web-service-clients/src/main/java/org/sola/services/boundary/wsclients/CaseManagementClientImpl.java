@@ -833,4 +833,19 @@ public class CaseManagementClientImpl extends AbstractWSClientImpl implements Ca
         return result;
     }
 
+    @Override
+    public List<ApplicationStagesViewTO> getApplicationStagesView(LodgementViewParamsTO paramsTO) throws WebServiceClientException {
+        List<ApplicationStagesViewTO> result = null;
+        final String methodName = CaseManagementClient.GET_APPLICATION_STAGES_VIEW;
+        try {
+            beforeWebMethod(methodName,paramsTO);
+            result = getPort().getApplicationStagesView(paramsTO);
+        } catch (Exception e) {
+            processException(methodName, e);
+        } finally {
+            afterWebMethod(methodName, result, paramsTO);
+        }
+        return result;
+    }
+
 }
