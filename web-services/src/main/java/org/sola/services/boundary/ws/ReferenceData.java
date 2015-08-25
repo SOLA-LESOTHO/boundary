@@ -1,29 +1,31 @@
 /**
  * ******************************************************************************************
- * Copyright (c) 2013 Food and Agriculture Organization of the United Nations (FAO)
- * and the Lesotho Land Administration Authority (LAA). All rights reserved.
+ * Copyright (c) 2013 Food and Agriculture Organization of the United Nations
+ * (FAO) and the Lesotho Land Administration Authority (LAA). All rights
+ * reserved.
  *
- * Redistribution and use in source and binary forms, with or without modification,
- * are permitted provided that the following conditions are met:
+ * Redistribution and use in source and binary forms, with or without
+ * modification, are permitted provided that the following conditions are met:
  *
- *    1. Redistributions of source code must retain the above copyright notice,this list
- *       of conditions and the following disclaimer.
- *    2. Redistributions in binary form must reproduce the above copyright notice,this list
- *       of conditions and the following disclaimer in the documentation and/or other
- *       materials provided with the distribution.
- *    3. Neither the names of FAO, the LAA nor the names of its contributors may be used to
- *       endorse or promote products derived from this software without specific prior
- * 	  written permission.
+ * 1. Redistributions of source code must retain the above copyright notice,this
+ * list of conditions and the following disclaimer. 2. Redistributions in binary
+ * form must reproduce the above copyright notice,this list of conditions and
+ * the following disclaimer in the documentation and/or other materials provided
+ * with the distribution. 3. Neither the names of FAO, the LAA nor the names of
+ * its contributors may be used to endorse or promote products derived from this
+ * software without specific prior written permission.
  *
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY
- * EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES
- * OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT
- * SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,
- * SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO,PROCUREMENT
- * OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION)
- * HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT,STRICT LIABILITY,OR TORT
- * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE,
- * EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+ * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
+ * AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+ * IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
+ * ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE
+ * LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR
+ * CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO,PROCUREMENT OF
+ * SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS
+ * INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN
+ * CONTRACT,STRICT LIABILITY,OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING
+ * IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
+ * POSSIBILITY OF SUCH DAMAGE.
  * *********************************************************************************************
  */
 package org.sola.services.boundary.ws;
@@ -55,6 +57,7 @@ import org.sola.services.ejb.application.repository.entities.*;
 import org.sola.services.ejb.cadastre.businesslogic.CadastreEJBLocal;
 import org.sola.services.ejb.cadastre.repository.entities.CadastreObjectType;
 import org.sola.services.ejb.cadastre.repository.entities.LandUseType;
+import org.sola.services.ejb.cadastre.repository.entities.ParcelJurisdictionType;
 import org.sola.services.ejb.party.repository.entities.*;
 import org.sola.services.ejb.source.businesslogic.SourceEJBLocal;
 import org.sola.services.ejb.source.repository.entities.AvailabilityStatus;
@@ -378,7 +381,7 @@ public class ReferenceData extends AbstractWebService {
 
         return (List<ApplicationStatusTypeTO>) result[0];
     }
-    
+
     /**
      * See {@linkplain org.sola.services.ejb.application.businesslogic.ApplicationEJB#getApplicationStageTypes(java.lang.String)
      * ApplicationEJB.getApplicationStageTypes}
@@ -405,8 +408,8 @@ public class ReferenceData extends AbstractWebService {
         });
 
         return (List<ApplicationStageTypeTO>) result[0];
-    }    
-    
+    }
+
     /**
      * See {@linkplain org.sola.services.ejb.application.businesslogic.ApplicationEJB#getApplicationActionTypes(java.lang.String)
      * ApplicationEJB.getApplicationActionTypes}
@@ -984,8 +987,9 @@ public class ReferenceData extends AbstractWebService {
     }
 
     /**
-     * Supports saving of all SOLA Reference Data types. <p>Requires the {@linkplain RolesConstants#ADMIN_MANAGE_REFDATA}
-     * role.</p>
+     * Supports saving of all SOLA Reference Data types.
+     * <p>
+     * Requires the {@linkplain RolesConstants#ADMIN_MANAGE_REFDATA} role.</p>
      *
      * @throws SOLAFault
      * @throws UnhandledFault
@@ -1126,13 +1130,17 @@ public class ReferenceData extends AbstractWebService {
                 } else if (refDataTO instanceof TransactionTypeTO) {
                     codeEntity = administrativeEJB.getCodeEntity(TransactionType.class, refDataTO.getCode());
                     codeEntity = GenericTranslator.fromTO(refDataTO, TransactionType.class, codeEntity);
-                    administrativeEJB.saveCodeEntity(codeEntity);                
+                    administrativeEJB.saveCodeEntity(codeEntity);
                 } else if (refDataTO instanceof ApplicationStageTypeTO) {
                     codeEntity = applicationEJB.getCodeEntity(ApplicationStageType.class, refDataTO.getCode());
                     codeEntity = GenericTranslator.fromTO(refDataTO, ApplicationStageType.class, codeEntity);
                     applicationEJB.saveCodeEntity(codeEntity);
+                } else if (refDataTO instanceof ParcelJurisdictionTypeTO) {
+                    codeEntity = cadastreEJB.getCodeEntity(ParcelJurisdictionType.class, refDataTO.getCode());
+                    codeEntity = GenericTranslator.fromTO(refDataTO, ParcelJurisdictionType.class, codeEntity);
+                    cadastreEJB.saveCodeEntity(codeEntity);
                 }
-                
+
                 result = GenericTranslator.toTO(codeEntity, refDataTO.getClass());
                 commitTransaction();
                 return result;
@@ -1363,9 +1371,10 @@ public class ReferenceData extends AbstractWebService {
 
         return (List<DisputeReportsTO>) result[0];
     }
-    
+
     /**
-     * See {@linkplain org.sola.services.ejb.administrative.businesslogic.AdministrativeEJB#getTransactionTypes(java.lang.String)}
+     * See
+     * {@linkplain org.sola.services.ejb.administrative.businesslogic.AdministrativeEJB#getTransactionTypes(java.lang.String)}
      *
      * @throws SOLAFault
      * @throws UnhandledFault
@@ -1383,11 +1392,39 @@ public class ReferenceData extends AbstractWebService {
             @Override
             public void run() {
                 result[0] = GenericTranslator.toTOList(
-                        administrativeEJB.getTransactionTypes(languageCodeTmp), 
+                        administrativeEJB.getTransactionTypes(languageCodeTmp),
                         TransactionTypeTO.class);
             }
         });
 
         return (List<TransactionTypeTO>) result[0];
+    }
+
+    /**
+     * See {@linkplain org.sola.services.ejb.cadastre.businesslogic.CadastreEJB#getParcelJurisdictionTypes(java.lang.String)
+     * CadastreEJB.getCadastreObjectTypes}
+     *
+     * @throws SOLAFault
+     * @throws UnhandledFault
+     * @throws SOLAAccessFault
+     */
+    @WebMethod(operationName = "GetParcelJurisdictionTypes")
+    public List<ParcelJurisdictionTypeTO> GetParcelJurisdictionTypes(String languageCode)
+            throws SOLAFault, UnhandledFault, SOLAAccessFault {
+
+        final String languageCodeTmp = languageCode;
+        final Object[] result = {null};
+
+        runGeneralQuery(wsContext, new Runnable() {
+
+            @Override
+            public void run() {
+                result[0] = GenericTranslator.toTOList(
+                        cadastreEJB.getParcelJurisdictionTypes(languageCodeTmp),
+                        ParcelJurisdictionTypeTO.class);
+            }
+        });
+
+        return (List<ParcelJurisdictionTypeTO>) result[0];
     }
 }

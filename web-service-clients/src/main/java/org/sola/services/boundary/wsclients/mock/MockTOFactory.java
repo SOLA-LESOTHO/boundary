@@ -664,6 +664,16 @@ public class MockTOFactory {
         result.add(createCode(DisputeReportsTO.class, "statistics", "Statistics"));
         return result;
     }
+    
+        /**
+     * Creates a default list of parcel jurisdiction type codes
+     */
+    public static List<ParcelJurisdictionTypeTO> createParcelJurisdictionTypes() {
+        List<ParcelJurisdictionTypeTO> result = new ArrayList<ParcelJurisdictionTypeTO>();
+        result.add(createCode(ParcelJurisdictionTypeTO.class, "urban", "urban"));
+        result.add(createCode(ParcelJurisdictionTypeTO.class, "rural", "rural"));
+        return result;
+    }
 
     //</editor-fold>
     //<editor-fold defaultstate="collapsed" desc="Security TOs">

@@ -1,29 +1,31 @@
 /**
  * ******************************************************************************************
- * Copyright (c) 2013 Food and Agriculture Organization of the United Nations (FAO)
- * and the Lesotho Land Administration Authority (LAA). All rights reserved.
+ * Copyright (c) 2013 Food and Agriculture Organization of the United Nations
+ * (FAO) and the Lesotho Land Administration Authority (LAA). All rights
+ * reserved.
  *
- * Redistribution and use in source and binary forms, with or without modification,
- * are permitted provided that the following conditions are met:
+ * Redistribution and use in source and binary forms, with or without
+ * modification, are permitted provided that the following conditions are met:
  *
- *    1. Redistributions of source code must retain the above copyright notice,this list
- *       of conditions and the following disclaimer.
- *    2. Redistributions in binary form must reproduce the above copyright notice,this list
- *       of conditions and the following disclaimer in the documentation and/or other
- *       materials provided with the distribution.
- *    3. Neither the names of FAO, the LAA nor the names of its contributors may be used to
- *       endorse or promote products derived from this software without specific prior
- * 	  written permission.
+ * 1. Redistributions of source code must retain the above copyright notice,this
+ * list of conditions and the following disclaimer. 2. Redistributions in binary
+ * form must reproduce the above copyright notice,this list of conditions and
+ * the following disclaimer in the documentation and/or other materials provided
+ * with the distribution. 3. Neither the names of FAO, the LAA nor the names of
+ * its contributors may be used to endorse or promote products derived from this
+ * software without specific prior written permission.
  *
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY
- * EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES
- * OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT
- * SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,
- * SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO,PROCUREMENT
- * OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION)
- * HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT,STRICT LIABILITY,OR TORT
- * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE,
- * EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+ * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
+ * AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+ * IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
+ * ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE
+ * LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR
+ * CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO,PROCUREMENT OF
+ * SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS
+ * INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN
+ * CONTRACT,STRICT LIABILITY,OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING
+ * IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
+ * POSSIBILITY OF SUCH DAMAGE.
  * *********************************************************************************************
  */
 package org.sola.services.boundary.wsclients.mock;
@@ -37,12 +39,15 @@ import org.sola.webservices.transferobjects.referencedata.*;
 /**
  * Provides a mock implementation for the
  * {@linkplain org.sola.webservices.referencedata.ReferenceData} interface. Uses
- * the
- * {@linkplain MockServiceManager} to obtain the appropriate mock response for
- * each web method. <p>Each method mocked by this class has a public constant
- * defined that can be used to reference a mock response object from the {@linkplain MockServiceManager}.
- * To set a response object for a web method, use the {@linkplain MockServiceManager#setResponse(String, Object)}
- * method referencing the appropriate web method constant from {@linkplain org.sola.services.boundary.wsclients.ReferenceDataClient}.</p>
+ * the {@linkplain MockServiceManager} to obtain the appropriate mock response
+ * for each web method.
+ * <p>
+ * Each method mocked by this class has a public constant defined that can be
+ * used to reference a mock response object from the
+ * {@linkplain MockServiceManager}. To set a response object for a web method,
+ * use the {@linkplain MockServiceManager#setResponse(String, Object)} method
+ * referencing the appropriate web method constant from
+ * {@linkplain org.sola.services.boundary.wsclients.ReferenceDataClient}.</p>
  *
  * @see MockReferenceDataClient
  * @see ReferenceDataClient
@@ -84,7 +89,8 @@ public class MockReferenceDataPort implements ReferenceData {
     /**
      * Processes the mock response exception and throws the appropriate service
      * exception or a MockResponseException if the response exception is not a
-     * recognized type. Extends {@linkplain #processExceptionBasic(java.lang.Exception) processExceptionBasic}
+     * recognized type. Extends
+     * {@linkplain #processExceptionBasic(java.lang.Exception) processExceptionBasic}
      * to include the SOLAAccessFault;
      *
      * @param ex The Mock response exception to process
@@ -101,7 +107,8 @@ public class MockReferenceDataPort implements ReferenceData {
     /**
      * Processes the mock response exception and throws the appropriate service
      * exception or a MockResponseException if the response exception is not a
-     * recognized type. Extends {@linkplain #processExceptionBasic(java.lang.Exception) processExceptionBasic}
+     * recognized type. Extends
+     * {@linkplain #processExceptionBasic(java.lang.Exception) processExceptionBasic}
      * to include the OptimisticLockingFault;
      *
      * @param ex The Mock response exception to process
@@ -356,9 +363,6 @@ public class MockReferenceDataPort implements ReferenceData {
         }
     }
 
-    
-    
-
     /**
      * Response Key = ReferenceDataClient.GET_TYPE_ACTIONS
      *
@@ -510,8 +514,8 @@ public class MockReferenceDataPort implements ReferenceData {
             processExceptionAccess(ex);
             return null;
         }
-    }    
-    
+    }
+
     /**
      * Response Key = ReferenceDataClient.GET_SOURCE_TYPES
      *
@@ -606,12 +610,11 @@ public class MockReferenceDataPort implements ReferenceData {
             return null;
         }
     }
-    
+
     /*
      * LAA Additions thoriso
      */
-    
-       /**
+    /**
      * Response Key = ReferenceDataClient.GET_DISPUTE_ACTIONS
      *
      * @return default = MockTOFactory.createDisputeAction()
@@ -624,9 +627,9 @@ public class MockReferenceDataPort implements ReferenceData {
                     List.class, defaultResponse, arg0);
         } catch (Exception ex) {
             processExceptionAccess(ex);
-          
+
             return null;
-            
+
         }
     }
 
@@ -641,16 +644,14 @@ public class MockReferenceDataPort implements ReferenceData {
         try {
             return getManager().getResponse(ReferenceDataClient.GET_APPLICATION_FORMS,
                     List.class, defaultResponse, arg0);
-                    }
-        catch(Exception ex){
+        } catch (Exception ex) {
             processExceptionBasic(ex);
 
             return null;
         }
     }
-    
 
-       /**
+    /**
      * Response Key = ReferenceDataClient.GET_DISPUTE_CATEGORY
      *
      * @return default = MockTOFactory.createDisputeCategory()
@@ -666,8 +667,8 @@ public class MockReferenceDataPort implements ReferenceData {
             return null;
         }
     }
-    
-       /**
+
+    /**
      * Response Key = ReferenceDataClient.GET_DISPUTE_STATUS
      *
      * @return default = MockTOFactory.createDisputeStatus()
@@ -683,8 +684,8 @@ public class MockReferenceDataPort implements ReferenceData {
             return null;
         }
     }
-    
-       /**
+
+    /**
      * Response Key = ReferenceDataClient.GET_DISPUTE_TYPE
      *
      * @return default = MockTOFactory.createDisputeType()
@@ -700,8 +701,8 @@ public class MockReferenceDataPort implements ReferenceData {
             return null;
         }
     }
-    
-       /**
+
+    /**
      * Response Key = ReferenceDataClient.GET_OTHER_AUTHORITIES
      *
      * @return default = MockTOFactory.createOtherAuthorities()
@@ -714,12 +715,12 @@ public class MockReferenceDataPort implements ReferenceData {
                     List.class, defaultResponse, arg0);
         } catch (Exception ex) {
             processExceptionAccess(ex);
-            
-             return null;
+
+            return null;
         }
     }
-    
-       /**
+
+    /**
      * Response Key = ReferenceDataClient.GET_DISPUTE_REPORTS
      *
      */
@@ -747,7 +748,7 @@ public class MockReferenceDataPort implements ReferenceData {
             return null;
         }
     }
-    
+
     @Override
     public List<DeedTypeTO> getDeedTypes(String arg0) throws SOLAFault, UnhandledFault, SOLAAccessFault {
         List<DeedTypeTO> defaultResponse = MockTOFactory.createDeedTypes();
@@ -765,13 +766,13 @@ public class MockReferenceDataPort implements ReferenceData {
     public ApplicationFormWithBinaryTO getApplicationForm(String arg0, String arg1) throws SOLAFault, UnhandledFault {
         throw new UnsupportedOperationException("Not supported yet.");
     }
-    
+
     @Override
-    public List<RoadClassTypeTO> getRoadClassType(String arg0) throws SOLAFault, UnhandledFault, SOLAAccessFault{
+    public List<RoadClassTypeTO> getRoadClassType(String arg0) throws SOLAFault, UnhandledFault, SOLAAccessFault {
         List<RoadClassTypeTO> defaultResponse = MockTOFactory.createRoadClassTypes();
-        try{
+        try {
             return getManager().getResponse(arg0, List.class, defaultResponse, arg0);
-        }catch (Exception ex){
+        } catch (Exception ex) {
             processExceptionBasic(ex);
             return null;
         }
@@ -785,13 +786,26 @@ public class MockReferenceDataPort implements ReferenceData {
     @Override
     public List<LegalTypeTO> getLegalTypes(String arg0) throws SOLAFault, UnhandledFault {
         List<LegalTypeTO> defaultResponse = MockTOFactory.createLegalTypes();
-	try {
-		return getManager().getResponse(ReferenceDataClient.GET_LEGAL_TYPES,
-				List.class, defaultResponse, arg0);
-	} catch (Exception ex) {
-		processExceptionBasic(ex);
-		return null;
-	}
+        try {
+            return getManager().getResponse(ReferenceDataClient.GET_LEGAL_TYPES,
+                    List.class, defaultResponse, arg0);
+        } catch (Exception ex) {
+            processExceptionBasic(ex);
+            return null;
+        }
+
+    }
+
+    @Override
+    public List<ParcelJurisdictionTypeTO> getParcelJurisdictionTypes(String arg0) throws SOLAFault, UnhandledFault {
+        List<ParcelJurisdictionTypeTO> defaultResponse = MockTOFactory.createParcelJurisdictionTypes();
+        try {
+            return getManager().getResponse(ReferenceDataClient.GET_PARCEL_JURISDICTION_TYPES,
+                    List.class, defaultResponse, arg0);
+        } catch (Exception ex) {
+            processExceptionBasic(ex);
+            return null;
+        }
 
     }
 

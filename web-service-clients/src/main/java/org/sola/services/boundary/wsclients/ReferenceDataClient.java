@@ -1,29 +1,31 @@
 /**
  * ******************************************************************************************
- * Copyright (c) 2013 Food and Agriculture Organization of the United Nations (FAO)
- * and the Lesotho Land Administration Authority (LAA). All rights reserved.
+ * Copyright (c) 2013 Food and Agriculture Organization of the United Nations
+ * (FAO) and the Lesotho Land Administration Authority (LAA). All rights
+ * reserved.
  *
- * Redistribution and use in source and binary forms, with or without modification,
- * are permitted provided that the following conditions are met:
+ * Redistribution and use in source and binary forms, with or without
+ * modification, are permitted provided that the following conditions are met:
  *
- *    1. Redistributions of source code must retain the above copyright notice,this list
- *       of conditions and the following disclaimer.
- *    2. Redistributions in binary form must reproduce the above copyright notice,this list
- *       of conditions and the following disclaimer in the documentation and/or other
- *       materials provided with the distribution.
- *    3. Neither the names of FAO, the LAA nor the names of its contributors may be used to
- *       endorse or promote products derived from this software without specific prior
- * 	  written permission.
+ * 1. Redistributions of source code must retain the above copyright notice,this
+ * list of conditions and the following disclaimer. 2. Redistributions in binary
+ * form must reproduce the above copyright notice,this list of conditions and
+ * the following disclaimer in the documentation and/or other materials provided
+ * with the distribution. 3. Neither the names of FAO, the LAA nor the names of
+ * its contributors may be used to endorse or promote products derived from this
+ * software without specific prior written permission.
  *
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY
- * EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES
- * OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT
- * SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,
- * SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO,PROCUREMENT
- * OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION)
- * HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT,STRICT LIABILITY,OR TORT
- * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE,
- * EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+ * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
+ * AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+ * IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
+ * ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE
+ * LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR
+ * CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO,PROCUREMENT OF
+ * SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS
+ * INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN
+ * CONTRACT,STRICT LIABILITY,OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING
+ * IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
+ * POSSIBILITY OF SUCH DAMAGE.
  * *********************************************************************************************
  */
 package org.sola.services.boundary.wsclients;
@@ -36,8 +38,9 @@ import org.sola.webservices.transferobjects.AbstractCodeTO;
 import org.sola.webservices.transferobjects.referencedata.*;
 
 /**
- * Interface for the Reference Data Service. Implemented by {@linkplain ReferenceDataClientImpl}.
- * To obtain a reference to the Case Management Service, use {@linkplain WSManager#getReferenceDataService()}
+ * Interface for the Reference Data Service. Implemented by
+ * {@linkplain ReferenceDataClientImpl}. To obtain a reference to the Case
+ * Management Service, use {@linkplain WSManager#getReferenceDataService()}
  *
  * @see ReferenceDataClientImpl
  * @see WSManager#getReferenceDataService()
@@ -221,10 +224,11 @@ public interface ReferenceDataClient extends AbstractWSClient {
      */
     public static final String GET_OTHER_AUTHORITIES = SERVICE_NAME + "getOtherAuthorities";
     /**
-     * ReferenceData.getDisputeReports - Identifier for the getDisputeReports method
+     * ReferenceData.getDisputeReports - Identifier for the getDisputeReports
+     * method
      */
     public static final String GET_DISPUTE_REPORTS = SERVICE_NAME + "getDisputeReports";
-    
+
     /**
      * ReferenceData.getCadastreObjectTypes - Identifier for the
      * getCadastreObjectTypes method
@@ -242,10 +246,17 @@ public interface ReferenceDataClient extends AbstractWSClient {
     public static final String GET_ROAD_CLASS_TYPE = SERVICE_NAME + "getRoadClassType";
 
     /**
-     * ReferenceData.getTransactionTypes - Identifier for the getTransactionTypes method
+     * ReferenceData.getTransactionTypes - Identifier for the
+     * getTransactionTypes method
      */
     public static final String GET_TRANSACTION_TYPES = SERVICE_NAME + "getTransactionTypes";
-    
+
+    /**
+     * ReferenceData.getParcelJurisdictionTypes - Identifier for the
+     * getParcelJurisdictionTypes method
+     */
+    public static final String GET_PARCEL_JURISDICTION_TYPES = SERVICE_NAME + "getParcelJurisdictionTypes";
+
     /**
      * Return list of Application forms.
      */
@@ -371,22 +382,21 @@ public interface ReferenceDataClient extends AbstractWSClient {
     /**
      * Retrieve all application.application_stage_type code values using the
      * default locale of the client to localize the display values.
-     * 
+     *
      * @throws WebServiceClientException
      */
     List<ApplicationStageTypeTO> getApplicationStageTypes() throws WebServiceClientException;
-    
+
     /**
      * Retrieve all application.application_stage_type code values.
-     * 
+     *
      * @param languageCode The language code to use for localization of display
      * values.
-     * 
+     *
      * @throws WebServiceClientException
      */
     List<ApplicationStageTypeTO> getApplicationStageTypes(String lang) throws WebServiceClientException;
-        
-    
+
     /**
      * Retrieves all application.application_action_type code values using the
      * default locale of the client to localize the display values.
@@ -645,10 +655,12 @@ public interface ReferenceDataClient extends AbstractWSClient {
     List<CadastreObjectTypeTO> getCadastreObjectTypes(String lang) throws WebServiceClientException;
 
     /**
-     * Supports saving of all SOLA Reference Data types. <p>Requires the {@linkplain RolesConstants#ADMIN_MANAGE_REFDATA}
-     * role.</p>
+     * Supports saving of all SOLA Reference Data types.
+     * <p>
+     * Requires the {@linkplain RolesConstants#ADMIN_MANAGE_REFDATA} role.</p>
      *
-     * @param refDataTO The refernce data type to save. Must extend {@linkplain AbstractCodeTO}.
+     * @param refDataTO The refernce data type to save. Must extend
+     * {@linkplain AbstractCodeTO}.
      * @throws WebServiceClientException
      */
     AbstractCodeTO saveReferenceData(AbstractCodeTO refDataTO) throws WebServiceClientException;
@@ -811,17 +823,18 @@ public interface ReferenceDataClient extends AbstractWSClient {
      * @throws WebServiceClientException
      */
     List<DisputeReportsTO> getDisputeReports() throws WebServiceClientException;
+
     /**
-     * Retrieves all administrative.disputeReports code values using the
-     * default locale of the client to localize the display values.
+     * Retrieves all administrative.disputeReports code values using the default
+     * locale of the client to localize the display values.
      *
      * @throws WebServiceClientException
      */
     List<DisputeReportsTO> getDisputeReports(String lang) throws WebServiceClientException;
-    
-     /**
-     * Retrieves all cadastre.land_use_type code values using the default locale of the
-     * client to localize the display values.
+
+    /**
+     * Retrieves all cadastre.land_use_type code values using the default locale
+     * of the client to localize the display values.
      *
      * @throws WebServiceClientException
      */
@@ -864,8 +877,21 @@ public interface ReferenceDataClient extends AbstractWSClient {
     List<LandUseTypeTO> getLandUseTypes() throws WebServiceClientException;
 
     List<LandUseTypeTO> getLandUseTypes(String lang) throws WebServiceClientException;
-    
+
     List<TransactionTypeTO> getTransactionTypes() throws WebServiceClientException;
-    
+
     List<TransactionTypeTO> getTransactionTypes(String languageCode) throws WebServiceClientException;
+     /**
+     * Retrieves all cadastre.parcel_jurisdiction_type code values.
+     */
+    List<ParcelJurisdictionTypeTO> getParcelJurisdictionTypes() throws WebServiceClientException;
+	
+	 /**
+     * Retrieves all cadastre.parcel_jurisdiction_type code values.
+     *
+     * @param languageCode The language code to use for localization of display
+     * values.
+     * @throws WebServiceClientException
+     */
+    List<ParcelJurisdictionTypeTO> getParcelJurisdictionTypes(String lang) throws WebServiceClientException;
 }
