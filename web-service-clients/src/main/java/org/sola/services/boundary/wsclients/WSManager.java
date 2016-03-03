@@ -60,6 +60,7 @@ public class WSManager {
     private FileStreamingClient fileStreamingWS;
     private AbstractWSClient testWS;
     private BulkOperationsClient bulkOperationsWS;
+    private BillingClient billingWS;
 
     private WSManager() {
         // Fix for using JDK 7u25. Update 25 of the JDK excludes the RSA/ECB/OAEPPadding        
@@ -155,9 +156,8 @@ public class WSManager {
     /**
      * Initializes Web-service clients instances. All Web-services clients are
      * supposed to be secured and accessed with username and password. While
-     * initialization
-     * <code>checkConnection()</code> method is called on the Web-services
-     * clients to authenticate user.
+     * initialization <code>checkConnection()</code> method is called on the
+     * Web-services clients to authenticate user.
      *
      * @param userName The login name of the user.
      * @param userPassword The password of the user.
@@ -238,6 +238,12 @@ public class WSManager {
         if (getBulkOperationsService() == null) {
             setBulkOperationsWS(getWSClient(BulkOperationsClientImpl.class,
                     config.get(WSConfig.SOLA_WS_BULK_OPERATIONS_SERVICE_URL.toString()),
+                    userName, userPassword));
+        }
+        
+        if (getBilling() == null) {
+            setBillingWS(getWSClient(BillingClientImpl.class,
+                    config.get(WSConfig.SOLA_WS_BILLING_SERVICE_URL.toString()),
                     userName, userPassword));
         }
 
@@ -349,5 +355,13 @@ public class WSManager {
 
     public void setBulkOperationsWS(BulkOperationsClient bulkOperationsWS) {
         this.bulkOperationsWS = bulkOperationsWS;
+    }
+
+    public BillingClient getBilling() {
+        return billingWS;
+    }
+
+    public void setBillingWS(BillingClient billingWS) {
+        this.billingWS = billingWS;
     }
 }

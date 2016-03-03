@@ -117,4 +117,9 @@
     <system systemId="http://localhost:8080/sola/webservices/bulkoperations-service?xsd=5" uri="wsdl/localhost_8080/sola/webservices/bulkoperations-service.xsd_5.xsd"/>
     <system systemId="http://localhost:8080/sola/webservices/bulkoperations-service?xsd=6" uri="wsdl/localhost_8080/sola/webservices/bulkoperations-service.xsd_6.xsd"/>
     <system systemId="http://localhost:8080/sola/webservices/bulkoperations-service?xsd=7" uri="wsdl/localhost_8080/sola/webservices/bulkoperations-service.xsd_7.xsd"/>
+    <system systemId="http://localhost:8080/sola/webservices/billing-service?wsdl" uri="wsdl/localhost_8080/sola/webservices/billing-service.wsdl"/>
+    <system systemId="http://localhost:8080/sola/webservices/billing-service?xsd=1" uri="wsdl/localhost_8080/sola/webservices/billing-service.xsd_1.xsd"/>
+    <system systemId="http://localhost:8080/sola/webservices/billing-service?xsd=2" uri="wsdl/localhost_8080/sola/webservices/billing-service.xsd_2.xsd"/>
+    <system systemId="http://localhost:8080/sola/webservices/billing-service?xsd=3" uri="wsdl/localhost_8080/sola/webservices/billing-service.xsd_3.xsd"/>
+    <system systemId="http://localhost:8080/sola/webservices/billing-service?xsd=4" uri="wsdl/localhost_8080/sola/webservices/billing-service.xsd_4.xsd"/>
 </catalog>
