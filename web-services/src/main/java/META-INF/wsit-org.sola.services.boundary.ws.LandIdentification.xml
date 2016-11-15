@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?> 
+ <definitions 
+ xmlns="http://schemas.xmlsoap.org/wsdl/" 
+ xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" 
+ xmlns:xsd="http://www.w3.org/2001/XMLSchema" 
+ xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" name="landIdentification-service" targetNamespace="http%3A%2F%2Fwebservices.sola.org%2Flandidentification" xmlns:tns="http%3A%2F%2Fwebservices.sola.org%2Flandidentification" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:wsp1="http://www.w3.org/ns/ws-policy" xmlns:fi="http://java.sun.com/xml/ns/wsit/2006/09/policy/fastinfoset/service" xmlns:tcp="http://java.sun.com/xml/ns/wsit/2006/09/policy/soaptcp/service" xmlns:wsaw="http://www.w3.org/2005/08/addressing" xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy" xmlns:sc="http://schemas.sun.com/2006/03/wss/server" xmlns:wspp="http://java.sun.com/xml/ns/wsit/policy" 
+ >
+    <message name="checkConnection"/>
+    <message name="checkConnectionResponse"/>
+    <message name="getParty"/>
+    <message name="getPartyResponse"/>
+    <message name="SOLAAccessFault"/>
+    <message name="SOLAFault"/>
+    <message name="UnhandledFault"/>
+    <message name="saveParty"/>
+    <message name="savePartyResponse"/>
+    <message name="OptimisticLockingFault"/>
+    <message name="SOLAValidationFault"/>
+    <portType name="LandIdentification">
+        <operation name="checkConnection">
+            <input message="tns:checkConnection"/>
+            <output message="tns:checkConnectionResponse"/>
+        </operation>
+        <operation name="getParty">
+            <input message="tns:getParty"/>
+            <output message="tns:getPartyResponse"/>
+            <fault name="SOLAAccessFault" message="tns:SOLAAccessFault"/>
+            <fault name="SOLAFault" message="tns:SOLAFault"/>
+            <fault name="UnhandledFault" message="tns:UnhandledFault"/>
+        </operation>
+        <operation name="saveParty">
+            <input message="tns:saveParty"/>
+            <output message="tns:savePartyResponse"/>
+            <fault name="SOLAFault" message="tns:SOLAFault"/>
+            <fault name="UnhandledFault" message="tns:UnhandledFault"/>
+            <fault name="SOLAAccessFault" message="tns:SOLAAccessFault"/>
+            <fault name="OptimisticLockingFault" message="tns:OptimisticLockingFault"/>
+            <fault name="SOLAValidationFault" message="tns:SOLAValidationFault"/>
+        </operation>
+    </portType>
+    <binding name="LandIdentificationPortBinding" type="tns:LandIdentification">
+        <operation name="checkConnection">
+            <input></input>
+            <output></output>
+        </operation>
+        <operation name="getParty">
+            <input></input>
+            <output></output>
+            <fault name="SOLAAccessFault"/>
+            <fault name="SOLAFault"/>
+            <fault name="UnhandledFault"/>
+        </operation>
+        <operation name="saveParty">
+            <input></input>
+            <output></output>
+            <fault name="SOLAFault"/>
+            <fault name="UnhandledFault"/>
+            <fault name="SOLAAccessFault"/>
+            <fault name="OptimisticLockingFault"/>
+            <fault name="SOLAValidationFault"/>
+        </operation>
+    </binding>
+    <service name="landIdentification-service">
+        <port name="LandIdentificationPort" binding="tns:LandIdentificationPortBinding"/>
+    </service>
+    
+</definitions>

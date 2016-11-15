@@ -1427,4 +1427,31 @@ public class ReferenceData extends AbstractWebService {
 
         return (List<ParcelJurisdictionTypeTO>) result[0];
     }
+
+    /**
+     * See {@linkplain org.sola.services.ejb.administrative.businesslogic.AdministrativeEJB#getLeaseTypes(java.lang.String)
+     * AdministrativeEJB.getLeaseTypes}
+     *
+     * @throws SOLAFault
+     * @throws UnhandledFault
+     * @throws SOLAAccessFault
+     */
+    @WebMethod(operationName = "GetLeaseTypes")
+    public List<LeaseTypeTO> GetLeaseTypes(String languageCode)
+            throws SOLAFault, UnhandledFault, SOLAAccessFault {
+
+        final String languageCodeTmp = languageCode;
+        final Object[] result = {null};
+
+        runGeneralQuery(wsContext, new Runnable() {
+
+            @Override
+            public void run() {
+                result[0] = GenericTranslator.toTOList(
+                        administrativeEJB.getLeaseTypes(languageCodeTmp), LeaseTypeTO.class);
+            }
+        });
+
+        return (List<LeaseTypeTO>) result[0];
+    }
 }

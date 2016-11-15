@@ -1,29 +1,31 @@
 /**
  * ******************************************************************************************
- * Copyright (c) 2013 Food and Agriculture Organization of the United Nations (FAO)
- * and the Lesotho Land Administration Authority (LAA). All rights reserved.
+ * Copyright (c) 2013 Food and Agriculture Organization of the United Nations
+ * (FAO) and the Lesotho Land Administration Authority (LAA). All rights
+ * reserved.
  *
- * Redistribution and use in source and binary forms, with or without modification,
- * are permitted provided that the following conditions are met:
+ * Redistribution and use in source and binary forms, with or without
+ * modification, are permitted provided that the following conditions are met:
  *
- *    1. Redistributions of source code must retain the above copyright notice,this list
- *       of conditions and the following disclaimer.
- *    2. Redistributions in binary form must reproduce the above copyright notice,this list
- *       of conditions and the following disclaimer in the documentation and/or other
- *       materials provided with the distribution.
- *    3. Neither the names of FAO, the LAA nor the names of its contributors may be used to
- *       endorse or promote products derived from this software without specific prior
- * 	  written permission.
+ * 1. Redistributions of source code must retain the above copyright notice,this
+ * list of conditions and the following disclaimer. 2. Redistributions in binary
+ * form must reproduce the above copyright notice,this list of conditions and
+ * the following disclaimer in the documentation and/or other materials provided
+ * with the distribution. 3. Neither the names of FAO, the LAA nor the names of
+ * its contributors may be used to endorse or promote products derived from this
+ * software without specific prior written permission.
  *
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY
- * EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES
- * OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT
- * SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,
- * SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO,PROCUREMENT
- * OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION)
- * HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT,STRICT LIABILITY,OR TORT
- * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE,
- * EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+ * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
+ * AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+ * IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
+ * ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE
+ * LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR
+ * CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO,PROCUREMENT OF
+ * SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS
+ * INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN
+ * CONTRACT,STRICT LIABILITY,OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING
+ * IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
+ * POSSIBILITY OF SUCH DAMAGE.
  * *********************************************************************************************
  */
 /*
@@ -78,8 +80,9 @@ public class MockTOFactory {
     }
 
     /**
-     * Creates a default list of communication types <p> SQL query to generate
-     * list from DB: </p>
+     * Creates a default list of communication types
+     * <p>
+     * SQL query to generate list from DB: </p>
      * <pre>
      * select 'result.add(createCode(CommunicationTypeTO.class, "' || code || '", "' || display_value || '"));'
      * from party.communication_type
@@ -96,8 +99,9 @@ public class MockTOFactory {
     }
 
     /**
-     * Creates a default list of application forms <p> SQL query to generate
-     * list from DB: </p>
+     * Creates a default list of application forms
+     * <p>
+     * SQL query to generate list from DB: </p>
      * <pre>
      * select 'result.add(createCode(ApplicationFormTO.class, "' || code || '", "' || display_value || '"));'
      * from application.application_form
@@ -111,8 +115,9 @@ public class MockTOFactory {
     }
 
     /**
-     * Creates a default list of client types <p> SQL query to generate list
-     * from DB: </p>
+     * Creates a default list of client types
+     * <p>
+     * SQL query to generate list from DB: </p>
      * <pre>
      * select 'result.add(createCode(ClientTypeTO.class, "' || code || '", "' || display_value || '"));'
      * from external.client_type
@@ -127,8 +132,9 @@ public class MockTOFactory {
     }
 
     /**
-     * Creates a default list of gender types <p> SQL query to generate list
-     * from DB: </p>
+     * Creates a default list of gender types
+     * <p>
+     * SQL query to generate list from DB: </p>
      * <pre>
      * select 'result.add(createCode(GenderTypeTO.class, "' || code || '", "' || display_value || '"));'
      * from party.gender_type
@@ -174,17 +180,17 @@ public class MockTOFactory {
 
         return result;
     }
-    
+
     /**
      * Creates a default list of application stage codes
-     * 
+     *
      */
     public static List<ApplicationStageTypeTO> createApplicationStageTypes() {
         List<ApplicationStageTypeTO> result = new ArrayList<ApplicationStageTypeTO>();
         result.add(createCode(ApplicationStageTypeTO.class, "customerCollection", "Customer Services to enter collection details"));
         result.add(createCode(ApplicationStageTypeTO.class, "leaseBindDraft", "Leasing Services to bundle relevant files"));
         result.add(createCode(ApplicationStageTypeTO.class, "registrationProcess", "Registration Services to process application"));
-        
+
         return result;
     }
 
@@ -408,7 +414,8 @@ public class MockTOFactory {
      */
     /**
      * Creates a default list of request types using generics so that it is
-     * possible to also generate RequestTypeSourceType using the same code. <p>
+     * possible to also generate RequestTypeSourceType using the same code.
+     * <p>
      * SQL query to generate list from DB: </p>
      * <pre>
      * select 'result.add(createRequestType(requestTypeClass, "' || code || '", "' || display_value
@@ -436,8 +443,9 @@ public class MockTOFactory {
     }
 
     /**
-     * Creates a default list of source types <p> SQL query to generate list
-     * from DB: </p>
+     * Creates a default list of source types
+     * <p>
+     * SQL query to generate list from DB: </p>
      * <pre>
      * select 'result.add(createCode(SourceTypeTO.class, "' || code || '", "' || display_value || '"));'
      * from source.source_type
@@ -566,8 +574,9 @@ public class MockTOFactory {
      * LAA Additions thoriso
      */
     /**
-     * Creates a default list of dispute actions <p> SQL query to generate list
-     * from DB: </p>
+     * Creates a default list of dispute actions
+     * <p>
+     * SQL query to generate list from DB: </p>
      * <pre>
      * select 'result.add(createCode(DisputeActionTO.class, "' || code || '", "' || display_value || '"));'
      * from administrative.dispute_action
@@ -582,8 +591,9 @@ public class MockTOFactory {
     }
 
     /**
-     * Creates a default list of dispute category <p> SQL query to generate list
-     * from DB: </p>
+     * Creates a default list of dispute category
+     * <p>
+     * SQL query to generate list from DB: </p>
      * <pre>
      * select 'result.add(createCode(disputeCategoryTO.class, "' || code || '", "' || display_value || '"));'
      * from administrative.dispute_category
@@ -598,8 +608,9 @@ public class MockTOFactory {
     }
 
     /**
-     * Creates a default list of dispute status <p> SQL query to generate list
-     * from DB: </p>
+     * Creates a default list of dispute status
+     * <p>
+     * SQL query to generate list from DB: </p>
      * <pre>
      * select 'result.add(createCode(DisputeStatus.class, "' || code || '", "' || display_value || '"));'
      * from administrative.dispute_status
@@ -614,8 +625,9 @@ public class MockTOFactory {
     }
 
     /**
-     * Creates a default list of dispute type <p> SQL query to generate list
-     * from DB: </p>
+     * Creates a default list of dispute type
+     * <p>
+     * SQL query to generate list from DB: </p>
      * <pre>
      * select 'result.add(createCode(DisputeTypeTO.class, "' || code || '", "' || display_value || '"));'
      * from administrative.dispute_type
@@ -632,8 +644,9 @@ public class MockTOFactory {
     }
 
     /**
-     * Creates a default list of other authorities <p> SQL query to generate
-     * list from DB: </p>
+     * Creates a default list of other authorities
+     * <p>
+     * SQL query to generate list from DB: </p>
      * <pre>
      * select 'result.add(createCode(OtherAuthoritiesTO.class, "' || code || '", "' || display_value || '"));'
      * from administrative.other_authorities
@@ -649,10 +662,11 @@ public class MockTOFactory {
         result.add(createCode(OtherAuthoritiesTO.class, "other", "Other Authorities"));
         return result;
     }
-    
+
     /**
-     * Creates a default list of other authorities <p> SQL query to generate
-     * list from DB: </p>
+     * Creates a default list of other authorities
+     * <p>
+     * SQL query to generate list from DB: </p>
      * <pre>
      * select 'result.add(createCode(OtherAuthoritiesTO.class, "' || code || '", "' || display_value || '"));'
      * from administrative.other_authorities
@@ -664,14 +678,23 @@ public class MockTOFactory {
         result.add(createCode(DisputeReportsTO.class, "statistics", "Statistics"));
         return result;
     }
-    
-        /**
+
+    /**
      * Creates a default list of parcel jurisdiction type codes
      */
     public static List<ParcelJurisdictionTypeTO> createParcelJurisdictionTypes() {
         List<ParcelJurisdictionTypeTO> result = new ArrayList<ParcelJurisdictionTypeTO>();
         result.add(createCode(ParcelJurisdictionTypeTO.class, "urban", "urban"));
         result.add(createCode(ParcelJurisdictionTypeTO.class, "rural", "rural"));
+        return result;
+    }
+
+    public static List<LeaseTypeTO> createLeaseTypes() {
+        List<LeaseTypeTO> result = new ArrayList<LeaseTypeTO>();
+        result.add(createCode(LeaseTypeTO.class, "male", "Male"));
+        result.add(createCode(LeaseTypeTO.class, "female", "Female"));
+        result.add(createCode(LeaseTypeTO.class, "joint", "Joint"));
+        result.add(createCode(LeaseTypeTO.class, "company", "Company"));
         return result;
     }
 
@@ -706,7 +729,7 @@ public class MockTOFactory {
         result.add(createUser("test2", "anotherId", "Ed", "Jones"));
         return result;
     }
-    
+
     /**
      * Creates a default DepartmentTO list.
      */
@@ -730,8 +753,7 @@ public class MockTOFactory {
         result.setRowId("row-id-0");
         return result;
     }
-    
-    
+
     /**
      * Creates a default DepartmentTO list.
      */

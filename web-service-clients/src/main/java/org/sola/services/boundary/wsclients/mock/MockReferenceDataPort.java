@@ -813,4 +813,16 @@ public class MockReferenceDataPort implements ReferenceData {
     public List<TransactionTypeTO> getTransactionTypes(String arg0) throws SOLAAccessFault, SOLAFault, UnhandledFault {
         throw new UnsupportedOperationException("Not supported yet.");
     }
+
+    @Override
+    public List<LeaseTypeTO> getLeaseTypes(String arg0) throws SOLAAccessFault, SOLAFault, UnhandledFault {
+        List<LeaseTypeTO> defaultResponse = MockTOFactory.createLeaseTypes();
+        try {
+            return getManager().getResponse(ReferenceDataClient.GET_LEASE_TYPES,
+                    List.class, defaultResponse, arg0);
+        } catch (Exception ex) {
+            processExceptionBasic(ex);
+            return null;
+        }
+    }
 }

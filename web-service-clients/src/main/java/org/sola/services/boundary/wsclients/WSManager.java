@@ -60,7 +60,6 @@ public class WSManager {
     private FileStreamingClient fileStreamingWS;
     private AbstractWSClient testWS;
     private BulkOperationsClient bulkOperationsWS;
-    private BillingClient billingWS;
 
     private WSManager() {
         // Fix for using JDK 7u25. Update 25 of the JDK excludes the RSA/ECB/OAEPPadding        
@@ -240,12 +239,7 @@ public class WSManager {
                     config.get(WSConfig.SOLA_WS_BULK_OPERATIONS_SERVICE_URL.toString()),
                     userName, userPassword));
         }
-        
-        if (getBilling() == null) {
-            setBillingWS(getWSClient(BillingClientImpl.class,
-                    config.get(WSConfig.SOLA_WS_BILLING_SERVICE_URL.toString()),
-                    userName, userPassword));
-        }
+       
 
         return result;
     }
@@ -355,13 +349,5 @@ public class WSManager {
 
     public void setBulkOperationsWS(BulkOperationsClient bulkOperationsWS) {
         this.bulkOperationsWS = bulkOperationsWS;
-    }
-
-    public BillingClient getBilling() {
-        return billingWS;
-    }
-
-    public void setBillingWS(BillingClient billingWS) {
-        this.billingWS = billingWS;
     }
 }

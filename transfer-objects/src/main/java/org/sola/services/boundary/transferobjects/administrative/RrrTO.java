@@ -77,6 +77,7 @@ public class RrrTO extends AbstractIdTO {
     private boolean sporadic;
     private boolean lsppTransaction;
     private Date applicationDate;
+    private String leaseCode;
 
     public BigDecimal getPropertyValue() {
         return propertyValue;
@@ -411,6 +412,14 @@ public class RrrTO extends AbstractIdTO {
 
     public void setApplicationDate(Date applicationDate) {
         this.applicationDate = applicationDate;
+    }
+
+    public String getLeaseCode() {
+        return leaseCode;
+    }
+
+    public void setLeaseCode(String leaseCode) {
+        this.leaseCode = leaseCode;
     }
     
 }

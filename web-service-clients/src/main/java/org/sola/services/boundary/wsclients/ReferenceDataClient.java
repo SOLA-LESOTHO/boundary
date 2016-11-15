@@ -258,6 +258,11 @@ public interface ReferenceDataClient extends AbstractWSClient {
     public static final String GET_PARCEL_JURISDICTION_TYPES = SERVICE_NAME + "getParcelJurisdictionTypes";
 
     /**
+     * ReferenceData.getLeaseTypes - Identifier for the getLeaseTypes method
+     */
+    public static final String GET_LEASE_TYPES = SERVICE_NAME + "getLeaseTypes";
+
+    /**
      * Return list of Application forms.
      */
     List<ApplicationFormTO> getApplicationForms() throws WebServiceClientException;
@@ -881,12 +886,13 @@ public interface ReferenceDataClient extends AbstractWSClient {
     List<TransactionTypeTO> getTransactionTypes() throws WebServiceClientException;
 
     List<TransactionTypeTO> getTransactionTypes(String languageCode) throws WebServiceClientException;
-     /**
+
+    /**
      * Retrieves all cadastre.parcel_jurisdiction_type code values.
      */
     List<ParcelJurisdictionTypeTO> getParcelJurisdictionTypes() throws WebServiceClientException;
-	
-	 /**
+
+    /**
      * Retrieves all cadastre.parcel_jurisdiction_type code values.
      *
      * @param languageCode The language code to use for localization of display
@@ -894,4 +900,15 @@ public interface ReferenceDataClient extends AbstractWSClient {
      * @throws WebServiceClientException
      */
     List<ParcelJurisdictionTypeTO> getParcelJurisdictionTypes(String lang) throws WebServiceClientException;
+
+    /**
+     * Retrieves all administrative.lease_type code values.
+     *
+     * @param lang The language code to use for localization of display
+     * values.
+     * @return 
+     * @throws WebServiceClientException
+     */
+    List<LeaseTypeTO> getLeaseTypes(String lang) throws WebServiceClientException;
+
 }

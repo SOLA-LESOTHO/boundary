@@ -15,4 +15,5 @@
     <import location="admin-service.xml" namespace="http://webservices.sola.org/admin"/>
     <!--import location="filestreaming-service.xml" namespace="http://webservices.sola.org/filestreaming"/-->
     <import location="bulkoperations-service.xml" namespace="http://webservices.sola.org/bulkoperations"/>
+    <import location="landidentification-service.xml" namespace="http://webservices.sola.org/landidentification"/>
 </definitions>

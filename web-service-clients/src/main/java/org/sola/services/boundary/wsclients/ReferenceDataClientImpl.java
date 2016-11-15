@@ -911,4 +911,29 @@ public class ReferenceDataClientImpl extends AbstractWSClientImpl implements Ref
         }
         return result;
     }
+
+    /**
+     * Retrieves all administrative.lease_type code values.
+     *
+     * @param languageCode The language code to use for localization of display
+     * values.
+     * @return 
+     * @throws WebServiceClientException
+     */
+    @Override
+    public List<LeaseTypeTO> getLeaseTypes(String languageCode) throws WebServiceClientException {
+        
+        List<LeaseTypeTO> result = null;
+        final String methodName = ReferenceDataClient.GET_LEASE_TYPES;
+        try {
+            beforeWebMethod(methodName, languageCode);
+            result = getPort().getLeaseTypes(languageCode);
+        } catch (Exception e) {
+            processException(methodName, e);
+
+        } finally {
+            afterWebMethod(methodName, result, languageCode);
+        }
+        return result;
+    }
 }

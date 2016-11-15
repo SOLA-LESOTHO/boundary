@@ -683,11 +683,11 @@
 <soap:address location="http://localhost:8080/sola/webservices/search-service"/>
 </port>
 </service>
-    <wsp:Policy wsu:Id="SearchPortBindingPolicy">
-        <wsp:ExactlyOne>
-            <wsp:All>
-                <sc:TrustStore wspp:visibility="private" type="JKS" storepass="${wsit.truststore.storepass}" peeralias="${wsit.truststore.peeralias}" location="${wsit.truststore.location}"/>
-            </wsp:All>
-        </wsp:ExactlyOne>
-    </wsp:Policy>
+<wsp:Policy wsu:Id="SearchPortBindingPolicy">
+    <wsp:ExactlyOne>
+        <wsp:All>
+            <sc:TrustStore wspp:visibility="private" type="JKS" storepass="${wsit.truststore.storepass}" peeralias="${wsit.truststore.peeralias}" location="${wsit.truststore.location}"/>
+        </wsp:All>
+    </wsp:ExactlyOne>
+</wsp:Policy>
 </definitions>

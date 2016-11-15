@@ -14,5 +14,16 @@ That way multiple projects can share the same settings (useful for formatting ru
 Any value defined here will override the pom.xml file value but is only applicable to the current project.
 -->
         <org-netbeans-modules-maven-jaxws._5f_C_5f_billing-service>http://localhost:8080/sola/webservices/billing-service?wsdl</org-netbeans-modules-maven-jaxws._5f_C_5f_billing-service>
+        <org-netbeans-modules-maven-jaxws._5f_C_5f_casemanagement-service>http://localhost:8080/sola/webservices/casemanagement-service?wsdl</org-netbeans-modules-maven-jaxws._5f_C_5f_casemanagement-service>
+        <org-netbeans-modules-maven-jaxws._5f_C_5f_referencedata-service>http://localhost:8080/sola/webservices/referencedata-service?wsdl</org-netbeans-modules-maven-jaxws._5f_C_5f_referencedata-service>
+        <org-netbeans-modules-maven-jaxws._5f_C_5f_admin-service>http://localhost:8080/sola/webservices/admin-service?wsdl</org-netbeans-modules-maven-jaxws._5f_C_5f_admin-service>
+        <org-netbeans-modules-maven-jaxws._5f_C_5f_cadastre-service>http://localhost:8080/sola/webservices/cadastre-service?wsdl</org-netbeans-modules-maven-jaxws._5f_C_5f_cadastre-service>
+        <org-netbeans-modules-maven-jaxws._5f_C_5f_search-service>http://localhost:8080/sola/webservices/search-service?wsdl</org-netbeans-modules-maven-jaxws._5f_C_5f_search-service>
+        <org-netbeans-modules-maven-jaxws._5f_C_5f_digitalarchive-service>http://localhost:8080/sola/webservices/digitalarchive-service?wsdl</org-netbeans-modules-maven-jaxws._5f_C_5f_digitalarchive-service>
+        <org-netbeans-modules-maven-jaxws._5f_C_5f_spatial-service>http://localhost:8080/sola/webservices/spatial-service?wsdl</org-netbeans-modules-maven-jaxws._5f_C_5f_spatial-service>
+        <org-netbeans-modules-maven-jaxws._5f_C_5f_administrative-service>http://localhost:8080/sola/webservices/administrative-service?wsdl</org-netbeans-modules-maven-jaxws._5f_C_5f_administrative-service>
+        <org-netbeans-modules-maven-jaxws._5f_C_5f_filestreaming-service>http://localhost:8080/sola/webservices/filestreaming-service?wsdl</org-netbeans-modules-maven-jaxws._5f_C_5f_filestreaming-service>
+        <org-netbeans-modules-maven-jaxws._5f_C_5f_bulkoperations-service>http://localhost:8080/sola/webservices/bulkoperations-service?wsdl</org-netbeans-modules-maven-jaxws._5f_C_5f_bulkoperations-service>
+        <org-netbeans-modules-maven-jaxws._5f_C_5f_landIdentification-service>http://localhost:8080/sola/webservices/landIdentification-service?wsdl</org-netbeans-modules-maven-jaxws._5f_C_5f_landIdentification-service>
     </properties>
 </project-shared-configuration>

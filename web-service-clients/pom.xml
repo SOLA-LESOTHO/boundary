@@ -5,11 +5,11 @@
     <parent>
         <artifactId>sola-boundary</artifactId>
         <groupId>org.sola.services</groupId>
-        <version>2.2-20160518</version>
+        <version>2.2-20161014</version>
     </parent>
     <groupId>org.sola.services.boundary</groupId>
     <artifactId>sola-web-service-clients</artifactId>
-    <version>2.2-20160518</version>
+    <version>2.2-20161014</version>
     <name>Boundary Web Service Clients</name>
     <url>http://maven.apache.org</url>
     <properties>
@@ -48,7 +48,7 @@
         <dependency>
             <groupId>org.sola.services.boundary</groupId>
             <artifactId>sola-transfer-objects</artifactId>
-            <version>2.2-20160518</version>
+            <version>2.2-20161014</version>
             <type>jar</type>
         </dependency>
     </dependencies>
@@ -74,13 +74,13 @@
             </resource>
         </resources>
         <plugins>    
-            <plugin>
-                <!--
+<!--            <plugin>
+                
                 Imports the WSDL created during the build of the Boundary Web Services project and
                 generates the client side classes. This version of the pluggin is not recongnised
                 by Netbeans and the project will display without the Web Service Reference folder.
                 To access the Web Service Reference folder in Netbeans, see the commented out 
-                section below. -->
+                section below. 
                 <groupId>org.jvnet.jax-ws-commons</groupId>
                 <artifactId>jaxws-maven-plugin</artifactId>
                 <version>2.2</version>
@@ -238,7 +238,7 @@
                         <phase>generate-sources</phase>
                     </execution>
                 </executions>
-            </plugin>
+            </plugin>-->
             <!-- Don't forget to use endorsed with JAX-WS 2.2 on Java 6 !! -->
             <plugin>
                 <artifactId>maven-compiler-plugin</artifactId>
@@ -286,7 +286,7 @@
             cause the project to display the Web Service References folder. This section 
             can be uncommented to allow configuration of the Web Service Client WSIT files using
             the Netbeans UI. Note that changes to the WSIT are seldom required. -->
-            <!--plugin>
+            <plugin>
                 <groupId>org.jvnet.jax-ws-commons</groupId>
                 <artifactId>jaxws-maven-plugin</artifactId>
                 <version>2.2</version>
@@ -297,12 +297,43 @@
                         </goals>
                         <configuration>
                             <wsdlFiles>
-                                <wsdlFile>localhost_8080/sola/webservices/digitalarchive-service.wsdl</wsdlFile>
+                                <wsdlFile>localhost_8080/sola/webservices/casemanagement-service.wsdl</wsdlFile>
                             </wsdlFiles>
-                            <wsdlLocation>http://localhost:8080/sola/webservices/digitalarchive-service?wsdl</wsdlLocation>
-                            <staleFile>${project.build.directory}/jaxws/stale/digitalarchive-service.stale</staleFile>
+                            <packageName></packageName>
+                            <wsdlLocation>http://localhost:8080/sola/webservices/casemanagement-service?wsdl</wsdlLocation>
+                            <staleFile>${project.build.directory}/jaxws/stale/casemanagement-service.stale</staleFile>
                         </configuration>
-                        <id>wsimport-generate-digitalarchive-service</id>
+                        <id>wsimport-generate-casemanagement-service</id>
+                        <phase>generate-sources</phase>
+                    </execution>
+                    <execution>
+                        <goals>
+                            <goal>wsimport</goal>
+                        </goals>
+                        <configuration>
+                            <wsdlFiles>
+                                <wsdlFile>localhost_8080/sola/webservices/referencedata-service.wsdl</wsdlFile>
+                            </wsdlFiles>
+                            <packageName></packageName>
+                            <wsdlLocation>http://localhost:8080/sola/webservices/referencedata-service?wsdl</wsdlLocation>
+                            <staleFile>${project.build.directory}/jaxws/stale/referencedata-service.stale</staleFile>
+                        </configuration>
+                        <id>wsimport-generate-referencedata-service</id>
+                        <phase>generate-sources</phase>
+                    </execution>
+                    <execution>
+                        <goals>
+                            <goal>wsimport</goal>
+                        </goals>
+                        <configuration>
+                            <wsdlFiles>
+                                <wsdlFile>localhost_8080/sola/webservices/admin-service.wsdl</wsdlFile>
+                            </wsdlFiles>
+                            <packageName></packageName>
+                            <wsdlLocation>http://localhost:8080/sola/webservices/admin-service?wsdl</wsdlLocation>
+                            <staleFile>${project.build.directory}/jaxws/stale/admin-service.stale</staleFile>
+                        </configuration>
+                        <id>wsimport-generate-admin-service</id>
                         <phase>generate-sources</phase>
                     </execution>
                     <execution>
@@ -313,6 +344,7 @@
                             <wsdlFiles>
                                 <wsdlFile>localhost_8080/sola/webservices/cadastre-service.wsdl</wsdlFile>
                             </wsdlFiles>
+                            <packageName></packageName>
                             <wsdlLocation>http://localhost:8080/sola/webservices/cadastre-service?wsdl</wsdlLocation>
                             <staleFile>${project.build.directory}/jaxws/stale/cadastre-service.stale</staleFile>
                         </configuration>
@@ -327,6 +359,7 @@
                             <wsdlFiles>
                                 <wsdlFile>localhost_8080/sola/webservices/search-service.wsdl</wsdlFile>
                             </wsdlFiles>
+                            <packageName></packageName>
                             <wsdlLocation>http://localhost:8080/sola/webservices/search-service?wsdl</wsdlLocation>
                             <staleFile>${project.build.directory}/jaxws/stale/search-service.stale</staleFile>
                         </configuration>
@@ -339,54 +372,13 @@
                         </goals>
                         <configuration>
                             <wsdlFiles>
-                                <wsdlFile>localhost_8080/sola/webservices/admin-service.wsdl</wsdlFile>
+                                <wsdlFile>localhost_8080/sola/webservices/digitalarchive-service.wsdl</wsdlFile>
                             </wsdlFiles>
-                            <wsdlLocation>http://localhost:8080/sola/webservices/admin-service?wsdl</wsdlLocation>
-                            <staleFile>${project.build.directory}/jaxws/stale/admin-service.stale</staleFile>
+                            <packageName></packageName>
+                            <wsdlLocation>http://localhost:8080/sola/webservices/digitalarchive-service?wsdl</wsdlLocation>
+                            <staleFile>${project.build.directory}/jaxws/stale/digitalarchive-service.stale</staleFile>
                         </configuration>
-                        <id>wsimport-generate-admin-service</id>
-                        <phase>generate-sources</phase>
-                    </execution>
-                    <execution>
-                        <goals>
-                            <goal>wsimport</goal>
-                        </goals>
-                        <configuration>
-                            <wsdlFiles>
-                                <wsdlFile>localhost_8080/sola/webservices/administrative-service.wsdl</wsdlFile>
-                            </wsdlFiles>
-                            <wsdlLocation>http://localhost:8080/sola/webservices/administrative-service?wsdl</wsdlLocation>
-                            <staleFile>${project.build.directory}/jaxws/stale/administrative-service.stale</staleFile>
-                        </configuration>
-                        <id>wsimport-generate-administrative-service</id>
-                        <phase>generate-sources</phase>
-                    </execution>
-                    <execution>
-                        <goals>
-                            <goal>wsimport</goal>
-                        </goals>
-                        <configuration>
-                            <wsdlFiles>
-                                <wsdlFile>localhost_8080/sola/webservices/referencedata-service.wsdl</wsdlFile>
-                            </wsdlFiles>
-                            <wsdlLocation>http://localhost:8080/sola/webservices/referencedata-service?wsdl</wsdlLocation>
-                            <staleFile>${project.build.directory}/jaxws/stale/referencedata-service.stale</staleFile>
-                        </configuration>
-                        <id>wsimport-generate-referencedata-service</id>
-                        <phase>generate-sources</phase>
-                    </execution>
-                    <execution>
-                        <goals>
-                            <goal>wsimport</goal>
-                        </goals>
-                        <configuration>
-                            <wsdlFiles>
-                                <wsdlFile>localhost_8080/sola/webservices/casemanagement-service.wsdl</wsdlFile>
-                            </wsdlFiles>
-                            <wsdlLocation>http://localhost:8080/sola/webservices/casemanagement-service?wsdl</wsdlLocation>
-                            <staleFile>${project.build.directory}/jaxws/stale/casemanagement-service.stale</staleFile>
-                        </configuration>
-                        <id>wsimport-generate-casemanagement-service</id>
+                        <id>wsimport-generate-digitalarchive-service</id>
                         <phase>generate-sources</phase>
                     </execution>
                     <execution>
@@ -397,6 +389,7 @@
                             <wsdlFiles>
                                 <wsdlFile>localhost_8080/sola/webservices/spatial-service.wsdl</wsdlFile>
                             </wsdlFiles>
+                            <packageName></packageName>
                             <wsdlLocation>http://localhost:8080/sola/webservices/spatial-service?wsdl</wsdlLocation>
                             <staleFile>${project.build.directory}/jaxws/stale/spatial-service.stale</staleFile>
                         </configuration>
@@ -409,8 +402,24 @@
                         </goals>
                         <configuration>
                             <wsdlFiles>
+                                <wsdlFile>localhost_8080/sola/webservices/administrative-service.wsdl</wsdlFile>
+                            </wsdlFiles>
+                            <packageName></packageName>
+                            <wsdlLocation>http://localhost:8080/sola/webservices/administrative-service?wsdl</wsdlLocation>
+                            <staleFile>${project.build.directory}/jaxws/stale/administrative-service.stale</staleFile>
+                        </configuration>
+                        <id>wsimport-generate-administrative-service</id>
+                        <phase>generate-sources</phase>
+                    </execution>
+                    <execution>
+                        <goals>
+                            <goal>wsimport</goal>
+                        </goals>
+                        <configuration>
+                            <wsdlFiles>
                                 <wsdlFile>localhost_8080/sola/webservices/filestreaming-service.wsdl</wsdlFile>
                             </wsdlFiles>
+                            <packageName></packageName>
                             <wsdlLocation>http://localhost:8080/sola/webservices/filestreaming-service?wsdl</wsdlLocation>
                             <staleFile>${project.build.directory}/jaxws/stale/filestreaming-service.stale</staleFile>
                         </configuration>
@@ -425,6 +434,7 @@
                             <wsdlFiles>
                                 <wsdlFile>localhost_8080/sola/webservices/bulkoperations-service.wsdl</wsdlFile>
                             </wsdlFiles>
+                            <packageName></packageName>
                             <wsdlLocation>http://localhost:8080/sola/webservices/bulkoperations-service?wsdl</wsdlLocation>
                             <staleFile>${project.build.directory}/jaxws/stale/bulkoperations-service.stale</staleFile>
                         </configuration>
@@ -439,7 +449,8 @@
                     <extension>true</extension>
                     <catalog>${basedir}/src/jax-ws-catalog.xml</catalog>
                 </configuration>
-            </plugin-->
+            </plugin>
+            
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-war-plugin</artifactId>
@@ -463,7 +474,7 @@
         <pluginRepository>
             <name>java.net</name>
             <id>java.net</id>
-            <url>http://download.java.net/maven/2/</url>
+            <url>https://maven.java.net/content/groups/public/</url>
         </pluginRepository>
         <pluginRepository>
             <id>jboss-public-repository-group</id>
@@ -479,7 +490,7 @@
             <url>https://repository.jboss.org/nexus/content/groups/public</url>
         </repository>
         <repository>
-            <url>http://download.java.net/maven/2/</url>
+            <url>https://maven.java.net/content/groups/public/</url>
             <id>metro</id>
             <layout>default</layout>
             <name>Repository for library Library[metro]</name>
